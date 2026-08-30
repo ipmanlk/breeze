@@ -1,0 +1,5 @@
+{{template "docstart" .}}
+  <h1 style="font-size: 18px; margin: 0 0 12px;">{{.Title}}</h1>
+  {{if .Body}}<p style="margin: 0 0 16px; line-height: 1.5;">{{.Body}}</p>{{end}}
+  {{if .Link}}<p style="margin: 24px 0;"><a href="{{.Link}}" style="display: inline-block; background: #4f46e5; color: #ffffff; text-decoration: none; padding: 12px 24px; border-radius: 8px; font-weight: 600;">View</a></p>{{end}}
+{{template "docend" .}}

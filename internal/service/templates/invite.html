@@ -1,0 +1,8 @@
+{{template "docstart" .}}
+  <h1 style="font-size: 20px; margin: 0 0 16px;">You're invited to join {{.Org}}</h1>
+  <p style="margin: 0 0 16px; line-height: 1.5;">{{.Inviter}} has invited you to collaborate on Breeze. Click the button below to accept your invitation and set up your account.</p>
+  <p style="margin: 24px 0;">
+    <a href="{{.URL}}" style="display: inline-block; background: #4f46e5; color: #ffffff; text-decoration: none; padding: 12px 24px; border-radius: 8px; font-weight: 600;">Accept invitation</a>
+  </p>
+  <p style="margin: 0 0 8px; line-height: 1.5; color: #6b7280; font-size: 14px;">This invitation expires in 7 days. If you were not expecting it, you can safely ignore this email.</p>
+{{template "docend" .}}

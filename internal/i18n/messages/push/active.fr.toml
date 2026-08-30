@@ -1,0 +1,28 @@
+# Messages de notification push (langue cible : fr - français).
+# Les messages avec pluriel ont les catégories "one" et "other".
+# Les variables utilisent la syntaxe text/template : {{.Name}}.
+
+[TaskDueSoonTitle]
+other = "Tâche à faire : {{.Title}}"
+
+[TaskDueSoonBody]
+other = "{{.Title}} est due le {{.DueAt}}"
+
+[TaskOverdueTitle]
+other = "Tâche en retard : {{.Title}}"
+
+[TaskOverdueBody]
+other = "{{.Title}} était due le {{.DueAt}}"
+
+[ChatDMTitle]
+other = "Nouveau message de {{.Sender}}"
+
+[ChatMentionTitle]
+other = "Vous avez été mentionné"
+
+[ChatMentionBody]
+other = "Vous avez été mentionné par {{.Sender}} dans {{.Conversation}}"
+
+[CommentCount]
+one = "{{.Count}} commentaire"
+other = "{{.Count}} commentaires"

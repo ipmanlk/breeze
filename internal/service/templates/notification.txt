@@ -1,0 +1,7 @@
+{{.Title}}{{if .Body}}
+
+{{.Body}}{{end}}{{if .Link}}
+
+View it: {{.Link}}{{end}}
+
+— The Breeze team

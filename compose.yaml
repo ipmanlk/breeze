@@ -1,0 +1,41 @@
+# Docker Compose for Breeze.
+#
+# Usage:
+#   cp .env.example .env
+#   docker compose up -d
+
+name: breeze
+
+services:
+  breeze:
+    build:
+      context: .
+      args:
+        # Reported by GET /api/version.
+        GIT_VERSION: ${GIT_VERSION:-dev}
+    image: breeze:local
+    restart: unless-stopped
+    ports:
+      # Left side is the host port; change it to expose on a different one.
+      - "${BREEZE_HTTP_PORT:-8080}:8080"
+    env_file:
+      - .env
+    environment:
+      # Override the .env defaults with the container layout. JWT_SECRET is
+      # required and must come from .env.
+      APP_ENV: production
+      PORT: "8080"
+      DB_PATH: /data/breeze.db
+      UPLOAD_DIR: /data/uploads
+    volumes:
+      - breeze-data:/data
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:8080/healthz"]
+      interval: 30s
+      timeout: 5s
+      start_period: 10s
+      retries: 3
+
+volumes:
+  breeze-data:
+    name: breeze-data

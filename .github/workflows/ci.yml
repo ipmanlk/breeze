@@ -1,0 +1,183 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+# Cancel in-progress runs on the same branch when a new commit is pushed.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-and-test:
+    name: Build & test (Go)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Set up Go
+        uses: actions/setup-go@v7
+        with:
+          go-version-file: 'go.mod'
+
+      - name: Set up Deno
+        uses: denoland/setup-deno@v2
+        with:
+          deno-version: v2.x
+
+      - name: Cache Go build & modules
+        uses: actions/cache@v6
+        with:
+          path: |
+            ~/.cache/go-build
+            ~/go/pkg/mod
+          key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+          restore-keys: |
+            ${{ runner.os }}-go-
+
+      # The server binary embeds the built SPA (ui/embed.go → //go:embed dist),
+      # so the UI must be built before any `go build`. Deno resolves the npm
+      # tools (tsc, vite) from ui/package.json + ui/deno.lock.
+      - name: Install UI dependencies
+        run: cd ui && deno install
+
+      - name: Build UI
+        run: make build-ui
+
+      - name: Download modules
+        run: go mod download
+
+      - name: Build (compile-check all packages)
+        run: go build ./...
+
+      - name: Build API binary
+        run: make build-api
+
+      - name: Vet
+        run: go vet ./...
+
+      - name: Test
+        run: go test ./internal/... -count=1
+
+  test-race:
+    name: Race detector
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-go@v7
+        with:
+          go-version-file: 'go.mod'
+      - run: go test -race ./internal/... -count=1
+
+  lint:
+    name: golangci-lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-go@v7
+        with:
+          go-version-file: 'go.mod'
+      - name: golangci-lint
+        uses: golangci/golangci-lint-action@v9
+        with:
+          version: v2.13.1
+          args: --timeout=5m
+
+  vulncheck:
+    name: govulncheck
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-go@v7
+        with:
+          go-version-file: 'go.mod'
+      - name: Install govulncheck
+        run: go install golang.org/x/vuln/cmd/govulncheck@latest
+      - name: Run govulncheck
+        run: govulncheck ./...
+
+  codegen-verify:
+    name: Generated code up to date (sqlc + swagger)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-go@v7
+        with:
+          go-version-file: 'go.mod'
+      - name: Install sqlc + swag
+        # Pinned versions ensure reproducible generation. If these don't
+        # match a contributor's local versions, `make sqlc-gen` /
+        # `make swagger-gen` may produce different output; keep them in sync.
+        run: |
+          go install github.com/sqlc-dev/sqlc/cmd/sqlc@v1.31.1
+          go install github.com/swaggo/swag/cmd/swag@v1.16.6
+      - name: Verify sqlc-generated code is current
+        # Regenerates sqlc output and fails if it differs from the committed
+        # files. Prevents stale generated store code from silently shipping.
+        run: |
+          sqlc generate
+          git diff --exit-code -- internal/store/sqlc/ || {
+            echo "::error::sqlc-generated code is stale. Run 'make sqlc-gen' and commit the result."
+            exit 1
+          }
+      - name: Verify swagger spec is current
+        run: |
+          swag init -g cmd/server/main.go -o api/swagger --parseInternal >/dev/null
+          git diff --exit-code -- api/swagger/ || {
+            echo "::error::swagger spec is stale. Run 'make swagger-gen' and commit the result."
+            exit 1
+          }
+
+  build-ui:
+    name: Build UI
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Set up Deno
+        uses: denoland/setup-deno@v2
+        with:
+          deno-version: v2.x
+
+      - name: Install UI dependencies
+        run: cd ui && deno install
+
+      - name: Verify generated API types are current
+        # Regenerates the TS SDK from the committed swagger spec and fails if
+        # it differs. Prevents a handler change from shipping with a stale
+        # ui/src/api/ (the swagger job above only covers api/swagger/).
+        run: |
+          make api-types
+          git diff --exit-code -- ui/src/api/ || {
+            echo "::error::ui/src/api/ is stale. Run 'make api-types' and commit the result."
+            exit 1
+          }
+
+      - name: Build UI
+        run: make build-ui
+
+  test-ui:
+    name: UI type-check, lint & tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: denoland/setup-deno@v2
+        with:
+          deno-version: v2.x
+      - name: Install UI dependencies
+        run: cd ui && deno install
+      - name: Type-check
+        run: make build-ui
+      - name: Format check
+        # Fails if any TS isn't deno-fmt'd (excludes auto-generated src/api/,
+        # locales, and locale codes per ui/deno.json).
+        run: cd ui && deno fmt --check
+      - name: Lint (no .innerHTML)
+        run: make lint-ui
+      - name: UI tests
+        run: make test-ui

@@ -1,0 +1,6736 @@
+basePath: /api
+definitions:
+  dto.AcceptInviteRequest:
+    properties:
+      email:
+        type: string
+      name:
+        type: string
+      password:
+        minLength: 8
+        type: string
+    required:
+    - email
+    - name
+    - password
+    type: object
+  dto.AddDependencyRequest:
+    properties:
+      blocks_task_id:
+        type: string
+    required:
+    - blocks_task_id
+    type: object
+  dto.AddMemberRequest:
+    properties:
+      user_ids:
+        items:
+          type: string
+        minItems: 1
+        type: array
+    required:
+    - user_ids
+    type: object
+  dto.AddProjectMemberRequest:
+    properties:
+      role:
+        enum:
+        - admin
+        - member
+        - viewer
+        - guest
+        type: string
+      user_id:
+        type: string
+    required:
+    - role
+    - user_id
+    type: object
+  dto.AttachmentResponse:
+    properties:
+      content_type:
+        type: string
+      created_at:
+        type: string
+      created_by:
+        type: string
+      filename:
+        type: string
+      id:
+        type: string
+      size:
+        type: integer
+      task_id:
+        type: string
+    type: object
+  dto.AuditEntryResponse:
+    properties:
+      action:
+        type: string
+      actor_email:
+        type: string
+      actor_id:
+        type: string
+      actor_name:
+        type: string
+      created_at:
+        type: string
+      entity_id:
+        type: string
+      entity_type:
+        type: string
+      id:
+        type: string
+      metadata:
+        type: string
+    type: object
+  dto.AuditLogResponse:
+    properties:
+      items:
+        items:
+          $ref: '#/definitions/dto.AuditEntryResponse'
+        type: array
+      limit:
+        type: integer
+      offset:
+        type: integer
+      total:
+        type: integer
+    type: object
+  dto.BackupRestorePendingResponse:
+    properties:
+      path:
+        type: string
+      pending:
+        type: boolean
+      size:
+        type: integer
+    type: object
+  dto.BackupRestoreResponse:
+    properties:
+      message:
+        type: string
+      success:
+        type: boolean
+    type: object
+  dto.BatchUpdateRequest:
+    properties:
+      assignee_ids:
+        items:
+          type: string
+        type: array
+      assignee_mode:
+        description: replace (default) | add | remove
+        type: string
+      cycle_id:
+        type: string
+      priority:
+        type: string
+      status_id:
+        type: string
+      task_ids:
+        items:
+          type: string
+        maxItems: 500
+        minItems: 1
+        type: array
+    required:
+    - task_ids
+    type: object
+  dto.ChangePasswordRequest:
+    properties:
+      current_password:
+        type: string
+      new_password:
+        minLength: 8
+        type: string
+    required:
+    - current_password
+    - new_password
+    type: object
+  dto.ChannelAccessEntryResponse:
+    properties:
+      source:
+        type: string
+      user:
+        $ref: '#/definitions/dto.UserResponse'
+    type: object
+  dto.ChannelPermissionsResponse:
+    properties:
+      can_manage:
+        type: boolean
+      can_permissions:
+        type: boolean
+      can_send:
+        type: boolean
+      can_view:
+        type: boolean
+    type: object
+  dto.CommentListResponse:
+    properties:
+      has_more:
+        type: boolean
+      items:
+        items:
+          $ref: '#/definitions/dto.CommentResponse'
+        type: array
+      next_cursor:
+        type: string
+    type: object
+  dto.CommentResponse:
+    properties:
+      author_avatar_url:
+        type: string
+      author_email:
+        type: string
+      author_id:
+        type: string
+      author_name:
+        type: string
+      content:
+        type: string
+      created_at:
+        type: string
+      edited_at:
+        type: string
+      id:
+        type: string
+      mentions:
+        allOf:
+        - $ref: '#/definitions/dto.MentionsResponse'
+        description: |-
+          Mentions holds resolved labels for <@type:id> tokens in content,
+          mirroring the chat message shape so the frontend reuses the same
+          markdown renderer + mention chip rendering.
+      parent_id:
+        type: string
+      project_id:
+        type: string
+      task_id:
+        type: string
+      updated_at:
+        type: string
+    type: object
+  dto.CompleteCycleRequest:
+    properties:
+      move_to_cycle_id:
+        type: string
+    type: object
+  dto.ConfirmPasswordResetRequest:
+    properties:
+      new_password:
+        minLength: 8
+        type: string
+      token:
+        type: string
+    required:
+    - new_password
+    - token
+    type: object
+  dto.ConversationListResponse:
+    properties:
+      has_more:
+        type: boolean
+      items:
+        items:
+          $ref: '#/definitions/dto.ConversationResponse'
+        type: array
+      next_cursor:
+        type: string
+    type: object
+  dto.ConversationMemberResponse:
+    properties:
+      avatar_url:
+        type: string
+      email:
+        type: string
+      id:
+        type: string
+      joined_at:
+        type: string
+      last_read_at:
+        type: string
+      muted:
+        type: boolean
+      name:
+        type: string
+      online:
+        type: boolean
+      presence:
+        type: string
+      role:
+        type: string
+    type: object
+  dto.ConversationResponse:
+    properties:
+      created_at:
+        type: string
+      created_by:
+        type: string
+      id:
+        type: string
+      last_message:
+        $ref: '#/definitions/dto.MessageResponse'
+      member_count:
+        type: integer
+      muted:
+        type: boolean
+      name:
+        type: string
+      notification_level:
+        type: string
+      org_id:
+        type: string
+      parent_id:
+        type: string
+      partner_name:
+        type: string
+      partner_user_id:
+        type: string
+      position_key:
+        type: string
+      project_ids:
+        items:
+          type: string
+        type: array
+      topic:
+        type: string
+      type:
+        type: string
+      unread_count:
+        type: integer
+      updated_at:
+        type: string
+    type: object
+  dto.CreateCommentRequest:
+    properties:
+      content:
+        maxLength: 10000
+        minLength: 1
+        type: string
+      parent_id:
+        type: string
+    required:
+    - content
+    type: object
+  dto.CreateConversationRequest:
+    properties:
+      member_ids:
+        items:
+          type: string
+        type: array
+      name:
+        maxLength: 100
+        type: string
+      parent_id:
+        type: string
+      project_ids:
+        items:
+          type: string
+        type: array
+      target_id:
+        type: string
+      topic:
+        maxLength: 500
+        type: string
+      type:
+        enum:
+        - direct
+        - group
+        - channel
+        - voice
+        - category
+        type: string
+    required:
+    - type
+    type: object
+  dto.CreateCustomFieldRequest:
+    properties:
+      field_type:
+        type: string
+      name:
+        maxLength: 64
+        minLength: 1
+        type: string
+      options:
+        items:
+          type: string
+        type: array
+      position:
+        type: integer
+    required:
+    - field_type
+    - name
+    type: object
+  dto.CreateCycleRequest:
+    properties:
+      ends_at:
+        type: string
+      goal:
+        type: string
+      name:
+        type: string
+      starts_at:
+        type: string
+    required:
+    - ends_at
+    - starts_at
+    type: object
+  dto.CreateInviteRequest:
+    properties:
+      email:
+        type: string
+      project_assignments:
+        items:
+          $ref: '#/definitions/dto.ProjectAssignment'
+        type: array
+      role:
+        enum:
+        - admin
+        - member
+        - viewer
+        - guest
+        type: string
+    required:
+    - role
+    type: object
+  dto.CreateInviteResponse:
+    properties:
+      expires_at:
+        type: string
+      id:
+        type: string
+      role:
+        type: string
+      token:
+        type: string
+      url:
+        type: string
+    type: object
+  dto.CreateLabelRequest:
+    properties:
+      color:
+        type: string
+      name:
+        maxLength: 32
+        minLength: 1
+        type: string
+    required:
+    - name
+    type: object
+  dto.CreateProjectRequest:
+    properties:
+      auto_generate_cycles:
+        type: boolean
+      color:
+        type: string
+      cycle_duration:
+        type: integer
+      description:
+        type: string
+      ends_at:
+        type: string
+      icon:
+        type: string
+      incomplete_task_handling:
+        type: string
+      name:
+        type: string
+      starts_at:
+        type: string
+    required:
+    - name
+    type: object
+  dto.CreateStatusRequest:
+    properties:
+      category:
+        type: string
+      color:
+        type: string
+      name:
+        type: string
+      position:
+        type: integer
+    required:
+    - color
+    - name
+    type: object
+  dto.CreateTaskRequest:
+    properties:
+      assignee_ids:
+        items:
+          type: string
+        type: array
+      cycle_id:
+        type: string
+      description:
+        type: string
+      due_at:
+        type: string
+      estimate:
+        type: integer
+      parent_task_id:
+        type: string
+      priority:
+        type: string
+      started_at:
+        type: string
+      status_id:
+        type: string
+      title:
+        type: string
+    required:
+    - status_id
+    - title
+    type: object
+  dto.CreateTaskTemplateRequest:
+    properties:
+      assignee_ids:
+        items:
+          type: string
+        type: array
+      description:
+        type: string
+      estimate:
+        type: integer
+      name:
+        maxLength: 200
+        minLength: 1
+        type: string
+      priority:
+        type: string
+      recurrence_days:
+        type: string
+      recurrence_pattern:
+        type: string
+      status_id:
+        type: string
+    required:
+    - name
+    - status_id
+    type: object
+  dto.CreateTimeEntryRequest:
+    properties:
+      description:
+        type: string
+      duration_minutes:
+        minimum: 1
+        type: integer
+    required:
+    - duration_minutes
+    type: object
+  dto.CreateViewRequest:
+    properties:
+      filters:
+        $ref: '#/definitions/dto.ViewFilters'
+      layout:
+        enum:
+        - board
+        - list
+        type: string
+      name:
+        type: string
+      project_id:
+        type: string
+    required:
+    - layout
+    - name
+    type: object
+  dto.CreateWorkspaceRequest:
+    properties:
+      name:
+        maxLength: 64
+        minLength: 2
+        type: string
+    required:
+    - name
+    type: object
+  dto.CustomFieldResponse:
+    properties:
+      created_at:
+        type: string
+      field_type:
+        type: string
+      id:
+        type: string
+      name:
+        type: string
+      options:
+        items:
+          type: string
+        type: array
+      position:
+        type: integer
+      project_id:
+        type: string
+      updated_at:
+        type: string
+    type: object
+  dto.CycleResponse:
+    properties:
+      completed_task_count:
+        type: integer
+      created_at:
+        type: string
+      created_by:
+        type: string
+      ends_at:
+        type: string
+      goal:
+        type: string
+      id:
+        type: string
+      is_active:
+        type: boolean
+      is_completed:
+        type: boolean
+      name:
+        type: string
+      project_id:
+        type: string
+      starts_at:
+        type: string
+      task_count:
+        type: integer
+      updated_at:
+        type: string
+    type: object
+  dto.DashboardResponse:
+    properties:
+      sections:
+        items:
+          $ref: '#/definitions/dto.DashboardSectionResponse'
+        type: array
+    type: object
+  dto.DashboardSectionResponse:
+    properties:
+      data: {}
+      title:
+        type: string
+      type:
+        type: string
+    type: object
+  dto.DeleteOrganizationRequest:
+    properties:
+      confirm:
+        type: string
+    required:
+    - confirm
+    type: object
+  dto.EditMessageRequest:
+    properties:
+      content:
+        maxLength: 50000
+        type: string
+    required:
+    - content
+    type: object
+  dto.EffectivePermissionResponse:
+    properties:
+      allow:
+        type: boolean
+      explicit:
+        type: boolean
+      permission:
+        type: string
+      role:
+        type: string
+    type: object
+  dto.InviteResponse:
+    properties:
+      created_at:
+        type: string
+      email:
+        type: string
+      expires_at:
+        type: string
+      id:
+        type: string
+      invited_by:
+        type: string
+      invited_by_name:
+        type: string
+      role:
+        type: string
+      use_count:
+        type: integer
+    type: object
+  dto.LabelResponse:
+    properties:
+      color:
+        type: string
+      id:
+        type: string
+      name:
+        type: string
+    type: object
+  dto.LoginRequest:
+    properties:
+      email:
+        type: string
+      password:
+        type: string
+    required:
+    - email
+    - password
+    type: object
+  dto.MentionResultResponse:
+    properties:
+      avatar_url:
+        type: string
+      icon:
+        type: string
+      icon_color:
+        type: string
+      id:
+        type: string
+      label:
+        type: string
+      project_id:
+        type: string
+      project_name:
+        type: string
+      type:
+        type: string
+    type: object
+  dto.MentionSearchResponse:
+    properties:
+      results:
+        items:
+          $ref: '#/definitions/dto.MentionResultResponse'
+        type: array
+    type: object
+  dto.MentionsResponse:
+    properties:
+      channels:
+        additionalProperties:
+          type: string
+        type: object
+      projects:
+        additionalProperties:
+          type: string
+        type: object
+      tasks:
+        additionalProperties:
+          $ref: '#/definitions/dto.TaskMentionResponse'
+        type: object
+      users:
+        additionalProperties:
+          type: string
+        type: object
+    type: object
+  dto.MessageAttachmentResp:
+    properties:
+      content_type:
+        type: string
+      created_at:
+        type: string
+      file_name:
+        type: string
+      file_size:
+        type: integer
+      id:
+        type: string
+      url:
+        type: string
+    type: object
+  dto.MessageListResponse:
+    properties:
+      has_more:
+        type: boolean
+      items:
+        items:
+          $ref: '#/definitions/dto.MessageResponse'
+        type: array
+      next_cursor:
+        type: string
+    type: object
+  dto.MessageResponse:
+    properties:
+      attachments:
+        items:
+          $ref: '#/definitions/dto.MessageAttachmentResp'
+        type: array
+      content:
+        type: string
+      conversation_id:
+        type: string
+      created_at:
+        type: string
+      edited_at:
+        type: string
+      forwarded_from_name:
+        type: string
+      forwarded_from_project_name:
+        type: string
+      forwarded_from_type:
+        type: string
+      forwarded_message:
+        $ref: '#/definitions/dto.MessageResponse'
+      forwarded_message_id:
+        type: string
+      id:
+        type: string
+      mentions:
+        $ref: '#/definitions/dto.MentionsResponse'
+      org_id:
+        type: string
+      parent_id:
+        type: string
+      pinned:
+        type: boolean
+      pinned_at:
+        type: string
+      reactions:
+        items:
+          $ref: '#/definitions/dto.ReactionGroupResp'
+        type: array
+      sender:
+        $ref: '#/definitions/dto.UserResponse'
+      sender_id:
+        type: string
+    type: object
+  dto.MessageSearchItemResponse:
+    properties:
+      conversation_name:
+        type: string
+      conversation_type:
+        type: string
+      message:
+        $ref: '#/definitions/dto.MessageResponse'
+      rank:
+        type: number
+      snippet:
+        type: string
+    type: object
+  dto.MessageSearchResponse:
+    properties:
+      has_more:
+        type: boolean
+      items:
+        items:
+          $ref: '#/definitions/dto.MessageSearchItemResponse'
+        type: array
+      next_cursor:
+        type: string
+    type: object
+  dto.MoveTaskRequest:
+    properties:
+      position_key:
+        type: string
+      status_id:
+        type: string
+    required:
+    - position_key
+    - status_id
+    type: object
+  dto.MoveToProjectRequest:
+    properties:
+      to_project_id:
+        type: string
+      to_status_id:
+        type: string
+    required:
+    - to_project_id
+    type: object
+  dto.MuteRequest:
+    properties:
+      muted:
+        type: boolean
+    type: object
+  dto.NotificationLevelRequest:
+    properties:
+      level:
+        enum:
+        - all
+        - mentions
+        - nothing
+        type: string
+    required:
+    - level
+    type: object
+  dto.NotificationPreferenceResponse:
+    properties:
+      enabled:
+        type: boolean
+      type:
+        type: string
+    type: object
+  dto.NotificationResponse:
+    properties:
+      actor:
+        $ref: '#/definitions/dto.UserBrief'
+      body:
+        type: string
+      created_at:
+        type: string
+      entity_id:
+        type: string
+      entity_type:
+        type: string
+      id:
+        type: string
+      is_read:
+        type: boolean
+      link:
+        type: string
+      project_slug:
+        type: string
+      title:
+        type: string
+      type:
+        type: string
+    type: object
+  dto.OrgSummaryResponse:
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+      slug:
+        type: string
+    type: object
+  dto.OrganizationResponse:
+    properties:
+      created_at:
+        type: string
+      id:
+        type: string
+      message_edit_window_minutes:
+        type: integer
+      name:
+        type: string
+      slug:
+        type: string
+    type: object
+  dto.PaginatedNotificationsResponse:
+    properties:
+      has_more:
+        type: boolean
+      items:
+        items:
+          $ref: '#/definitions/dto.NotificationResponse'
+        type: array
+      next_cursor:
+        type: string
+    type: object
+  dto.PaginatedProjectMembersResponse:
+    properties:
+      has_more:
+        type: boolean
+      items:
+        items:
+          $ref: '#/definitions/dto.ProjectMemberResponse'
+        type: array
+      next_cursor:
+        type: string
+    type: object
+  dto.PaginatedTaskActivityResponse:
+    properties:
+      has_more:
+        type: boolean
+      items:
+        items:
+          $ref: '#/definitions/dto.TaskActivityResponse'
+        type: array
+      next_cursor:
+        type: string
+    type: object
+  dto.PaginatedUsersResponse:
+    properties:
+      has_more:
+        type: boolean
+      items:
+        items:
+          $ref: '#/definitions/dto.UserResponse'
+        type: array
+      next_cursor:
+        type: string
+    type: object
+  dto.PermissionRuleRequest:
+    properties:
+      allow:
+        type: boolean
+      permission:
+        type: string
+      role:
+        type: string
+    required:
+    - permission
+    - role
+    type: object
+  dto.PinnedMessagesResponse:
+    properties:
+      items:
+        items:
+          $ref: '#/definitions/dto.MessageResponse'
+        type: array
+    type: object
+  dto.PresenceListResponse:
+    properties:
+      items:
+        items:
+          $ref: '#/definitions/dto.UserPresenceResponse'
+        type: array
+    type: object
+  dto.ProjectAccessResponse:
+    properties:
+      permissions:
+        items:
+          type: string
+        type: array
+      role:
+        type: string
+    type: object
+  dto.ProjectAssignment:
+    properties:
+      project_id:
+        type: string
+      role:
+        enum:
+        - admin
+        - member
+        - viewer
+        - guest
+        type: string
+    required:
+    - project_id
+    - role
+    type: object
+  dto.ProjectMemberResponse:
+    properties:
+      avatar_url:
+        type: string
+      email:
+        type: string
+      id:
+        type: string
+      name:
+        type: string
+      org_role:
+        type: string
+      project_role:
+        type: string
+      role:
+        description: |-
+          Role is the effective role for display: the org role for owner/admin/
+          member (whose access is org-wide) and the project role for viewer/guest
+          (whose access is per-project and overridable).
+        type: string
+      role_overridable:
+        description: |-
+          RoleOverridable reports whether the project role can be changed for this
+          member: true only for project-scoped org roles (viewer/guest). For
+          owner/admin/member the project role is meaningless, so the UI hides the
+          role editor to avoid confusion.
+        type: boolean
+    type: object
+  dto.ProjectResponse:
+    properties:
+      auto_generate_cycles:
+        type: boolean
+      color:
+        type: string
+      created_at:
+        type: string
+      created_by:
+        type: string
+      cycle_duration:
+        type: integer
+      description:
+        type: string
+      ends_at:
+        type: string
+      icon:
+        type: string
+      id:
+        type: string
+      incomplete_task_handling:
+        type: string
+      is_archived:
+        type: boolean
+      name:
+        type: string
+      slug:
+        type: string
+      starts_at:
+        type: string
+      updated_at:
+        type: string
+    type: object
+  dto.PushPublicKeyResponse:
+    properties:
+      enabled:
+        description: Enabled is false when VAPID is not configured; the UI hides the
+          opt-in.
+        type: boolean
+      public_key:
+        type: string
+    type: object
+  dto.PushSubscribeRequest:
+    properties:
+      auth:
+        type: string
+      endpoint:
+        type: string
+      p256dh:
+        type: string
+    required:
+    - auth
+    - endpoint
+    - p256dh
+    type: object
+  dto.ReactionGroupResp:
+    properties:
+      count:
+        type: integer
+      emoji:
+        type: string
+      mine:
+        type: boolean
+      user_ids:
+        items:
+          type: string
+        type: array
+    type: object
+  dto.ReactionRequest:
+    properties:
+      emoji:
+        maxLength: 100
+        type: string
+    required:
+    - emoji
+    type: object
+  dto.ReorderOp:
+    properties:
+      position_key:
+        type: string
+      task_id:
+        type: string
+    required:
+    - position_key
+    - task_id
+    type: object
+  dto.ReorderRequest:
+    properties:
+      operations:
+        items:
+          $ref: '#/definitions/dto.ReorderOp'
+        maxItems: 500
+        minItems: 1
+        type: array
+    required:
+    - operations
+    type: object
+  dto.RequestPasswordResetRequest:
+    properties:
+      email:
+        type: string
+    required:
+    - email
+    type: object
+  dto.SearchResponse:
+    properties:
+      results:
+        items:
+          $ref: '#/definitions/dto.SearchResultResponse'
+        type: array
+    type: object
+  dto.SearchResultResponse:
+    properties:
+      color:
+        type: string
+      icon:
+        type: string
+      id:
+        type: string
+      name:
+        type: string
+      project_id:
+        type: string
+      subtitle:
+        type: string
+      type:
+        type: string
+      url:
+        type: string
+    type: object
+  dto.SendMessageRequest:
+    properties:
+      attachment_ids:
+        items:
+          type: string
+        type: array
+      content:
+        maxLength: 50000
+        type: string
+      forwarded_message_id:
+        type: string
+      parent_id:
+        type: string
+    type: object
+  dto.SessionResponse:
+    properties:
+      created_at:
+        type: string
+      expires_at:
+        type: string
+      id:
+        type: string
+      ip_address:
+        type: string
+      is_current:
+        description: |-
+          IsCurrent is true for the session this request was authenticated with.
+          The frontend can't read the session ID from the HttpOnly JWT, so the
+          server flags it here.
+        type: boolean
+      revoked_at:
+        type: string
+      role:
+        type: string
+      user_agent:
+        type: string
+    type: object
+  dto.SetCustomFieldValueRequest:
+    properties:
+      value:
+        type: string
+    type: object
+  dto.SetNotificationPreferenceRequest:
+    properties:
+      enabled:
+        type: boolean
+    required:
+    - enabled
+    type: object
+  dto.SetPermissionsRequest:
+    properties:
+      rules:
+        items:
+          $ref: '#/definitions/dto.PermissionRuleRequest'
+        type: array
+    required:
+    - rules
+    type: object
+  dto.SetProjectLinksRequest:
+    properties:
+      project_ids:
+        items:
+          type: string
+        type: array
+    type: object
+  dto.SetStatusRequest:
+    properties:
+      status:
+        enum:
+        - online
+        - away
+        - dnd
+        - offline
+        type: string
+    required:
+    - status
+    type: object
+  dto.SetTaskLabelsRequest:
+    properties:
+      label_ids:
+        items:
+          type: string
+        type: array
+    type: object
+  dto.SetUserOverridesRequest:
+    properties:
+      overrides:
+        items:
+          $ref: '#/definitions/dto.UserOverrideRequest'
+        type: array
+    required:
+    - overrides
+    type: object
+  dto.SetupRequest:
+    properties:
+      email:
+        type: string
+      name:
+        type: string
+      org_name:
+        type: string
+      password:
+        minLength: 8
+        type: string
+    required:
+    - email
+    - name
+    - org_name
+    - password
+    type: object
+  dto.StartTimerRequest:
+    properties:
+      description:
+        maxLength: 5000
+        type: string
+    type: object
+  dto.TaskActivityResponse:
+    properties:
+      action:
+        type: string
+      actor_email:
+        type: string
+      actor_id:
+        type: string
+      actor_name:
+        type: string
+      created_at:
+        type: string
+      field:
+        type: string
+      id:
+        type: string
+      new_value:
+        type: string
+      old_value:
+        type: string
+      task_id:
+        type: string
+    type: object
+  dto.TaskAssigneeResponse:
+    properties:
+      avatar_url:
+        type: string
+      email:
+        type: string
+      id:
+        type: string
+      name:
+        type: string
+    type: object
+  dto.TaskListPageResponse:
+    properties:
+      has_more:
+        type: boolean
+      items:
+        items:
+          $ref: '#/definitions/dto.TaskListResponse'
+        type: array
+      next_cursor:
+        type: string
+    type: object
+  dto.TaskListResponse:
+    properties:
+      assignees:
+        items:
+          $ref: '#/definitions/dto.TaskAssigneeResponse'
+        type: array
+      completed_at:
+        type: string
+      created_at:
+        type: string
+      created_by:
+        type: string
+      cycle_id:
+        type: string
+      description:
+        type: string
+      due_at:
+        type: string
+      estimate:
+        type: integer
+      id:
+        type: string
+      parent_task_id:
+        type: string
+      position_key:
+        type: string
+      priority:
+        type: string
+      project_color:
+        type: string
+      project_id:
+        type: string
+      project_name:
+        type: string
+      project_slug:
+        type: string
+      started_at:
+        type: string
+      status_color:
+        type: string
+      status_id:
+        type: string
+      status_name:
+        type: string
+      title:
+        type: string
+      updated_at:
+        type: string
+    type: object
+  dto.TaskMentionResponse:
+    properties:
+      project_id:
+        type: string
+      title:
+        type: string
+    type: object
+  dto.TaskResponse:
+    properties:
+      assignees:
+        items:
+          $ref: '#/definitions/dto.TaskAssigneeResponse'
+        type: array
+      completed_at:
+        type: string
+      completed_subtask_count:
+        type: integer
+      created_at:
+        type: string
+      created_by:
+        type: string
+      cycle_id:
+        type: string
+      description:
+        type: string
+      due_at:
+        type: string
+      estimate:
+        type: integer
+      id:
+        type: string
+      labels:
+        items:
+          $ref: '#/definitions/dto.LabelResponse'
+        type: array
+      mentions:
+        allOf:
+        - $ref: '#/definitions/dto.MentionsResponse'
+        description: |-
+          Mentions holds resolved labels for <@type:id> tokens in Description,
+          mirroring the chat/comment shape so the frontend reuses the same
+          markdown renderer + mention chip rendering.
+      parent_task_id:
+        type: string
+      parent_title:
+        type: string
+      position_key:
+        type: string
+      priority:
+        type: string
+      project_id:
+        type: string
+      started_at:
+        type: string
+      status_id:
+        type: string
+      subtask_count:
+        description: |-
+          SubtaskCount / CompletedSubtaskCount let the frontend render progress
+          (done/total) without client-side counting from a filtered task list.
+        type: integer
+      subtask_position:
+        type: string
+      template_id:
+        type: string
+      title:
+        type: string
+      updated_at:
+        type: string
+    type: object
+  dto.TaskStatusResponse:
+    properties:
+      category:
+        type: string
+      color:
+        type: string
+      default:
+        type: boolean
+      id:
+        type: string
+      name:
+        type: string
+      position:
+        type: integer
+      project_id:
+        type: string
+    type: object
+  dto.TaskTemplateResponse:
+    properties:
+      assignee_ids:
+        items:
+          type: string
+        type: array
+      created_at:
+        type: string
+      created_by:
+        type: string
+      description:
+        type: string
+      estimate:
+        type: integer
+      id:
+        type: string
+      name:
+        type: string
+      next_run_at:
+        type: string
+      priority:
+        type: string
+      project_id:
+        type: string
+      recurrence_days:
+        type: string
+      recurrence_pattern:
+        type: string
+      status_id:
+        type: string
+      updated_at:
+        type: string
+    type: object
+  dto.TimeEntryResponse:
+    properties:
+      created_at:
+        type: string
+      description:
+        type: string
+      duration_minutes:
+        type: integer
+      ended_at:
+        type: string
+      id:
+        type: string
+      started_at:
+        type: string
+      task_id:
+        type: string
+      updated_at:
+        type: string
+      user_id:
+        type: string
+    type: object
+  dto.UnreadCountResponse:
+    properties:
+      count:
+        type: integer
+    type: object
+  dto.UpdateChannelPositionRequest:
+    properties:
+      parent_id:
+        type: string
+      position_key:
+        type: string
+    type: object
+  dto.UpdateCommentRequest:
+    properties:
+      content:
+        maxLength: 10000
+        minLength: 1
+        type: string
+    required:
+    - content
+    type: object
+  dto.UpdateConversationRequest:
+    properties:
+      name:
+        maxLength: 100
+        type: string
+      topic:
+        maxLength: 500
+        type: string
+    type: object
+  dto.UpdateCustomFieldRequest:
+    properties:
+      name:
+        maxLength: 64
+        minLength: 1
+        type: string
+      options:
+        items:
+          type: string
+        type: array
+      position:
+        type: integer
+    required:
+    - name
+    type: object
+  dto.UpdateCycleRequest:
+    properties:
+      ends_at:
+        type: string
+      goal:
+        type: string
+      is_completed:
+        type: boolean
+      name:
+        type: string
+      starts_at:
+        type: string
+    type: object
+  dto.UpdateLabelRequest:
+    properties:
+      color:
+        type: string
+      name:
+        maxLength: 32
+        minLength: 1
+        type: string
+    required:
+    - name
+    type: object
+  dto.UpdateOrganizationRequest:
+    properties:
+      message_edit_window_minutes:
+        maximum: 10080
+        minimum: 0
+        type: integer
+      name:
+        maxLength: 64
+        minLength: 2
+        type: string
+    required:
+    - name
+    type: object
+  dto.UpdateProfileRequest:
+    properties:
+      name:
+        maxLength: 64
+        minLength: 1
+        type: string
+    required:
+    - name
+    type: object
+  dto.UpdateProjectMemberRoleRequest:
+    properties:
+      role:
+        enum:
+        - admin
+        - member
+        - viewer
+        - guest
+        type: string
+    required:
+    - role
+    type: object
+  dto.UpdateProjectRequest:
+    properties:
+      auto_generate_cycles:
+        type: boolean
+      color:
+        type: string
+      cycle_duration:
+        type: integer
+      description:
+        type: string
+      ends_at:
+        type: string
+      icon:
+        type: string
+      incomplete_task_handling:
+        type: string
+      name:
+        type: string
+      starts_at:
+        type: string
+    type: object
+  dto.UpdateStatusRequest:
+    properties:
+      category:
+        type: string
+      color:
+        type: string
+      name:
+        type: string
+      position:
+        type: integer
+    type: object
+  dto.UpdateTaskRequest:
+    properties:
+      assignee_ids:
+        items:
+          type: string
+        type: array
+      cycle_id:
+        type: string
+      description:
+        type: string
+      due_at:
+        type: string
+      estimate:
+        type: integer
+      parent_task_id:
+        type: string
+      priority:
+        type: string
+      started_at:
+        type: string
+      status_id:
+        type: string
+      title:
+        type: string
+    type: object
+  dto.UpdateTaskTemplateRequest:
+    properties:
+      assignee_ids:
+        items:
+          type: string
+        type: array
+      description:
+        type: string
+      estimate:
+        type: integer
+      name:
+        maxLength: 200
+        minLength: 1
+        type: string
+      priority:
+        type: string
+      recurrence_days:
+        type: string
+      recurrence_pattern:
+        type: string
+      status_id:
+        type: string
+    required:
+    - name
+    - status_id
+    type: object
+  dto.UpdateTimeEntryRequest:
+    properties:
+      description:
+        type: string
+      duration_minutes:
+        type: integer
+    type: object
+  dto.UpdateUserActiveRequest:
+    properties:
+      is_active:
+        type: boolean
+    type: object
+  dto.UpdateUserPreferencesRequest:
+    properties:
+      desktop_notifications:
+        type: boolean
+      email_notifications:
+        type: boolean
+      language:
+        type: string
+      motion_settings:
+        type: string
+      notification_sounds:
+        type: boolean
+      sidebar_collapsed:
+        type: boolean
+      theme:
+        type: string
+      timezone:
+        type: string
+    type: object
+  dto.UpdateUserProjectMembershipsRequest:
+    properties:
+      assignments:
+        items:
+          $ref: '#/definitions/dto.ProjectAssignment'
+        type: array
+    required:
+    - assignments
+    type: object
+  dto.UpdateUserRoleRequest:
+    properties:
+      role:
+        enum:
+        - owner
+        - admin
+        - member
+        - viewer
+        - guest
+        type: string
+    required:
+    - role
+    type: object
+  dto.UpdateViewRequest:
+    properties:
+      filters:
+        $ref: '#/definitions/dto.ViewFilters'
+      layout:
+        enum:
+        - board
+        - list
+        type: string
+      name:
+        type: string
+    type: object
+  dto.UploadAttachmentResponse:
+    properties:
+      content_type:
+        type: string
+      file_name:
+        type: string
+      file_size:
+        type: integer
+      id:
+        type: string
+      url:
+        type: string
+    type: object
+  dto.UserBrief:
+    properties:
+      avatar_url:
+        type: string
+      email:
+        type: string
+      id:
+        type: string
+      name:
+        type: string
+    type: object
+  dto.UserOverrideRequest:
+    properties:
+      allow:
+        type: boolean
+      permission:
+        enum:
+        - channel:view
+        - channel:send
+        - channel:manage
+        - channel:permissions
+        type: string
+      user_id:
+        type: string
+    required:
+    - permission
+    - user_id
+    type: object
+  dto.UserOverrideResponse:
+    properties:
+      allow:
+        type: boolean
+      permission:
+        type: string
+      user_id:
+        type: string
+    type: object
+  dto.UserPreferencesResponse:
+    properties:
+      desktop_notifications:
+        type: boolean
+      email_notifications:
+        type: boolean
+      language:
+        type: string
+      motion_settings:
+        type: string
+      notification_sounds:
+        type: boolean
+      sidebar_collapsed:
+        type: boolean
+      theme:
+        type: string
+      timezone:
+        type: string
+    type: object
+  dto.UserPresenceResponse:
+    properties:
+      last_seen:
+        type: string
+      org_id:
+        type: string
+      status:
+        type: string
+      user:
+        $ref: '#/definitions/dto.UserResponse'
+      user_id:
+        type: string
+    type: object
+  dto.UserProjectMembershipResponse:
+    properties:
+      color:
+        type: string
+      icon:
+        type: string
+      name:
+        type: string
+      project_id:
+        type: string
+      role:
+        type: string
+    type: object
+  dto.UserResponse:
+    properties:
+      active_org_id:
+        type: string
+      avatar_url:
+        type: string
+      created_at:
+        type: string
+      email:
+        type: string
+      id:
+        type: string
+      is_active:
+        type: boolean
+      name:
+        type: string
+      org:
+        $ref: '#/definitions/dto.OrgSummaryResponse'
+      role:
+        type: string
+      workspaces:
+        items:
+          $ref: '#/definitions/dto.WorkspaceResponse'
+        type: array
+    type: object
+  dto.ViewFilters:
+    properties:
+      assignee_id:
+        type: string
+      cycle_id:
+        type: string
+      label_ids:
+        items:
+          type: string
+        type: array
+      priority:
+        type: string
+      search:
+        type: string
+      status_id:
+        type: string
+    type: object
+  dto.ViewResponse:
+    properties:
+      created_at:
+        type: string
+      created_by:
+        type: string
+      filters:
+        $ref: '#/definitions/dto.ViewFilters'
+      id:
+        type: string
+      layout:
+        type: string
+      name:
+        type: string
+      project_id:
+        type: string
+      project_name:
+        type: string
+      project_slug:
+        type: string
+      updated_at:
+        type: string
+    type: object
+  dto.VisibilityRequest:
+    properties:
+      sections:
+        items:
+          type: string
+        type: array
+    type: object
+  dto.VisibilityResponse:
+    properties:
+      sections:
+        items:
+          type: string
+        type: array
+    type: object
+  dto.VoiceParticipantResponse:
+    properties:
+      avatar_url:
+        type: string
+      deafened:
+        type: boolean
+      id:
+        type: string
+      joined_at:
+        type: string
+      muted:
+        type: boolean
+      name:
+        type: string
+      speaking:
+        type: boolean
+      user_id:
+        type: string
+    type: object
+  dto.WorkspaceResponse:
+    properties:
+      created_at:
+        type: string
+      id:
+        type: string
+      is_owner:
+        type: boolean
+      name:
+        type: string
+      role:
+        type: string
+      slug:
+        type: string
+    type: object
+  transport.ErrorResponse:
+    properties:
+      error:
+        properties:
+          code:
+            type: string
+          message:
+            type: string
+        type: object
+    type: object
+  transport.SuccessResponse:
+    properties:
+      success:
+        type: boolean
+    type: object
+info:
+  contact: {}
+  description: Self-hosted project management tool API
+  title: Breeze API
+  version: "1.0"
+paths:
+  /account:
+    patch:
+      consumes:
+      - application/json
+      description: Changes the caller's display name (synced across all workspaces)
+      parameters:
+      - description: Profile update
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.UpdateProfileRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.UserResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Update own profile
+      tags:
+      - account
+  /account/avatar:
+    post:
+      consumes:
+      - multipart/form-data
+      description: Uploads an avatar image for the caller's account (synced across
+        all workspaces)
+      parameters:
+      - description: Image file to upload
+        in: formData
+        name: file
+        required: true
+        type: file
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.UserResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Upload avatar
+      tags:
+      - account
+  /account/change-password:
+    post:
+      consumes:
+      - application/json
+      description: Changes the caller's password (current password required); revokes
+        sessions on success
+      parameters:
+      - description: Password change
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.ChangePasswordRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/transport.SuccessResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Change password
+      tags:
+      - account
+  /api/version:
+    get:
+      description: Returns the running build version
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: build version
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Version
+      tags:
+      - health
+  /attachments/{attachmentId}/download:
+    get:
+      description: Streams the file content for download
+      parameters:
+      - description: Attachment ID
+        in: path
+        name: attachmentId
+        required: true
+        type: string
+      produces:
+      - application/octet-stream
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: file
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Download an attachment
+      tags:
+      - attachments
+  /audit-log:
+    get:
+      description: Returns the org's audit log (admin actions), newest first. Filter
+        by action or actor.
+      parameters:
+      - description: Max results per page (default 50, max 100)
+        in: query
+        name: limit
+        type: integer
+      - description: Pagination offset (default 0)
+        in: query
+        name: offset
+        type: integer
+      - description: Filter by action type (e.g. role_changed)
+        in: query
+        name: action
+        type: string
+      - description: Filter by actor user ID
+        in: query
+        name: actor_id
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.AuditLogResponse'
+      summary: List audit log entries
+      tags:
+      - audit-log
+  /auth/login:
+    post:
+      consumes:
+      - application/json
+      description: Authenticate with email and password, sets HttpOnly cookie
+      parameters:
+      - description: Credentials
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.LoginRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.UserResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Login
+      tags:
+      - auth
+  /auth/logout:
+    post:
+      description: Clears the auth cookie and invalidates the session
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/transport.SuccessResponse'
+      summary: Logout
+      tags:
+      - auth
+  /auth/me:
+    get:
+      description: Returns the authenticated user's profile with org info
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.UserResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Get current user
+      tags:
+      - auth
+  /auth/password-reset/confirm:
+    post:
+      consumes:
+      - application/json
+      description: Completes a password reset with the token from the reset link and
+        a new password
+      parameters:
+      - description: Token + new password
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.ConfirmPasswordResetRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/transport.SuccessResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Confirm password reset
+      tags:
+      - auth
+  /auth/password-reset/request:
+    post:
+      consumes:
+      - application/json
+      description: Generates a password reset token (logged server-side; no SMTP configured
+        for self-hosters)
+      parameters:
+      - description: Email
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.RequestPasswordResetRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/transport.SuccessResponse'
+      summary: Request password reset
+      tags:
+      - auth
+  /auth/password-reset/validate:
+    get:
+      description: Checks if a password-reset token is valid (exists, not expired,
+        not used) without consuming it. Returns 200 with valid=true or 400 with valid=false.
+      parameters:
+      - description: Reset token from the email
+        in: query
+        name: token
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{\"valid\": true}'
+          schema:
+            additionalProperties:
+              type: boolean
+            type: object
+        "400":
+          description: '{\"valid\": false}'
+          schema:
+            additionalProperties:
+              type: boolean
+            type: object
+      summary: Validate password reset token
+      tags:
+      - auth
+  /auth/sessions:
+    get:
+      description: Returns the caller's active + recently-revoked sessions
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/dto.SessionResponse'
+            type: array
+      summary: List active sessions
+      tags:
+      - auth
+  /auth/sessions/{id}:
+    delete:
+      description: Revokes one of the caller's other sessions ("log out" that device).
+        The current session cannot be revoked here; use /auth/logout.
+      parameters:
+      - description: Session ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/transport.SuccessResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Revoke a session
+      tags:
+      - auth
+  /avatars/{id}:
+    get:
+      description: Returns the avatar image for a user. Requires authentication.
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Avatar image
+          schema:
+            type: file
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Get user avatar
+      tags:
+      - users
+  /backup/download:
+    get:
+      description: Creates a VACUUM INTO snapshot of the SQLite database and streams
+        it as a downloadable .db file.
+      produces:
+      - application/octet-stream
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: file
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Download database backup
+      tags:
+      - backup
+  /backup/restore:
+    post:
+      consumes:
+      - multipart/form-data
+      description: Accepts an uploaded .db backup file, validates it, and stages it
+        for restore. The server must be restarted to apply the restore.
+      parameters:
+      - description: Uploaded .db backup file
+        in: formData
+        name: file
+        required: true
+        type: file
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.BackupRestoreResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Stage a database backup for restore
+      tags:
+      - backup
+  /backup/restore/pending:
+    delete:
+      description: Removes a staged restore file so it will not be applied on next
+        restart.
+      responses:
+        "204":
+          description: No Content
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Cancel a staged restore
+      tags:
+      - backup
+    get:
+      description: Returns whether a staged restore file exists (awaiting server restart).
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.BackupRestorePendingResponse'
+      summary: Check for a pending staged restore
+      tags:
+      - backup
+  /chat/presence:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.PresenceListResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: List presence for org
+      tags:
+      - chat-presence
+  /chat/presence/me:
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: New status
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.SetStatusRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/transport.SuccessResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Set own presence
+      tags:
+      - chat-presence
+  /conversations:
+    get:
+      description: List conversations for current user with optional scope filter
+      parameters:
+      - description: 'Filter scope: workspace, dms, project:{id}'
+        in: query
+        name: scope
+        type: string
+      - description: Cursor for pagination
+        in: query
+        name: cursor
+        type: string
+      - description: Page size (max 50)
+        in: query
+        name: limit
+        type: integer
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.ConversationListResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: List conversations
+      tags:
+      - conversations
+    post:
+      description: Create a channel, DM, or group DM
+      parameters:
+      - description: Conversation details
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateConversationRequest'
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/dto.ConversationResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Create conversation
+      tags:
+      - conversations
+  /conversations/{id}:
+    delete:
+      description: Delete a conversation
+      parameters:
+      - description: Conversation ID
+        in: path
+        name: id
+        required: true
+        type: string
+      responses:
+        "204":
+          description: No Content
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Delete conversation
+      tags:
+      - conversations
+    get:
+      description: Get a single conversation by ID
+      parameters:
+      - description: Conversation ID
+        in: path
+        name: id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.ConversationResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Get conversation
+      tags:
+      - conversations
+    patch:
+      description: Update conversation name
+      parameters:
+      - description: Conversation ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Update details
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.UpdateConversationRequest'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.ConversationResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Update conversation
+      tags:
+      - conversations
+  /conversations/{id}/access:
+    get:
+      description: List all users who have access to a channel and how they got it
+      parameters:
+      - description: Conversation ID
+        in: path
+        name: id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/dto.ChannelAccessEntryResponse'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: List channel access
+      tags:
+      - conversations
+  /conversations/{id}/attachments:
+    post:
+      consumes:
+      - multipart/form-data
+      description: Upload a file attachment for a message
+      parameters:
+      - description: Conversation ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: File to upload
+        in: formData
+        name: file
+        required: true
+        type: file
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/dto.UploadAttachmentResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Upload attachment
+      tags:
+      - messages
+  /conversations/{id}/attachments/{att_id}/download:
+    get:
+      description: Download a message attachment
+      parameters:
+      - description: Conversation ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Attachment ID
+        in: path
+        name: att_id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Download attachment
+      tags:
+      - messages
+  /conversations/{id}/members:
+    get:
+      description: List members of a conversation
+      parameters:
+      - description: Conversation ID
+        in: path
+        name: id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/dto.ConversationMemberResponse'
+            type: array
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: List members
+      tags:
+      - conversations
+    post:
+      description: Add members to a conversation
+      parameters:
+      - description: Conversation ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Member IDs
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.AddMemberRequest'
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Add members
+      tags:
+      - conversations
+  /conversations/{id}/members/{user_id}:
+    delete:
+      description: Remove a member from a conversation
+      parameters:
+      - description: Conversation ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: User ID to remove
+        in: path
+        name: user_id
+        required: true
+        type: string
+      responses:
+        "204":
+          description: No Content
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Remove member
+      tags:
+      - conversations
+  /conversations/{id}/messages:
+    get:
+      description: Cursor-paginated messages in a conversation
+      parameters:
+      - description: Conversation ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Cursor for pagination
+        in: query
+        name: before
+        type: string
+      - description: Page size (max 100)
+        in: query
+        name: limit
+        type: integer
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.MessageListResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: List messages
+      tags:
+      - messages
+    post:
+      description: Send a message in a conversation
+      parameters:
+      - description: Conversation ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Message content
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.SendMessageRequest'
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/dto.MessageResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Send message
+      tags:
+      - messages
+  /conversations/{id}/messages/{msg_id}:
+    delete:
+      description: Soft-delete a message
+      parameters:
+      - description: Conversation ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Message ID
+        in: path
+        name: msg_id
+        required: true
+        type: string
+      responses:
+        "204":
+          description: No Content
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Delete message
+      tags:
+      - messages
+    patch:
+      description: Edit a message
+      parameters:
+      - description: Conversation ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Message ID
+        in: path
+        name: msg_id
+        required: true
+        type: string
+      - description: New content
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.EditMessageRequest'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.MessageResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Edit message
+      tags:
+      - messages
+  /conversations/{id}/messages/{msg_id}/pin:
+    delete:
+      description: Unpin a message from the conversation
+      parameters:
+      - description: Conversation ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Message ID
+        in: path
+        name: msg_id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Unpin message
+      tags:
+      - messages
+    post:
+      description: Pin a message to the conversation
+      parameters:
+      - description: Conversation ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Message ID
+        in: path
+        name: msg_id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Pin message
+      tags:
+      - messages
+  /conversations/{id}/messages/{msg_id}/reactions:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Conversation ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Message ID
+        in: path
+        name: msg_id
+        required: true
+        type: string
+      - description: Reaction emoji
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.ReactionRequest'
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Add reaction to a message
+      tags:
+      - messages
+  /conversations/{id}/messages/{msg_id}/reactions/{emoji}:
+    delete:
+      parameters:
+      - description: Conversation ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Message ID
+        in: path
+        name: msg_id
+        required: true
+        type: string
+      - description: Emoji
+        in: path
+        name: emoji
+        required: true
+        type: string
+      responses:
+        "204":
+          description: No Content
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Remove reaction from a message
+      tags:
+      - messages
+  /conversations/{id}/messages/{msg_id}/replies:
+    get:
+      description: List replies to a message
+      parameters:
+      - description: Conversation ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Parent message ID
+        in: path
+        name: msg_id
+        required: true
+        type: string
+      - description: Cursor for pagination
+        in: query
+        name: before
+        type: string
+      - description: Page size (max 100)
+        in: query
+        name: limit
+        type: integer
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.MessageListResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: List replies
+      tags:
+      - messages
+  /conversations/{id}/mute:
+    patch:
+      description: Toggle mute for a conversation
+      parameters:
+      - description: Conversation ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Mute state
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.MuteRequest'
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Toggle mute
+      tags:
+      - conversations
+  /conversations/{id}/my-permissions:
+    get:
+      parameters:
+      - description: Channel ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.ChannelPermissionsResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Resolve current user's channel permissions
+      tags:
+      - chat-permissions
+  /conversations/{id}/notification-level:
+    patch:
+      consumes:
+      - application/json
+      parameters:
+      - description: Conversation ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: New notification level
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.NotificationLevelRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/transport.SuccessResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Set per-conversation notification level
+      tags:
+      - conversations
+  /conversations/{id}/permissions:
+    get:
+      parameters:
+      - description: Channel ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/dto.EffectivePermissionResponse'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Get channel permissions
+      tags:
+      - chat-permissions
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: Channel ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Permission rules
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.SetPermissionsRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/transport.SuccessResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Set channel permissions
+      tags:
+      - chat-permissions
+  /conversations/{id}/pinned:
+    get:
+      description: List pinned messages in a conversation
+      parameters:
+      - description: Conversation ID
+        in: path
+        name: id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.PinnedMessagesResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Pinned messages
+      tags:
+      - conversations
+  /conversations/{id}/position:
+    patch:
+      consumes:
+      - application/json
+      parameters:
+      - description: Conversation ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: New parent/position
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.UpdateChannelPositionRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/transport.SuccessResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Set conversation parent/position
+      tags:
+      - conversations
+  /conversations/{id}/projects:
+    get:
+      description: Get the projects linked to a channel
+      parameters:
+      - description: Conversation ID
+        in: path
+        name: id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              items:
+                type: string
+              type: array
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Get channel project links
+      tags:
+      - conversations
+    put:
+      consumes:
+      - application/json
+      description: Set the projects linked to a channel
+      parameters:
+      - description: Conversation ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Project IDs
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.SetProjectLinksRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/transport.SuccessResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Set channel project links
+      tags:
+      - conversations
+  /conversations/{id}/read:
+    post:
+      description: Mark conversation as read
+      parameters:
+      - description: Conversation ID
+        in: path
+        name: id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Mark read
+      tags:
+      - conversations
+  /conversations/{id}/user-overrides:
+    get:
+      parameters:
+      - description: Channel ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/dto.UserOverrideResponse'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Get channel user overrides
+      tags:
+      - chat-permissions
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: Channel ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: User overrides
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.SetUserOverridesRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/transport.SuccessResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Set channel user overrides
+      tags:
+      - chat-permissions
+  /conversations/{id}/voice/participants:
+    get:
+      description: Get all participants in a voice channel
+      parameters:
+      - description: Conversation ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/dto.VoiceParticipantResponse'
+            type: array
+        "401":
+          description: Unauthorized
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "403":
+          description: Forbidden
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "404":
+          description: Not Found
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: List voice channel participants
+      tags:
+      - voice
+  /conversations/by-parent:
+    get:
+      description: List all channels under a specific parent (category)
+      parameters:
+      - description: Parent ID
+        in: query
+        name: parent_id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/dto.ConversationResponse'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: List conversations by parent
+      tags:
+      - conversations
+  /conversations/search:
+    get:
+      description: Full-text search across workspace chat, project chat, and DMs
+      parameters:
+      - description: Search query
+        in: query
+        name: q
+        required: true
+        type: string
+      - description: all|workspace|project|dm (default all)
+        in: query
+        name: scope
+        type: string
+      - description: Limit to a specific conversation
+        in: query
+        name: conversation_id
+        type: string
+      - description: Filter by sender user ID
+        in: query
+        name: sender_id
+        type: string
+      - description: Only messages with attachments
+        in: query
+        name: has_attachment
+        type: boolean
+      - description: Only messages containing URLs
+        in: query
+        name: has_link
+        type: boolean
+      - description: Only pinned messages
+        in: query
+        name: is_pinned
+        type: boolean
+      - description: ISO date lower bound
+        in: query
+        name: after
+        type: string
+      - description: ISO date upper bound
+        in: query
+        name: before
+        type: string
+      - description: Pagination cursor
+        in: query
+        name: cursor
+        type: string
+      - description: Page size (max 100)
+        in: query
+        name: limit
+        type: integer
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.MessageSearchResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Search messages
+      tags:
+      - messages
+  /dashboard:
+    get:
+      description: Returns personalized dashboard sections (my tasks, due soon, activity,
+        stats, projects) respecting user layout preferences.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.DashboardResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Get dashboard data
+      tags:
+      - dashboard
+  /dashboard/visibility:
+    patch:
+      consumes:
+      - application/json
+      description: Sets the visible sections and their order for the current user's
+        dashboard.
+      parameters:
+      - description: Ordered list of section types
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.VisibilityRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.VisibilityResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Update dashboard layout
+      tags:
+      - dashboard
+  /healthz:
+    get:
+      description: Returns service + DB health
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: service and DB healthy
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "503":
+          description: DB unreachable
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Health check
+      tags:
+      - health
+  /invites:
+    get:
+      description: Returns pending invite tokens for the organization
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/dto.InviteResponse'
+            type: array
+      summary: List invites
+      tags:
+      - invites
+    post:
+      consumes:
+      - application/json
+      description: Creates a time-limited invite token for a new user
+      parameters:
+      - description: Invite details
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateInviteRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/dto.CreateInviteResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Create invite
+      tags:
+      - invites
+  /invites/{id}:
+    delete:
+      description: Deletes an invite token, preventing further use
+      parameters:
+      - description: Invite ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Revoke invite
+      tags:
+      - invites
+  /invites/{token}/accept:
+    post:
+      consumes:
+      - application/json
+      description: Registers a new user using an invite token (public)
+      parameters:
+      - description: Invite token
+        in: path
+        name: token
+        required: true
+        type: string
+      - description: Registration details
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.AcceptInviteRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/dto.UserResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Accept invite
+      tags:
+      - invites
+  /invites/{token}/validate:
+    get:
+      description: Checks if an invite token is valid and not expired (public)
+      parameters:
+      - description: Invite token
+        in: path
+        name: token
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.InviteResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Validate invite
+      tags:
+      - invites
+  /labels:
+    get:
+      description: Returns all labels for the caller's organization
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/dto.LabelResponse'
+            type: array
+      summary: List labels
+      tags:
+      - labels
+    post:
+      consumes:
+      - application/json
+      description: Creates a new label in the organization
+      parameters:
+      - description: Label details
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateLabelRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/dto.LabelResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Create a label
+      tags:
+      - labels
+  /labels/{id}:
+    delete:
+      description: Permanently deletes a label
+      parameters:
+      - description: Label ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Delete a label
+      tags:
+      - labels
+    patch:
+      consumes:
+      - application/json
+      description: Updates a label's name and color
+      parameters:
+      - description: Label ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Label updates
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.UpdateLabelRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.LabelResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Update a label
+      tags:
+      - labels
+  /mentions/search:
+    get:
+      description: Search for users, projects, tasks, channels for @mention autocomplete
+      parameters:
+      - description: Search query
+        in: query
+        name: q
+        required: true
+        type: string
+      - description: 'Comma-separated types: user,project,task,channel,everyone'
+        in: query
+        name: types
+        type: string
+      - description: Max results (default 10, max 20)
+        in: query
+        name: limit
+        type: integer
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.MentionSearchResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Search mentions
+      tags:
+      - mentions
+  /notifications:
+    get:
+      description: Cursor-paginated list of notifications for the current user
+      parameters:
+      - description: Cursor for pagination
+        in: query
+        name: cursor
+        type: string
+      - description: Filter to unread only
+        in: query
+        name: unread_only
+        type: boolean
+      - description: Page size (max 100)
+        in: query
+        name: limit
+        type: integer
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.PaginatedNotificationsResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: List notifications
+      tags:
+      - notifications
+  /notifications/{id}/read:
+    patch:
+      description: Marks a single notification as read
+      parameters:
+      - description: Notification ID
+        in: path
+        name: id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              type: boolean
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Mark notification as read
+      tags:
+      - notifications
+  /notifications/read-all:
+    patch:
+      description: Marks all unread notifications as read
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              type: boolean
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Mark all notifications as read
+      tags:
+      - notifications
+  /notifications/unread-count:
+    get:
+      description: Returns the number of unread notifications for the current user
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.UnreadCountResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Get unread notification count
+      tags:
+      - notifications
+  /organization:
+    delete:
+      consumes:
+      - application/json
+      description: Permanently deletes the organization (type-to-confirm the org name)
+      parameters:
+      - description: Confirmation
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.DeleteOrganizationRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/transport.SuccessResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Delete organization
+      tags:
+      - organization
+    get:
+      description: Returns the caller's active organization
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.OrganizationResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Get organization
+      tags:
+      - organization
+    patch:
+      consumes:
+      - application/json
+      description: Renames the organization and sets the message edit window
+      parameters:
+      - description: Organization updates
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.UpdateOrganizationRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.OrganizationResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Update organization
+      tags:
+      - organization
+  /projects:
+    get:
+      description: Returns all projects for the user's organization. Pass archived=true
+        to include archived projects.
+      parameters:
+      - description: Include archived projects (default false)
+        in: query
+        name: archived
+        type: boolean
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/dto.ProjectResponse'
+            type: array
+      summary: List projects
+      tags:
+      - projects
+    post:
+      consumes:
+      - application/json
+      description: Creates a new project in the organization
+      parameters:
+      - description: Project details
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateProjectRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/dto.ProjectResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Create a project
+      tags:
+      - projects
+  /projects/{id}:
+    delete:
+      description: Permanently deletes a project
+      parameters:
+      - description: Project ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Delete a project
+      tags:
+      - projects
+    get:
+      description: Returns a single project by ID
+      parameters:
+      - description: Project ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.ProjectResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Get a project
+      tags:
+      - projects
+    put:
+      consumes:
+      - application/json
+      description: Updates project fields
+      parameters:
+      - description: Project ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Fields to update
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.UpdateProjectRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.ProjectResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Update a project
+      tags:
+      - projects
+  /projects/{id}/archive:
+    post:
+      description: Marks a project as archived (hidden from default list, read-only)
+      parameters:
+      - description: Project ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Archive a project
+      tags:
+      - projects
+  /projects/{id}/custom-fields:
+    get:
+      description: Returns all custom field definitions for a project
+      parameters:
+      - description: Project ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/dto.CustomFieldResponse'
+            type: array
+      summary: List custom fields
+      tags:
+      - custom-fields
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Project ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Field details
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateCustomFieldRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/dto.CustomFieldResponse'
+      summary: Create a custom field
+      tags:
+      - custom-fields
+  /projects/{id}/custom-fields/{fieldId}:
+    delete:
+      parameters:
+      - description: Project ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Field ID
+        in: path
+        name: fieldId
+        required: true
+        type: string
+      responses:
+        "204":
+          description: No Content
+      summary: Delete a custom field
+      tags:
+      - custom-fields
+    patch:
+      consumes:
+      - application/json
+      parameters:
+      - description: Project ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Field ID
+        in: path
+        name: fieldId
+        required: true
+        type: string
+      - description: Field updates
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.UpdateCustomFieldRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.CustomFieldResponse'
+      summary: Update a custom field
+      tags:
+      - custom-fields
+  /projects/{id}/cycles:
+    get:
+      description: Returns all cycles for a project
+      parameters:
+      - description: Project ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/dto.CycleResponse'
+            type: array
+      summary: List cycles
+      tags:
+      - cycles
+    post:
+      consumes:
+      - application/json
+      description: Creates a new cycle in a project
+      parameters:
+      - description: Project ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Cycle details
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateCycleRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/dto.CycleResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Create a cycle
+      tags:
+      - cycles
+  /projects/{id}/cycles/{cycleId}:
+    delete:
+      description: Permanently deletes a cycle
+      parameters:
+      - description: Project ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Cycle ID
+        in: path
+        name: cycleId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Delete a cycle
+      tags:
+      - cycles
+    put:
+      consumes:
+      - application/json
+      description: Updates cycle fields
+      parameters:
+      - description: Project ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Cycle ID
+        in: path
+        name: cycleId
+        required: true
+        type: string
+      - description: Fields to update
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.UpdateCycleRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.CycleResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Update a cycle
+      tags:
+      - cycles
+  /projects/{id}/cycles/{cycleId}/activate:
+    post:
+      description: Sets a cycle as the active cycle for its project
+      parameters:
+      - description: Project ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Cycle ID
+        in: path
+        name: cycleId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.CycleResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Activate a cycle
+      tags:
+      - cycles
+  /projects/{id}/cycles/{cycleId}/complete:
+    post:
+      consumes:
+      - application/json
+      description: Marks a cycle as completed and handles incomplete tasks
+      parameters:
+      - description: Project ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Cycle ID
+        in: path
+        name: cycleId
+        required: true
+        type: string
+      - description: Completion options
+        in: body
+        name: body
+        schema:
+          $ref: '#/definitions/dto.CompleteCycleRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.CycleResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Complete a cycle
+      tags:
+      - cycles
+  /projects/{id}/cycles/active:
+    get:
+      description: Returns the active cycle for a project
+      parameters:
+      - description: Project ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.CycleResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Get active cycle
+      tags:
+      - cycles
+  /projects/{id}/members:
+    get:
+      description: Returns paginated users who have access to this project (implicit
+        + explicit)
+      parameters:
+      - description: Project ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Pagination cursor
+        in: query
+        name: cursor
+        type: string
+      - description: Search by name
+        in: query
+        name: search
+        type: string
+      - default: 20
+        description: Items per page
+        in: query
+        name: limit
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.PaginatedProjectMembersResponse'
+      summary: List project members
+      tags:
+      - project-members
+    post:
+      consumes:
+      - application/json
+      description: Grants a user access to a project with a specific role
+      parameters:
+      - description: Project ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: User ID and role
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.AddProjectMemberRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/transport.SuccessResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Add a member to a project
+      tags:
+      - project-members
+  /projects/{id}/members/{userId}:
+    delete:
+      description: Revokes a user's access to a project
+      parameters:
+      - description: Project ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: User ID
+        in: path
+        name: userId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+      summary: Remove a member from a project
+      tags:
+      - project-members
+    put:
+      consumes:
+      - application/json
+      description: Changes the role of an existing project member
+      parameters:
+      - description: Project ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: User ID
+        in: path
+        name: userId
+        required: true
+        type: string
+      - description: New role
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.UpdateProjectMemberRoleRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/transport.SuccessResponse'
+      summary: Update a member's role in a project
+      tags:
+      - project-members
+  /projects/{id}/my-access:
+    get:
+      description: |-
+        Returns the authenticated user's effective role and permission
+        set for the given project. Org owner/admin/member use their org
+        role; viewer/guest use their per-project role (403 if not a member).
+      parameters:
+      - description: Project ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.ProjectAccessResponse'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Get the current user's project access
+      tags:
+      - projects
+  /projects/{id}/statuses:
+    get:
+      description: Returns all task statuses for a project
+      parameters:
+      - description: Project ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/dto.TaskStatusResponse'
+            type: array
+      summary: List statuses
+      tags:
+      - statuses
+    post:
+      consumes:
+      - application/json
+      description: Creates a new task status for a project
+      parameters:
+      - description: Project ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Status details
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateStatusRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/dto.TaskStatusResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Create a status
+      tags:
+      - statuses
+  /projects/{id}/statuses/{statusId}:
+    delete:
+      description: Permanently deletes a task status
+      parameters:
+      - description: Project ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Status ID
+        in: path
+        name: statusId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Delete a status
+      tags:
+      - statuses
+    put:
+      consumes:
+      - application/json
+      description: Updates a task status
+      parameters:
+      - description: Project ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Status ID
+        in: path
+        name: statusId
+        required: true
+        type: string
+      - description: Fields to update
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.UpdateStatusRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.TaskStatusResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Update a status
+      tags:
+      - statuses
+  /projects/{id}/tasks:
+    get:
+      description: Returns tasks for a project, optionally filtered
+      parameters:
+      - description: Project ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Filter by status ID
+        in: query
+        name: status_id
+        type: string
+      - description: Filter by assignee ID
+        in: query
+        name: assignee_id
+        type: string
+      - description: Filter by priority
+        in: query
+        name: priority
+        type: string
+      - description: Filter by cycle ID
+        in: query
+        name: cycle_id
+        type: string
+      - description: Comma-separated label IDs to filter by
+        in: query
+        name: label_ids
+        type: string
+      - description: Search by title
+        in: query
+        name: q
+        type: string
+      - description: Include subtasks in the result (default false - top-level only)
+        in: query
+        name: include_subtasks
+        type: boolean
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/dto.TaskResponse'
+            type: array
+      summary: List tasks
+      tags:
+      - tasks
+    post:
+      consumes:
+      - application/json
+      description: Creates a new task in a project
+      parameters:
+      - description: Project ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Task details
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateTaskRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/dto.TaskResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Create a task
+      tags:
+      - tasks
+  /projects/{id}/tasks/{taskId}:
+    delete:
+      description: 'Deletes a task. When the task has subtasks, mode controls their
+        fate: block (default, returns 409), cascade (delete children), or promote
+        (children become top-level).'
+      parameters:
+      - description: Project ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Task ID
+        in: path
+        name: taskId
+        required: true
+        type: string
+      - description: 'Subtask handling: block (default), cascade, promote'
+        in: query
+        name: mode
+        type: string
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+      summary: Delete a task
+      tags:
+      - tasks
+    get:
+      description: Returns a single task by ID
+      parameters:
+      - description: Project ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Task ID
+        in: path
+        name: taskId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.TaskResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Get a task
+      tags:
+      - tasks
+    put:
+      consumes:
+      - application/json
+      description: Updates task fields
+      parameters:
+      - description: Project ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Task ID
+        in: path
+        name: taskId
+        required: true
+        type: string
+      - description: Updated fields
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.UpdateTaskRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.TaskResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Update a task
+      tags:
+      - tasks
+  /projects/{id}/tasks/{taskId}/activity:
+    get:
+      description: Returns the activity history for a task (status, assignee, priority,
+        due date changes)
+      parameters:
+      - description: Project ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Task ID
+        in: path
+        name: taskId
+        required: true
+        type: string
+      - description: Pagination cursor
+        in: query
+        name: cursor
+        type: string
+      - description: Page size (max 100)
+        in: query
+        name: limit
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.PaginatedTaskActivityResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: List task activity
+      tags:
+      - tasks
+  /projects/{id}/tasks/{taskId}/attachments:
+    get:
+      description: Returns all attachments for a task
+      parameters:
+      - description: Project ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Task ID
+        in: path
+        name: taskId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/dto.AttachmentResponse'
+            type: array
+      summary: List attachments
+      tags:
+      - attachments
+    post:
+      consumes:
+      - multipart/form-data
+      description: Uploads a file as an attachment to a task
+      parameters:
+      - description: Project ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Task ID
+        in: path
+        name: taskId
+        required: true
+        type: string
+      - description: File to upload
+        in: formData
+        name: file
+        required: true
+        type: file
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/dto.AttachmentResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Upload an attachment
+      tags:
+      - attachments
+  /projects/{id}/tasks/{taskId}/attachments/{attachmentId}:
+    delete:
+      description: Permanently deletes an attachment
+      parameters:
+      - description: Project ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Task ID
+        in: path
+        name: taskId
+        required: true
+        type: string
+      - description: Attachment ID
+        in: path
+        name: attachmentId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Delete an attachment
+      tags:
+      - attachments
+  /projects/{id}/tasks/{taskId}/comments:
+    get:
+      description: 'Returns comments for a task (oldest first within the loaded page).
+        Cursor-paginated: pass `before` (the oldest loaded created_at) + `limit` to
+        load older comments.'
+      parameters:
+      - description: Project ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Task ID
+        in: path
+        name: taskId
+        required: true
+        type: string
+      - description: Cursor (created_at of oldest loaded comment)
+        in: query
+        name: before
+        type: string
+      - description: Page size (default 50, max 100)
+        in: query
+        name: limit
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.CommentListResponse'
+      summary: List task comments
+      tags:
+      - comments
+    post:
+      consumes:
+      - application/json
+      description: Adds a comment to a task. Supports @mentions (users, @everyone,
+        channels, projects, tasks) and optional parent_id for threaded replies. Notifies
+        mentioned users, task assignees, and the parent comment author.
+      parameters:
+      - description: Project ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Task ID
+        in: path
+        name: taskId
+        required: true
+        type: string
+      - description: Comment content
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateCommentRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/dto.CommentResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Create a comment
+      tags:
+      - comments
+  /projects/{id}/tasks/{taskId}/comments/{commentId}:
+    delete:
+      description: Soft-deletes a comment. Only the comment author may delete.
+      parameters:
+      - description: Project ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Task ID
+        in: path
+        name: taskId
+        required: true
+        type: string
+      - description: Comment ID
+        in: path
+        name: commentId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Delete a comment
+      tags:
+      - comments
+    patch:
+      consumes:
+      - application/json
+      description: Edits a comment's content. Only the comment author may edit. Sets
+        the edited_at timestamp.
+      parameters:
+      - description: Project ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Task ID
+        in: path
+        name: taskId
+        required: true
+        type: string
+      - description: Comment ID
+        in: path
+        name: commentId
+        required: true
+        type: string
+      - description: Updated content
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.UpdateCommentRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.CommentResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Update a comment
+      tags:
+      - comments
+  /projects/{id}/tasks/{taskId}/custom-fields:
+    get:
+      parameters:
+      - description: Project ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Task ID
+        in: path
+        name: taskId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Get custom field values for a task
+      tags:
+      - custom-fields
+  /projects/{id}/tasks/{taskId}/custom-fields/{fieldId}:
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: Project ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Task ID
+        in: path
+        name: taskId
+        required: true
+        type: string
+      - description: Field ID
+        in: path
+        name: fieldId
+        required: true
+        type: string
+      - description: Value
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.SetCustomFieldValueRequest'
+      responses:
+        "204":
+          description: No Content
+      summary: Set a custom field value for a task
+      tags:
+      - custom-fields
+  /projects/{id}/tasks/{taskId}/dependencies:
+    post:
+      consumes:
+      - application/json
+      description: Records that the task is blocked by the given blocking task
+      parameters:
+      - description: Project ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Task ID
+        in: path
+        name: taskId
+        required: true
+        type: string
+      - description: Blocking task
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.AddDependencyRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/transport.SuccessResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Add a blocking dependency
+      tags:
+      - task-dependencies
+  /projects/{id}/tasks/{taskId}/dependencies/{blocksTaskId}:
+    delete:
+      description: Removes the blocking edge between two tasks
+      parameters:
+      - description: Project ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Task ID
+        in: path
+        name: taskId
+        required: true
+        type: string
+      - description: Blocking task ID
+        in: path
+        name: blocksTaskId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+      summary: Remove a blocking dependency
+      tags:
+      - task-dependencies
+  /projects/{id}/tasks/{taskId}/dependencies/blocked:
+    get:
+      description: Returns the tasks the given task is blocking (these wait on the
+        task)
+      parameters:
+      - description: Project ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Task ID
+        in: path
+        name: taskId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/dto.TaskResponse'
+            type: array
+      summary: List blocked tasks
+      tags:
+      - task-dependencies
+  /projects/{id}/tasks/{taskId}/dependencies/blocking:
+    get:
+      description: Returns the tasks blocking the given task (the task is blocked
+        by these)
+      parameters:
+      - description: Project ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Task ID
+        in: path
+        name: taskId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/dto.TaskResponse'
+            type: array
+      summary: List blocking tasks
+      tags:
+      - task-dependencies
+  /projects/{id}/tasks/{taskId}/duplicate:
+    post:
+      description: Creates a copy of a task in the same project + status with a fresh
+        ID
+      parameters:
+      - description: Project ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Task ID
+        in: path
+        name: taskId
+        required: true
+        type: string
+      - description: Also duplicate the task's subtasks (default false)
+        in: query
+        name: include_subtasks
+        type: boolean
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/dto.TaskResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Duplicate a task
+      tags:
+      - tasks
+  /projects/{id}/tasks/{taskId}/labels:
+    get:
+      description: Returns all labels attached to a task
+      parameters:
+      - description: Project ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Task ID
+        in: path
+        name: taskId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/dto.LabelResponse'
+            type: array
+      summary: Get task labels
+      tags:
+      - labels
+    put:
+      consumes:
+      - application/json
+      description: Replaces all labels on a task with the given set
+      parameters:
+      - description: Project ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Task ID
+        in: path
+        name: taskId
+        required: true
+        type: string
+      - description: Label IDs
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.SetTaskLabelsRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/dto.LabelResponse'
+            type: array
+      summary: Set task labels
+      tags:
+      - labels
+  /projects/{id}/tasks/{taskId}/move:
+    post:
+      consumes:
+      - application/json
+      description: Re-homes a task into a different project + status (clears cycle
+        + parent)
+      parameters:
+      - description: Source project ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Task ID
+        in: path
+        name: taskId
+        required: true
+        type: string
+      - description: Move target
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.MoveToProjectRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.TaskResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Move a task to another project
+      tags:
+      - tasks
+  /projects/{id}/tasks/{taskId}/position:
+    patch:
+      consumes:
+      - application/json
+      description: Changes task status and position
+      parameters:
+      - description: Project ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Task ID
+        in: path
+        name: taskId
+        required: true
+        type: string
+      - description: New status and position
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.MoveTaskRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.TaskResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Move a task
+      tags:
+      - tasks
+  /projects/{id}/tasks/{taskId}/subtasks:
+    get:
+      description: Returns the direct children (subtasks) of a task
+      parameters:
+      - description: Project ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Task ID
+        in: path
+        name: taskId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/dto.TaskResponse'
+            type: array
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: List subtasks
+      tags:
+      - tasks
+  /projects/{id}/tasks/{taskId}/subtasks/reorder:
+    post:
+      consumes:
+      - application/json
+      description: Re-orders a task's direct children by updating their subtask_position
+        keys
+      parameters:
+      - description: Project ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Task ID
+        in: path
+        name: taskId
+        required: true
+        type: string
+      - description: Reorder operations
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.ReorderRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              type: boolean
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Reorder subtasks
+      tags:
+      - tasks
+  /projects/{id}/tasks/{taskId}/time-entries:
+    get:
+      description: Returns all time entries for a task
+      parameters:
+      - description: Project ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Task ID
+        in: path
+        name: taskId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/dto.TimeEntryResponse'
+            type: array
+      summary: List time entries
+      tags:
+      - time_entries
+    post:
+      consumes:
+      - application/json
+      description: Creates a completed time entry with a specified duration
+      parameters:
+      - description: Project ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Task ID
+        in: path
+        name: taskId
+        required: true
+        type: string
+      - description: Time entry details
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateTimeEntryRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            items:
+              $ref: '#/definitions/dto.TimeEntryResponse'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Create a manual time entry
+      tags:
+      - time_entries
+  /projects/{id}/tasks/{taskId}/time-entries/{entryId}:
+    delete:
+      description: Permanently deletes a time entry
+      parameters:
+      - description: Project ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Task ID
+        in: path
+        name: taskId
+        required: true
+        type: string
+      - description: Time Entry ID
+        in: path
+        name: entryId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Delete a time entry
+      tags:
+      - time_entries
+    put:
+      consumes:
+      - application/json
+      description: Updates a time entry's description and/or duration
+      parameters:
+      - description: Project ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Task ID
+        in: path
+        name: taskId
+        required: true
+        type: string
+      - description: Time Entry ID
+        in: path
+        name: entryId
+        required: true
+        type: string
+      - description: Fields to update
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.UpdateTimeEntryRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/dto.TimeEntryResponse'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Update a time entry
+      tags:
+      - time_entries
+  /projects/{id}/tasks/{taskId}/time-entries/start:
+    post:
+      consumes:
+      - application/json
+      description: Starts a running time entry for the current user on a task
+      parameters:
+      - description: Project ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Task ID
+        in: path
+        name: taskId
+        required: true
+        type: string
+      - description: Optional description
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.StartTimerRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/dto.TimeEntryResponse'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Start a timer
+      tags:
+      - time_entries
+  /projects/{id}/tasks/{taskId}/time-entries/stop:
+    post:
+      description: Stops the current user's running timer on a task
+      parameters:
+      - description: Project ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Task ID
+        in: path
+        name: taskId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/dto.TimeEntryResponse'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Stop the active timer
+      tags:
+      - time_entries
+  /projects/{id}/tasks/batch:
+    post:
+      consumes:
+      - application/json
+      description: Applies a partial update (status/priority/assignees/cycle) to many
+        tasks in a project at once
+      parameters:
+      - description: Project ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Batch update
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.BatchUpdateRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/dto.TaskResponse'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Bulk-update tasks
+      tags:
+      - tasks
+  /projects/{id}/tasks/export:
+    get:
+      description: Exports all tasks in a project as CSV or JSON
+      parameters:
+      - description: Project ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: 'Export format: csv or json (default json)'
+        in: query
+        name: format
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      summary: Export project tasks
+      tags:
+      - export
+  /projects/{id}/tasks/reorder:
+    post:
+      consumes:
+      - application/json
+      description: Bulk-update positions for multiple tasks in a project
+      parameters:
+      - description: Project ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Reorder operations
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.ReorderRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/dto.TaskResponse'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Reorder tasks
+      tags:
+      - tasks
+  /projects/{id}/templates:
+    get:
+      description: Returns all task templates for a project
+      parameters:
+      - description: Project ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/dto.TaskTemplateResponse'
+            type: array
+      summary: List task templates
+      tags:
+      - task-templates
+    post:
+      consumes:
+      - application/json
+      description: Creates a new task template with optional recurrence
+      parameters:
+      - description: Project ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Template details
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateTaskTemplateRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/dto.TaskTemplateResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Create a task template
+      tags:
+      - task-templates
+  /projects/{id}/templates/{templateId}:
+    delete:
+      parameters:
+      - description: Project ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Template ID
+        in: path
+        name: templateId
+        required: true
+        type: string
+      responses:
+        "204":
+          description: No Content
+      summary: Delete a task template
+      tags:
+      - task-templates
+    patch:
+      consumes:
+      - application/json
+      parameters:
+      - description: Project ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Template ID
+        in: path
+        name: templateId
+        required: true
+        type: string
+      - description: Template updates
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.UpdateTaskTemplateRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.TaskTemplateResponse'
+      summary: Update a task template
+      tags:
+      - task-templates
+  /projects/{id}/templates/{templateId}/instantiate:
+    post:
+      description: Creates a real task from a template. For recurring templates, advances
+        next_run_at.
+      parameters:
+      - description: Project ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Template ID
+        in: path
+        name: templateId
+        required: true
+        type: string
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/dto.TaskResponse'
+      summary: Instantiate a task from a template
+      tags:
+      - task-templates
+  /projects/{id}/time-entries/export:
+    get:
+      description: Exports time entries for a project's tasks as CSV or JSON
+      parameters:
+      - description: Project ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: 'Export format: csv or json (default json)'
+        in: query
+        name: format
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      summary: Export time entries
+      tags:
+      - export
+  /projects/{id}/unarchive:
+    post:
+      description: Restores an archived project to the active list
+      parameters:
+      - description: Project ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Unarchive a project
+      tags:
+      - projects
+  /projects/{id}/views:
+    get:
+      description: Returns all views for a specific project
+      parameters:
+      - description: Project ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/dto.ViewResponse'
+            type: array
+      summary: List project views
+      tags:
+      - views
+  /projects/by-slug/{slug}:
+    get:
+      description: Returns a single project by its slug
+      parameters:
+      - description: Project slug
+        in: path
+        name: slug
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.ProjectResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Get a project by slug
+      tags:
+      - projects
+  /push/subscribe:
+    delete:
+      consumes:
+      - application/json
+      description: Removes a Web Push subscription endpoint for the current user
+      parameters:
+      - description: Push subscription (endpoint identifies the row)
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.PushSubscribeRequest'
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+          schema:
+            type: string
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Unsubscribe from push notifications
+      tags:
+      - push
+    post:
+      consumes:
+      - application/json
+      description: Registers a Web Push subscription endpoint for the current user
+      parameters:
+      - description: Push subscription
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.PushSubscribeRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/transport.SuccessResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Subscribe to push notifications
+      tags:
+      - push
+  /push/vapid-public-key:
+    get:
+      description: Returns the VAPID public key for browser push subscription
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.PushPublicKeyResponse'
+      summary: Get push public key
+      tags:
+      - push
+  /search:
+    get:
+      description: Search across projects, tasks, channels, DMs, and members. Empty
+        q returns recent projects/tasks.
+      parameters:
+      - description: Search query (empty returns recent items)
+        in: query
+        name: q
+        type: string
+      - description: Comma-separated result types (project,task,channel,direct_message,member).
+          Defaults to project,task.
+        in: query
+        name: types
+        type: string
+      - description: Max results (1-50, default 20)
+        in: query
+        name: limit
+        type: integer
+      - description: Narrow task search to one project
+        in: query
+        name: project_id
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.SearchResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Global search
+      tags:
+      - search
+  /settings/notifications:
+    get:
+      description: Returns the current user's notification preferences
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/dto.NotificationPreferenceResponse'
+            type: array
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Get notification preferences
+      tags:
+      - notifications
+  /settings/notifications/{type}:
+    patch:
+      description: Toggle a notification type preference
+      parameters:
+      - description: Notification type
+        in: path
+        name: type
+        required: true
+        type: string
+      - description: Preference state
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.SetNotificationPreferenceRequest'
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              type: boolean
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Set notification preference
+      tags:
+      - notifications
+  /settings/preferences:
+    get:
+      description: Returns the current user's account preferences
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.UserPreferencesResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Get user preferences
+      tags:
+      - settings
+    patch:
+      consumes:
+      - application/json
+      description: Partially updates the current user's account preferences
+      parameters:
+      - description: Preference updates
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.UpdateUserPreferencesRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.UserPreferencesResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Update user preferences
+      tags:
+      - settings
+  /setup:
+    get:
+      description: Returns whether the initial organization has been created
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: needs_setup flag
+          schema:
+            additionalProperties:
+              type: boolean
+            type: object
+      summary: Check setup status
+      tags:
+      - setup
+    post:
+      consumes:
+      - application/json
+      description: Creates the first organization and admin user, returns auth cookie
+      parameters:
+      - description: Setup details
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.SetupRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/transport.SuccessResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+        "409":
+          description: setup already completed
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Complete initial setup
+      tags:
+      - setup
+  /tasks:
+    get:
+      description: Returns tasks assigned to the current user across all projects,
+        with filtering, searching, and status/project info.
+      parameters:
+      - description: Filter by status ID
+        in: query
+        name: status_id
+        type: string
+      - description: Filter by assignee ID (defaults to current user)
+        in: query
+        name: assignee_id
+        type: string
+      - description: Comma-separated label IDs
+        in: query
+        name: label_ids
+        type: string
+      - description: Filter by cycle ID
+        in: query
+        name: cycle_id
+        type: string
+      - description: Filter by priority
+        in: query
+        name: priority
+        type: string
+      - description: Search by title
+        in: query
+        name: q
+        type: string
+      - description: Include completed tasks
+        in: query
+        name: show_completed
+        type: boolean
+      - description: 'Group by: status, priority, project'
+        in: query
+        name: group_by
+        type: string
+      - description: Pagination offset (default 0)
+        in: query
+        name: offset
+        type: integer
+      - description: Max results per page (default 20, max 50)
+        in: query
+        name: limit
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.TaskListPageResponse'
+      tags:
+      - tasks
+  /users:
+    get:
+      description: Returns paginated users in the organization, optionally filtered
+        by search, role, and active status
+      parameters:
+      - description: Pagination cursor
+        in: query
+        name: cursor
+        type: string
+      - description: Search by name
+        in: query
+        name: search
+        type: string
+      - description: Filter by role
+        in: query
+        name: role
+        type: string
+      - description: Include deactivated users
+        in: query
+        name: include_inactive
+        type: boolean
+      - default: 20
+        description: Items per page
+        in: query
+        name: limit
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.PaginatedUsersResponse'
+      summary: List users
+      tags:
+      - users
+  /users/{id}:
+    get:
+      description: Returns a single user by ID
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.UserResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Get user
+      tags:
+      - users
+  /users/{id}/active:
+    put:
+      consumes:
+      - application/json
+      description: Activates or deactivates a user account
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Active status
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.UpdateUserActiveRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.UserResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Update user active status
+      tags:
+      - users
+  /users/{id}/project-memberships:
+    get:
+      description: Returns all projects the user is a member of
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/dto.UserProjectMembershipResponse'
+            type: array
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: List user's project memberships
+      tags:
+      - users
+    put:
+      consumes:
+      - application/json
+      description: Batch-set which projects a user belongs to and their role in each
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Project assignments
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.UpdateUserProjectMembershipsRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/transport.SuccessResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Update user's project memberships
+      tags:
+      - users
+  /users/{id}/role:
+    put:
+      consumes:
+      - application/json
+      description: Changes the organization role of a user
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Role update
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.UpdateUserRoleRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.UserResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Update user role
+      tags:
+      - users
+  /views:
+    get:
+      description: Returns all global views for the organization
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/dto.ViewResponse'
+            type: array
+      summary: List global views
+      tags:
+      - views
+    post:
+      consumes:
+      - application/json
+      description: Creates a new global or project view
+      parameters:
+      - description: View details
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateViewRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/dto.ViewResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Create a view
+      tags:
+      - views
+  /views/{id}:
+    delete:
+      description: Deletes a view
+      parameters:
+      - description: View ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Delete a view
+      tags:
+      - views
+    get:
+      description: Returns a single view by ID
+      parameters:
+      - description: View ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.ViewResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Get a view
+      tags:
+      - views
+    patch:
+      consumes:
+      - application/json
+      description: Updates view fields
+      parameters:
+      - description: View ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Fields to update
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.UpdateViewRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.ViewResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Update a view
+      tags:
+      - views
+  /views/{id}/pin:
+    delete:
+      description: Unpins a view from the sidebar for the current user
+      parameters:
+      - description: View ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+      summary: Unpin a view
+      tags:
+      - views
+    post:
+      description: Pins a view to the sidebar for the current user
+      parameters:
+      - description: View ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Pin a view
+      tags:
+      - views
+  /views/pins:
+    get:
+      description: Returns pinned views for the current user
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/dto.ViewResponse'
+            type: array
+      summary: List pinned views
+      tags:
+      - views
+  /workspaces:
+    get:
+      description: Returns the workspaces (organizations) the caller belongs to
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/dto.WorkspaceResponse'
+            type: array
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: List workspaces
+      tags:
+      - workspaces
+    post:
+      consumes:
+      - application/json
+      description: Creates a new organization with the caller as owner
+      parameters:
+      - description: Workspace name
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateWorkspaceRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/dto.WorkspaceResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Create a workspace
+      tags:
+      - workspaces
+  /workspaces/{id}/switch:
+    post:
+      description: Switches the caller's active workspace, issuing a new session cookie
+      parameters:
+      - description: Organization ID to switch to
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.UserResponse'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Switch active workspace
+      tags:
+      - workspaces
+  /ws:
+    get:
+      description: Upgrades the HTTP connection to a WebSocket for real-time events
+        (chat, presence, typing, task updates).
+      responses: {}
+      summary: Upgrade to WebSocket
+      tags:
+      - websocket
+swagger: "2.0"

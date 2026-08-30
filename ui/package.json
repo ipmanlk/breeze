@@ -1,0 +1,37 @@
+{
+  "name": "ui",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "typecheck": "tsc --noEmit",
+    "preview": "vite preview",
+    "api-types": "openapi-ts -i ../api/swagger/swagger.json -o src/api -c @hey-api/client-fetch"
+  },
+  "dependencies": {
+    "@atlaskit/pragmatic-drag-and-drop": "^2.0.1",
+    "@atlaskit/pragmatic-drag-and-drop-auto-scroll": "^3.0.0",
+    "@fontsource-variable/geist": "^5.2.9",
+    "@lit/localize": "0.12.2",
+    "@lit/localize-tools": "0.8.2",
+    "@preact/signals-core": "^1.14.3",
+    "@tiptap/core": "^3.27.3",
+    "@tiptap/extension-bubble-menu": "^3.27.3",
+    "@tiptap/extension-placeholder": "^3.27.3",
+    "@tiptap/markdown": "^3.27.3",
+    "@tiptap/pm": "^3.27.3",
+    "@tiptap/starter-kit": "^3.27.3",
+    "dompurify": "3.2.6",
+    "lit": "^3.3.3",
+    "lucide": "^1.21.0",
+    "marked": "^17.0.6",
+    "valibot": "^1.4.1"
+  },
+  "devDependencies": {
+    "@hey-api/openapi-ts": "^0.98.2",
+    "typescript": "~6.0.3",
+    "vite": "^8.1.0"
+  }
+}

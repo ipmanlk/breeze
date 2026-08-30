@@ -1,0 +1,167 @@
+# Messages d'erreur destinés à l'utilisateur (langue cible : fr - français).
+# Correspondent aux sentinelles apperr et aux messages ErrorJSON directs.
+# Retournés dans la réponse API ErrorResponse.Message.
+
+[ErrNotFound]
+other = "ressource non trouvée"
+
+[ErrForbidden]
+other = "permissions insuffisantes"
+
+[ErrForbiddenViewer]
+other = "les lecteurs ne peuvent pas effectuer cette action"
+
+[ErrInvalidCreds]
+other = "email ou mot de passe invalide"
+
+[ErrUserDeactivated]
+other = "le compte utilisateur est désactivé"
+
+[ErrSessionExpired]
+other = "session expirée"
+
+[ErrSessionNotFound]
+other = "session invalide ou expirée"
+
+[ErrSetupComplete]
+other = "configuration déjà terminée"
+
+[ErrAlreadyExists]
+other = "la ressource existe déjà"
+
+[ErrInternal]
+other = "erreur interne"
+
+# ── Messages ErrorJSON des handlers + middleware ──
+
+[ErrMissingToken]
+other = "jeton manquant"
+
+[ErrNoRoleInContext]
+other = "aucun rôle dans le contexte"
+
+[ErrMissingProjectID]
+other = "identifiant de projet manquant"
+
+[ErrNoAccessToProject]
+other = "accès au projet refusé"
+
+[ErrOrgContextMissing]
+other = "contexte d'organisation manquant"
+
+[ErrProjectArchived]
+other = "le projet est archivé et en lecture seule"
+
+[ErrUnauthorized]
+other = "non autorisé"
+
+[ErrNotAuthenticated]
+other = "non authentifié"
+
+[ErrUserNotFound]
+other = "utilisateur non trouvé"
+
+[ErrNoUserInContext]
+other = "aucun utilisateur dans le contexte"
+
+[ErrSessionIDRequired]
+other = "identifiant de session requis"
+
+[ErrSessionExists]
+other = "utilisez /auth/logout pour terminer votre session active"
+
+[ErrInvalidMultipart]
+other = "formulaire multipart invalide (max 5 Mo)"
+
+[ErrFileRequired]
+other = "fichier requis"
+
+[ErrFileTooLarge]
+other = "fichier trop volumineux ou formulaire invalide"
+
+[ErrNoFileUploaded]
+other = "aucun fichier téléchargé"
+
+[ErrFileTypeNotAllowed]
+other = "ce type de fichier n'est pas autorisé"
+
+[ErrAttachmentNotFound]
+other = "pièce jointe non trouvée"
+
+[ErrAvatarNotFound]
+other = "avatar non trouvé"
+
+[ErrInvitePermissionDenied]
+other = "permissions insuffisantes pour inviter avec ce rôle"
+
+[ErrInviteInvalid]
+other = "le lien d'invitation est invalide ou a expiré"
+
+[ErrInviteEmailMismatch]
+other = "l'email ne correspond pas à la restriction de l'invitation"
+
+[ErrUserAlreadyExists]
+other = "un utilisateur avec cet email existe déjà"
+
+[ErrUnknownPermissionCheck]
+other = "vérification de permission inconnue"
+
+[ErrNoAccessToConversation]
+other = "vous n'avez pas accès à cette conversation"
+
+[ErrConversationNotFound]
+other = "conversation non trouvée"
+
+[ErrIDRequired]
+other = "identifiant requis"
+
+[ErrTypeRequired]
+other = "type requis"
+
+[ErrInvalidRequestBody]
+other = "corps de la requête invalide"
+
+[ErrSectionsEmpty]
+other = "les sections ne doivent pas être vides"
+
+[ErrQueryRequired]
+other = "requête nécessaire"
+
+[ErrTargetIDRequired]
+other = "target_id est requis pour un MP"
+
+[ErrInvalidType]
+other = "type invalide"
+
+[ErrNameOrTopicRequired]
+other = "nom ou sujet requis"
+
+[ErrTopicTooLong]
+other = "le sujet doit faire au maximum 500 caractères"
+
+[ErrParentIDRequired]
+other = "parent_id requis"
+
+[ErrInvalidLimit]
+other = "limite invalide"
+
+[ErrInvalidStartsAt]
+other = "format de starts_at invalide"
+
+[ErrInvalidEndsAt]
+other = "format de ends_at invalide"
+
+[ErrCannotSetOwnerAdminPerms]
+other = "les administrateurs ne peuvent pas modifier les permissions des propriétaires ou administrateurs"
+
+[ErrOrgMismatch]
+other = "organisation incompatible"
+
+[ErrInvalidExportFormat]
+other = "le format doit être csv ou json"
+
+[ErrStatusNotInProject]
+other = "le statut n'appartient pas à ce projet"
+
+[ErrFailedToUnsubscribe]
+other = "échec de la désinscription"

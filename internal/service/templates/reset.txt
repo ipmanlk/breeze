@@ -1,0 +1,10 @@
+Someone requested a password reset for your Breeze account.
+
+If this was you, reset your password by visiting the link below:
+
+{{.URL}}
+
+This link expires in 1 hour. If you did not request a reset, you can safely
+ignore this email — your password has not been changed.
+
+— The Breeze team

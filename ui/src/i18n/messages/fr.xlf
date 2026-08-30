@@ -1,0 +1,2568 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+<file target-language="fr" source-language="en" original="lit-localize-inputs" datatype="plaintext">
+<body>
+<trans-unit id="s84126fa92f00b4ef">
+  <source>just now</source>
+  <target>à l'instant</target>
+</trans-unit>
+<trans-unit id="sec77d4da6a57f2b7">
+  <source>Page not found</source>
+  <target>Page non trouvée</target>
+</trans-unit>
+<trans-unit id="sca5a9f652244d548">
+  <source>The page you're looking for doesn't exist or may have been moved.</source>
+  <target>La page que vous recherchez n'existe pas ou a été déplacée.</target>
+</trans-unit>
+<trans-unit id="s5272870733678484">
+  <source>Go to dashboard</source>
+  <target>Aller au tableau de bord</target>
+</trans-unit>
+<trans-unit id="s7b0ae4e40abd55c9">
+  <source>Workspace name</source>
+  <target>Nom de l'espace de travail</target>
+</trans-unit>
+<trans-unit id="s84fe348d9e99e6b0">
+  <source>Creating…</source>
+  <target>Création…</target>
+</trans-unit>
+<trans-unit id="s6abb1cd87fe0114e">
+  <source>Home</source>
+  <target>Accueil</target>
+</trans-unit>
+<trans-unit id="s55ddc7f60d3c09bb">
+  <source>Inbox</source>
+  <target>Boîte de réception</target>
+</trans-unit>
+<trans-unit id="s01d2a81753af82e1">
+  <source>My Tasks</source>
+  <target>Mes tâches</target>
+</trans-unit>
+<trans-unit id="s199f5853f4e718f7">
+  <source>Projects</source>
+  <target>Projets</target>
+</trans-unit>
+<trans-unit id="s900aa761e7ae5c71">
+  <source>Views</source>
+  <target>Vues</target>
+</trans-unit>
+<trans-unit id="s1d318e9d0ccba86b">
+  <source>Chat</source>
+  <target>Chat</target>
+</trans-unit>
+<trans-unit id="sbdeedc1c60306b35">
+  <source>Messages</source>
+  <target>Messages</target>
+</trans-unit>
+<trans-unit id="s9f5a5f23312798f0">
+  <source>Members</source>
+  <target>Membres</target>
+</trans-unit>
+<trans-unit id="s37a9e8aec5713460">
+  <source>More</source>
+  <target>Plus</target>
+</trans-unit>
+<trans-unit id="s6d93642611649cb1">
+  <source>Add project</source>
+  <target>Ajouter un projet</target>
+</trans-unit>
+<trans-unit id="s2b5047d39b9baf3d">
+  <source>Preferences</source>
+  <target>Préférences</target>
+</trans-unit>
+<trans-unit id="s7cfe12cd14df9950">
+  <source>Sign out</source>
+  <target>Se déconnecter</target>
+</trans-unit>
+<trans-unit id="sa48f81f001b893d2">
+  <source>User</source>
+  <target>Utilisateur</target>
+</trans-unit>
+<trans-unit id="sf6f8fcac4235e496">
+  <source>Unpin view</source>
+  <target>Détacher la vue</target>
+</trans-unit>
+<trans-unit id="sb971debc37bf0b54">
+  <source>Owner</source>
+  <target>Propriétaire</target>
+</trans-unit>
+<trans-unit id="sc0e096f942a5cc54">
+  <source>Search pages, projects, tasks, chats...</source>
+  <target>Rechercher pages, projets, tâches, conversations...</target>
+</trans-unit>
+<trans-unit id="sa81413e2e309b882">
+  <source>No results found.</source>
+  <target>Aucun résultat trouvé.</target>
+</trans-unit>
+<trans-unit id="s07e6118e838b2e23">
+  <source>Navigation</source>
+  <target>Navigation</target>
+</trans-unit>
+<trans-unit id="sc797fd9076cc136d">
+  <source>Tasks</source>
+  <target>Tâches</target>
+</trans-unit>
+<trans-unit id="s66dd6cdcbe0ea0c8">
+  <source>Chats</source>
+  <target>Conversations</target>
+</trans-unit>
+<trans-unit id="s4854cd48f30ff8ee">
+  <source>People</source>
+  <target>Personnes</target>
+</trans-unit>
+<trans-unit id="s115e1ad830b43dcb">
+  <source>More actions</source>
+  <target>Plus d'actions</target>
+</trans-unit>
+<trans-unit id="s5a29096d560a8e75">
+  <source>Set date</source>
+  <target>Définir la date</target>
+</trans-unit>
+<trans-unit id="s61657191fa4a1e92">
+  <source>Clear date</source>
+  <target>Effacer la date</target>
+</trans-unit>
+<trans-unit id="s712144d706e5d284">
+  <source>Date &amp; time</source>
+  <target>Date et heure</target>
+</trans-unit>
+<trans-unit id="sb4f1dffbb6be6302">
+  <source>Clear</source>
+  <target>Effacer</target>
+</trans-unit>
+<trans-unit id="s0379fc73608ab971">
+  <source>Done</source>
+  <target>Terminé</target>
+</trans-unit>
+<trans-unit id="s5e8250fb85d64c23">
+  <source>Close</source>
+  <target>Fermer</target>
+</trans-unit>
+<trans-unit id="sc2efebae527565ff">
+  <source>Remove label</source>
+  <target>Retirer l'étiquette</target>
+</trans-unit>
+<trans-unit id="s75cff5618c72d40a">
+  <source>Failed to load labels</source>
+  <target>Échec du chargement des étiquettes</target>
+</trans-unit>
+<trans-unit id="sdccddf8a7b4e8a4a">
+  <source>Add label</source>
+  <target>Ajouter une étiquette</target>
+</trans-unit>
+<trans-unit id="s6ebc9bd6feae62a3">
+  <source>Loading…</source>
+  <target>Chargement…</target>
+</trans-unit>
+<trans-unit id="sd028f040f58ff562">
+  <source>No labels yet. Create some in Settings → Labels.</source>
+  <target>Pas encore d'étiquettes. Créez-en dans Paramètres → Étiquettes.</target>
+</trans-unit>
+<trans-unit id="s26273c258ddde0e1">
+  <source>Select...</source>
+  <target>Sélectionner...</target>
+</trans-unit>
+<trans-unit id="sffa721bb6aa3128d">
+  <source>Search...</source>
+  <target>Rechercher...</target>
+</trans-unit>
+<trans-unit id="s991d216e6efc157c">
+  <source>No results</source>
+  <target>Aucun résultat</target>
+</trans-unit>
+<trans-unit id="se3b4c857f91f80d7">
+  <source>Keyboard shortcuts</source>
+  <target>Raccourcis clavier</target>
+</trans-unit>
+<trans-unit id="sa92d9a54f138d96e">
+  <source>Create task</source>
+  <target>Créer une tâche</target>
+</trans-unit>
+<trans-unit id="s0f772460e8ce9675">
+  <source>Focus search</source>
+  <target>Recherche ciblée</target>
+</trans-unit>
+<trans-unit id="s7bdd91f68884b16a">
+  <source>Navigate down</source>
+  <target>Naviguer vers le bas</target>
+</trans-unit>
+<trans-unit id="sa1ddf0c592d24c0f">
+  <source>Navigate up</source>
+  <target>Naviguer vers le haut</target>
+</trans-unit>
+<trans-unit id="see0e649676a86492">
+  <source>Go to projects</source>
+  <target>Aller aux projets</target>
+</trans-unit>
+<trans-unit id="s43c741223cb9ff30">
+  <source>Go to inbox</source>
+  <target>Aller à la boîte de réception</target>
+</trans-unit>
+<trans-unit id="s5ea14fdf8840f280">
+  <source>Go to my tasks</source>
+  <target>Aller à mes tâches</target>
+</trans-unit>
+<trans-unit id="s4b305030ec421c71">
+  <source>Command palette</source>
+  <target>Palette de commandes</target>
+</trans-unit>
+<trans-unit id="see5543c92d0ab5e3">
+  <source>Show this help</source>
+  <target>Afficher cette aide</target>
+</trans-unit>
+<trans-unit id="se166e95fe447ebcd">
+  <source>Close dialog</source>
+  <target>Fermer la boîte de dialogue</target>
+</trans-unit>
+<trans-unit id="s12d6dde9b30c3093">
+  <source>Dismiss</source>
+  <target>Ignorer</target>
+</trans-unit>
+<trans-unit id="s30953bd831efad6c">
+  <source>Login failed. Please try again.</source>
+  <target>Connexion échouée. Veuillez réessayer.</target>
+</trans-unit>
+<trans-unit id="sa8866fa496e0ffa2">
+  <source>Too many attempts. Please wait a minute and try again.</source>
+  <target>Trop de tentatives. Veuillez attendre une minute et réessayer.</target>
+</trans-unit>
+<trans-unit id="sdb26de56d7d43d18">
+  <source>Invalid email or password.</source>
+  <target>E-mail ou mot de passe invalide.</target>
+</trans-unit>
+<trans-unit id="s6201d66c0a6a3010">
+  <source>Setup is required before logging in.</source>
+  <target>La configuration est requise avant de vous connecter.</target>
+</trans-unit>
+<trans-unit id="s93c8f5aaa2f14fb6">
+  <source>Back to login</source>
+  <target>Retour à la connexion</target>
+</trans-unit>
+<trans-unit id="s4bda69b5061420aa">
+  <source>Failed to request password reset</source>
+  <target>Échec de la demande de réinitialisation du mot de passe</target>
+</trans-unit>
+<trans-unit id="s62220e702af0447a">
+  <source>Sign in to your workspace</source>
+  <target>Connectez-vous à votre espace de travail</target>
+</trans-unit>
+<trans-unit id="sd1f44f1a8bc20e67">
+  <source>Email</source>
+  <target>E-mail</target>
+</trans-unit>
+<trans-unit id="s24ea3f43230aae41">
+  <source>you@example.com</source>
+  <target>vous@exemple.com</target>
+</trans-unit>
+<trans-unit id="sf6e1665c7022a1f8">
+  <source>Password</source>
+  <target>Mot de passe</target>
+</trans-unit>
+<trans-unit id="s725969f0ea4b66a3">
+  <source>Your password</source>
+  <target>Votre mot de passe</target>
+</trans-unit>
+<trans-unit id="sd4834a205d67ccdf">
+  <source>Signing in...</source>
+  <target>Connexion en cours...</target>
+</trans-unit>
+<trans-unit id="s5e27738a2e8eb763">
+  <source>Sign in</source>
+  <target>Se connecter</target>
+</trans-unit>
+<trans-unit id="s85366fac18679f28">
+  <source>Forgot password?</source>
+  <target>Mot de passe oublié ?</target>
+</trans-unit>
+<trans-unit id="s418f15154f4671aa">
+  <source>Confirm new password</source>
+  <target>Confirmer le nouveau mot de passe</target>
+</trans-unit>
+<trans-unit id="s933414dccd5e2e52">
+  <source>Resetting...</source>
+  <target>Réinitialisation...</target>
+</trans-unit>
+<trans-unit id="s3e538c7535f6f129">
+  <source>Reset password</source>
+  <target>Réinitialiser le mot de passe</target>
+</trans-unit>
+<trans-unit id="sb5d0b4b917be693e">
+  <source>Password must be at least 8 characters</source>
+  <target>Le mot de passe doit contenir au moins 8 caractères</target>
+</trans-unit>
+<trans-unit id="s53aeb14de19dd0f6">
+  <source>Passwords do not match</source>
+  <target>Les mots de passe ne correspondent pas</target>
+</trans-unit>
+<trans-unit id="sc9bfa4d087f4aed7">
+  <source>Password reset successfully — please log in</source>
+  <target>Mot de passe réinitialisé — veuillez vous connecter</target>
+</trans-unit>
+<trans-unit id="s8ad2528407998177">
+  <source>Failed to reset password</source>
+  <target>Échec de la réinitialisation du mot de passe</target>
+</trans-unit>
+<trans-unit id="s83b9ddc99a0b2d24">
+  <source>Write a comment...</source>
+  <target>Écrire un commentaire...</target>
+</trans-unit>
+<trans-unit id="s686306cdb839fb8d">
+  <source>Sending...</source>
+  <target>Envoi...</target>
+</trans-unit>
+<trans-unit id="saf84ec86139d349e">
+  <source>Comment</source>
+  <target>Commentaire</target>
+</trans-unit>
+<trans-unit id="s0b7ae9543c001867">
+  <source>Reply</source>
+  <target>Répondre</target>
+</trans-unit>
+<trans-unit id="saae1c70e168b45b4">
+  <source>Admin</source>
+  <target>Admin</target>
+</trans-unit>
+<trans-unit id="s751678adb0aa2b23">
+  <source>Member</source>
+  <target>Membre</target>
+</trans-unit>
+<trans-unit id="s70b4765cad7bc7cf">
+  <source>Viewer</source>
+  <target>Lecteur</target>
+</trans-unit>
+<trans-unit id="se18c9f83ecd43653">
+  <source>Guest</source>
+  <target>Invité</target>
+</trans-unit>
+<trans-unit id="s5c0257180e3ef2d3">
+  <source>Invite people</source>
+  <target>Inviter des personnes</target>
+</trans-unit>
+<trans-unit id="sca7fed2bef53cb99">
+  <source>Role</source>
+  <target>Rôle</target>
+</trans-unit>
+<trans-unit id="s945d799215d6e40d">
+  <source>Email restriction</source>
+  <target>Restriction d'e-mail</target>
+</trans-unit>
+<trans-unit id="s733b89be83593052">
+  <source>Optional — leave blank to allow any email</source>
+  <target>Optionnel — laissez vide pour autoriser tout e-mail</target>
+</trans-unit>
+<trans-unit id="s4a0375e04de56b5b">
+  <source>Leave blank for any email</source>
+  <target>Laissez vide pour tout e-mail</target>
+</trans-unit>
+<trans-unit id="s22895e39a3f275d5">
+  <source>Assign to projects</source>
+  <target>Assigner aux projets</target>
+</trans-unit>
+<trans-unit id="s8bf481a0b5d8a689">
+  <source>Generating...</source>
+  <target>Génération...</target>
+</trans-unit>
+<trans-unit id="s223f348394c5c4ee">
+  <source>Generate link</source>
+  <target>Générer un lien</target>
+</trans-unit>
+<trans-unit id="s6c0826939c587680">
+  <source>Invite link</source>
+  <target>Lien d'invitation</target>
+</trans-unit>
+<trans-unit id="sf4de3bfbfaca12e5">
+  <source>Copied</source>
+  <target>Copié</target>
+</trans-unit>
+<trans-unit id="s3687049d1af562c4">
+  <source>Copy</source>
+  <target>Copier</target>
+</trans-unit>
+<trans-unit id="sd924045605feea63">
+  <source>Expires</source>
+  <target>Expire le</target>
+</trans-unit>
+<trans-unit id="sb209042316c5e101">
+  <source>Will be added to</source>
+  <target>Sera ajouté à</target>
+</trans-unit>
+<trans-unit id="sac167f3e17fae47e">
+  <source>project</source>
+  <target>projet</target>
+</trans-unit>
+<trans-unit id="s651e4382bf518217">
+  <source>projects</source>
+  <target>projets</target>
+</trans-unit>
+<trans-unit id="sb71b1aa01faa1912">
+  <source>upon acceptance.</source>
+  <target>lors de l'acceptation.</target>
+</trans-unit>
+<trans-unit id="sab1956af9cadf1dc">
+  <source>Project assignments</source>
+  <target>Affectations aux projets</target>
+</trans-unit>
+<trans-unit id="s7e0d4f02e45424f1">
+  <source>Search projects</source>
+  <target>Rechercher des projets</target>
+</trans-unit>
+<trans-unit id="s85f66d87d45215e2">
+  <source>No projects match your search.</source>
+  <target>Aucun projet ne correspond à votre recherche.</target>
+</trans-unit>
+<trans-unit id="s717d4a2cd3f7d66f">
+  <source>Saving...</source>
+  <target>Enregistrement...</target>
+</trans-unit>
+<trans-unit id="sa0655554ddc161a5">
+  <source>All roles</source>
+  <target>Tous les rôles</target>
+</trans-unit>
+<trans-unit id="sa45a194b58837e4f">
+  <source>Active</source>
+  <target>Actif</target>
+</trans-unit>
+<trans-unit id="s214f51d5d9857db9">
+  <source>Invites</source>
+  <target>Invitations</target>
+</trans-unit>
+<trans-unit id="s4409ada9c5c2a7f8">
+  <source>Inactive</source>
+  <target>Inactif</target>
+</trans-unit>
+<trans-unit id="sc592307ea80f16b9">
+  <source>Unknown</source>
+  <target>Inconnu</target>
+</trans-unit>
+<trans-unit id="s9e05a9214c03b793">
+  <source>Change role</source>
+  <target>Changer le rôle</target>
+</trans-unit>
+<trans-unit id="sd15ad42f11c69d10">
+  <source>Manage projects</source>
+  <target>Gérer les projets</target>
+</trans-unit>
+<trans-unit id="s49730f3d5751a433">
+  <source>Loading...</source>
+  <target>Chargement...</target>
+</trans-unit>
+<trans-unit id="s7584ded3d749c75e">
+  <source>Load more</source>
+  <target>Charger plus</target>
+</trans-unit>
+<trans-unit id="sa48f82f001b89585">
+  <source>Uses</source>
+  <target>Utilisations</target>
+</trans-unit>
+<trans-unit id="sc0a929a46a5901e1">
+  <source>Invited by</source>
+  <target>Invité par</target>
+</trans-unit>
+<trans-unit id="scf443deca2f466b6">
+  <source>Deactivate user</source>
+  <target>Désactiver l'utilisateur</target>
+</trans-unit>
+<trans-unit id="se215e49de069cda0">
+  <source>Reactivate user</source>
+  <target>Réactiver l'utilisateur</target>
+</trans-unit>
+<trans-unit id="s48d753e395f68144">
+  <source>Revoke invite</source>
+  <target>Révoquer l'invitation</target>
+</trans-unit>
+<trans-unit id="s8df69b13821e3191">
+  <source>Reactivate</source>
+  <target>Réactiver</target>
+</trans-unit>
+<trans-unit id="sf56998949bdf6b33">
+  <source>Deactivate</source>
+  <target>Désactiver</target>
+</trans-unit>
+<trans-unit id="sf993bb199fefbe04">
+  <source>All</source>
+  <target>Tout</target>
+</trans-unit>
+<trans-unit id="s6c3fe210cc5367d0">
+  <source>Urgent</source>
+  <target>Urgent</target>
+</trans-unit>
+<trans-unit id="s9deeefd89ca8a81d">
+  <source>High</source>
+  <target>Haute</target>
+</trans-unit>
+<trans-unit id="sac6bdc71f750ac96">
+  <source>Medium</source>
+  <target>Moyenne</target>
+</trans-unit>
+<trans-unit id="s24f3a319b88552c1">
+  <source>Low</source>
+  <target>Basse</target>
+</trans-unit>
+<trans-unit id="s58a6677a53e3123f">
+  <source>No grouping</source>
+  <target>Pas de groupement</target>
+</trans-unit>
+<trans-unit id="sad3e3c8146fc920f">
+  <source>Status</source>
+  <target>Statut</target>
+</trans-unit>
+<trans-unit id="sd1857520ad044781">
+  <source>No group</source>
+  <target>Aucun groupe</target>
+</trans-unit>
+<trans-unit id="sa6f6d456f25a85bb">
+  <source>Tasks assigned to you across all projects.</source>
+  <target>Tâches qui vous sont assignées dans tous les projets.</target>
+</trans-unit>
+<trans-unit id="s5033dab8c17f05f2">
+  <source>Completed</source>
+  <target>Terminé</target>
+</trans-unit>
+<trans-unit id="sb5ff45c4476cd097">
+  <source>Search tasks...</source>
+  <target>Rechercher des tâches...</target>
+</trans-unit>
+<trans-unit id="s9d1205711c0890b7">
+  <source>No tasks match your filters.</source>
+  <target>Aucune tâche ne correspond à vos filtres.</target>
+</trans-unit>
+<trans-unit id="s3330226e8b40e5b4">
+  <source>No tasks assigned to you.</source>
+  <target>Aucune tâche ne vous est assignée.</target>
+</trans-unit>
+<trans-unit id="sa0da7f5804f9b640">
+  <source>This workspace has already been configured.</source>
+  <target>Cet espace de travail a déjà été configuré.</target>
+</trans-unit>
+<trans-unit id="sf200b7f9e463b89d">
+  <source>Go to login</source>
+  <target>Aller à la connexion</target>
+</trans-unit>
+<trans-unit id="s018664223ae0edbe">
+  <source>Set up your workspace</source>
+  <target>Configurer votre espace de travail</target>
+</trans-unit>
+<trans-unit id="s086f176139d23a9d">
+  <source>Organization name</source>
+  <target>Nom de l'organisation</target>
+</trans-unit>
+<trans-unit id="se67e1d4042811d55">
+  <source>Acme Corp</source>
+  <target>Acme Corp</target>
+</trans-unit>
+<trans-unit id="s81ecf2d4386b8e84">
+  <source>Continue</source>
+  <target>Continuer</target>
+</trans-unit>
+<trans-unit id="sa9d1dd5d6142477d">
+  <source>Your name</source>
+  <target>Votre nom</target>
+</trans-unit>
+<trans-unit id="sa62825389da8bbc1">
+  <source>Jane Doe</source>
+  <target>Jean Dupont</target>
+</trans-unit>
+<trans-unit id="sff963d985823585e">
+  <source>jane@acme.com</source>
+  <target>jean@acme.com</target>
+</trans-unit>
+<trans-unit id="se87d348f73989fa9">
+  <source>Min 8 characters</source>
+  <target>Min 8 caractères</target>
+</trans-unit>
+<trans-unit id="sc16e00a7a8b2fde2">
+  <source>Back</source>
+  <target>Retour</target>
+</trans-unit>
+<trans-unit id="s1deb016183202aea">
+  <source>Setting up...</source>
+  <target>Configuration...</target>
+</trans-unit>
+<trans-unit id="sae395d8bca407e7c">
+  <source>Create workspace</source>
+  <target>Créer l'espace de travail</target>
+</trans-unit>
+<trans-unit id="s8fc1231952986aeb">
+  <source>Board</source>
+  <target>Tableau</target>
+</trans-unit>
+<trans-unit id="s3d249bb480032121">
+  <source>List</source>
+  <target>Liste</target>
+</trans-unit>
+<trans-unit id="s983e763f48bf30c6">
+  <source>Edit View</source>
+  <target>Modifier la vue</target>
+</trans-unit>
+<trans-unit id="sb032cd6ca7af5099">
+  <source>Save View</source>
+  <target>Enregistrer la vue</target>
+</trans-unit>
+<trans-unit id="sef49aec68fd1dc66">
+  <source>Name</source>
+  <target>Nom</target>
+</trans-unit>
+<trans-unit id="sbdc0a4d8fcf8f49b">
+  <source>e.g. High Priority</source>
+  <target>p. ex. Haute priorité</target>
+</trans-unit>
+<trans-unit id="s2e4818861000b13f">
+  <source>Layout</source>
+  <target>Disposition</target>
+</trans-unit>
+<trans-unit id="sdc673e73b5c13aea">
+  <source>Delete</source>
+  <target>Supprimer</target>
+</trans-unit>
+<trans-unit id="s2ceb11be2290bb1b">
+  <source>Cancel</source>
+  <target>Annuler</target>
+</trans-unit>
+<trans-unit id="s33f85f24c0f5f008">
+  <source>Save</source>
+  <target>Enregistrer</target>
+</trans-unit>
+<trans-unit id="s85a5cc60a6408fb9">
+  <source>Save view</source>
+  <target>Enregistrer la vue</target>
+</trans-unit>
+<trans-unit id="s03ee3cfb0919c62c">
+  <source>Task</source>
+  <target>Tâche</target>
+</trans-unit>
+<trans-unit id="sa4e407b3a0fe4669">
+  <source>Priority</source>
+  <target>Priorité</target>
+</trans-unit>
+<trans-unit id="se4ff94b01e9cef6b">
+  <source>Due date</source>
+  <target>Date d'échéance</target>
+</trans-unit>
+<trans-unit id="s10d2dbc4613397f0">
+  <source>Updated</source>
+  <target>Mis à jour</target>
+</trans-unit>
+<trans-unit id="s927497135cdabe78">
+  <source>Untitled</source>
+  <target>Sans titre</target>
+</trans-unit>
+<trans-unit id="s669b18c6d2d9c95b">
+  <source>None</source>
+  <target>Aucun</target>
+</trans-unit>
+<trans-unit id="sd9603bef07a9524c">
+  <source>task</source>
+  <target>tâche</target>
+</trans-unit>
+<trans-unit id="s07d8162a04b6c10d">
+  <source>tasks</source>
+  <target>tâches</target>
+</trans-unit>
+<trans-unit id="s2fc7f3228e53d1d9">
+  <source>No tasks match this view's filters.</source>
+  <target>Aucune tâche ne correspond aux filtres de cette vue.</target>
+</trans-unit>
+<trans-unit id="s8af61807443f32a4">
+  <source>Actions</source>
+  <target>Actions</target>
+</trans-unit>
+<trans-unit id="s64ef2a6c2dd1d3d1">
+  <source>Edit</source>
+  <target>Modifier</target>
+</trans-unit>
+<trans-unit id="sbc0cd0b4dfb7dde1">
+  <source>Unpin</source>
+  <target>Détacher</target>
+</trans-unit>
+<trans-unit id="s8db89619f41917b4">
+  <source>Pin</source>
+  <target>Épingler</target>
+</trans-unit>
+<trans-unit id="se99d96bb845add8f">
+  <source>No views yet. Navigate to a project, set filters, then save.</source>
+  <target>Pas encore de vues. Accédez à un projet, définissez des filtres, puis enregistrez.</target>
+</trans-unit>
+<trans-unit id="s320ef00a673bd30b">
+  <source>No global views.</source>
+  <target>Aucune vue globale.</target>
+</trans-unit>
+<trans-unit id="s282049f502eac1de">
+  <source>Project</source>
+  <target>Projet</target>
+</trans-unit>
+<trans-unit id="s11b1dd90482cc58a">
+  <source>Main navigation</source>
+  <target>Navigation principale</target>
+</trans-unit>
+<trans-unit id="sdd66c5a2e706fb81">
+  <source>Toggle sidebar</source>
+  <target>Afficher/Masquer le panneau latéral</target>
+</trans-unit>
+<trans-unit id="sf07904be22a6165a">
+  <source>Email is required</source>
+  <target>L'e-mail est requis</target>
+</trans-unit>
+<trans-unit id="se17e348b6cf355d0">
+  <source>Please enter your email</source>
+  <target>Veuillez saisir votre e-mail</target>
+</trans-unit>
+<trans-unit id="s9145aa93cf917ae4">
+  <source>Please enter a valid email address</source>
+  <target>Veuillez saisir une adresse e-mail valide</target>
+</trans-unit>
+<trans-unit id="seb1d48da15e775c9">
+  <source>Password is required</source>
+  <target>Le mot de passe est requis</target>
+</trans-unit>
+<trans-unit id="scf5ce91bfba10a61">
+  <source>Please enter your password</source>
+  <target>Veuillez saisir votre mot de passe</target>
+</trans-unit>
+<trans-unit id="s3ce86fb624c5051c">
+  <source>Organization name is required</source>
+  <target>Le nom de l'organisation est requis</target>
+</trans-unit>
+<trans-unit id="s206f89f5edb2e216">
+  <source>Please enter your organization name</source>
+  <target>Veuillez saisir le nom de votre organisation</target>
+</trans-unit>
+<trans-unit id="se87d992cf75e58bb">
+  <source>Name is required</source>
+  <target>Le nom est requis</target>
+</trans-unit>
+<trans-unit id="sb5bc9058fef1308b">
+  <source>Please enter your name</source>
+  <target>Veuillez saisir votre nom</target>
+</trans-unit>
+<trans-unit id="s7657c47339367b29">
+  <source>Stay up to date with your notifications.</source>
+  <target>Restez informé de vos notifications.</target>
+</trans-unit>
+<trans-unit id="s985ebe3f61c90ed0">
+  <source>Unread only</source>
+  <target>Non lus uniquement</target>
+</trans-unit>
+<trans-unit id="s978e956f5e3073c9">
+  <source>Mark all read</source>
+  <target>Tout marquer comme lu</target>
+</trans-unit>
+<trans-unit id="s060300e5d791ff55">
+  <source>All caught up</source>
+  <target>Vous êtes à jour</target>
+</trans-unit>
+<trans-unit id="sbe2ff3b58fb73492">
+  <source>Notifications will appear here.</source>
+  <target>Les notifications apparaîtront ici.</target>
+</trans-unit>
+<trans-unit id="sc07837c309cc699b">
+  <source>Unmute</source>
+  <target>Réactiver le son</target>
+</trans-unit>
+<trans-unit id="se0f67eae944f8f94">
+  <source>Mute</source>
+  <target>Muet</target>
+</trans-unit>
+<trans-unit id="sf30bda2b29ab6cd5">
+  <source>Undeafen</source>
+  <target>Réactiver l'audio</target>
+</trans-unit>
+<trans-unit id="sb0c04a1592853742">
+  <source>Deafen</source>
+  <target>Couper l'audio</target>
+</trans-unit>
+<trans-unit id="sb8b9ca0a683dd139">
+  <source>Leave voice channel</source>
+  <target>Quitter le salon vocal</target>
+</trans-unit>
+<trans-unit id="s3cb20b3450cbe796">
+  <source>Workspace</source>
+  <target>Espace de travail</target>
+</trans-unit>
+<trans-unit id="see70eee54a7b0a1f">
+  <source>Workspaces</source>
+  <target>Espaces de travail</target>
+</trans-unit>
+<trans-unit id="s37b237d38ed93727">
+  <source>Workspace settings</source>
+  <target>Paramètres de l'espace de travail</target>
+</trans-unit>
+<trans-unit id="s8e498092e4806819">
+  <source>Add workspace</source>
+  <target>Ajouter un espace de travail</target>
+</trans-unit>
+<trans-unit id="scfb26933af7325d1">
+  <source>Voice session taken over by another tab</source>
+  <target>Session vocale reprise par un autre onglet</target>
+</trans-unit>
+<trans-unit id="s4fb97784dc381b4a">
+  <source>You were kicked from the voice channel</source>
+  <target>Vous avez été expulsé du salon vocal</target>
+</trans-unit>
+<trans-unit id="s18d9277a5ac87167">
+  <source>Participants</source>
+  <target>Participants</target>
+</trans-unit>
+<trans-unit id="s30aea8426eb187a0">
+  <source>Microphone access denied</source>
+  <target>Accès au micro refusé</target>
+</trans-unit>
+<trans-unit id="sff1c1c671f7adec0">
+  <source>No one's here yet</source>
+  <target>Personne n'est encore là</target>
+</trans-unit>
+<trans-unit id="sb22766f582609e29">
+  <source>Breeze needs mic permission to use voice.</source>
+  <target>Breeze a besoin de l'autorisation du micro pour utiliser la voix.</target>
+</trans-unit>
+<trans-unit id="sb77d0b6fa52dae24">
+  <source>Join the voice channel to start talking.</source>
+  <target>Rejoignez le salon vocal pour commencer à parler.</target>
+</trans-unit>
+<trans-unit id="s2c8189544e3ea679">
+  <source>Retry</source>
+  <target>Réessayer</target>
+</trans-unit>
+<trans-unit id="s958fd8a18d9097af">
+  <source>Join Voice</source>
+  <target>Rejoindre le vocal</target>
+</trans-unit>
+<trans-unit id="sd92f07e924731806">
+  <source>Failed to load conversation</source>
+  <target>Échec du chargement de la conversation</target>
+</trans-unit>
+<trans-unit id="sa95ef033c9e9c017">
+  <source>Channel actions</source>
+  <target>Actions du canal</target>
+</trans-unit>
+<trans-unit id="s45171a3e77d40a30">
+  <source>channel-name</source>
+  <target>nom-du-canal</target>
+</trans-unit>
+<trans-unit id="s4751dfb9fb0442c4">
+  <source>Description (optional)</source>
+  <target>Description (optionnelle)</target>
+</trans-unit>
+<trans-unit id="s70bc124b700b59c9">
+  <source>Select projects…</source>
+  <target>Sélectionner des projets…</target>
+</trans-unit>
+<trans-unit id="s7f59f507e02a2f38">
+  <source>View</source>
+  <target>Voir</target>
+</trans-unit>
+<trans-unit id="s57adf424d57c8a0f">
+  <source>Send</source>
+  <target>Envoyer</target>
+</trans-unit>
+<trans-unit id="s2ca7699f7c5a4996">
+  <source>Manage</source>
+  <target>Gérer</target>
+</trans-unit>
+<trans-unit id="s0ab2d4eae29b8108">
+  <source>Perms</source>
+  <target>Permissions</target>
+</trans-unit>
+<trans-unit id="s1b4346f711e5cc77">
+  <source>Remove override</source>
+  <target>Supprimer la dérogation</target>
+</trans-unit>
+<trans-unit id="s93f64014c980a5c6">
+  <source>Select user…</source>
+  <target>Sélectionner un utilisateur…</target>
+</trans-unit>
+<trans-unit id="sb9ccdd886e9b1a02">
+  <source>Rename conversation</source>
+  <target>Renommer la conversation</target>
+</trans-unit>
+<trans-unit id="sc8e2c91325d8ad73">
+  <source>Search messages</source>
+  <target>Rechercher des messages</target>
+</trans-unit>
+<trans-unit id="s6c41682404247c71">
+  <source>Channel settings</source>
+  <target>Paramètres du canal</target>
+</trans-unit>
+<trans-unit id="sa3e85b55e1c829c8">
+  <source>All conversations</source>
+  <target>Toutes les conversations</target>
+</trans-unit>
+<trans-unit id="se051571991d5184b">
+  <source>DMs</source>
+  <target>MP</target>
+</trans-unit>
+<trans-unit id="s4035f847fffa263a">
+  <source>Search messages, files, snippets…</source>
+  <target>Rechercher messages, fichiers, extraits…</target>
+</trans-unit>
+<trans-unit id="s09c7e0ff5f4e18cb">
+  <source>Cancel reply</source>
+  <target>Annuler la réponse</target>
+</trans-unit>
+<trans-unit id="sdf4b56a9a68ca475">
+  <source>Cancel edit</source>
+  <target>Annuler la modification</target>
+</trans-unit>
+<trans-unit id="s9fbe49e8dd36f149">
+  <source>Select projects...</source>
+  <target>Sélectionner des projets...</target>
+</trans-unit>
+<trans-unit id="s573ef8b6826fd444">
+  <source>e.g. Engineering</source>
+  <target>p. ex. Ingénierie</target>
+</trans-unit>
+<trans-unit id="s241945dbef0a2147">
+  <source>new-channel</source>
+  <target>nouveau-canal</target>
+</trans-unit>
+<trans-unit id="sfc8dc974db8d4e66">
+  <source>Search people...</source>
+  <target>Rechercher des personnes...</target>
+</trans-unit>
+<trans-unit id="s162d73fc5424798a">
+  <source>New message</source>
+  <target>Nouveau message</target>
+</trans-unit>
+<trans-unit id="sf00e34a6943375a9">
+  <source>Conversation actions</source>
+  <target>Actions de la conversation</target>
+</trans-unit>
+<trans-unit id="s7e1dcfc0a1c85479">
+  <source>Conversation name</source>
+  <target>Nom de la conversation</target>
+</trans-unit>
+<trans-unit id="s06a4d9430c4abc52">
+  <source>Close members panel</source>
+  <target>Fermer le panneau des membres</target>
+</trans-unit>
+<trans-unit id="s6eedf55b0382aa4b">
+  <source>Attach files</source>
+  <target>Joindre des fichiers</target>
+</trans-unit>
+<trans-unit id="s33762d7734aba426">
+  <source>Insert emoji</source>
+  <target>Insérer un emoji</target>
+</trans-unit>
+<trans-unit id="s5769170fd14b80a7">
+  <source>Add reaction</source>
+  <target>Ajouter une réaction</target>
+</trans-unit>
+<trans-unit id="sf5406a46f7ca00f1">
+  <source>Load older messages</source>
+  <target>Charger les messages plus anciens</target>
+</trans-unit>
+<trans-unit id="s45cae14f72e26efb">
+  <source>Create category</source>
+  <target>Créer une catégorie</target>
+</trans-unit>
+<trans-unit id="s37504cd4ba603a0f">
+  <source>Search channels...</source>
+  <target>Rechercher des canaux...</target>
+</trans-unit>
+<trans-unit id="s3f849d972e262fe7">
+  <source>Edit category</source>
+  <target>Modifier la catégorie</target>
+</trans-unit>
+<trans-unit id="s61b3b57e7ea5cc3f">
+  <source>Add channel</source>
+  <target>Ajouter un canal</target>
+</trans-unit>
+<trans-unit id="sc2606f3ac1f400d6">
+  <source>Delete category</source>
+  <target>Supprimer la catégorie</target>
+</trans-unit>
+<trans-unit id="se449f1215ef49707">
+  <source>Recent Activity</source>
+  <target>Activité récente</target>
+</trans-unit>
+<trans-unit id="s1e58cd4b3a6d7bec">
+  <source>Due Soon</source>
+  <target>Échéance proche</target>
+</trans-unit>
+<trans-unit id="s66d8802c9cd1a9a5">
+  <source>Your Stats</source>
+  <target>Vos statistiques</target>
+</trans-unit>
+<trans-unit id="s63d040e37887f17e">
+  <source>Today</source>
+  <target>Aujourd'hui</target>
+</trans-unit>
+<trans-unit id="s44ef1526bf1d8106">
+  <source>Tomorrow</source>
+  <target>Demain</target>
+</trans-unit>
+<trans-unit id="s0e7536ff12ae7c3d">
+  <source>Assigned</source>
+  <target>Assigné</target>
+</trans-unit>
+<trans-unit id="sc68080ce046320cb">
+  <source>Overdue</source>
+  <target>En retard</target>
+</trans-unit>
+<trans-unit id="sfd9fc2f79d81c5e5">
+  <source>Due this week</source>
+  <target>Échéance cette semaine</target>
+</trans-unit>
+<trans-unit id="sbddcd7e488f06a35">
+  <source>e.g. Story Points</source>
+  <target>p. ex. Story Points</target>
+</trans-unit>
+<trans-unit id="s2492f5fb1b05b45e">
+  <source>Text</source>
+  <target>Texte</target>
+</trans-unit>
+<trans-unit id="sbbb97b1c63507dc0">
+  <source>Number</source>
+  <target>Nombre</target>
+</trans-unit>
+<trans-unit id="sfc63e31ac7c956ed">
+  <source>Select</source>
+  <target>Sélectionner</target>
+</trans-unit>
+<trans-unit id="sac8252732f2edb19">
+  <source>Date</source>
+  <target>Date</target>
+</trans-unit>
+<trans-unit id="s611ea53b35d5f8ae">
+  <source>e.g. Low, Medium, High</source>
+  <target>p. ex. Basse, Moyenne, Haute</target>
+</trans-unit>
+<trans-unit id="se9955d9df9b4c6fe">
+  <source>All tasks</source>
+  <target>Toutes les tâches</target>
+</trans-unit>
+<trans-unit id="sc661c9b7e1702a90">
+  <source>Backlog (no cycle)</source>
+  <target>Backlog (sans cycle)</target>
+</trans-unit>
+<trans-unit id="s180179e41594778a">
+  <source>Cycle name (auto if empty)</source>
+  <target>Nom du cycle (auto si vide)</target>
+</trans-unit>
+<trans-unit id="s2ae1e36b9171ce6d">
+  <source>What is the goal of this cycle?</source>
+  <target>Quel est l'objectif de ce cycle ?</target>
+</trans-unit>
+<trans-unit id="s4627a9667a335f23">
+  <source>Upcoming</source>
+  <target>À venir</target>
+</trans-unit>
+<trans-unit id="s35352dd20963f8c5">
+  <source>Column options</source>
+  <target>Options de colonne</target>
+</trans-unit>
+<trans-unit id="s49a84348961c8b72">
+  <source>Task title</source>
+  <target>Titre de la tâche</target>
+</trans-unit>
+<trans-unit id="s99f110d27e30b289">
+  <source>Title</source>
+  <target>Titre</target>
+</trans-unit>
+<trans-unit id="se06d5d1991ed9d35">
+  <source>Due</source>
+  <target>Échéance</target>
+</trans-unit>
+<trans-unit id="s7fb5b042c0c48008">
+  <source>Select all tasks</source>
+  <target>Sélectionner toutes les tâches</target>
+</trans-unit>
+<trans-unit id="s680fc90489553ed6">
+  <source>Timeline</source>
+  <target>Chronologie</target>
+</trans-unit>
+<trans-unit id="sbfefec98d6c617a6">
+  <source>Cycles</source>
+  <target>Cycles</target>
+</trans-unit>
+<trans-unit id="s9d8b8aa2b404c2c8">
+  <source>Settings</source>
+  <target>Paramètres</target>
+</trans-unit>
+<trans-unit id="sc845182dde94e63b">
+  <source>Save as new view</source>
+  <target>Enregistrer comme nouvelle vue</target>
+</trans-unit>
+<trans-unit id="sfe7aff19d8ac8e46">
+  <source>Reset to saved</source>
+  <target>Réinitialiser à la version enregistrée</target>
+</trans-unit>
+<trans-unit id="s153d5bbc6795e6c5">
+  <source>Search users…</source>
+  <target>Rechercher des utilisateurs…</target>
+</trans-unit>
+<trans-unit id="sb38253b7012e60c5">
+  <source>Remove member</source>
+  <target>Retirer le membre</target>
+</trans-unit>
+<trans-unit id="s3f16510650e286ab">
+  <source>Indigo</source>
+  <target>Indigo</target>
+</trans-unit>
+<trans-unit id="s109991b0423f1512">
+  <source>Violet</source>
+  <target>Mauve</target>
+</trans-unit>
+<trans-unit id="scadbed2befa22a46">
+  <source>Rose</source>
+  <target>Rose</target>
+</trans-unit>
+<trans-unit id="s2a5339d286d56c00">
+  <source>Amber</source>
+  <target>Ambre</target>
+</trans-unit>
+<trans-unit id="s3d0296b47fe6323c">
+  <source>Lime</source>
+  <target>Citron</target>
+</trans-unit>
+<trans-unit id="s9756d60e4c4e6c7f">
+  <source>Emerald</source>
+  <target>Émeraude</target>
+</trans-unit>
+<trans-unit id="s984aae19fa9f9216">
+  <source>Sky</source>
+  <target>Ciel</target>
+</trans-unit>
+<trans-unit id="sa253f977d117dbba">
+  <source>Fuchsia</source>
+  <target>Fuchsia</target>
+</trans-unit>
+<trans-unit id="s606cb6574e67c58f">
+  <source>e.g. Q4 Launch</source>
+  <target>p. ex. Lancement T4</target>
+</trans-unit>
+<trans-unit id="s0e8bbfb53091d484">
+  <source>What is this project about?</source>
+  <target>De quoi s'agit-il dans ce projet ?</target>
+</trans-unit>
+<trans-unit id="s257678584b4a9c74">
+  <source>Move to next cycle</source>
+  <target>Déplacer au cycle suivant</target>
+</trans-unit>
+<trans-unit id="s85a5d0ae087c2496">
+  <source>Move to backlog (no cycle)</source>
+  <target>Déplacer dans le backlog (sans cycle)</target>
+</trans-unit>
+<trans-unit id="s53fd93811116eaac">
+  <source>Auto (next cycle)</source>
+  <target>Auto (cycle suivant)</target>
+</trans-unit>
+<trans-unit id="sf61212a267a70ccb">
+  <source>Edit cycle</source>
+  <target>Modifier le cycle</target>
+</trans-unit>
+<trans-unit id="sfb5daa2758622e70">
+  <source>Delete cycle</source>
+  <target>Supprimer le cycle</target>
+</trans-unit>
+<trans-unit id="s25fcab7e4563067a">
+  <source>Gray</source>
+  <target>Gris</target>
+</trans-unit>
+<trans-unit id="secf3d3a7c1693e2d">
+  <source>Blue</source>
+  <target>Bleu</target>
+</trans-unit>
+<trans-unit id="scf00d78fd5953f1c">
+  <source>Green</source>
+  <target>Vert</target>
+</trans-unit>
+<trans-unit id="s6baf78886c99db89">
+  <source>Yellow</source>
+  <target>Jaune</target>
+</trans-unit>
+<trans-unit id="s8f450dd0b7bdb8cb">
+  <source>Orange</source>
+  <target>Orange</target>
+</trans-unit>
+<trans-unit id="s9ff1de19feac1b7c">
+  <source>Red</source>
+  <target>Rouge</target>
+</trans-unit>
+<trans-unit id="s05f6e2fd9831623f">
+  <source>Purple</source>
+  <target>Violet</target>
+</trans-unit>
+<trans-unit id="s24b1dbfb1b2038bf">
+  <source>Teal</source>
+  <target>Sarcelle</target>
+</trans-unit>
+<trans-unit id="se9beed19c6a38fed">
+  <source>Pink</source>
+  <target>Rose clair</target>
+</trans-unit>
+<trans-unit id="s5a4cd2fb39f375bd">
+  <source>Todo</source>
+  <target>À faire</target>
+</trans-unit>
+<trans-unit id="sce4f864763a12cc5">
+  <source>In Progress</source>
+  <target>En cours</target>
+</trans-unit>
+<trans-unit id="sa30c4d3b566b6b1a">
+  <source>Canceled</source>
+  <target>Annulé</target>
+</trans-unit>
+<trans-unit id="s879de60d8a97711e">
+  <source>Status name</source>
+  <target>Nom du statut</target>
+</trans-unit>
+<trans-unit id="s137328363dccf4bf">
+  <source>Pick color</source>
+  <target>Choisir une couleur</target>
+</trans-unit>
+<trans-unit id="sbd610b07f385a7c0">
+  <source>Delete status</source>
+  <target>Supprimer le statut</target>
+</trans-unit>
+<trans-unit id="s3d820f8071606c3d">
+  <source>Subtasks</source>
+  <target>Sous-tâches</target>
+</trans-unit>
+<trans-unit id="scbd13dc939a8ace0">
+  <source>Dependencies</source>
+  <target>Dépendances</target>
+</trans-unit>
+<trans-unit id="s48e186fb300e5464">
+  <source>Time</source>
+  <target>Temps</target>
+</trans-unit>
+<trans-unit id="s803ce7e1a2294d50">
+  <source>Files</source>
+  <target>Fichiers</target>
+</trans-unit>
+<trans-unit id="s6c76b294d740446c">
+  <source>Activity</source>
+  <target>Activité</target>
+</trans-unit>
+<trans-unit id="sdc12d4d35420eeb7">
+  <source>Comments</source>
+  <target>Commentaires</target>
+</trans-unit>
+<trans-unit id="s2371d424504ed1af">
+  <source>Task actions</source>
+  <target>Actions de la tâche</target>
+</trans-unit>
+<trans-unit id="sb2ffdf0154727730">
+  <source>Add description…</source>
+  <target>Ajouter une description…</target>
+</trans-unit>
+<trans-unit id="s80b0d32b285ce4d7">
+  <source>Edit description</source>
+  <target>Modifier la description</target>
+</trans-unit>
+<trans-unit id="s575e795c45e2d97e">
+  <source>Go back</source>
+  <target>Retour</target>
+</trans-unit>
+<trans-unit id="sc448d806d9fce5b3">
+  <source>Drag to reorder</source>
+  <target>Glisser pour réorganiser</target>
+</trans-unit>
+<trans-unit id="sc92c1a54034e21cc">
+  <source>Assign</source>
+  <target>Assigner</target>
+</trans-unit>
+<trans-unit id="sbdea1a9b9f802a79">
+  <source>Delete subtask</source>
+  <target>Supprimer la sous-tâche</target>
+</trans-unit>
+<trans-unit id="sf7b3ef3798665cb2">
+  <source>Add a subtask...</source>
+  <target>Ajouter une sous-tâche...</target>
+</trans-unit>
+<trans-unit id="sbaad876f6e9cd417">
+  <source>Search tasks…</source>
+  <target>Rechercher des tâches…</target>
+</trans-unit>
+<trans-unit id="s7e25b065181355f4">
+  <source>Stop timer</source>
+  <target>Arrêter le minuteur</target>
+</trans-unit>
+<trans-unit id="s356e8d789667b1c3">
+  <source>What are you working on?</source>
+  <target>Sur quoi travaillez-vous ?</target>
+</trans-unit>
+<trans-unit id="s793e673cd74ec7a3">
+  <source>Delete time entry</source>
+  <target>Supprimer la saisie de temps</target>
+</trans-unit>
+<trans-unit id="s2d31c7e29514f16b">
+  <source>Delete attachment</source>
+  <target>Supprimer la pièce jointe</target>
+</trans-unit>
+<trans-unit id="s80d70065c480e81d">
+  <source>Set start date</source>
+  <target>Définir la date de début</target>
+</trans-unit>
+<trans-unit id="s2b6191ae11dcbcbf">
+  <source>Set due date</source>
+  <target>Définir la date d'échéance</target>
+</trans-unit>
+<trans-unit id="s099b18e1bd8a1154">
+  <source>Hours</source>
+  <target>Heures</target>
+</trans-unit>
+<trans-unit id="s7ad08115fdfe63f2">
+  <source>No priority</source>
+  <target>Aucune priorité</target>
+</trans-unit>
+<trans-unit id="sb1324fdeac2ac3c0">
+  <source>No cycle</source>
+  <target>Aucun cycle</target>
+</trans-unit>
+<trans-unit id="s46c20034fd313c82">
+  <source>Enter task title...</source>
+  <target>Saisissez le titre de la tâche...</target>
+</trans-unit>
+<trans-unit id="s6b7d7afabc24ff1c">
+  <source>Properties</source>
+  <target>Propriétés</target>
+</trans-unit>
+<trans-unit id="s63d894b1ddb06289">
+  <source>Description</source>
+  <target>Description</target>
+</trans-unit>
+<trans-unit id="s3fa5b96cbe7af51b">
+  <source>Assignees</source>
+  <target>Responsables</target>
+</trans-unit>
+<trans-unit id="s631aa3601c262234">
+  <source>Add description...</source>
+  <target>Ajouter une description...</target>
+</trans-unit>
+<trans-unit id="s451be75bd97c24a2">
+  <source>e.g. Weekly sprint review</source>
+  <target>p. ex. Revue de sprint hebdomadaire</target>
+</trans-unit>
+<trans-unit id="s6a0e19a84aba6355">
+  <source>Template description</source>
+  <target>Description du modèle</target>
+</trans-unit>
+<trans-unit id="sbdb411546df14b5c">
+  <source>None (manual)</source>
+  <target>Aucun (manuel)</target>
+</trans-unit>
+<trans-unit id="s4d1422b9bc3d0a7e">
+  <source>Daily</source>
+  <target>Quotidien</target>
+</trans-unit>
+<trans-unit id="s1ed5bb575207cece">
+  <source>Weekly</source>
+  <target>Hebdomadaire</target>
+</trans-unit>
+<trans-unit id="s046a35bfdd88a596">
+  <source>Monthly</source>
+  <target>Mensuel</target>
+</trans-unit>
+<trans-unit id="s54072caa47684a1a">
+  <source>e.g. 1,3,5</source>
+  <target>p. ex. 1,3,5</target>
+</trans-unit>
+<trans-unit id="sdb840eeac242d409">
+  <source>Uncategorized</source>
+  <target>Non catégorisé</target>
+</trans-unit>
+<trans-unit id="s87ff5b1feb1edc6d">
+  <source>Changed role</source>
+  <target>Rôle modifié</target>
+</trans-unit>
+<trans-unit id="s24f9a9b9d13d8657">
+  <source>Activated user</source>
+  <target>Utilisateur activé</target>
+</trans-unit>
+<trans-unit id="s1fb67df9d0a3467c">
+  <source>Deactivated user</source>
+  <target>Utilisateur désactivé</target>
+</trans-unit>
+<trans-unit id="sdeb0deffe25ca2df">
+  <source>Removed member</source>
+  <target>Membre retiré</target>
+</trans-unit>
+<trans-unit id="s5be3699a5ed58181">
+  <source>Changed member role</source>
+  <target>Rôle du membre modifié</target>
+</trans-unit>
+<trans-unit id="s9584d4f6dd8ee611">
+  <source>Deleted organization</source>
+  <target>Organisation supprimée</target>
+</trans-unit>
+<trans-unit id="s3fa05cc3f0b313ff">
+  <source>Deleted project</source>
+  <target>Projet supprimé</target>
+</trans-unit>
+<trans-unit id="sa11dd82476d8218a">
+  <source>Revoked invite</source>
+  <target>Invitation révoquée</target>
+</trans-unit>
+<trans-unit id="s87ee1beb1994d570">
+  <source>Created task</source>
+  <target>Tâche créée</target>
+</trans-unit>
+<trans-unit id="s85993bfb9e9b0ec3">
+  <source>Deleted task</source>
+  <target>Tâche supprimée</target>
+</trans-unit>
+<trans-unit id="sd395a3ed0b1d5c17">
+  <source>All actions</source>
+  <target>Toutes les actions</target>
+</trans-unit>
+<trans-unit id="s53fa4ab32a8b7501">
+  <source>Role changed</source>
+  <target>Rôle modifié</target>
+</trans-unit>
+<trans-unit id="s3b099a292b71e8c9">
+  <source>User activated</source>
+  <target>Utilisateur activé</target>
+</trans-unit>
+<trans-unit id="s8d6cd955bfc331d0">
+  <source>User deactivated</source>
+  <target>Utilisateur désactivé</target>
+</trans-unit>
+<trans-unit id="sfb7097c25908bef7">
+  <source>Member removed</source>
+  <target>Membre retiré</target>
+</trans-unit>
+<trans-unit id="se37d715fb507810d">
+  <source>Member role changed</source>
+  <target>Rôle du membre modifié</target>
+</trans-unit>
+<trans-unit id="s76a606f32d915f24">
+  <source>Org deleted</source>
+  <target>Organisation supprimée</target>
+</trans-unit>
+<trans-unit id="sa611202822ff43d3">
+  <source>Project deleted</source>
+  <target>Projet supprimé</target>
+</trans-unit>
+<trans-unit id="s3e306c3f94b3fa26">
+  <source>Invite revoked</source>
+  <target>Invitation révoquée</target>
+</trans-unit>
+<trans-unit id="s1b5fdc89a1ddaa3c">
+  <source>Task created</source>
+  <target>Tâche créée</target>
+</trans-unit>
+<trans-unit id="s6df2872e173ed931">
+  <source>Task deleted</source>
+  <target>Tâche supprimée</target>
+</trans-unit>
+<trans-unit id="sf323f957c427e982">
+  <source>All actors</source>
+  <target>Tous les acteurs</target>
+</trans-unit>
+<trans-unit id="sd16fa8b2785cc904">
+  <source>New label name…</source>
+  <target>Nouveau nom d'étiquette…</target>
+</trans-unit>
+<trans-unit id="s457aeb6e8dc3cfa2">
+  <source>Search labels…</source>
+  <target>Rechercher des étiquettes…</target>
+</trans-unit>
+<trans-unit id="s9e1bef5ca332570b">
+  <source>Edit label</source>
+  <target>Modifier l'étiquette</target>
+</trans-unit>
+<trans-unit id="s4dd5b66dd331e7f4">
+  <source>Delete label</source>
+  <target>Supprimer l'étiquette</target>
+</trans-unit>
+<trans-unit id="sb6f3b33f82362b39">
+  <source>Organization updated</source>
+  <target>Organisation mise à jour</target>
+</trans-unit>
+<trans-unit id="s955c3a4038516d58">
+  <source>Backup downloaded</source>
+  <target>Sauvegarde téléchargée</target>
+</trans-unit>
+<trans-unit id="s31e7d5dfbf470deb">
+  <source>Backup staged. Restart the server to apply.</source>
+  <target>Sauvegarde prête. Redémarrez le serveur pour l'appliquer.</target>
+</trans-unit>
+<trans-unit id="sdbc18caeafbb27fd">
+  <source>Pending restore cancelled</source>
+  <target>Restauration en attente annulée</target>
+</trans-unit>
+<trans-unit id="s2145a3f60123b577">
+  <source>Organization deleted</source>
+  <target>Organisation supprimée</target>
+</trans-unit>
+<trans-unit id="s4caed5b7a7e5d89b">
+  <source>English</source>
+  <target>English</target>
+</trans-unit>
+<trans-unit id="sd447a36d6aeb81f6">
+  <source>Français</source>
+  <target>Français</target>
+</trans-unit>
+<trans-unit id="s2f5ba3cfccb1aa45">
+  <source>Profile updated</source>
+  <target>Profil mis à jour</target>
+</trans-unit>
+<trans-unit id="sda87c04d58bf172b">
+  <source>Avatar updated</source>
+  <target>Avatar mis à jour</target>
+</trans-unit>
+<trans-unit id="sb3344ad9148799c7">
+  <source>Password changed — please log in again</source>
+  <target>Mot de passe modifié — veuillez vous reconnecter</target>
+</trans-unit>
+<trans-unit id="sa64925faa6fc6919">
+  <source>Select language</source>
+  <target>Sélectionner la langue</target>
+</trans-unit>
+<trans-unit id="s05e981131b8c4408">
+  <source>Select timezone</source>
+  <target>Sélectionner le fuseau horaire</target>
+</trans-unit>
+<trans-unit id="sc3ac225273c8316b">
+  <source>General</source>
+  <target>Général</target>
+</trans-unit>
+<trans-unit id="s8a9eb438abac7c6a">
+  <source>Labels</source>
+  <target>Étiquettes</target>
+</trans-unit>
+<trans-unit id="s2bd16f12896a150a">
+  <source>Audit log</source>
+  <target>Journal d'audit</target>
+</trans-unit>
+<trans-unit id="sbd903d64a039586f">
+  <source>Full name</source>
+  <target>Nom complet</target>
+</trans-unit>
+<trans-unit id="s1021326a848c87d0">
+  <source>Join workspace</source>
+  <target>Rejoindre l'espace de travail</target>
+</trans-unit>
+<trans-unit id="s884e6d14b13fbaa3">
+  <source>Copy invite link</source>
+  <target>Copier le lien d'invitation</target>
+</trans-unit>
+<trans-unit id="s19172ed3838854fc">
+  <source>Copy link</source>
+  <target>Copier le lien</target>
+</trans-unit>
+<trans-unit id="s0e871352ba4b17d3">
+  <source>Revoke</source>
+  <target>Révoquer</target>
+</trans-unit>
+<trans-unit id="sde4e9e5d057cdcab">
+  <source>Failed to load page — please refresh</source>
+<target>Échec du chargement de la page — veuillez actualiser</target></trans-unit>
+<trans-unit id="sf7c0eba7c822e3d6">
+  <source>Bold</source>
+<target>Gras</target></trans-unit>
+<trans-unit id="s523eb9043213ff0d">
+  <source>Italic</source>
+<target>Italique</target></trans-unit>
+<trans-unit id="s99b38e000175cc84">
+  <source>Strikethrough</source>
+<target>Barré</target></trans-unit>
+<trans-unit id="s0f2413509a1b1e59">
+  <source>Inline code</source>
+<target>Code en ligne</target></trans-unit>
+<trans-unit id="sbc5f2f81604bb81a">
+  <source>Heading 1</source>
+<target>Titre 1</target></trans-unit>
+<trans-unit id="sbc5f2e81604bb667">
+  <source>Heading 2</source>
+<target>Titre 2</target></trans-unit>
+<trans-unit id="sbc5f2d81604bb4b4">
+  <source>Heading 3</source>
+<target>Titre 3</target></trans-unit>
+<trans-unit id="s4fda29344ca51803">
+  <source>Bullet list</source>
+<target>Liste à puces</target></trans-unit>
+<trans-unit id="sa1cc184ce2a00abb">
+  <source>Numbered list</source>
+<target>Liste numérotée</target></trans-unit>
+<trans-unit id="s70a5d875c5467e57">
+  <source>Quote</source>
+<target>Citation</target></trans-unit>
+<trans-unit id="s8f4be9f086eb530f">
+  <source>Undo</source>
+<target>Annuler</target></trans-unit>
+<trans-unit id="s7417792bbe720149">
+  <source>Redo</source>
+<target>Refaire</target></trans-unit>
+<trans-unit id="s9cfa7823fc62aba3">
+  <source>Searching…</source>
+<target>Recherche…</target></trans-unit>
+<trans-unit id="s3d490585fcaedf46">
+  <source>Page transitions</source>
+<target>Transitions de page</target></trans-unit>
+<trans-unit id="sdec0a87dea100301">
+  <source>Route changes, tab crossfades</source>
+<target>Changements de page, onglets</target></trans-unit>
+<trans-unit id="saa8ee3b3840f04ce">
+  <source>UI feedback</source>
+<target>Retour visuel</target></trans-unit>
+<trans-unit id="s2cd22d62fff1cf71">
+  <source>Hover, focus, active states</source>
+<target>Survol, focus, actif</target></trans-unit>
+<trans-unit id="s0b7b9b958401f455">
+  <source>Sidebar collapse, panel slide</source>
+<target>Repli du panneau latéral</target></trans-unit>
+<trans-unit id="s157f32bb643c56b5">
+  <source>Dialogs &amp; overlays</source>
+<target>Boîtes de dialogue</target></trans-unit>
+<trans-unit id="s95ee74a6f8252fa0">
+  <source>Dialog enter/exit, menus</source>
+<target>Ouverture/fermeture des dialogues, menus</target></trans-unit>
+<trans-unit id="s69637cca7d2b77b1">
+  <source>Lists &amp; content</source>
+<target>Listes et contenu</target></trans-unit>
+<trans-unit id="s8aa42508e7dbccea">
+  <source>List items, content area changes</source>
+<target>Éléments de liste, zone de contenu</target></trans-unit>
+<trans-unit id="s013b4b39bb343ecf">
+  <source>Loading states</source>
+<target>États de chargement</target></trans-unit>
+<trans-unit id="s1cc2f5fab9c23657">
+  <source>Skeleton shimmer, spinners</source>
+<target>Effet squelette, spinners</target></trans-unit>
+<trans-unit id="s0f108055400a346e">
+  <source>Drag &amp; drop</source>
+<target>Glisser-déposer</target></trans-unit>
+<trans-unit id="s8c8a7f42ff643805">
+  <source>Kanban card lifts, reorder</source>
+<target>Déplacement des cartes Kanban</target></trans-unit>
+<trans-unit id="s5be3c6d61cd9182f">
+  <source>Notifications</source>
+<target>Notifications</target></trans-unit>
+<trans-unit id="s83c21b192e15c4ae">
+  <source>Toast, badge pulse</source>
+<target>Toast, pulsation des badges</target></trans-unit>
+<trans-unit id="s047ac34e7c006f21">
+  <source>Chat messages</source>
+<target>Messages</target></trans-unit>
+<trans-unit id="sd001e9d767484a08">
+  <source>New message slide, typing</source>
+<target>Nouveau message</target></trans-unit>
+<trans-unit id="se803dc1680fadda9">
+  <source>Voice indicators</source>
+<target>Indicateurs vocaux</target></trans-unit>
+<trans-unit id="s77ec11f9afa2530f">
+  <source>Speaking glow, mute toggle</source>
+<target>Lueur d'activité vocale, sourdine</target></trans-unit>
+<trans-unit id="s3521a4da0b6d8bb3">
+  <source>Animation &amp; Motion</source>
+<target>Animation et Mouvement</target></trans-unit>
+<trans-unit id="sf8a90ee4fc613d10">
+  <source>Control how Breeze animates and transitions</source>
+<target>Contrôler les animations et transitions</target></trans-unit>
+<trans-unit id="sd4127e48c241bf0c">
+  <source>Your system has reduced motion enabled. Breeze animations are disabled. You can override below.</source>
+<target>Votre système a réduit les animations. Les animations de Breeze sont désactivées. Vous pouvez les réactiver ci-dessous.</target></trans-unit>
+<trans-unit id="s31703e096afaa241">
+  <source>Enable animations</source>
+<target>Activer les animations</target></trans-unit>
+<trans-unit id="sfb2b120a8709aca4">
+  <source>Master toggle — disables all animation when off</source>
+<target>Interrupteur principal — désactive toutes les animations</target></trans-unit>
+<trans-unit id="se24130f1123560a0">
+  <source>Speed</source>
+<target>Vitesse</target></trans-unit>
+<trans-unit id="s15c05bae80965e83">
+  <source>Adjust animation speed</source>
+<target>Ajuster la vitesse d'animation</target></trans-unit>
+<trans-unit id="s21b06c38fc4164db">
+  <source>Advanced</source>
+<target>Avancé</target></trans-unit>
+<trans-unit id="s07733503b383d73d">
+  <source>Reset to defaults</source>
+<target>Réinitialiser par défaut</target></trans-unit>
+<trans-unit id="s0c90fbbfb6b6c0c2">
+  <source>Preview theme</source>
+<target>Aperçu</target></trans-unit>
+<trans-unit id="s7c026c91eaccca1c">
+  <source>Switch theme</source>
+<target>Changer de thème</target></trans-unit>
+<trans-unit id="s5928cfb985c5f790">
+  <source>Toggle theme</source>
+<target>Changer de thème</target></trans-unit>
+<trans-unit id="s540765e16a896de1">
+  <source>Toggle Sidebar</source>
+<target>Afficher/Masquer le panneau</target></trans-unit>
+<trans-unit id="s5d929ff1619ac0c9">
+  <source>Search</source>
+<target>Rechercher</target></trans-unit>
+<trans-unit id="s30146917700a8301">
+  <source>Validating reset link...</source>
+<target>Vérification du lien…</target></trans-unit>
+<trans-unit id="sba988b2dfafc09bd">
+  <source>Invalid or expired reset link</source>
+<target>Lien de réinitialisation invalide ou expiré</target></trans-unit>
+<trans-unit id="s6ac9c042104d2dc8">
+  <source>This password reset link is invalid or has expired. Please request a new one.</source>
+<target>Ce lien de réinitialisation est invalide ou a expiré. Veuillez en demander un nouveau.</target></trans-unit>
+<trans-unit id="s3c7cdf8041ebca56">
+  <source>Set new password</source>
+<target>Définir le nouveau mot de passe</target></trans-unit>
+<trans-unit id="sa3e8dd1a8295ff83">
+  <source>Enter your new password</source>
+<target>Saisissez votre nouveau mot de passe</target></trans-unit>
+<trans-unit id="s8cada599d66ec543">
+  <source>member</source>
+<target>membre</target></trans-unit>
+<trans-unit id="s79d594675e391090">
+  <source>members</source>
+<target>membres</target></trans-unit>
+<trans-unit id="s1c5315525dd38147">
+  <source>Link to projects (optional):</source>
+<target>Lier à des projets (optionnel) :</target></trans-unit>
+<trans-unit id="sebae6a8705add1b6">
+  <source>Create channel</source>
+<target>Créer un canal</target></trans-unit>
+<trans-unit id="sd6ecbffb9703a07a">
+  <source>Send messages, images, files</source>
+<target>Envoyer des messages, images, fichiers</target></trans-unit>
+<trans-unit id="s47a9f592c61daa59">
+  <source>Voice</source>
+<target> vocal</target></trans-unit>
+<trans-unit id="seba471e775c68847">
+  <source>Voice chat with participants</source>
+<target>Chat vocal avec les participants</target></trans-unit>
+<trans-unit id="s49dd6efd900efa68">
+  <source>Type to search for people</source>
+<target>Rechercher des personnes</target></trans-unit>
+<trans-unit id="s28d7266643f5992f">
+  <source>No matches</source>
+<target>Aucun résultat</target></trans-unit>
+<trans-unit id="s9bfc95548d124b1c">
+  <source>React</source>
+<target>Réagir</target></trans-unit>
+<trans-unit id="sd317cca4c12e4783">
+  <source>No messages yet. Start the conversation!</source>
+<target>Aucun message pour l'instant. Lancez la conversation !</target></trans-unit>
+<trans-unit id="s5f82477707ad620f">
+  <source>pinned</source>
+<target>épinglé</target></trans-unit>
+<trans-unit id="s54c52297c3f0a4f5">
+  <source>No channels yet. Create a category to get started.</source>
+<target>Aucun canal pour l'instant. Créez une catégorie pour commencer.</target></trans-unit>
+<trans-unit id="sa3ce265edc32c070">
+  <source>Delete this comment?</source>
+<target>Supprimer ce commentaire ?</target></trans-unit>
+<trans-unit id="s5c3a863f65b779e3">
+  <source>Load older comments</source>
+<target>Charger les commentaires précédents</target></trans-unit>
+<trans-unit id="s6cd02aa7583257a0">
+  <source>Write a comment…</source>
+<target>Écrire un commentaire…</target></trans-unit>
+<trans-unit id="sffb4867aafe0bbda">
+  <source>No comments yet</source>
+<target>Aucun commentaire pour l'instant</target></trans-unit>
+<trans-unit id="se843873cf601ea6c">
+  <source>Start the conversation — mention someone with @ to ping them.</source>
+<target>Démarrez la conversation — mentionnez quelqu'un avec @.</target></trans-unit>
+<trans-unit id="s6ec650d6d8446526">
+  <source>Edit comment…</source>
+<target>Modifier le commentaire…</target></trans-unit>
+<trans-unit id="sa739a7980cbb46a8">
+  <source>Edited</source>
+<target>Modifié</target></trans-unit>
+<trans-unit id="sbaf2dbcb41ca49a9">
+  <source>(edited)</source>
+<target>(modifié)</target></trans-unit>
+<trans-unit id="s8212bb21f45f9673">
+  <source>Reply…</source>
+<target>Répondre…</target></trans-unit>
+<trans-unit id="s9e138ee80a5214e0">
+  <source>No recent activity.</source>
+<target>Aucune activité récente.</target></trans-unit>
+<trans-unit id="s7fee95b66225e1fb">
+  <source>Dashboard</source>
+<target>Tableau de bord</target></trans-unit>
+<trans-unit id="s43f2e26342c1f188">
+  <source>Here's what's happening across your workspace.</source>
+<target>Voici ce qui se passe dans votre espace de travail.</target></trans-unit>
+<trans-unit id="s3741f519c32ac391">
+  <source>New</source>
+<target>Nouveau</target></trans-unit>
+<trans-unit id="sf28d171a302d2b60">
+  <source>New project</source>
+<target>Nouveau projet</target></trans-unit>
+<trans-unit id="s5aab1d2a17883a62">
+  <source>New task</source>
+<target>Nouvelle tâche</target></trans-unit>
+<trans-unit id="se9eb6976f93dfb18">
+  <source>Customize</source>
+<target>Personnaliser</target></trans-unit>
+<trans-unit id="s76768bf58505c389">
+  <source>Dashboard sections</source>
+<target>Sections du tableau de bord</target></trans-unit>
+<trans-unit id="s650d7d8ce6eb362c">
+  <source>All sections hidden</source>
+<target>Toutes les sections sont masquées</target></trans-unit>
+<trans-unit id="s5b5c37d453ccdee3">
+  <source>Click "Customize" to add sections back to your dashboard.</source>
+<target>Cliquez sur « Personnaliser » pour ajouter des sections à votre tableau de bord.</target></trans-unit>
+<trans-unit id="sdd42a442e07cadac">
+  <source>Nothing to show yet.</source>
+<target>Rien à afficher pour l'instant.</target></trans-unit>
+<trans-unit id="s24dd520965432d60">
+  <source>No open tasks assigned to you.</source>
+<target>Aucune tâche ouverte ne vous est assignée.</target></trans-unit>
+<trans-unit id="sc41426622aab8b8b">
+  <source>View all</source>
+<target>Tout voir</target></trans-unit>
+<trans-unit id="s8e6f9e4e82003e60">
+  <source>No projects yet.</source>
+<target>Aucun projet.</target></trans-unit>
+<trans-unit id="sf5dac1f86c58f916">
+  <source>All projects</source>
+<target>Tous les projets</target></trans-unit>
+<trans-unit id="s578c61a141ca2739">
+  <source>Invalid invite</source>
+<target>Invitation invalide</target></trans-unit>
+<trans-unit id="s66618c6867836b6f">
+  <source>Accept your invite to get started.</source>
+<target>Acceptez votre invitation pour commencer.</target></trans-unit>
+<trans-unit id="s95cec57220aba21b">
+  <source>At least 8 characters</source>
+<target>Au moins 8 caractères</target></trans-unit>
+<trans-unit id="sadc63f6f02cbfc43">
+  <source>Joining...</source>
+<target>Inscription en cours…</target></trans-unit>
+<trans-unit id="s6f65a3bee725946c">
+  <source>Search members...</source>
+<target>Rechercher des membres…</target></trans-unit>
+<trans-unit id="s82197c8afaf23b56">
+  <source>No members match your filters.</source>
+<target>Aucun membre ne correspond à vos filtres.</target></trans-unit>
+<trans-unit id="sd77942b4c17309cf">
+  <source>No active members.</source>
+<target>Aucun membre actif.</target></trans-unit>
+<trans-unit id="s4d12f2da34f1c97b">
+  <source>No pending invites.</source>
+<target>Aucune invitation en attente.</target></trans-unit>
+<trans-unit id="s007d7b00200588ef">
+  <source>No deactivated members.</source>
+<target>Aucun membre désactivé.</target></trans-unit>
+<trans-unit id="sbbab4309025cf650">
+  <source>Field updated</source>
+<target>Champ mis à jour</target></trans-unit>
+<trans-unit id="s62599440605eddbb">
+  <source>Field created</source>
+<target>Champ créé</target></trans-unit>
+<trans-unit id="sd241b2cbc0e9471a">
+  <source>Failed to save field</source>
+<target>Échec de l'enregistrement</target></trans-unit>
+<trans-unit id="sb4959edb71c33584">
+  <source>Delete this custom field? Values on tasks will be removed.</source>
+<target>Supprimer ce champ personnalisé ? Les valeurs seront supprimées.</target></trans-unit>
+<trans-unit id="sef8213e2787fddaa">
+  <source>Field deleted</source>
+<target>Champ supprimé</target></trans-unit>
+<trans-unit id="se9ffc132b38d5c18">
+  <source>Failed to delete field</source>
+<target>Échec de la suppression</target></trans-unit>
+<trans-unit id="s7451eb79d2516e27">
+  <source>No cycles yet</source>
+<target>Aucun cycle pour l'instant</target></trans-unit>
+<trans-unit id="s0e7535ff12ae7a8a">
+  <source>Assignee</source>
+<target>Assigné à</target></trans-unit>
+<trans-unit id="se78ff60a2e88ebf1">
+  <source>No members</source>
+<target>Aucun membre</target></trans-unit>
+<trans-unit id="s38288c4bb6173bf0">
+  <source>Labels:</source>
+<target>Étiquettes :</target></trans-unit>
+<trans-unit id="s193243eb4318984e">
+  <source>No labels — create some in Settings → Labels</source>
+<target>Aucune étiquette — créez-en dans Paramètres → Étiquettes</target></trans-unit>
+<trans-unit id="s8669fdd62f300dc2">
+  <source>Drop here</source>
+<target>Déposer ici</target></trans-unit>
+<trans-unit id="s0060c019fcad5523">
+  <source>Bulk update failed</source>
+<target>Échec de la mise à jour groupée</target></trans-unit>
+<trans-unit id="sa731b1817b54daf1">
+  <source>Select…</source>
+<target>Sélectionner…</target></trans-unit>
+<trans-unit id="sfcb092ac8eb1c4fd">
+  <source>Set priority</source>
+<target>Définir la priorité</target></trans-unit>
+<trans-unit id="sfbeced1b660984f1">
+  <source>No members found.</source>
+<target>Aucun membre trouvé.</target></trans-unit>
+<trans-unit id="s515e890f5b7dece7">
+  <source>Add members</source>
+<target>Ajouter des membres</target></trans-unit>
+<trans-unit id="s89d7ac5714a4725a">
+  <source>Project role</source>
+<target>Rôle dans le projet</target></trans-unit>
+<trans-unit id="s15b475cc4cdc1bde">
+  <source>No users to add.</source>
+<target>Aucun utilisateur à ajouter.</target></trans-unit>
+<trans-unit id="sf7a6ee3ecd56abf9">
+  <source>Delete this cycle? Tasks will be unassigned.</source>
+<target>Supprimer ce cycle ? Les tâches seront désassignées.</target></trans-unit>
+<trans-unit id="s30ccaea17e485ace">
+  <source>Archive this project? It will be hidden from the project list but remain accessible.</source>
+<target>Archiver ce projet ? Il sera masqué de la liste mais reste accessible.</target></trans-unit>
+<trans-unit id="s4806169cd9e8b8f6">
+  <source>Failed to archive project</source>
+<target>Échec de l'archivage</target></trans-unit>
+<trans-unit id="s82d052e0259cf85b">
+  <source>Failed to unarchive project</source>
+<target>Échec du désarchivage</target></trans-unit>
+<trans-unit id="s91f70424f5d5d23e">
+  <source>Slug</source>
+<target>Identifiant</target></trans-unit>
+<trans-unit id="s214447e36a644757">
+  <source>Cycle duration</source>
+<target>Durée du cycle</target></trans-unit>
+<trans-unit id="sa2e28daa52d20677">
+  <source>Cycles help you plan and track work in time-boxed iterations.</source>
+<target>Les cycles aident à planifier et suivre le travail en itérations.</target></trans-unit>
+<trans-unit id="s8a34ff42bc575acd">
+  <source>Enabling…</source>
+<target>Activation…</target></trans-unit>
+<trans-unit id="s6ffaf25a735babb6">
+  <source>Enable cycles (14-day)</source>
+<target>Activer les cycles (14 jours)</target></trans-unit>
+<trans-unit id="s7d705efddc5dc4e1">
+  <source>Cycle config</source>
+<target>Configuration des cycles</target></trans-unit>
+<trans-unit id="s6bf1313af7356d80">
+  <source>Auto-generate next cycle on completion</source>
+<target>Générer automatiquement le prochain cycle</target></trans-unit>
+<trans-unit id="s24c3b820fcdc1b6f">
+  <source>Incomplete task handling</source>
+<target>Gestion des tâches incomplètes</target></trans-unit>
+<trans-unit id="sb060188bb28bfa9f">
+  <source>Saving…</source>
+<target>Enregistrement…</target></trans-unit>
+<trans-unit id="se144c52de0957a57">
+  <source>Save cycle settings</source>
+<target>Enregistrer les paramètres du cycle</target></trans-unit>
+<trans-unit id="s0c3e9d8dad9f640b">
+  <source>New cycle</source>
+<target>Nouveau cycle</target></trans-unit>
+<trans-unit id="sd28d358f7966ef34">
+  <source>No cycles yet. Create one to start.</source>
+<target>Aucun cycle. Créez-en un.</target></trans-unit>
+<trans-unit id="s41f551242bb32007">
+  <source>Task Templates</source>
+<target>Modèles de tâche</target></trans-unit>
+<trans-unit id="s298a9cfa29ea2817">
+  <source>Custom Fields</source>
+<target>Champs personnalisés</target></trans-unit>
+<trans-unit id="s293aa6a6446fb153">
+  <source>Export</source>
+<target>Exporter</target></trans-unit>
+<trans-unit id="s6cb42e069006dbf6">
+  <source>Export tasks (CSV)</source>
+<target>Exporter les tâches (CSV)</target></trans-unit>
+<trans-unit id="s2f43aed600a05a82">
+  <source>Export tasks (JSON)</source>
+<target>Exporter les tâches (JSON)</target></trans-unit>
+<trans-unit id="sb005626528a88ccb">
+  <source>Export time (CSV)</source>
+<target>Exporter le temps (CSV)</target></trans-unit>
+<trans-unit id="sdaf3d13c3b1ec474">
+  <source>Danger Zone</source>
+<target>Zone dangereuse</target></trans-unit>
+<trans-unit id="sa2abb0b89ad75398">
+  <source>This project is archived.</source>
+<target>Ce projet est archivé.</target></trans-unit>
+<trans-unit id="sf71a90bc017f1e80">
+  <source>Unarchive</source>
+<target>Désarchiver</target></trans-unit>
+<trans-unit id="s6ea3fcb84c4a999c">
+  <source>Archive this project — it stays accessible but hidden and read-only.</source>
+<target>Archiver ce projet — il reste accessible mais masqué et en lecture seule.</target></trans-unit>
+<trans-unit id="sfbd5d6e8a68d1c9c">
+  <source>Archive project</source>
+<target>Archiver le projet</target></trans-unit>
+<trans-unit id="sc85ee5ed0c5814fb">
+  <source>Move incomplete tasks to</source>
+<target>Déplacer les tâches incomplètes vers</target></trans-unit>
+<trans-unit id="sff1ee8ce96247908">
+  <source>Complete cycle</source>
+<target>Terminer le cycle</target></trans-unit>
+<trans-unit id="s27976e94b05c6970">
+  <source>Activate</source>
+<target>Activer</target></trans-unit>
+<trans-unit id="sdcda09c20b09b522">
+  <source>Complete</source>
+<target>Terminer</target></trans-unit>
+<trans-unit id="sc1356b9f791bf737">
+  <source>Statuses</source>
+<target>Statuts</target></trans-unit>
+<trans-unit id="s9a540abc90e65590">
+  <source>Failed to add/remove dependency</source>
+<target>Échec de modification de dépendance</target></trans-unit>
+<trans-unit id="se5ecd6c894ee69dc">
+  <source>Template updated</source>
+<target>Modèle mis à jour</target></trans-unit>
+<trans-unit id="s06a7157bde7bb51f">
+  <source>Template created</source>
+<target>Modèle créé</target></trans-unit>
+<trans-unit id="s2fc3c3277fad6120">
+  <source>Failed to save template</source>
+<target>Échec de l'enregistrement</target></trans-unit>
+<trans-unit id="s7f3e1f222ad91851">
+  <source>Delete this template?</source>
+<target>Supprimer ce modèle ?</target></trans-unit>
+<trans-unit id="s34c04c24c5a9d0c6">
+  <source>Template deleted</source>
+<target>Modèle supprimé</target></trans-unit>
+<trans-unit id="scb3bd1fc72bf748e">
+  <source>Failed to delete template</source>
+<target>Échec de la suppression</target></trans-unit>
+<trans-unit id="s8fd199cb9f1968de">
+  <source>Task created from template</source>
+<target>Tâche créée depuis le modèle</target></trans-unit>
+<trans-unit id="s78c4dd699901851e">
+  <source>Failed to create task from template</source>
+<target>Échec de création depuis le modèle</target></trans-unit>
+<trans-unit id="sf78acfd84279f8ef">
+  <source>No tasks with dates yet.</source>
+<target>Aucune tâche avec date.</target></trans-unit>
+<trans-unit id="sbb9b3dab37c0d55f">
+  <source>Add a start or due date on a task to see it on the timeline.</source>
+<target>Ajoutez une date de début ou d'échéance à une tâche pour la voir sur la chronologie.</target></trans-unit>
+<trans-unit id="sa442044b586ec8bf">
+  <source>Action</source>
+<target>Action</target></trans-unit>
+<trans-unit id="sf865a44470a1eb3a">
+  <source>Actor</source>
+<target>Acteur</target></trans-unit>
+<trans-unit id="s4629b7b800f2e747">
+  <source>You don't have permission to view the audit log.</source>
+<target>Vous n'avez pas la permission de consulter le journal d'audit.</target></trans-unit>
+<trans-unit id="se38e48603ba0394c">
+  <source>Failed to load audit log.</source>
+<target>Échec du chargement du journal d'audit.</target></trans-unit>
+<trans-unit id="s577471b709561feb">
+  <source>No audit entries yet.</source>
+<target>Aucune entrée dans le journal.</target></trans-unit>
+<trans-unit id="s498865c7bd1f3959">
+  <source>unknown</source>
+<target>inconnu</target></trans-unit>
+<trans-unit id="sf3ff78cc329d3528">
+  <source>Previous</source>
+<target>Précédent</target></trans-unit>
+<trans-unit id="s5373e0bf1dfbbdbf">
+  <source><x id="0" equiv-text="${this._offset + 1}"/>–<x id="1" equiv-text="${Math.min(this._offset + this._entries.length, this._total)}"/> of <x id="2" equiv-text="${this._total}"/></source>
+<target><x id="0" equiv-text="${this._offset + 1}"/>–<x id="1" equiv-text="${Math.min(this._offset + this._entries.length, this._total)}"/> sur <x id="2" equiv-text="${this._total}"/></target></trans-unit>
+<trans-unit id="s0fbf6dc6a1966408">
+  <source>Next</source>
+<target>Suivant</target></trans-unit>
+<trans-unit id="s5c9ce2128877b26f">
+  <source>Admin actions in this workspace</source>
+<target>Actions admin dans cet espace de travail</target></trans-unit>
+<trans-unit id="s29ec38c62d80c84d">
+  <source>Failed to create label</source>
+<target>Échec de création</target></trans-unit>
+<trans-unit id="s4ae1836396eed8a0">
+  <source>Failed to update label</source>
+<target>Échec de mise à jour</target></trans-unit>
+<trans-unit id="s259b6cd837a83142">
+  <source>Failed to delete label</source>
+<target>Échec de suppression</target></trans-unit>
+<trans-unit id="s2f5814294a9a2174">
+  <source>Loading labels…</source>
+<target>Chargement des étiquettes…</target></trans-unit>
+<trans-unit id="sefde5c4bb21d858e">
+  <source>No labels yet. Create one above.</source>
+<target>Aucune étiquette. Créez-en une ci-dessus.</target></trans-unit>
+<trans-unit id="s847e7a186c05b9d1">
+  <source>No labels match your search.</source>
+<target>Aucune étiquette ne correspond.</target></trans-unit>
+<trans-unit id="scd8cc45ce54bbe4a">
+  <source>Failed to load organization</source>
+<target>Échec du chargement de l'organisation</target></trans-unit>
+<trans-unit id="sfddf748aa17755da">
+  <source>Name must be at least 2 characters</source>
+<target>Le nom doit contenir au moins 2 caractères</target></trans-unit>
+<trans-unit id="s0acdbcb7a736365d">
+  <source>Failed to update organization</source>
+<target>Échec de la mise à jour de l'organisation</target></trans-unit>
+<trans-unit id="s8524acaf8e4cecc3">
+  <source>Failed to download backup</source>
+<target>Échec du téléchargement</target></trans-unit>
+<trans-unit id="scff4f6ec8cc48155">
+  <source>Failed to stage restore</source>
+<target>Échec de la préparation de la restauration</target></trans-unit>
+<trans-unit id="sf1740d09dcc48a9b">
+  <source>Failed to cancel restore</source>
+<target>Échec de l'annulation de la restauration</target></trans-unit>
+<trans-unit id="s44fb9da4518483fd">
+  <source>Type the organization name to confirm</source>
+<target>Saisissez le nom de l'organisation pour confirmer</target></trans-unit>
+<trans-unit id="s7ea748136a6f85e3">
+  <source>Failed to delete organization</source>
+<target>Échec de la suppression de l'organisation</target></trans-unit>
+<trans-unit id="sac2e0b1577789974">
+  <source>Loading organization…</source>
+<target>Chargement de l'organisation…</target></trans-unit>
+<trans-unit id="s3a2cf8636215cffb">
+  <source>Organization name and message edit window</source>
+<target>Nom de l'organisation et fenêtre de modification</target></trans-unit>
+<trans-unit id="s51d9e9d8c2c45bb0">
+  <source>The display name of your workspace</source>
+<target>Le nom d'affichage de votre espace de travail</target></trans-unit>
+<trans-unit id="s65ffb32d4840acbc">
+  <source>Message edit window (minutes)</source>
+<target>Fenêtre de modification (minutes)</target></trans-unit>
+<trans-unit id="sb7b5e5f348da7eba">
+  <source>How long users can edit messages after sending. 0 = no limit.</source>
+<target>Durée de modification des messages après envoi. 0 = aucune limite.</target></trans-unit>
+<trans-unit id="s870f7b2f8c27e219">
+  <source>Save changes</source>
+<target>Enregistrer les modifications</target></trans-unit>
+<trans-unit id="s41b38b5a426da0de">
+  <source>Review admin actions taken in this workspace</source>
+<target>Consulter les actions admin dans cet espace de travail</target></trans-unit>
+<trans-unit id="s1db17bb025fb5fb1">
+  <source>View audit log</source>
+<target>Voir le journal d'audit</target></trans-unit>
+<trans-unit id="s0313e88978200066">
+  <source>Database backup</source>
+<target>Sauvegarde de la base de données</target></trans-unit>
+<trans-unit id="s97bae4c8ae2d5b0e">
+  <source>Download or restore a database backup</source>
+<target>Télécharger ou restaurer une sauvegarde</target></trans-unit>
+<trans-unit id="s8ad431a105c58029">
+  <source>A restore is staged and will be applied on next server restart.</source>
+<target>Une restauration est prête et sera appliquée au prochain redémarrage.</target></trans-unit>
+<trans-unit id="s2943232fea977915">
+  <source>Cancel restore</source>
+<target>Annuler la restauration</target></trans-unit>
+<trans-unit id="s734dd460c9795cd9">
+  <source>Download backup</source>
+<target>Télécharger la sauvegarde</target></trans-unit>
+<trans-unit id="sfd9fefa0fb2a5c3f">
+  <source>Download a snapshot of the current database. This may take a moment for large databases.</source>
+<target>Téléchargez un instantané de la base de données. Cela peut prendre un moment.</target></trans-unit>
+<trans-unit id="se669394f6cda2953">
+  <source>Downloading…</source>
+<target>Téléchargement…</target></trans-unit>
+<trans-unit id="s659f72768bf329b7">
+  <source>Restore from backup</source>
+<target>Restaurer depuis une sauvegarde</target></trans-unit>
+<trans-unit id="s4cd428ca1e8a6013">
+  <source>Upload a .db backup file to restore the entire database.</source>
+<target>Téléchargez un fichier .db pour restaurer la base de données.</target></trans-unit>
+<trans-unit id="s4e81c6b8f996a749">
+  <source>Select backup file</source>
+<target>Sélectionner un fichier de sauvegarde</target></trans-unit>
+<trans-unit id="s941306fbf8977043">
+  <source>Restore replaces the entire database. The server must be restarted to apply. This action cannot be undone.</source>
+<target>La restauration remplace toute la base de données. Le serveur doit être redémarré. Cette action est irréversible.</target></trans-unit>
+<trans-unit id="scbab4c5824ebac31">
+  <source>Delete organization</source>
+<target>Supprimer l'organisation</target></trans-unit>
+<trans-unit id="sa6522b312d6e856b">
+  <source>This permanently deletes "<x id="0" equiv-text="${this._org?.name ?? &quot;&quot;}"/>". This action cannot be undone. Type the organization name to confirm.</source>
+<target>Ceci supprime définitivement "<x id="0" equiv-text="${this._org?.name ?? &quot;&quot;}"/>". Cette action est irréversible. Saisissez le nom de l'organisation pour confirmer.</target></trans-unit>
+<trans-unit id="saf7b6785c8312e71">
+  <source>Deleting…</source>
+<target>Suppression…</target></trans-unit>
+<trans-unit id="s24761a0cc8d9c0aa">
+  <source>Organization</source>
+<target>Organisation</target></trans-unit>
+<trans-unit id="s3df31fa1309cd889">
+  <source>Manage your workspace settings</source>
+<target>Gérer les paramètres de l'espace de travail</target></trans-unit>
+<trans-unit id="s76d21e163887ddd1">
+  <source>Unknown device</source>
+<target>Appareil inconnu</target></trans-unit>
+<trans-unit id="s84c2a7d714a9bf17">
+  <source>Failed to update profile</source>
+<target>Échec de la mise à jour du profil</target></trans-unit>
+<trans-unit id="s184c0805b03a16a7">
+  <source>Failed to upload avatar</source>
+<target>Échec du téléchargement de l'avatar</target></trans-unit>
+<trans-unit id="s2f7205509e1498dc">
+  <source>New passwords do not match</source>
+<target>Les nouveaux mots de passe ne correspondent pas</target></trans-unit>
+<trans-unit id="s4e532c2e5f080390">
+  <source>New password must be at least 8 characters</source>
+<target>Le nouveau mot de passe doit contenir au moins 8 caractères</target></trans-unit>
+<trans-unit id="sb2d30261ad96038c">
+  <source>Failed to change password</source>
+<target>Échec du changement de mot de passe</target></trans-unit>
+<trans-unit id="s5d4caa10b82a5565">
+  <source>Session revoked</source>
+<target>Session révoquée</target></trans-unit>
+<trans-unit id="sc742a66d579af9b9">
+  <source>Failed to revoke session</source>
+<target>Échec de la révocation de session</target></trans-unit>
+<trans-unit id="s384517a846fdaab1">
+  <source>Loading preferences…</source>
+<target>Chargement des préférences…</target></trans-unit>
+<trans-unit id="sec65883a35a9055c">
+  <source>Manage your account preferences</source>
+<target>Gérer vos préférences de compte</target></trans-unit>
+<trans-unit id="s846b3790b6e25c1c">
+  <source>Account</source>
+<target>Compte</target></trans-unit>
+<trans-unit id="sce31af44c9e5033b">
+  <source>Your display name and avatar</source>
+<target>Votre nom d'affichage et votre avatar</target></trans-unit>
+<trans-unit id="s1967faf9ed8d3504">
+  <source>Avatar</source>
+<target>Avatar</target></trans-unit>
+<trans-unit id="s0b8a931e0841a556">
+  <source>Shown across all workspaces</source>
+<target>Affiché dans tous les espaces de travail</target></trans-unit>
+<trans-unit id="s9e5661c5225f1f6e">
+  <source>Uploading…</source>
+<target>Téléversement…</target></trans-unit>
+<trans-unit id="s96668830629e0dfc">
+  <source>Upload</source>
+<target>Télécharger</target></trans-unit>
+<trans-unit id="se724e8e0ccb7f52c">
+  <source>Display name</source>
+<target>Nom d'affichage</target></trans-unit>
+<trans-unit id="s0caaa37b218369b0">
+  <source>Synced across all your workspaces</source>
+<target>Synchronisé dans tous vos espaces de travail</target></trans-unit>
+<trans-unit id="s01a8d45397ec133b">
+  <source>Security</source>
+<target>Sécurité</target></trans-unit>
+<trans-unit id="s06c92148da82be0d">
+  <source>Change your password</source>
+<target>Modifier votre mot de passe</target></trans-unit>
+<trans-unit id="sfee74640068abc13">
+  <source>Current password</source>
+<target>Mot de passe actuel</target></trans-unit>
+<trans-unit id="s3490e2c8b9ec6ad2">
+  <source>New password</source>
+<target>Nouveau mot de passe</target></trans-unit>
+<trans-unit id="sff50532a2d85e32e">
+  <source>Change password</source>
+<target>Modifier le mot de passe</target></trans-unit>
+<trans-unit id="s5c18cae48b93138c">
+  <source>Sessions</source>
+<target>Sessions</target></trans-unit>
+<trans-unit id="s9e8ce9ef8849c3ee">
+  <source>Devices currently signed in to your account</source>
+<target>Appareils connectés à votre compte</target></trans-unit>
+<trans-unit id="sb7b64458c4f8738e">
+  <source>Loading sessions…</source>
+<target>Chargement des sessions…</target></trans-unit>
+<trans-unit id="s00c3709a3e1f88a1">
+  <source>No active sessions.</source>
+<target>Aucune session active.</target></trans-unit>
+<trans-unit id="s8559ae2483233079">
+  <source>This device</source>
+<target>Cet appareil</target></trans-unit>
+<trans-unit id="sfa9d8c928d994bf5">
+  <source>Revoked</source>
+<target>Révoquée</target></trans-unit>
+<trans-unit id="saab875d8cfcfe712">
+  <source>Theme</source>
+<target>Thème</target></trans-unit>
+<trans-unit id="s65e13b8daa12a5ca">
+  <source>Choose your preferred color scheme and palette</source>
+<target>Choisissez votre jeu de couleurs et palette préférés</target></trans-unit>
+<trans-unit id="s509eac6dabbf2960">
+  <source>Language, timezone, and region settings</source>
+<target>Langue, fuseau horaire et région</target></trans-unit>
+<trans-unit id="sefcf950b3cc4fc3b">
+  <source>Language</source>
+<target>Langue</target></trans-unit>
+<trans-unit id="s6a3dce1fafde1155">
+  <source>Select your preferred language</source>
+<target>Choisissez votre langue préférée</target></trans-unit>
+<trans-unit id="sb8a5bfb84cc58e62">
+  <source>Timezone</source>
+<target>Fuseau horaire</target></trans-unit>
+<trans-unit id="se41a36a7f3e99267">
+  <source>Used for due dates and activity timestamps</source>
+<target>Utilisé pour les dates d'échéance et les horodatages</target></trans-unit>
+<trans-unit id="s2f401fe6b42e3c4f">
+  <source>Email notifications</source>
+<target>Notifications par email</target></trans-unit>
+<trans-unit id="sc0a5b95106a56a77">
+  <source>Receive email for mentions and assignments</source>
+<target>Recevoir des emails pour les mentions et assignations</target></trans-unit>
+<trans-unit id="scc146e8d7170b1c3">
+  <source>Desktop notifications</source>
+<target>Notifications de bureau</target></trans-unit>
+<trans-unit id="sb9906e8ca68510db">
+  <source>Show browser notifications for new messages</source>
+<target>Afficher les notifications pour les nouveaux messages</target></trans-unit>
+<trans-unit id="s2d7d07132a0f529e">
+  <source>Notification sounds</source>
+<target>Sons de notification</target></trans-unit>
+<trans-unit id="s316cf2c53e4d1603">
+  <source>Play a sound when receiving notifications</source>
+<target>Jouer un son à la réception d'une notification</target></trans-unit>
+<trans-unit id="s09f8960ef0b013c7">
+  <source>Sidebar</source>
+<target>Panneau latéral</target></trans-unit>
+<trans-unit id="s36db806aaec4028b">
+  <source>Configure sidebar behavior</source>
+<target>Configurer le panneau latéral</target></trans-unit>
+<trans-unit id="s895c21a5a625da1a">
+  <source>Collapsed by default</source>
+<target>Replié par défaut</target></trans-unit>
+<trans-unit id="sd49031349928582b">
+  <source>Start with the sidebar collapsed on new sessions</source>
+<target>Commencer avec le panneau replié</target></trans-unit>
+<trans-unit id="s865bc0047a9819a2">
+  <source>All changes saved</source>
+<target>Toutes les modifications enregistrées</target></trans-unit>
+<trans-unit id="s90199af00f8366ae">
+  <source>Failed to save — will retry on next change</source>
+<target>Échec de l'enregistrement — nouvelle tentative au prochain changement</target></trans-unit>
+<trans-unit id="s0eeee94711a4ef0e">
+  <source>Changes save automatically</source>
+<target>Les modifications sont enregistrées automatiquement</target></trans-unit>
+<trans-unit id="sffcf92f6bff44de6">
+  <source>Manage your workspace preferences</source>
+<target>Gérer les préférences de l'espace de travail</target></trans-unit>
+<trans-unit id="sa166c12766ad1c1b">
+  <source>Failed to pin view</source>
+<target>Échec de l'épinglage</target></trans-unit>
+<trans-unit id="s7bcb83c653c8ae40">
+  <source>Failed to unpin view</source>
+<target>Échec du désépinglage</target></trans-unit>
+<trans-unit id="s8198b9d323f12608">
+  <source>Failed to create view</source>
+<target>Échec de la création</target></trans-unit>
+<trans-unit id="s33ba0358dba90093">
+  <source>Failed to update view</source>
+<target>Échec de la mise à jour</target></trans-unit>
+<trans-unit id="se6d189549ca9ab3d">
+  <source>Failed to delete view</source>
+<target>Échec de la suppression</target></trans-unit>
+<trans-unit id="s3dee2e5372523077">
+  <source>Saved views across your workspace.</source>
+<target>Vues enregistrées dans votre espace de travail.</target></trans-unit>
+<trans-unit id="s44851a8adf059eef">
+  <source>Pinned</source>
+<target>Épinglé</target></trans-unit>
+<trans-unit id="s5c1dd10630add630">
+  <source>Global Views</source>
+<target>Vues globales</target></trans-unit>
+<trans-unit id="s29e221479599e71b">
+  <source>Failed to load dashboard</source>
+<target>Échec du chargement du tableau de bord</target></trans-unit>
+<trans-unit id="s82328bce1fd2c2f2">
+  <source>Failed to reorder sections</source>
+<target>Échec de la réorganisation des sections</target></trans-unit>
+<trans-unit id="s34e259428d084e21">
+  <source>Failed to delete task</source>
+<target>Échec de la suppression</target></trans-unit>
+<trans-unit id="s5c4521c16485767c">
+  <source>Failed to create task</source>
+<target>Échec de la création</target></trans-unit>
+<trans-unit id="s8633e895e910707f">
+  <source>Failed to move task</source>
+<target>Échec du déplacement</target></trans-unit>
+<trans-unit id="saf25a365b2b940d7">
+  <source>Failed to update task</source>
+<target>Échec de la mise à jour</target></trans-unit>
+<trans-unit id="s2c0b153977da6e89">
+  <source>Failed to update labels</source>
+<target>Échec de mise à jour des étiquettes</target></trans-unit>
+<trans-unit id="s563549ceb0c8d6ac">
+  <source>Failed to update tasks</source>
+<target>Échec de mise à jour</target></trans-unit>
+<trans-unit id="s1d391a898edbef25">
+  <source>Failed to duplicate task</source>
+<target>Échec de la duplication</target></trans-unit>
+<trans-unit id="s66301428729c883a">
+  <source>Failed to reorder subtasks</source>
+<target>Échec de réorganisation</target></trans-unit>
+<trans-unit id="s7ce468aca927883b">
+  <source>Failed to add dependency</source>
+<target>Échec d'ajout de dépendance</target></trans-unit>
+<trans-unit id="sb13d720c9181ac00">
+  <source>Failed to remove dependency</source>
+<target>Échec de suppression de dépendance</target></trans-unit>
+<trans-unit id="s0b89acf99325630b">
+  <source>Failed to update project</source>
+<target>Échec de la mise à jour</target></trans-unit>
+<trans-unit id="s125813d2f3084797">
+  <source>Failed to load projects</source>
+<target>Échec du chargement des projets</target></trans-unit>
+<trans-unit id="s042a19742bf57403">
+  <source>Failed to load archived projects</source>
+<target>Échec du chargement des projets archivés</target></trans-unit>
+<trans-unit id="s4d08eda9d8a041ac">
+  <source>Project archived</source>
+<target>Projet archivé</target></trans-unit>
+<trans-unit id="sc91971af931426cc">
+  <source>Project restored</source>
+<target>Projet restauré</target></trans-unit>
+<trans-unit id="sb9bc5981e6cd2dce">
+  <source>Failed to restore project</source>
+<target>Échec de la restauration</target></trans-unit>
+<trans-unit id="s65d962e0cb8cd28e">
+  <source>tasks in this cycle</source>
+<target>tâches dans ce cycle</target></trans-unit>
+<trans-unit id="sfdde30c24ce38292">
+  <source>completed</source>
+<target>terminé</target></trans-unit>
+<trans-unit id="s97cad19cc4cae3ca">
+  <source>Failed to create invite.</source>
+  <target>Échec de la création de l'invitation.</target>
+</trans-unit>
+<trans-unit id="s0cecc2121f205fb2">
+  <source>Delete this message?</source>
+  <target>Supprimer ce message ?</target>
+</trans-unit>
+<trans-unit id="sf582980817204d54">
+  <source>Failed to start timer</source>
+  <target>Échec du démarrage du chronomètre</target>
+</trans-unit>
+<trans-unit id="sd7fdf3a243dce392">
+  <source>Failed to stop timer</source>
+  <target>Échec de l'arrêt du chronomètre</target>
+</trans-unit>
+<trans-unit id="s81768aeba09806c9">
+  <source>Failed to delete time entry</source>
+  <target>Échec de la suppression de l'entrée de temps</target>
+</trans-unit>
+<trans-unit id="s75af537304d62453">
+  <source>Failed to upload attachment</source>
+  <target>Échec du téléversement de la pièce jointe</target>
+</trans-unit>
+<trans-unit id="s2903312a9d1e6151">
+  <source>Failed to delete attachment</source>
+  <target>Échec de la suppression de la pièce jointe</target>
+</trans-unit>
+<trans-unit id="sc1d0da9d27117983">
+  <source>Promoted to top-level task</source>
+  <target>Promu en tâche de premier niveau</target>
+</trans-unit>
+<trans-unit id="s06bdfd98d78ba80e">
+  <source>Failed to promote task</source>
+  <target>Échec de la promotion de la tâche</target>
+</trans-unit>
+<trans-unit id="sdd1c3ccab21c02d0">
+  <source>Copied as Markdown</source>
+  <target>Copié en Markdown</target>
+</trans-unit>
+<trans-unit id="s527397482291d85e">
+  <source>Failed to copy</source>
+  <target>Échec de la copie</target>
+</trans-unit>
+<trans-unit id="sd22c5f84b65dfc6f">
+  <source>Task moved</source>
+  <target>Tâche déplacée</target>
+</trans-unit>
+<trans-unit id="s86171d840334c6ec">
+  <source>Failed to create subtask</source>
+  <target>Échec de la création de la sous-tâche</target>
+</trans-unit>
+<trans-unit id="s8dbe0f59fea58c3a">
+  <source>Task assignments</source>
+  <target>Tâches assignées</target>
+</trans-unit>
+<trans-unit id="sc30606b66d992037">
+  <source>Task status changes</source>
+  <target>Changements de statut des tâches</target>
+</trans-unit>
+<trans-unit id="sb13004f608af42be">
+  <source>Tasks due soon</source>
+  <target>Tâches à échéance proche</target>
+</trans-unit>
+<trans-unit id="see9fb3939b044c29">
+  <source>Overdue tasks</source>
+  <target>Tâches en retard</target>
+</trans-unit>
+<trans-unit id="sc6068cbd9084fda0">
+  <source>Direct messages</source>
+  <target>Messages directs</target>
+</trans-unit>
+<trans-unit id="sda7585010fcad3fe">
+  <source>Chat mentions</source>
+  <target>Mentions de chat</target>
+</trans-unit>
+<trans-unit id="scca54d27762d8ade">
+  <source>Failed to update notification preference</source>
+<target>Échec de mise à jour des préférences</target></trans-unit>
+<trans-unit id="sc79d82617b9e58d2">
+  <source>Notification channels</source>
+<target>Canaux de notification</target></trans-unit>
+<trans-unit id="s8e22a7831830f77c">
+  <source>Choose how notifications are delivered</source>
+<target>Choisissez comment les notifications sont livrées</target></trans-unit>
+<trans-unit id="s56628ee369643d23">
+  <source>Notification types</source>
+<target>Types de notification</target></trans-unit>
+<trans-unit id="saec41c5dd3522192">
+  <source>Choose which events trigger notifications</source>
+<target>Choisissez quels événements déclenchent des notifications</target></trans-unit>
+<trans-unit id="sc656d62a1ad75f06">
+  <source>Failed to create workspace</source>
+  <target>Échec de la création de l'espace de travail</target>
+</trans-unit>
+<trans-unit id="sdf7e54af6916cb51">
+  <source>Failed to rename.</source>
+  <target>Échec du renommage.</target>
+</trans-unit>
+<trans-unit id="se49e7d661cdf2a27">
+  <source>Failed to remove member</source>
+  <target>Échec de la suppression du membre</target>
+</trans-unit>
+<trans-unit id="s5a5bd26c718d3181">
+  <source>Failed to add members</source>
+  <target>Échec de l'ajout des membres</target>
+</trans-unit>
+<trans-unit id="s707f75f24683207c">
+  <source>Failed to save.</source>
+  <target>Échec de l'enregistrement.</target>
+</trans-unit>
+<trans-unit id="sa30f3959fa7ec48c">
+  <source>Failed to add.</source>
+  <target>Échec de l'ajout.</target>
+</trans-unit>
+<trans-unit id="sf9fd713f543df83d">
+  <source>Failed to create category.</source>
+  <target>Échec de la création de la catégorie.</target>
+</trans-unit>
+<trans-unit id="sab20e9d0916e21ee">
+  <source>Failed to create channel.</source>
+  <target>Échec de la création du canal.</target>
+</trans-unit>
+<trans-unit id="s13eec5a5d9d7889d">
+  <source>Failed to start chat.</source>
+  <target>Échec du démarrage de la conversation.</target>
+</trans-unit>
+<trans-unit id="s33f16872f711df5b">
+  <source>Failed to load projects.</source>
+  <target>Échec du chargement des projets.</target>
+</trans-unit>
+<trans-unit id="s4d34aeaa5e56947d">
+  <source>Failed to save project assignments.</source>
+  <target>Échec de l'enregistrement des affectations de projet.</target>
+</trans-unit>
+<trans-unit id="sc24b23e55b4da53e">
+  <source>Failed to accept invite.</source>
+  <target>Échec de l'acceptation de l'invitation.</target>
+</trans-unit>
+<trans-unit id="sd9393590ad3c5020">
+  <source>Failed to save cycle</source>
+  <target>Échec de l'enregistrement du cycle</target>
+</trans-unit>
+<trans-unit id="s6bf47c8584c39d1c">
+  <source>Failed to remove member. Please try again.</source>
+  <target>Échec de la suppression du membre. Veuillez réessayer.</target>
+</trans-unit>
+<trans-unit id="s61f1d27921e2f05f">
+  <source>Failed to create project. Please try again.</source>
+  <target>Échec de la création du projet. Veuillez réessayer.</target>
+</trans-unit>
+<trans-unit id="s4882c503a2b35d23">
+  <source>Failed to add time entry</source>
+  <target>Échec de l'ajout de la saisie de temps</target>
+</trans-unit>
+<trans-unit id="sef6a969308493bc6">
+  <source>Failed to load activity.</source>
+  <target>Échec du chargement de l'activité.</target>
+</trans-unit>
+</body>
+</file>
+</xliff>

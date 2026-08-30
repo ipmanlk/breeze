@@ -1,0 +1,35 @@
+/* Monokai palette */
+
+:root[data-palette="monokai"] {
+  color-scheme: dark;
+
+  --background: #2d2a2e;
+  --foreground: #fcfcfa;
+  --card: #221f22;
+  --card-foreground: #fcfcfa;
+  --popover: #221f22;
+  --popover-foreground: #fcfcfa;
+  --secondary: #3e3a40;
+  --secondary-foreground: #fcfcfa;
+  --muted: #3e3a40;
+  --muted-foreground: #939293;
+  --accent: #3e3a40;
+  --accent-foreground: #fcfcfa;
+  --destructive: #ff6188;
+  --destructive-foreground: #fcfcfa;
+  --warning: #ffd866;
+  --warning-foreground: #2d2a2e;
+  --border: #3e3a40;
+  --input: #3e3a40;
+  --ring: #a9dc76;
+  --primary: #a9dc76;
+  --primary-foreground: #2d2a2e;
+  --sidebar: #2d2a2e;
+  --sidebar-foreground: #fcfcfa;
+  --sidebar-accent: #3e3a40;
+  --sidebar-accent-foreground: #fcfcfa;
+  --sidebar-primary: #a9dc76;
+  --sidebar-primary-foreground: #2d2a2e;
+  --sidebar-border: #3e3a40;
+  --sidebar-ring: #a9dc76;
+}

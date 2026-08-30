@@ -1,0 +1,35 @@
+/* One Dark palette */
+
+:root[data-palette="one-dark"] {
+  color-scheme: dark;
+
+  --background: #282c34;
+  --foreground: #abb2bf;
+  --card: #21252b;
+  --card-foreground: #abb2bf;
+  --popover: #21252b;
+  --popover-foreground: #abb2bf;
+  --secondary: #2c313a;
+  --secondary-foreground: #abb2bf;
+  --muted: #2c313a;
+  --muted-foreground: #7f848e;
+  --accent: #353b45;
+  --accent-foreground: #abb2bf;
+  --destructive: #e06c75;
+  --destructive-foreground: #282c34;
+  --warning: #e5c07b;
+  --warning-foreground: #282c34;
+  --border: #3e4451;
+  --input: #3e4451;
+  --ring: #61afef;
+  --primary: #61afef;
+  --primary-foreground: #282c34;
+  --sidebar: #282c34;
+  --sidebar-foreground: #abb2bf;
+  --sidebar-accent: #2c313a;
+  --sidebar-accent-foreground: #abb2bf;
+  --sidebar-primary: #61afef;
+  --sidebar-primary-foreground: #282c34;
+  --sidebar-border: #3e4451;
+  --sidebar-ring: #61afef;
+}

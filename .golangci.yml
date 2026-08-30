@@ -1,0 +1,34 @@
+# golangci-lint v2 configuration (https://golangci-lint.run/usage/configuration/).
+# The CI uses golangci/golangci-lint-action@v9, which requires golangci-lint
+# >= v2.1.0. We pin an intentional linter set (`default: none` + explicit
+# `enable`) instead of relying on defaults:
+#   - the project conventionally ignores non-critical errors (db.Close,
+#     tx.Rollback, best-effort Notify), so errcheck is intentionally off;
+#   - test files implement large interfaces whose unused mock methods are
+#     expected noise, so they are excluded from linting.
+version: "2"
+
+linters:
+  default: none
+  enable:
+    - copyloopvar
+    - govet
+    - ineffassign
+    - misspell
+    - staticcheck
+    - unused
+  exclusions:
+    # Test files implement full interfaces with many unused methods and
+    # routinely ignore errors / leave best-effort branches empty. Don't fail
+    # the build on that conventional noise.
+    rules:
+      - path: _test\.go
+        linters:
+          - unused
+          - ineffassign
+          - staticcheck
+      # Best-effort "ignore the error" branches (e.g. UpdateReadState, Notify)
+      # are intentional; don't fail on the empty branch.
+      - linters:
+          - staticcheck
+        text: "SA9003"

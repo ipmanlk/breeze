@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "lib": ["deno.ns", "dom", "esnext"],
+    // Align `deno check src/main.ts` with the Vite tsconfig.json (which has
+    // no "strict" flag and enables legacy decorators for Lit).
+    "experimentalDecorators": true,
+    "noImplicitOverride": false,
+    "strict": false,
+    "types": ["vite/client"],
+    "noUnusedLocals": false,
+    "noUnusedParameters": false
+  },
+  "unstable": ["sloppy-imports"],
+  "imports": {
+    "@std/assert": "jsr:@std/assert@^1.0.19",
+    "@/": "./src/",
+    "dompurify": "./test_stubs/dompurify.ts"
+  },
+  "tasks": {
+    "test": "deno test --no-check --sloppy-imports"
+  },
+  "fmt": {
+    "exclude": [
+      "src/api/",
+      "src/i18n/locales/",
+      "src/i18n/locale-codes.ts"
+    ]
+  }
+}

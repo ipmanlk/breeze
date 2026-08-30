@@ -1,0 +1,98 @@
+/* ── Breeze Motion Disable System ──────────────────────────────
+ * Each animation group can be disabled individually by setting
+ * a `data-motion-<group>="0"` attribute on <html>.
+ *
+ * This file must be imported AFTER animations.css so the
+ * `!important` overrides take precedence.
+ *
+ * The master switch `data-motion="0"` disables ALL animation
+ * and transition on every element (including inside shadow DOM)
+ * by zeroing --motion-scale, which the --dur-* tokens multiply
+ * by (see index.css). Since custom properties inherit across
+ * shadow boundaries, this reaches Lit component internals.
+ * ───────────────────────────────────────────────────────────── */
+
+/* ── Master switch ──
+ * Zero --motion-scale so every --dur-* token resolves to 0ms
+ * inside shadow roots too. The !important rules below catch any
+ * hardcoded durations in light-DOM elements. */
+:root[data-motion="0"] {
+  --motion-scale: 0;
+}
+
+/* ── Master switch (light-DOM fallback) ── */
+:root[data-motion="0"] *,
+:root[data-motion="0"] *::before,
+:root[data-motion="0"] *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+}
+
+/* ── Per-group overrides ── */
+:root[data-motion-page="0"] .page-enter,
+:root[data-motion-page="0"] .tab-content {
+  animation: none !important;
+}
+
+:root[data-motion-feedback="0"] button,
+:root[data-motion-feedback="0"] .thumb,
+:root[data-motion-feedback="0"] .track,
+:root[data-motion-feedback="0"] .option,
+:root[data-motion-feedback="0"] .trigger,
+:root[data-motion-feedback="0"] [role="tab"],
+:root[data-motion-feedback="0"] .icon-btn,
+:root[data-motion-feedback="0"] .header-btn,
+:root[data-motion-feedback="0"] .member-row,
+:root[data-motion-feedback="0"] .add-member-row {
+  transition: none !important;
+}
+
+:root[data-motion-layout="0"] .sidebar,
+:root[data-motion-layout="0"] .cl-main,
+:root[data-motion-layout="0"] .right-panel,
+:root[data-motion-layout="0"] .settings-panel {
+  transition: none !important;
+}
+
+:root[data-motion-overlay="0"] dialog,
+:root[data-motion-overlay="0"] dialog::backdrop,
+:root[data-motion-overlay="0"] .popover,
+:root[data-motion-overlay="0"] .tooltip,
+:root[data-motion-overlay="0"] .menu {
+  animation: none !important;
+  transition: none !important;
+}
+
+:root[data-motion-list="0"] .list-item-enter,
+:root[data-motion-list="0"] .content-enter,
+:root[data-motion-list="0"] .member-row {
+  animation: none !important;
+}
+
+:root[data-motion-loading="0"] .skeleton-shimmer,
+:root[data-motion-loading="0"] .skeleton-pulse,
+:root[data-motion-loading="0"] .spinner {
+  animation: none !important;
+}
+
+:root[data-motion-dnd="0"] [data-dragging],
+:root[data-motion-dnd="0"] [data-drop-target] {
+  transition: none !important;
+}
+
+:root[data-motion-notify="0"] .toast,
+:root[data-motion-notify="0"] .toast-in,
+:root[data-motion-notify="0"] .toast-out {
+  animation: none !important;
+}
+
+:root[data-motion-chat="0"] .dot,
+:root[data-motion-chat="0"] .message-item {
+  animation: none !important;
+}
+
+:root[data-motion-voice="0"] .speaking,
+:root[data-motion-voice="0"] .voice-indicator {
+  animation: none !important;
+}

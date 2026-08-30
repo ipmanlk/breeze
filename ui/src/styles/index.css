@@ -1,0 +1,278 @@
+@import "@fontsource-variable/geist";
+@import "../themes/breeze.css";
+@import "../themes/github-dark.css";
+@import "../themes/solarized.css";
+@import "../themes/dracula.css";
+@import "../themes/nord.css";
+@import "../themes/monokai.css";
+@import "../themes/catppuccin.css";
+@import "../themes/tokyo-night.css";
+@import "../themes/one-dark.css";
+@import "../themes/gruvbox.css";
+@import "../themes/rose-pine.css";
+
+/* Breeze UI: design tokens, reset, globals */
+
+/*
+ * Design Token System
+ * ─────────────────────────────────────────────────────────────
+ * Tokens are layered:
+ *   1. Primitives: raw scale values (spacing, radius, type, motion)
+ *   2. Semantic: meaning-based aliases (control heights, shadows,
+ *                   z-index layers, layout dimensions)
+ *   3. Component: component-specific dimensions (--kanban-col-w)
+ *
+ * All spacing/sizing follows a 4px (0.25rem) base grid so values stay
+ * on-pixel at the default 16px root font size. Use rem (not px) for
+ * everything that should scale with user font-size preferences.
+ */
+:root {
+  color-scheme: light dark;
+
+  /* ── Spacing — 4px grid (multiples of 0.25rem) ──────────────── */
+  --space-0: 0;
+  --space-px: 1px;
+  --space-0-5: 0.125rem; /* 2px */
+  --space-1: 0.25rem; /*  4px */
+  --space-1-5: 0.375rem; /*  6px */
+  --space-2: 0.5rem; /*  8px */
+  --space-2-5: 0.625rem; /* 10px */
+  --space-3: 0.75rem; /* 12px */
+  --space-3-5: 0.875rem; /* 14px */
+  --space-4: 1rem; /* 16px */
+  --space-5: 1.25rem; /* 20px */
+  --space-6: 1.5rem; /* 24px */
+  --space-7: 1.75rem; /* 28px */
+  --space-8: 2rem; /* 32px */
+  --space-10: 2.5rem; /* 40px */
+  --space-12: 3rem; /* 48px */
+  --space-16: 4rem; /* 64px */
+  --space-20: 5rem; /* 80px */
+  --space-24: 6rem; /* 96px */
+  --space-28: 7rem; /* 112px */
+  --space-32: 8rem; /* 128px */
+  --space-36: 9rem; /* 144px */
+  --space-40: 10rem; /* 160px */
+  --space-44: 11rem; /* 176px */
+  --space-48: 12rem; /* 192px */
+  --space-56: 14rem; /* 224px */
+  --space-60: 15rem; /* 240px */
+  --space-64: 16rem; /* 256px */
+  --space-72: 18rem; /* 288px */
+  --space-80: 20rem; /* 320px */
+  --space-96: 24rem; /* 384px */
+  --space-112: 28rem; /* 448px */
+  --space-128: 32rem; /* 512px */
+  --space-160: 40rem; /* 640px */
+  --space-168: 42rem; /* 672px */
+
+  /* ── Radius ─────────────────────────────────────────────────── */
+  --radius-none: 0;
+  --radius-sm: 0.25rem; /*  4px */
+  --radius-md: 0.375rem; /*  6px */
+  --radius-lg: 0.5rem; /*  8px */
+  --radius-xl: 0.75rem; /* 12px */
+  --radius-full: 9999px;
+
+  /* ── Typography ─────────────────────────────────────────────── */
+  --font-heading: var(--font-sans);
+  --font-sans:
+    "Geist Variable",
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    Roboto,
+    Helvetica,
+    Arial,
+    sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  --text-2xs: 0.625rem; /* 10px; micro labels (priority, kbd) */
+  --text-xs: 0.75rem; /* 12px */
+  --text-sm: 0.875rem; /* 14px */
+  --text-base: 1rem; /* 16px */
+  --text-lg: 1.125rem; /* 18px */
+  --text-xl: 1.25rem; /* 20px */
+  --text-2xl: 1.5rem; /* 24px */
+
+  --leading-tight: 1.25;
+  --leading-normal: 1.5;
+
+  /* ── Motion (multiplied by --motion-scale) ──────────────────── */
+  /* --motion-scale is set on :root and inherits into shadow DOM.
+     0 = animations disabled, 0.5 = half speed, 1 = normal.
+     Every --dur-* token multiplies by it so the speed slider and
+     master disable work inside shadow-DOM components too. */
+  --motion-scale: 1;
+  --dur-instant: calc(50ms * var(--motion-scale));
+  --dur-fast: calc(100ms * var(--motion-scale));
+  --dur-normal: calc(150ms * var(--motion-scale));
+  --dur-slow: calc(200ms * var(--motion-scale));
+  --dur-glacial: calc(300ms * var(--motion-scale));
+  --dur-entrance: calc(250ms * var(--motion-scale));
+  --dur-exit: calc(150ms * var(--motion-scale));
+
+  /* ── Easing ─────────────────────────────────────────────────── */
+  --ease-1: cubic-bezier(0.16, 1, 0.3, 1); /* default        */
+  --ease-2: cubic-bezier(0.4, 0, 0.2, 1); /* decelerate     */
+  --ease-3: cubic-bezier(0, 0, 0.2, 1); /* accelerate     */
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1); /* pop           */
+  --ease-bounce: cubic-bezier(0.68, -0.6, 0.32, 1.6); /* snappy      */
+
+  /* ── Transition shorthand tokens ────────────────────────────── */
+  --tr-fast: background var(--dur-fast) var(--ease-1);
+  --tr-color: color var(--dur-fast) var(--ease-1);
+  --tr-shadow: box-shadow var(--dur-fast) var(--ease-1);
+  --tr-transform: transform var(--dur-normal) var(--ease-2);
+  --tr-opacity: opacity var(--dur-fast) var(--ease-1);
+  --tr-width: width var(--dur-slow) var(--ease-2);
+
+  /* ── Legacy tokens (backwards compat, map to new) ──────────── */
+  --duration-fast: var(--dur-fast);
+  --duration-normal: var(--dur-normal);
+  --ease-out: var(--ease-1);
+
+  /* ── Sizing — component dimensions ─────────────────────────── */
+  --control-h: 2.25rem; /* 36px; default button / input */
+  --control-h-sm: 2rem; /* 32px; small control */
+  --control-h-xs: 1.75rem; /* 28px; compact icon button */
+  --avatar-sm: 1.25rem; /* 20px; inline avatar (cards) */
+  --avatar-md: 2rem; /* 32px; nav avatar */
+  --avatar-lg: 2.5rem; /* 40px; project icon */
+
+  /* ── Switch (matches shadcn Switch data-size=default) ─────────── */
+  --switch-w: 2rem; /* 32px; track width */
+  --switch-h: 1.15rem; /* 18.4px; track height */
+
+  /* ── Elevation (shadows work in light & dark) ──────────────── */
+  --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-sm:
+    0 1px 3px 0 rgba(0, 0, 0, 0.07),
+    0 1px 2px -1px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.15);
+
+  /* ── Z-index — stacking layers (each above the previous) ────── */
+  --z-sticky: 10; /* sticky headers / tabs */
+  --z-dropdown: 20; /* menus, popovers */
+  --z-overlay: 30; /* mobile sidebar backdrop */
+  --z-sidebar: 40; /* mobile sidebar panel */
+  --z-dialog: 50; /* modal dialogs */
+  --z-tooltip: 60; /* tooltips (always on top) */
+  --z-toast: 70; /* transient toasts (above everything) */
+
+  /* ── Layout ─────────────────────────────────────────────────── */
+  --sidebar-w: 16rem;
+  --sidebar-w-icon: 3rem;
+  --topbar-h: 3rem;
+  --kanban-col-w: 18rem;
+  --search-w: 18rem;
+  --menu-w: 14rem;
+  --menu-w-sm: 10rem;
+
+  /* ── Containers — max widths for cards / dialogs ────────────── */
+  --container-sm: 24rem; /* narrow form (login) */
+  --container-md: 28rem; /* standard dialog */
+  --container-lg: 48rem; /* wide card (project members) */
+  --container-xl: 56rem; /* max-width page (audit-log, settings) */
+  --editor-maxh: 18.75rem; /* chat editor max height */
+  --filter-w: 13rem; /* popover / filter dropdown width */
+  --cycle-w: 11.25rem; /* cycle select width */
+
+  /* ── Command palette ───────────────────────────────────────── */
+  --command-w: 42rem; /* dialog max width (max-w-2xl) */
+  --command-list-h: 18rem; /* results list max height (max-h-72) */
+  --command-top: 20vh; /* top offset when placement=top */
+
+  /* ── Timeline (gantt) ──────────────────────────────────────── */
+  --tl-day-w: 1.75rem; /* per-day column width at day zoom (28px) */
+  --tl-week-w: 0.875rem; /* per-day column width at week zoom (14px) */
+  --tl-label-w: 14rem; /* sticky left "Task" lane label (w-56) */
+  --tl-month-h: 1.75rem; /* month header row (h-7) */
+  --tl-dayrow-h: 1.75rem; /* day-of-month header row (h-7) */
+  --tl-row-h: 2.25rem; /* lane row min-height (min-h-9) */
+  --tl-bar-h: 1.375rem; /* task bar height (22px) */
+  --list-title-w: 20rem; /* list-view title column max-width (max-w-80) */
+}
+
+/* reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100svh;
+}
+body {
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  color: var(--foreground);
+  background: var(--background);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* focus-visible outline for keyboard navigation; uses --ring from each theme */
+:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+/* screen-reader only */
+.sr-only {
+  position: absolute;
+  width: var(--space-px);
+  height: var(--space-px);
+  padding: 0;
+  margin: calc(var(--space-px) * -1);
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* thin scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+*::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+*::-webkit-scrollbar-thumb {
+  background-color: var(--border);
+  border-radius: 3px;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background-color: var(--muted-foreground);
+}
+
+/* prefers-reduced-motion is honored as a *default* (applied on first load via
+ * the motion store in store/motion.ts (see readReducedMotionPref), but it is
+ * not forced with !important so the user can override it from Settings if
+ * they choose. The blanket `*` duration override below is kept as a hard
+ * safety net only for the few animations that can't be reached by
+ * --motion-scale (e.g. element-internal keyframes in shadow DOM that don't
+ * use --dur-* tokens). It is gated on the OS setting, not the app setting. */
+@media (prefers-reduced-motion: reduce) {
+  :root:not([data-motion="1"]) {
+    --motion-scale: 0;
+  }
+  :root:not([data-motion="1"]) *,
+  :root:not([data-motion="1"]) *::before,
+  :root:not([data-motion="1"]) *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

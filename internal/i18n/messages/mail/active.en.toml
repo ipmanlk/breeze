@@ -1,0 +1,15 @@
+# Email template messages (source locale: en).
+# Only email SUBJECTS are localized here (high-impact, short, easy to translate).
+# Email bodies are hardcoded HTML/text in internal/service/mail_templates.go;
+# they are rich HTML templates that are impractical to localize via TOML.
+# Notification emails use the already-localized notification title/body.
+# Placeholders use Go text/template syntax: {{.Name}}.
+
+[PasswordResetSubject]
+other = "Reset your Breeze password"
+
+[InviteSubject]
+other = "{{.Inviter}} invited you to join {{.Org}}"
+
+[NotificationSubject]
+other = "Breeze notification"

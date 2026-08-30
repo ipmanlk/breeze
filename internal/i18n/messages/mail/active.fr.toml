@@ -1,0 +1,14 @@
+# Messages d'email (langue cible : fr - français).
+# Seuls les sujets des emails sont localisés ici (impact élevé, courts).
+# Les corps HTML/texte restent en anglais dans internal/service/mail_templates.go
+# (contenu riche en HTML, peu pratique à localiser via TOML).
+# Les emails de notification utilisent le titre/corps déjà localisés.
+
+[PasswordResetSubject]
+other = "Réinitialisez votre mot de passe Breeze"
+
+[InviteSubject]
+other = "{{.Inviter}} vous invite à rejoindre {{.Org}}"
+
+[NotificationSubject]
+other = "Notification Breeze"

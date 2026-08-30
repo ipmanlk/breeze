@@ -1,0 +1,32 @@
+# Git / source control
+.git
+.gitignore
+
+# Local runtime data (must not ship SQLite files or uploads)
+data
+tmp
+*.db
+*.db-wal
+*.db-shm
+
+# UI build artifacts and dependencies
+ui/node_modules
+ui/dist
+
+# Go build artifacts
+bin
+*.test
+server
+seed
+
+# Editor / OS
+.idea
+.vscode
+*.swp
+*.swo
+.DS_Store
+
+# Env / secrets
+.env
+.env.*
+!.env.example

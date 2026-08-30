@@ -1,0 +1,28 @@
+# Push notification messages (source locale: en).
+# Push payloads are short; titles + bodies are localized. Plural categories
+# apply where a count is involved (e.g. comments). Placeholders: {{.Name}}.
+
+[TaskDueSoonTitle]
+other = "Task due: {{.Title}}"
+
+[TaskDueSoonBody]
+other = "{{.Title}} is due {{.DueAt}}"
+
+[TaskOverdueTitle]
+other = "Task overdue: {{.Title}}"
+
+[TaskOverdueBody]
+other = "{{.Title}} was due {{.DueAt}}"
+
+[ChatDMTitle]
+other = "New message from {{.Sender}}"
+
+[ChatMentionTitle]
+other = "You were mentioned"
+
+[ChatMentionBody]
+other = "You were mentioned by {{.Sender}} in {{.Conversation}}"
+
+[CommentCount]
+one = "{{.Count}} comment"
+other = "{{.Count}} comments"

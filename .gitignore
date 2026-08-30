@@ -1,0 +1,58 @@
+# Go
+/bin/
+/tmp/
+*.exe
+*.out
+
+# Tests (compiled Go test binaries)
+*.test
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# UI assets (built) — keep the committed .gitkeep placeholder so the Go
+# embed pattern always matches and builds/tests/lints don't require the UI
+# toolchain (see ui/embed.go). Real build output stays ignored.
+/ui/dist/*
+!/ui/dist/.gitkeep
+
+# Runtime data
+/data/
+
+# Env
+.env
+.env.local
+
+# Compiled Go binaries at the repo root; never commit these
+/breeze
+/server
+/seed
+/e2e.test
+/handler.test
+
+# Node.js artifacts (Deno project; these come from npx shadcn MCP)
+/node_modules/
+/package.json
+/package-lock.json
+
+# shadcn MCP / agent skill artifacts (auto-installed, not project source)
+/.agents/skills/
+/skills-lock.json
+
+.commandcode/
+
+# pi subagents runtime directory (harness-internal)
+/.pi-subagents/
+
+# Agent tooling artifacts (reference caches / state, not project source)
+/.patterns/
+/.reasonix/
+# Public-snapshot copy log (tracked via add -f, never exported to the public repo)
+/breeze-copy-log

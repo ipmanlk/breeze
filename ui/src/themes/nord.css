@@ -1,0 +1,35 @@
+/* Nord palette */
+
+:root[data-palette="nord"] {
+  color-scheme: dark;
+
+  --background: #2e3440;
+  --foreground: #eceff4;
+  --card: #3b4252;
+  --card-foreground: #eceff4;
+  --popover: #3b4252;
+  --popover-foreground: #eceff4;
+  --secondary: #434c5e;
+  --secondary-foreground: #eceff4;
+  --muted: #434c5e;
+  --muted-foreground: #81a1c1;
+  --accent: #434c5e;
+  --accent-foreground: #eceff4;
+  --destructive: #bf616a;
+  --destructive-foreground: #eceff4;
+  --warning: #ebcb8b;
+  --warning-foreground: #2e3440;
+  --border: #4c566a;
+  --input: #4c566a;
+  --ring: #5e81ac;
+  --primary: #88c0d0;
+  --primary-foreground: #2e3440;
+  --sidebar: #2e3440;
+  --sidebar-foreground: #eceff4;
+  --sidebar-accent: #3b4252;
+  --sidebar-accent-foreground: #eceff4;
+  --sidebar-primary: #88c0d0;
+  --sidebar-primary-foreground: #2e3440;
+  --sidebar-border: #4c566a;
+  --sidebar-ring: #5e81ac;
+}

@@ -1,0 +1,35 @@
+/* Dark blue-night palette */
+
+:root[data-palette="tokyo-night"] {
+  color-scheme: dark;
+
+  --background: #1a1b26;
+  --foreground: #a9b1d6;
+  --card: #1f2335;
+  --card-foreground: #a9b1d6;
+  --popover: #1f2335;
+  --popover-foreground: #a9b1d6;
+  --secondary: #24283b;
+  --secondary-foreground: #a9b1d6;
+  --muted: #24283b;
+  --muted-foreground: #565f89;
+  --accent: #2f3346;
+  --accent-foreground: #a9b1d6;
+  --destructive: #f7768e;
+  --destructive-foreground: #1a1b26;
+  --warning: #e0af68;
+  --warning-foreground: #1a1b26;
+  --border: #363b54;
+  --input: #363b54;
+  --ring: #7aa2f7;
+  --primary: #7aa2f7;
+  --primary-foreground: #1a1b26;
+  --sidebar: #1a1b26;
+  --sidebar-foreground: #a9b1d6;
+  --sidebar-accent: #24283b;
+  --sidebar-accent-foreground: #a9b1d6;
+  --sidebar-primary: #7aa2f7;
+  --sidebar-primary-foreground: #1a1b26;
+  --sidebar-border: #363b54;
+  --sidebar-ring: #7aa2f7;
+}

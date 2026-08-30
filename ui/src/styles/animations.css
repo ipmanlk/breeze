@@ -1,0 +1,283 @@
+/* ── Breeze Shared Animations ──────────────────────────────────
+ * All global @keyframes live here. Component-specific keyframes
+ * stay scoped inside each component's `static styles` (Lit hashes
+ * keyframe names in shadow DOM, so there is no collision).
+ *
+ * Every animation respects the --motion-scale multiplier via
+ * animation-duration using CSS var().
+ *
+ * Motion group gating: each animation is gated behind a
+ * --motion-* custom property. When the property is 0, the
+ * animation is overridden to none by motion-disable.css.
+ * ───────────────────────────────────────────────────────────── */
+
+/* ── Page enter ──
+ * Subtle but noticeable: fade-in + slide-up + scale.
+ * The translateY and scale create enough visual motion to mask
+ * the instant removal of the previous page during navigation.
+ */
+@keyframes page-enter {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ── Animation classes (apply keyframes) ─────────────────────
+ * These are used by page components, tab content, and list items.
+ * They also make the element a flex child that fills available space
+ * so layout works correctly inside flex containers (app-layout, guest-layout).
+ */
+.page-enter {
+  animation: page-enter var(--dur-entrance) var(--ease-2);
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  min-width: 0;
+}
+
+/* ── Dialog/overlay enter ── */
+@keyframes overlay-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes dialog-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(-16px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+@keyframes dialog-out {
+  from {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.95) translateY(-16px);
+  }
+}
+
+/* ── Slide panel (right-side panels: member list, settings) ── */
+@keyframes slide-in-right {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+@keyframes slide-out-right {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+/* ── Content fade-in / fade-out ── */
+@keyframes content-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes content-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+.content-enter {
+  animation: content-in var(--dur-normal) var(--ease-2);
+}
+
+/* ── List item enter (cards, rows, badges) ── */
+@keyframes list-item-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+.list-item-enter {
+  animation: list-item-in var(--dur-normal) var(--ease-2);
+}
+
+/* ── Skeleton shimmer (gradient sweep) ── */
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* ── Skeleton pulse (reduced-motion fallback) ── */
+@keyframes skeleton-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+/* ── Toast notification ── */
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateX(100%) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+@keyframes toast-out {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+
+/* ── Badge / counter update (scale pop) ── */
+@keyframes badge-pop {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.25);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* ── Scale in (checkbox check, switch thumb) ── */
+@keyframes scale-in {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+/* ── Shake (error feedback on inputs) ── */
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-4px);
+  }
+  75% {
+    transform: translateX(4px);
+  }
+}
+
+/* ── Spinner rotation ── */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ── Pulse glow (voice speaking, notification dot) ── */
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 var(--glow-color, rgba(59, 130, 246, 0.4));
+  }
+  50% {
+    box-shadow: 0 0 0 6px var(--glow-color, rgba(59, 130, 246, 0));
+  }
+}
+
+/* ── Tab content crossfade ── */
+@keyframes tab-fade {
+  from {
+    opacity: 0.6;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.tab-content {
+  animation: tab-fade var(--dur-normal) var(--ease-1);
+}
+
+/* ── Context / dropdown menu ── */
+@keyframes menu-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* ── Progress bar indeterminate stripe ── */
+@keyframes progress-indeterminate {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(400%);
+  }
+}
+
+/* ── Empty state illustration entrance ── */
+@keyframes empty-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── Hover card / preview popup ── */
+@keyframes hover-card-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

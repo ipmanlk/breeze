@@ -1,0 +1,173 @@
+# User-facing error messages (source locale: en).
+# These correspond to apperr sentinel errors, surfaced to the API consumer.
+# The apperr sentinel itself stays English (internal); this catalog provides
+# the localized, user-facing message returned in the ErrorResponse.Message.
+#
+# This file covers both the apperr sentinels handled by RespondWithError AND
+# the direct ErrorJSON message strings in internal/transport/handler/ and
+# internal/transport/middleware/. Each [MessageID] maps to a LocalizedErrorJSON
+# call with the same message ID.
+
+[ErrNotFound]
+other = "resource not found"
+
+[ErrForbidden]
+other = "insufficient permissions"
+
+[ErrForbiddenViewer]
+other = "viewers cannot perform this action"
+
+[ErrInvalidCreds]
+other = "invalid email or password"
+
+[ErrUserDeactivated]
+other = "user account is deactivated"
+
+[ErrSessionExpired]
+other = "session expired"
+
+[ErrSessionNotFound]
+other = "invalid or expired session"
+
+[ErrSetupComplete]
+other = "setup already completed"
+
+[ErrAlreadyExists]
+other = "resource already exists"
+
+[ErrInternal]
+other = "internal error"
+
+# ── ErrorJSON message strings from handlers + middleware ──
+
+[ErrMissingToken]
+other = "missing token"
+
+[ErrNoRoleInContext]
+other = "no role in context"
+
+[ErrMissingProjectID]
+other = "missing project id"
+
+[ErrNoAccessToProject]
+other = "no access to project"
+
+[ErrOrgContextMissing]
+other = "organization context missing"
+
+[ErrProjectArchived]
+other = "project is archived and read-only"
+
+[ErrUnauthorized]
+other = "unauthorized"
+
+[ErrNotAuthenticated]
+other = "not authenticated"
+
+[ErrUserNotFound]
+other = "user not found"
+
+[ErrNoUserInContext]
+other = "no user in context"
+
+[ErrSessionIDRequired]
+other = "session id required"
+
+[ErrSessionExists]
+other = "use /auth/logout to end your current session"
+
+[ErrInvalidMultipart]
+other = "invalid multipart form (max 5MB)"
+
+[ErrFileRequired]
+other = "file is required"
+
+[ErrFileTooLarge]
+other = "file too large or invalid form"
+
+[ErrNoFileUploaded]
+other = "no file uploaded"
+
+[ErrFileTypeNotAllowed]
+other = "this file type is not allowed"
+
+[ErrAttachmentNotFound]
+other = "attachment not found"
+
+[ErrAvatarNotFound]
+other = "avatar not found"
+
+[ErrInvitePermissionDenied]
+other = "insufficient permissions to invite with this role"
+
+[ErrInviteInvalid]
+other = "invite link is invalid or expired"
+
+[ErrInviteEmailMismatch]
+other = "email does not match invite restriction"
+
+[ErrUserAlreadyExists]
+other = "a user with this email already exists"
+
+[ErrUnknownPermissionCheck]
+other = "unknown permission check"
+
+[ErrNoAccessToConversation]
+other = "you do not have access to this conversation"
+
+[ErrConversationNotFound]
+other = "conversation not found"
+
+[ErrIDRequired]
+other = "id is required"
+
+[ErrTypeRequired]
+other = "type is required"
+
+[ErrInvalidRequestBody]
+other = "invalid request body"
+
+[ErrSectionsEmpty]
+other = "sections must not be empty"
+
+[ErrQueryRequired]
+other = "query is required"
+
+[ErrTargetIDRequired]
+other = "target_id is required for DM"
+
+[ErrInvalidType]
+other = "invalid type"
+
+[ErrNameOrTopicRequired]
+other = "name or topic is required"
+
+[ErrTopicTooLong]
+other = "topic must be at most 500 characters"
+
+[ErrParentIDRequired]
+other = "parent_id is required"
+
+[ErrInvalidLimit]
+other = "invalid limit"
+
+[ErrInvalidStartsAt]
+other = "invalid starts_at format"
+
+[ErrInvalidEndsAt]
+other = "invalid ends_at format"
+
+[ErrCannotSetOwnerAdminPerms]
+other = "admins cannot set permissions for owner or admin roles"
+
+[ErrOrgMismatch]
+other = "organization mismatch"
+
+[ErrInvalidExportFormat]
+other = "format must be csv or json"
+
+[ErrStatusNotInProject]
+other = "status does not belong to this project"
+
+[ErrFailedToUnsubscribe]
+other = "failed to unsubscribe"
