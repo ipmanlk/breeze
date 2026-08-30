@@ -9,6 +9,19 @@ ldflags at build time).
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-08-30
+
+### Fixed
+- Docker build: added `apt-get update` before installing `unzip` (apt lists
+  were already cleaned in a prior RUN step, causing the build to fail)
+- Docker build: run `deno install` before `deno task build` so UI dependencies
+  (tsc, vite, etc.) are available during the build
+- Middleware: static assets (`/assets/*.js`, `/assets/*.css`, `/favicon.svg`,
+  etc.) are now exempt from the setup redirect, so the SPA loads correctly
+  before initial setup is complete
+- `.dockerignore`: exclude non-essential paths (docs, CI, e2e tests, agent
+  tooling, dev configs) to slim the build context
+
 ## [0.1.0] - 2026-08-30
 
 Initial public release. **Breeze is in beta (0.x): APIs, data schemas, and
