@@ -15,7 +15,7 @@ COPY . .
 # checksum so builds are reproducible and supply-chain attacks are harder.
 ARG DENO_VERSION=2.9.5
 ARG DENO_SHA256=8b010a3b1a4a0188a67cdb8a7a27348b2a501af78aec7fc74f2ace167368d530
-RUN apt-get install -y --no-install-recommends unzip \
+RUN apt-get update && apt-get install -y --no-install-recommends unzip \
     && curl -fsSL https://dl.deno.land/release/v${DENO_VERSION}/deno-x86_64-unknown-linux-gnu.zip -o /tmp/deno.zip \
     && echo "${DENO_SHA256}  /tmp/deno.zip" | sha256sum -c - \
     && unzip -q /tmp/deno.zip -d /usr/local/bin \
@@ -28,7 +28,7 @@ RUN apt-get install -y --no-install-recommends unzip \
 # the build context, so `git describe` cannot run; inject the version via a
 # build arg instead (e.g. --build-arg GIT_VERSION="$(git describe --tags)").
 ARG GIT_VERSION=dev
-RUN cd ui && deno task build
+RUN cd ui && deno install && deno task build
 RUN go build -ldflags "-X ipmanlk/breeze/internal/version.Version=${GIT_VERSION}" -o bin/breeze ./cmd/server
 
 # ---- Runtime stage ----

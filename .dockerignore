@@ -2,14 +2,14 @@
 .git
 .gitignore
 
-# Local runtime data (must not ship SQLite files or uploads)
+# Local runtime data (must never ship SQLite files or uploads)
 data
 tmp
 *.db
 *.db-wal
 *.db-shm
 
-# UI build artifacts and dependencies
+# UI build artifacts and dependencies (both are recreated during build)
 ui/node_modules
 ui/dist
 
@@ -30,3 +30,37 @@ seed
 .env
 .env.*
 !.env.example
+
+# --- Below: not needed for the Docker build context ---
+# The Dockerfile only runs `deno install`, `deno task build`, and `go build`.
+# Everything below is documentation, CI, tests, or dev tooling that adds
+# nothing to the image but bloats the build context.
+
+# Documentation
+docs
+screenshots
+AGENTS.md
+CHANGELOG.md
+LICENSE
+README.md
+
+# CI / release
+.github
+
+# Dev tooling / orchestration
+.air.toml
+.golangci.yml
+compose.yaml
+Makefile
+sqlc.yaml
+
+# Go e2e tests (source is in internal/, tests are not compiled into the binary)
+internal/e2e
+
+# Agent / harness tooling
+.agents
+.patterns
+.reasonix
+.pi-subagents
+.commandcode
+skills-lock.json
