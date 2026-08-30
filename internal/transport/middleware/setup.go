@@ -3,6 +3,7 @@ package middleware
 import (
 	"log/slog"
 	"net/http"
+	"path"
 	"strings"
 
 	"ipmanlk/breeze/internal/port"
@@ -34,6 +35,10 @@ func RequireSetup(orgRepo port.OrganizationRepository, logger *slog.Logger) func
 			if !exists {
 				if strings.HasPrefix(r.URL.Path, "/api") {
 					transport.JSON(w, r, http.StatusPreconditionFailed, map[string]bool{"needs_setup": true})
+					return
+				}
+				if path.Ext(r.URL.Path) != "" {
+					next.ServeHTTP(w, r)
 					return
 				}
 				http.Redirect(w, r, "/setup", http.StatusFound)
