@@ -84,7 +84,7 @@ func (s *Seeder) createUserAndOrg() (userID, orgID string) {
 	userID = newUUID()
 
 	now := time.Now()
-	passwordHash, err := auth.HashPassword("test@test.com")
+	passwordHash, err := auth.HashPassword("demo1234")
 	if err != nil {
 		log.Fatalf("Failed to hash password: %v", err)
 	}
@@ -103,7 +103,7 @@ func (s *Seeder) createUserAndOrg() (userID, orgID string) {
 	accountID := newUUID()
 	if err := s.stores.Account.Create(s.ctx, &domain.Account{
 		ID:           accountID,
-		Email:        "test@test.com",
+		Email:        "demo@breeze.app",
 		PasswordHash: passwordHash,
 		CreatedAt:    now,
 		UpdatedAt:    now,
@@ -115,8 +115,8 @@ func (s *Seeder) createUserAndOrg() (userID, orgID string) {
 		ID:        userID,
 		AccountID: accountID,
 		OrgID:     orgID,
-		Email:     "test@test.com",
-		Name:      "Test User",
+		Email:     "demo@breeze.app",
+		Name:      "Demo Admin",
 		Role:      "owner",
 		IsActive:  true,
 		CreatedAt: now,
@@ -133,7 +133,7 @@ func (s *Seeder) createUserAndOrg() (userID, orgID string) {
 func (s *Seeder) createSecondUser(orgID string) string {
 	userID := newUUID()
 	now := time.Now()
-	passwordHash, err := auth.HashPassword("test1@test.com")
+	passwordHash, err := auth.HashPassword("demo1234")
 	if err != nil {
 		log.Fatalf("Failed to hash password: %v", err)
 	}
@@ -141,7 +141,7 @@ func (s *Seeder) createSecondUser(orgID string) string {
 	accountID := newUUID()
 	if err := s.stores.Account.Create(s.ctx, &domain.Account{
 		ID:           accountID,
-		Email:        "test1@test.com",
+		Email:        "member@breeze.app",
 		PasswordHash: passwordHash,
 		CreatedAt:    now,
 		UpdatedAt:    now,
@@ -153,8 +153,8 @@ func (s *Seeder) createSecondUser(orgID string) string {
 		ID:        userID,
 		AccountID: accountID,
 		OrgID:     orgID,
-		Email:     "test1@test.com",
-		Name:      "Test User 2",
+		Email:     "member@breeze.app",
+		Name:      "Demo Member",
 		Role:      "member",
 		IsActive:  true,
 		CreatedAt: now,
@@ -169,7 +169,7 @@ func (s *Seeder) createSecondUser(orgID string) string {
 func (s *Seeder) createGuestUser(orgID string) string {
 	userID := newUUID()
 	now := time.Now()
-	passwordHash, err := auth.HashPassword("guest@test.com")
+	passwordHash, err := auth.HashPassword("demo1234")
 	if err != nil {
 		log.Fatalf("Failed to hash password: %v", err)
 	}
@@ -177,7 +177,7 @@ func (s *Seeder) createGuestUser(orgID string) string {
 	accountID := newUUID()
 	if err := s.stores.Account.Create(s.ctx, &domain.Account{
 		ID:           accountID,
-		Email:        "guest@test.com",
+		Email:        "guest@breeze.app",
 		PasswordHash: passwordHash,
 		CreatedAt:    now,
 		UpdatedAt:    now,
@@ -189,8 +189,8 @@ func (s *Seeder) createGuestUser(orgID string) string {
 		ID:        userID,
 		AccountID: accountID,
 		OrgID:     orgID,
-		Email:     "guest@test.com",
-		Name:      "Guest User",
+		Email:     "guest@breeze.app",
+		Name:      "Demo Guest",
 		Role:      "guest",
 		IsActive:  true,
 		CreatedAt: now,

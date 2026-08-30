@@ -3,9 +3,17 @@
 > **Status: beta (v0.1.0).** Early, unstable release — APIs and data schemas
 > may change between versions. Back up your data before upgrading.
 
-Self-hosted project management and team collaboration in a single binary:
-projects, tasks, chat, and voice channels, with an embedded web UI and a
-SQLite database. No external services to run.
+Self-hosted alternative to Linear and ClickUp with project management, task tracking, and team chat.
+
+## Try it
+
+A live demo is available at **https://breeze-demo.minihq.app/**
+
+| Email | Password | Role |
+|-------|----------|------|
+| `demo@breeze.app` | `demo1234` | Owner |
+| `member@breeze.app` | `demo1234` | Member |
+| `guest@breeze.app` | `demo1234` | Guest |
 
 ## Screenshots
 
