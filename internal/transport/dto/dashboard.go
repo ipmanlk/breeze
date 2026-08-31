@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"time"
 
-	"ipmanlk/breeze/internal/domain"
+	"ipmanlk/plume/internal/domain"
 )
 
 // DashboardSectionResponse is the API representation of a single dashboard section.

@@ -27,8 +27,8 @@ to the full section with examples and bug stories.
 | 14 | Tabs render only the tab list; content is a parent sibling                                                      | [Tabs](#tabs--separate-list-from-content)                                        |
 | 15 | Arrow function class fields for document-level listeners (stable ref)                                            | [Dropdown panels](#dropdown-panels--outside-click-in-shadow-dom)                 |
 | 16 | DnD with @atlaskit: container is the drop target, rows are draggables (mirror the kanban); never make a row both | [DnD](#drag-and-drop-dnd--when-to-use-which)                                     |
-| 17 | Close single-select popovers on select; breeze-popover stays open                                               | [Single-select popovers](#single-select-popovers-must-close-on-select)           |
-| 18 | Submit via `@click`; not `type="submit" form=`                                                                  | [breeze-button submit](#breeze-button-form-submission)                           |
+| 17 | Close single-select popovers on select; plume-popover stays open                                               | [Single-select popovers](#single-select-popovers-must-close-on-select)           |
+| 18 | Submit via `@click`; not `type="submit" form=`                                                                  | [plume-button submit](#plume-button-form-submission)                           |
 | 19 | Never combine `private` with `#private` (TS18010)                                                                | [TS: private vs #private](#typescript-private-vs-private)                        |
 
 **These rules are enforced in `../../ui/AGENTS.md` (rules 3–6). Violations will cause
@@ -46,7 +46,7 @@ bugs.**
 - [Always-in-DOM pattern for toggled components](#always-in-dom-pattern-for-toggled-components)
 - [Drag-and-drop (DnD): when to use which](#drag-and-drop-dnd--when-to-use-which)
 - [Single-select popovers must close on select](#single-select-popovers-must-close-on-select)
-- [breeze-button form submission](#breeze-button-form-submission)
+- [plume-button form submission](#plume-button-form-submission)
 - [TypeScript: `private` vs `#private`](#typescript-private-vs-private)
 - [Data flow: properties in, events out](#data-flow-properties-in-events-out)
 - [Form-associated custom elements](#form-associated-custom-elements)
@@ -313,8 +313,8 @@ No custom overlay, no z-index, no focus-trap JS, no Escape listener.
 ### Pattern
 
 ```ts
-@customElement("breeze-dialog")
-export class BreezeDialog extends LitElement {
+@customElement("plume-dialog")
+export class PlumeDialog extends LitElement {
   static styles = css`
     :host {
       display: contents;
@@ -407,7 +407,7 @@ export class BreezeDialog extends LitElement {
 
 ```ts
 html`
-  <breeze-dialog
+  <plume-dialog
     .open="${this._showDialog}"
     heading="Create task"
     @close="${() => this._showDialog = false}"
@@ -418,12 +418,12 @@ html`
     <!-- named slot = footer -->
     <div class="my-footer" slot="footer">
       <span class="spacer" style="flex:1"></span>
-      <breeze-button variant="ghost" @click="${() => this._showDialog = false}">
+      <plume-button variant="ghost" @click="${() => this._showDialog = false}">
         Cancel
-      </breeze-button>
-      <breeze-button @click="${this._submit}">Create</breeze-button>
+      </plume-button>
+      <plume-button @click="${this._submit}">Create</plume-button>
     </div>
-  </breeze-dialog>
+  </plume-dialog>
 `;
 ```
 
@@ -526,11 +526,11 @@ selected items as **overlapping avatars** instead:
   height: var(--control-h); /* fixed, not min-height */
   overflow: hidden; /* clip extra avatars */
 }
-.avatars breeze-avatar {
+.avatars plume-avatar {
   margin-left: calc(var(--space-1) * -1); /* overlap */
   border: 2px solid var(--background); /* separator */
 }
-.avatars breeze-avatar:first-child {
+.avatars plume-avatar:first-child {
   margin-left: 0;
 }
 ```
@@ -564,12 +564,12 @@ fight over layout.
 
 ### The fix
 
-**`breeze-tabs` renders ONLY the tab list** (triggers). Content is a sibling in
+**`plume-tabs` renders ONLY the tab list** (triggers). Content is a sibling in
 the parent, not slotted into the tabs component. This matches shadcn's pattern
 where `TabsList` and `TabsContent` are separate siblings:
 
 ```ts
-// breeze-tabs: tab list ONLY, no content slot
+// plume-tabs: tab list ONLY, no content slot
 render() {
   return html`
     ${this.tabs.map(t => html`
@@ -586,11 +586,11 @@ render() {
 ```ts
 // Parent: tabs + content as siblings
 html`
-  <breeze-tabs
+  <plume-tabs
     .tabs="${tabs}"
     .value="${this._tab}"
     @change="${(e: CustomEvent) => this._tab = e.detail}"
-  ></breeze-tabs>
+  ></plume-tabs>
 
   <div class="tab-content">
     ${this._tab === "properties" ? this._renderProperties() : nothing}
@@ -632,7 +632,7 @@ Use a `::after` pseudo-element with opacity transition (matches shadcn):
 
 ### The bug
 
-Conditionally rendering a dialog/dropdown with `${show ? html\`<breeze-dialog>\`
+Conditionally rendering a dialog/dropdown with `${show ? html\`<plume-dialog>\`
 : ""}` creates and destroys the element on every toggle. This causes:
 
 - Property binding timing races (`.open=true` may not be processed before first
@@ -647,20 +647,20 @@ Conditionally rendering a dialog/dropdown with `${show ? html\`<breeze-dialog>\`
 ```ts
 // ✅ CORRECT: always in DOM, .open controls visibility
 html`
-  <breeze-dialog .open="${this._show}">...</breeze-dialog>
+  <plume-dialog .open="${this._show}">...</plume-dialog>
 `;
 
 // ❌ WRONG: conditional rendering
 html`
   ${this._show
     ? html`
-      <breeze-dialog>...</breeze-dialog>
+      <plume-dialog>...</plume-dialog>
     `
     : nothing}
 `;
 ```
 
-For `breeze-dialog`, the native `<dialog>` element is always in the DOM.
+For `plume-dialog`, the native `<dialog>` element is always in the DOM.
 `showModal()` / `close()` control visibility: no create/destroy cycle.
 
 ### Rule
@@ -683,12 +683,12 @@ between columns with auto-scroll, a drop indicator, and lexorank positioning.
 @atlaskit reads `event.target` and walks `closest()` to resolve draggables /
 drop targets, so shadow DOM **retargets** `event.target` at each boundary and
 breaks the registry lookup. **Every ancestor up to the document must be light
-DOM**: not just the DnD component. `breeze-project-detail-page` is light DOM
+DOM**: not just the DnD component. `plume-project-detail-page` is light DOM
 (`createRenderRoot`) precisely so the kanban's DnD chain is unbroken.
 
 ```
-document ─┬─ breeze-project-detail-page (light DOM: REQUIRED for DnD chain)
-          └─ breeze-kanban-board / -column / -card (light DOM: @atlaskit)
+document ─┬─ plume-project-detail-page (light DOM: REQUIRED for DnD chain)
+          └─ plume-kanban-board / -column / -card (light DOM: @atlaskit)
 ```
 
 Reorder within a column uses the dropTarget's `onDrop` + `attachClosestEdge` /
@@ -708,9 +708,9 @@ midpoint) and draws one indicator line: exactly how the kanban column computes
 gaps between its cards.
 
 ```
-breeze-status-settings (light DOM)
+plume-status-settings (light DOM)
   └ .ss-rows  ← dropTargetForElements (single drop target)
-      ├ breeze-status-row × N  ← draggable each (data-status-id)
+      ├ plume-status-row × N  ← draggable each (data-status-id)
       └ .ss-indicator  ← absolute line, shown during drag
 ```
 
@@ -746,7 +746,7 @@ ancestor> })` to the drop target's
 
 ## Single-select popovers must close on select
 
-`breeze-popover` is multi-select-friendly: it only closes on **outside** click /
+`plume-popover` is multi-select-friendly: it only closes on **outside** click /
 Escape, so it stays open after an in-panel click. That's right for filter bars,
 but wrong for a single-select (status / priority pickers in a table): Radix
 closes on select, and users expect the dropdown to dismiss once they choose.
@@ -755,7 +755,7 @@ Close it explicitly from the option's click handler:
 
 ```ts
 private _closeSelect(e: Event) {
-  const pop = (e.target as HTMLElement | null)?.closest("breeze-popover") as
+  const pop = (e.target as HTMLElement | null)?.closest("plume-popover") as
     | ({ open: boolean })
     | null;
   if (pop) pop.open = false;
@@ -763,14 +763,14 @@ private _closeSelect(e: Event) {
 // @click=${(e) => { e.stopPropagation(); this._change(...); this._closeSelect(e); }}
 ```
 
-`closest("breeze-popover")` works because the option is slotted into the
+`closest("plume-popover")` works because the option is slotted into the
 popover's content slot and stays in its light-DOM subtree.
 
 ---
 
-## breeze-button form submission
+## plume-button form submission
 
-`breeze-button` is form-associated (`ElementInternals`), but the established,
+`plume-button` is form-associated (`ElementInternals`), but the established,
 reliable pattern (see `task-dialog.ts`) is to call the submit method directly
 from `@click`: **not** `type="submit" form="<id>"`. The footer button lives in
 the dialog's footer slot, a sibling of the form (not a descendant), so form
@@ -778,15 +778,15 @@ association is fragile. Direct `@click` always works:
 
 ```ts
 html`
-  <breeze-dialog .open="${open}" heading="...">
+  <plume-dialog .open="${open}" heading="...">
     <form @submit="${this._submit}" id="x-form">...fields...</form>
     <div slot="footer">
-      <breeze-button variant="ghost" @click="${() => (open =
-        false)}">Cancel</breeze-button>
-      <breeze-button ?disabled="${busy}" @click="${this._submit}"
-      >Save</breeze-button>
+      <plume-button variant="ghost" @click="${() => (open =
+        false)}">Cancel</plume-button>
+      <plume-button ?disabled="${busy}" @click="${this._submit}"
+      >Save</plume-button>
     </div>
-  </breeze-dialog>
+  </plume-dialog>
 `;
 ```
 
@@ -853,13 +853,13 @@ this.dispatchEvent(
 
 ```ts
 html`
-  <breeze-task-dialog
+  <plume-task-dialog
     .open="${this._showCreate}"
     .project="${project}"
     .statuses="${statuses}"
     @close="${() => this._showCreate = false}"
     @created="${(e: CustomEvent) => this._onTaskCreated(e.detail)}"
-  ></breeze-task-dialog>
+  ></plume-task-dialog>
 `;
 ```
 
@@ -876,7 +876,7 @@ html`
 
 ## Form-associated custom elements
 
-`breeze-button` and `breeze-input` use `formAssociated = true` +
+`plume-button` and `plume-input` use `formAssociated = true` +
 `ElementInternals` for native form participation.
 
 ```ts
@@ -900,12 +900,12 @@ this.#internals.setFormValue(this.value);
 
 Form-associated custom elements work within shadow roots
 `ElementInternals.form` finds the nearest ancestor `<form>` in the same shadow
-tree. A `<form>` and `<breeze-button type="submit">` in the same shadow root
+tree. A `<form>` and `<plume-button type="submit">` in the same shadow root
 will work.
 
 ### `type` default
 
-`breeze-button` defaults to `type="submit"`. For non-submit buttons (Cancel,
+`plume-button` defaults to `type="submit"`. For non-submit buttons (Cancel,
 toggle, etc.), there's no `type` attribute needed: the parent uses `@click`
 handlers. But if the button is inside a `<form>`, set `type="button"` to prevent
 accidental form submission.
@@ -1112,7 +1112,7 @@ By default, `@property()` observes the corresponding HTML attribute. For arrays
 and objects, this means:
 
 1. Lit registers an attribute observer on `options`
-2. If someone writes `<breeze-select options="...">`, Lit tries to parse it
+2. If someone writes `<plume-select options="...">`, Lit tries to parse it
 3. The parsed value is likely garbage (not a real array)
 
 While this doesn't cause bugs when using property binding (`.options="${...}"`),

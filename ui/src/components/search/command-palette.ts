@@ -4,7 +4,7 @@ import { customElement, property, query, state } from "lit/decorators.js";
 import { navigate } from "@/routes/router";
 import { getSearch } from "@/api";
 import "../ui/dialog.ts";
-import "../ui/breeze-icon.ts";
+import "../ui/plume-icon.ts";
 import "../ui/spinner.ts";
 import { getPrimaryNav } from "../nav/nav-config";
 
@@ -37,8 +37,8 @@ const NAV_ICON_MAP = new Map(
  * Open with Cmd+K / Ctrl+K (or the `open-command-palette` event).
  */
 @localized()
-@customElement("breeze-command-palette")
-export class BreezeCommandPalette extends LitElement {
+@customElement("plume-command-palette")
+export class PlumeCommandPalette extends LitElement {
   static styles = css`
     *,
     *::before,
@@ -436,13 +436,13 @@ export class BreezeCommandPalette extends LitElement {
           this._selectedIndex = index;
         }}"
       >
-        <breeze-icon
+        <plume-icon
           class="nav-icon"
           name="${item.icon ?? "house"}"
           size="16"
-        ></breeze-icon>
+        ></plume-icon>
         <span class="item-label">${item.label}</span>
-        <breeze-icon class="check" name="check" size="16"></breeze-icon>
+        <plume-icon class="check" name="check" size="16"></plume-icon>
       </button>
     `;
   }
@@ -468,7 +468,7 @@ export class BreezeCommandPalette extends LitElement {
           ${item.label.charAt(0).toUpperCase()}
         </div>
         <span class="item-label">${item.label}</span>
-        <breeze-icon class="check" name="check" size="16"></breeze-icon>
+        <plume-icon class="check" name="check" size="16"></plume-icon>
       </button>
     `;
   }
@@ -501,7 +501,7 @@ export class BreezeCommandPalette extends LitElement {
             `
             : nothing}
         </div>
-        <breeze-icon class="check" name="check" size="16"></breeze-icon>
+        <plume-icon class="check" name="check" size="16"></plume-icon>
       </button>
     `;
   }
@@ -520,13 +520,13 @@ export class BreezeCommandPalette extends LitElement {
           this._selectedIndex = index;
         }}"
       >
-        <breeze-icon
+        <plume-icon
           class="nav-icon"
           name="hash"
           size="16"
-        ></breeze-icon>
+        ></plume-icon>
         <span class="item-label">${item.label}</span>
-        <breeze-icon class="check" name="check" size="16"></breeze-icon>
+        <plume-icon class="check" name="check" size="16"></plume-icon>
       </button>
     `;
   }
@@ -552,7 +552,7 @@ export class BreezeCommandPalette extends LitElement {
           ${item.label.charAt(0).toUpperCase()}
         </div>
         <span class="item-label">${item.label}</span>
-        <breeze-icon class="check" name="check" size="16"></breeze-icon>
+        <plume-icon class="check" name="check" size="16"></plume-icon>
       </button>
     `;
   }
@@ -568,7 +568,7 @@ export class BreezeCommandPalette extends LitElement {
     const memberItems = items.filter((i) => i.type === "member");
 
     return html`
-      <breeze-dialog
+      <plume-dialog
         .open="${this.open}"
         .noHeader="${true}"
         .noFooter="${true}"
@@ -580,7 +580,7 @@ export class BreezeCommandPalette extends LitElement {
         <div class="command">
           <div class="command-input-wrapper">
             <div class="command-input-group">
-              <breeze-icon class="search-icon" name="search" size="16"></breeze-icon>
+              <plume-icon class="search-icon" name="search" size="16"></plume-icon>
               <input
                 class="command-input"
                 type="text"
@@ -597,7 +597,7 @@ export class BreezeCommandPalette extends LitElement {
             ${this._isLoading
               ? html`
                 <div class="command-loading">
-                  <breeze-spinner></breeze-spinner>
+                  <plume-spinner></plume-spinner>
                 </div>
               `
               : items.length === 0
@@ -667,13 +667,13 @@ export class BreezeCommandPalette extends LitElement {
               `}
           </div>
         </div>
-      </breeze-dialog>
+      </plume-dialog>
     `;
   }
 }
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-command-palette": BreezeCommandPalette;
+    "plume-command-palette": PlumeCommandPalette;
   }
 }

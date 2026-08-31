@@ -4,21 +4,21 @@ import { customElement, property, query, state } from "lit/decorators.js";
 import { TRAILING_AT_RE } from "@/features/chat/mention-utils";
 import type { MentionResult } from "@/lib/mentions";
 import "../../components/ui/button.ts";
-import "../../components/ui/breeze-icon.ts";
+import "../../components/ui/plume-icon.ts";
 import "@/components/mention/mention-popover.ts";
 import "@/features/chat/components/chat-editor.ts";
 
 /**
  * Comment composer: a rich input for task comments.
  *
- * Reuses the chat editor (<breeze-chat-editor>) so comments get the exact
+ * Reuses the chat editor (<plume-chat-editor>) so comments get the exact
  * same @-mention pings, chips, markdown, and Ctrl/Cmd+Enter-to-send UX as
  * chat. Dispatches `submit` (content string + optional parent_id) and
  * `cancel` (Escape when editing). Call setContent()/clear() for edit mode.
  */
 @localized()
-@customElement("breeze-comment-composer")
-export class BreezeCommentComposer extends LitElement {
+@customElement("plume-comment-composer")
+export class PlumeCommentComposer extends LitElement {
   static styles = css`
     *,
     *::before,
@@ -80,9 +80,9 @@ export class BreezeCommentComposer extends LitElement {
   @property({ type: Boolean })
   editing = false;
 
-  @query("breeze-chat-editor")
+  @query("plume-chat-editor")
   private _editor!:
-    import("@/features/chat/components/chat-editor.ts").BreezeChatEditor;
+    import("@/features/chat/components/chat-editor.ts").PlumeChatEditor;
 
   @state()
   private _value = "";
@@ -172,15 +172,15 @@ export class BreezeCommentComposer extends LitElement {
     return html`
       <div class="wrap">
         <div class="composer">
-          <breeze-chat-editor
+          <plume-chat-editor
             placeholder="${this.placeholder}"
             ?disabled="${this.sending}"
             ?suggest-open="${this._mentionOpen}"
             maxlength="10000"
-            @breeze-change="${this._onChange}"
-            @breeze-send="${this._onSend}"
-            @breeze-escape="${this._onEscape}"
-          ></breeze-chat-editor>
+            @plume-change="${this._onChange}"
+            @plume-send="${this._onSend}"
+            @plume-escape="${this._onEscape}"
+          ></plume-chat-editor>
           <div class="footer">
             <span class="hint">
               ${this.editing
@@ -189,40 +189,40 @@ export class BreezeCommentComposer extends LitElement {
             </span>
             ${this.editing
               ? html`
-                <breeze-button
+                <plume-button
                   variant="ghost"
                   size="sm"
                   ?disabled="${this.sending}"
                   @click="${this._onEscape}"
-                >${msg("Cancel")}</breeze-button>
-                <breeze-button
+                >${msg("Cancel")}</plume-button>
+                <plume-button
                   size="sm"
                   ?disabled="${!this._value.trim() || this.sending}"
                   @click="${this._onSend}"
                 >
                   ${this.sending ? msg("Saving...") : msg("Save")}
-                  </breeze-button>
+                  </plume-button>
               `
               : html`
-                <breeze-button
+                <plume-button
                   size="sm"
                   ?disabled="${!this._value.trim() || this.sending}"
                   @click="${this._onSend}"
                 >
-                  <breeze-icon name="arrow-right" size="14"></breeze-icon>
+                  <plume-icon name="arrow-right" size="14"></plume-icon>
                   ${this.sending ? msg("Sending...") : msg("Comment")}
-                </breeze-button>
+                </plume-button>
               `}
           </div>
         </div>
         ${this._mentionOpen
           ? html`
-            <breeze-mention-popover
+            <plume-mention-popover
               .query="${this._mentionQuery}"
               .left="${this._mentionLeft}"
               @pick="${this._onMentionPick}"
               @close="${this._onMentionClose}"
-            ></breeze-mention-popover>
+            ></plume-mention-popover>
           `
           : nothing}
       </div>
@@ -232,6 +232,6 @@ export class BreezeCommentComposer extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-comment-composer": BreezeCommentComposer;
+    "plume-comment-composer": PlumeCommentComposer;
   }
 }

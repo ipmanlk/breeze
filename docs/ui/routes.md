@@ -35,11 +35,11 @@ const params = matchRoute("/projects/:id", "/projects/123");
 Routes are matched inline in `src/app-shell.ts` `willUpdate()` via `matchRoute()`; there is
 no per-file `Route` object. Lazy chunks are declared in `lazyPages` and
 preloaded via `_ensure(tag, loader)`. To add a route, add a `matchRoute()`/
-`path ===` branch in `BreezeApp.willUpdate()` and `render()`.
+`path ===` branch in `PlumeApp.willUpdate()` and `render()`.
 
 Example from `app-shell.ts`:
 ```ts
 if (matchRoute("/projects/:slug", path)) {
-  this._ensure("breeze-project-detail-page", lazyPages.projectDetail);
+  this._ensure("plume-project-detail-page", lazyPages.projectDetail);
 }
 ```

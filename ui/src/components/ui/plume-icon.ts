@@ -4,11 +4,11 @@ import { customElement, property } from "lit/decorators.js";
 import { getIcon } from "@/lib/icons";
 
 /**
- * Breeze icon: renders lucide SVG directly from offline icon data.
- * Usage: <breeze-icon name="house" size="16"></breeze-icon>
+ * Plume icon: renders lucide SVG directly from offline icon data.
+ * Usage: <plume-icon name="house" size="16"></plume-icon>
  */
-@customElement("breeze-icon")
-export class BreezeIcon extends LitElement {
+@customElement("plume-icon")
+export class PlumeIcon extends LitElement {
   static styles = css`
     *,
     *::before,
@@ -67,6 +67,6 @@ export class BreezeIcon extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-icon": BreezeIcon;
+    "plume-icon": PlumeIcon;
   }
 }

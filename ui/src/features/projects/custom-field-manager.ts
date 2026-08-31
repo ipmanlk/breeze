@@ -9,16 +9,16 @@ import {
   postProjectsByIdCustomFields,
 } from "@/api";
 import { showToast } from "@/components/ui/toast-store";
-import { BreezeInput } from "../../components/ui/input.ts";
-import { BreezeSelect } from "../../components/ui/select.ts";
+import { PlumeInput } from "../../components/ui/input.ts";
+import { PlumeSelect } from "../../components/ui/select.ts";
 import "../../components/ui/button.ts";
 import "../../components/ui/dialog.ts";
-import "../../components/ui/breeze-icon.ts";
+import "../../components/ui/plume-icon.ts";
 import { localized, msg } from "@lit/localize";
 
 @localized()
-@customElement("breeze-custom-field-manager")
-export class BreezeCustomFieldManager extends LitElement {
+@customElement("plume-custom-field-manager")
+export class PlumeCustomFieldManager extends LitElement {
   @property()
   projectId = "";
 
@@ -32,11 +32,11 @@ export class BreezeCustomFieldManager extends LitElement {
   private _editField: DtoCustomFieldResponse | null = null;
 
   @query("#cf-name")
-  private _cfNameInput!: BreezeInput | null;
+  private _cfNameInput!: PlumeInput | null;
   @query("#cf-type")
-  private _cfTypeSelect!: BreezeSelect | null;
+  private _cfTypeSelect!: PlumeSelect | null;
   @query("#cf-options")
-  private _cfOptionsInput!: BreezeInput | null;
+  private _cfOptionsInput!: PlumeInput | null;
 
   createRenderRoot() {
     return this;
@@ -68,14 +68,14 @@ export class BreezeCustomFieldManager extends LitElement {
       <div class="cfm-wrap">
         <div class="cfm-header">
           <h3 class="cfm-title">Custom Fields</h3>
-          <breeze-button
+          <plume-button
             variant="outline"
             size="sm"
             @click="${() => this.#openCreate()}"
           >
-            <breeze-icon name="plus" size="14"></breeze-icon>
+            <plume-icon name="plus" size="14"></plume-icon>
             New field
-          </breeze-button>
+          </plume-button>
         </div>
         ${this._loading
           ? html`<p class="cfm-empty">Loading…</p>`
@@ -104,16 +104,16 @@ export class BreezeCustomFieldManager extends LitElement {
           </span>
         </div>
         <div class="cfm-item-actions">
-          <breeze-button
+          <plume-button
             variant="ghost"
             size="sm"
             @click="${() => this.#openEdit(f)}"
-          >Edit</breeze-button>
-          <breeze-button
+          >Edit</plume-button>
+          <plume-button
             variant="ghost"
             size="sm"
             @click="${() => this.#delete(f.id!)}"
-          >Delete</breeze-button>
+          >Delete</plume-button>
         </div>
       </div>
     `;
@@ -125,7 +125,7 @@ export class BreezeCustomFieldManager extends LitElement {
     const fieldType = f?.field_type ?? "text";
     const options = f?.options?.join(", ") ?? "";
     return html`
-      <breeze-dialog
+      <plume-dialog
         .open="${true}"
         heading="${f ? "Edit field" : "New custom field"}"
         @close="${() => (this._dialogOpen = false)}"
@@ -138,17 +138,17 @@ export class BreezeCustomFieldManager extends LitElement {
           }}"
         >
           <div class="cfm-form">
-            <breeze-field label="Name">
-              <breeze-input
+            <plume-field label="Name">
+              <plume-input
                 id="cf-name"
                 .value="${name}"
                 placeholder=${msg("e.g. Story Points")}
-              ></breeze-input>
-            </breeze-field>
+              ></plume-input>
+            </plume-field>
             ${!f
               ? html`
-                <breeze-field label="Type">
-                  <breeze-select
+                <plume-field label="Type">
+                  <plume-select
                     id="cf-type"
                     .options="${[
                       { label: msg("Text"), value: "text" },
@@ -157,29 +157,29 @@ export class BreezeCustomFieldManager extends LitElement {
                       { label: msg("Date"), value: "date" },
                     ]}"
                     .value="${fieldType}"
-                  ></breeze-select>
-                </breeze-field>
+                  ></plume-select>
+                </plume-field>
               `
               : nothing}
-            <breeze-field label="Options (comma-separated, for select type)">
-              <breeze-input
+            <plume-field label="Options (comma-separated, for select type)">
+              <plume-input
                 id="cf-options"
                 .value="${options}"
                 placeholder=${msg("e.g. Low, Medium, High")}
-              ></breeze-input>
-            </breeze-field>
+              ></plume-input>
+            </plume-field>
           </div>
         </form>
         <div slot="footer" class="cfm-dialog-footer">
-          <breeze-button variant="ghost" @click="${() => (this._dialogOpen =
+          <plume-button variant="ghost" @click="${() => (this._dialogOpen =
             false)}">
             Cancel
-          </breeze-button>
-          <breeze-button variant="default" type="submit" form="cf-form">
+          </plume-button>
+          <plume-button variant="default" type="submit" form="cf-form">
             ${f ? "Save" : "Create"}
-          </breeze-button>
+          </plume-button>
         </div>
-      </breeze-dialog>
+      </plume-dialog>
     `;
   }
 
@@ -249,6 +249,6 @@ export class BreezeCustomFieldManager extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-custom-field-manager": BreezeCustomFieldManager;
+    "plume-custom-field-manager": PlumeCustomFieldManager;
   }
 }

@@ -2,7 +2,7 @@
 
 ## Overview
 
-Breeze uses **cursor-based pagination** for its list endpoints, so results stay
+Plume uses **cursor-based pagination** for its list endpoints, so results stay
 consistent even when items are inserted or deleted while paging. Cursors are
 opaque tokens returned by the previous response (or, for newest-first lists
 like chat messages and task comments, a `before` parameter carrying the oldest
@@ -216,8 +216,8 @@ example is `ui/src/features/members/members-page.ts` (see also
 list:
 
 ```ts
-@customElement("breeze-members-page")
-export class BreezeMembersPage extends LitElement {
+@customElement("plume-members-page")
+export class PlumeMembersPage extends LitElement {
   @state() private _cursor: string | undefined = undefined;
   @state() private _hasMore = false;
   @state() private _loadingMore = false;
@@ -243,7 +243,7 @@ export class BreezeMembersPage extends LitElement {
   }
 
   // In the template, when _hasMore is true:
-  //   <breeze-button @click="${() => this.#loadMembers(true)}">Load more</breeze-button>
+  //   <plume-button @click="${() => this.#loadMembers(true)}">Load more</plume-button>
 }
 ```
 

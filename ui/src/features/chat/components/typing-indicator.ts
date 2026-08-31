@@ -3,8 +3,8 @@ import { customElement, property } from "lit/decorators.js";
 import { localized } from "@lit/localize";
 
 @localized()
-@customElement("breeze-typing-indicator")
-export class BreezeTypingIndicator extends LitElement {
+@customElement("plume-typing-indicator")
+export class PlumeTypingIndicator extends LitElement {
   static styles = css`
     *,
     *::before,
@@ -79,6 +79,6 @@ export class BreezeTypingIndicator extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-typing-indicator": BreezeTypingIndicator;
+    "plume-typing-indicator": PlumeTypingIndicator;
   }
 }

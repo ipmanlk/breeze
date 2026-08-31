@@ -25,7 +25,7 @@ import {
 import { SignalController } from "@/lib/signal-controller";
 import "./status-settings.ts";
 import "./cycle-dialog.ts";
-import "../../components/ui/breeze-icon.ts";
+import "../../components/ui/plume-icon.ts";
 import "../../components/ui/button.ts";
 import "../../components/ui/select.ts";
 import "../../components/ui/switch.ts";
@@ -38,7 +38,7 @@ import { localized, msg } from "@lit/localize";
  * Settings view: General info, Cycles enable/config, Status CRUD, and the
  * Cycles list.
  *
- * **Light DOM** because it hosts `<breeze-status-settings>`, which uses
+ * **Light DOM** because it hosts `<plume-status-settings>`, which uses
  * `@atlaskit/pragmatic-drag-and-drop` and needs an unbroken light-DOM chain
  * (no shadow boundary between document and the draggable rows). Styles are
  * global, prefixed `sv-`.
@@ -47,8 +47,8 @@ import { localized, msg } from "@lit/localize";
  * here when the project has cycles enabled).
  */
 @localized()
-@customElement("breeze-settings-view")
-export class BreezeSettingsView extends LitElement {
+@customElement("plume-settings-view")
+export class PlumeSettingsView extends LitElement {
   /** Light DOM: hosts the DnD-bearing status-settings. */
   createRenderRoot() {
     return this;
@@ -208,7 +208,7 @@ export class BreezeSettingsView extends LitElement {
       : [];
 
     const SV = `
-breeze-settings-view { display: block; }
+plume-settings-view { display: block; }
 .sv-wrap {
   display: flex;
   flex-direction: column;
@@ -311,26 +311,26 @@ breeze-settings-view { display: block; }
                     "Cycles help you plan and track work in time-boxed iterations.",
                   )}
                 </p>
-                <breeze-button
+                <plume-button
                   variant="outline"
                   ?disabled="${this._enabling}"
                   @click="${this.#enableCycles}"
                 >${this._enabling
                   ? msg("Enabling…")
                   : msg("Enable cycles (14-day)")}
-                </breeze-button>
+                </plume-button>
               </div>
             `
             : html`
               <div class="sv-section">
                 <h2 class="sv-h2">${msg("Cycle config")}</h2>
                 <label class="sv-row">
-                  <breeze-switch
+                  <plume-switch
                     ?checked="${this._autoGenerate}"
                     @change="${(
                       e: CustomEvent,
                     ) => (this._autoGenerate = e.detail.checked)}"
-                  ></breeze-switch>
+                  ></plume-switch>
                   <span class="sv-label">${msg(
                     "Auto-generate next cycle on completion",
                   )}</span>
@@ -339,7 +339,7 @@ breeze-settings-view { display: block; }
                   <div class="sv-field-label">${msg(
                     "Incomplete task handling",
                   )}</div>
-                  <breeze-select
+                  <plume-select
                     class="sv-select"
                     .options="${[
                       { value: "next_cycle", label: msg("Move to next cycle") },
@@ -350,9 +350,9 @@ breeze-settings-view { display: block; }
                     ]}"
                     .value="${this._handling}"
                     @change="${(e: CustomEvent) => (this._handling = e.detail)}"
-                  ></breeze-select>
+                  ></plume-select>
                 </div>
-                <breeze-button
+                <plume-button
                   variant="outline"
                   size="sm"
                   ?disabled="${this._savingSettings}"
@@ -360,22 +360,22 @@ breeze-settings-view { display: block; }
                 >${this._savingSettings
                   ? msg("Saving…")
                   : msg("Save cycle settings")}
-                </breeze-button>
+                </plume-button>
               </div>
             `)
           : nothing} ${canManageStatuses
           ? html`
-            <breeze-status-settings
+            <plume-status-settings
               .projectId="${this.#projectId}"
               .statuses="${this.statuses}"
-            ></breeze-status-settings>
+            ></plume-status-settings>
           `
           : nothing} ${this.#hasCycles && canManageCycles
           ? html`
             <div class="sv-section">
               <div class="sv-cycles-head">
                 <h2 class="sv-h2">${msg("Cycles")}</h2>
-                <breeze-button
+                <plume-button
                   variant="outline"
                   size="sm"
                   @click="${() => {
@@ -383,9 +383,9 @@ breeze-settings-view { display: block; }
                     this._cycleDialogOpen = true;
                   }}"
                 >
-                  <breeze-icon name="plus" size="14"></breeze-icon>
+                  <plume-icon name="plus" size="14"></plume-icon>
                   ${msg("New cycle")}
-                </breeze-button>
+                </plume-button>
               </div>
               ${list.length === 0
                 ? html`
@@ -406,16 +406,16 @@ breeze-settings-view { display: block; }
           ? html`
             <div class="sv-section">
               <h2 class="sv-h2">${msg("Task Templates")}</h2>
-              <breeze-template-manager
+              <plume-template-manager
                 .projectId="${this.#projectId}"
                 .statuses="${this.statuses}"
-              ></breeze-template-manager>
+              ></plume-template-manager>
             </div>
             <div class="sv-section">
               <h2 class="sv-h2">${msg("Custom Fields")}</h2>
-              <breeze-custom-field-manager
+              <plume-custom-field-manager
                 .projectId="${this.#projectId}"
-              ></breeze-custom-field-manager>
+              ></plume-custom-field-manager>
             </div>
           `
           : nothing}
@@ -423,21 +423,21 @@ breeze-settings-view { display: block; }
         <div class="sv-section">
           <h2 class="sv-h2">${msg("Export")}</h2>
           <div class="sv-row">
-            <breeze-button
+            <plume-button
               variant="outline"
               size="sm"
               @click="${() => this.#exportTasks("csv")}"
-            >${msg("Export tasks (CSV)")}</breeze-button>
-            <breeze-button
+            >${msg("Export tasks (CSV)")}</plume-button>
+            <plume-button
               variant="outline"
               size="sm"
               @click="${() => this.#exportTasks("json")}"
-            >${msg("Export tasks (JSON)")}</breeze-button>
-            <breeze-button
+            >${msg("Export tasks (JSON)")}</plume-button>
+            <plume-button
               variant="outline"
               size="sm"
               @click="${() => this.#exportTime("csv")}"
-            >${msg("Export time (CSV)")}</breeze-button>
+            >${msg("Export time (CSV)")}</plume-button>
           </div>
         </div>
 
@@ -451,11 +451,11 @@ breeze-settings-view { display: block; }
                     <span class="sv-help">${msg(
                       "This project is archived.",
                     )}</span>
-                    <breeze-button
+                    <plume-button
                       variant="default"
                       size="sm"
                       @click="${() => this.#unarchive()}"
-                    >${msg("Unarchive")}</breeze-button>
+                    >${msg("Unarchive")}</plume-button>
                   </div>
                 `
                 : html`
@@ -464,11 +464,11 @@ breeze-settings-view { display: block; }
                       class="sv-help">${msg(
                         "Archive this project: it stays accessible but hidden and read-only.",
                       )}</span>
-                    <breeze-button
+                    <plume-button
                       variant="outline"
                       size="sm"
                       @click="${() => this.#archive()}"
-                    >${msg("Archive project")}</breeze-button>
+                    >${msg("Archive project")}</plume-button>
                   </div>
                 `}
             </div>
@@ -476,7 +476,7 @@ breeze-settings-view { display: block; }
           : nothing}
       </div>
 
-      <breeze-cycle-dialog
+      <plume-cycle-dialog
         .open="${this._cycleDialogOpen}"
         .project="${this.project}"
         .cycle="${this._editCycle}"
@@ -485,9 +485,9 @@ breeze-settings-view { display: block; }
           this._cycleDialogOpen = false;
           void fetchCycles(this.#projectId, true);
         }}"
-      ></breeze-cycle-dialog>
+      ></plume-cycle-dialog>
 
-      <breeze-dialog
+      <plume-dialog
         .open="${!!this._complete}"
         heading="${`${msg("Complete")} “${this._complete?.cycle.name ?? ""}”`}"
         @close="${() => (this._complete = null)}"
@@ -506,7 +506,7 @@ breeze-settings-view { display: block; }
                 <div class="sv-field-label">${msg(
                   "Move incomplete tasks to",
                 )}</div>
-                <breeze-select
+                <plume-select
                   class="sv-select"
                   .options="${[
                     { value: "", label: msg("Auto (next cycle)") },
@@ -523,20 +523,20 @@ breeze-settings-view { display: block; }
                     ...this._complete!,
                     moveToCycleId: e.detail,
                   })}"
-                ></breeze-select>
+                ></plume-select>
               </div>
             </div>
             <div class="sv-complete-footer" slot="footer">
               <span style="flex:1"></span>
-              <breeze-button variant="outline" size="sm" @click="${() => (this
+              <plume-button variant="outline" size="sm" @click="${() => (this
                 ._complete = null)}"
-              >${msg("Cancel")}</breeze-button>
-              <breeze-button size="sm" @click="${this
-                .#confirmComplete}">${msg("Complete cycle")}</breeze-button>
+              >${msg("Cancel")}</plume-button>
+              <plume-button size="sm" @click="${this
+                .#confirmComplete}">${msg("Complete cycle")}</plume-button>
             </div>
           `
           : nothing}
-      </breeze-dialog>
+      </plume-dialog>
     `;
   }
 
@@ -553,26 +553,26 @@ breeze-settings-view { display: block; }
           <div class="sv-cycle-title">
             ${c.is_active
               ? html`
-                <breeze-icon
+                <plume-icon
                   name="circle-check"
                   size="16"
                   style="color:oklch(0.55 0.15 145)"
-                ></breeze-icon>
+                ></plume-icon>
               `
               : c.is_completed
               ? html`
-                <breeze-icon
+                <plume-icon
                   name="circle-check"
                   size="16"
                   style="color:var(--muted-foreground)"
-                ></breeze-icon>
+                ></plume-icon>
               `
               : html`
-                <breeze-icon
+                <plume-icon
                   name="circle"
                   size="16"
                   style="color:var(--muted-foreground)"
-                ></breeze-icon>
+                ></plume-icon>
               `}
             <span class="sv-cycle-name">${c.name}</span>
             ${c.is_active
@@ -629,7 +629,7 @@ breeze-settings-view { display: block; }
               this._cycleDialogOpen = true;
             }}"
           >
-            <breeze-icon name="pencil" size="14"></breeze-icon>
+            <plume-icon name="pencil" size="14"></plume-icon>
           </button>
           <button
             class="sv-cycle-icon destructive"
@@ -637,7 +637,7 @@ breeze-settings-view { display: block; }
             aria-label=${msg("Delete cycle")}
             @click="${() => this.#deleteCycle(c.id!)}"
           >
-            <breeze-icon name="trash-2" size="14"></breeze-icon>
+            <plume-icon name="trash-2" size="14"></plume-icon>
           </button>
         </div>
       </div>
@@ -647,6 +647,6 @@ breeze-settings-view { display: block; }
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-settings-view": BreezeSettingsView;
+    "plume-settings-view": PlumeSettingsView;
   }
 }

@@ -6,8 +6,8 @@ import (
 	"fmt"
 	"log/slog"
 
-	"ipmanlk/breeze/internal/domain"
-	"ipmanlk/breeze/internal/port"
+	"ipmanlk/plume/internal/domain"
+	"ipmanlk/plume/internal/port"
 
 	"github.com/google/uuid"
 )

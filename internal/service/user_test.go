@@ -6,10 +6,10 @@ import (
 	"strings"
 	"testing"
 
-	"ipmanlk/breeze/internal/apperr"
-	"ipmanlk/breeze/internal/auth"
-	"ipmanlk/breeze/internal/domain"
-	"ipmanlk/breeze/internal/storage"
+	"ipmanlk/plume/internal/apperr"
+	"ipmanlk/plume/internal/auth"
+	"ipmanlk/plume/internal/domain"
+	"ipmanlk/plume/internal/storage"
 )
 
 // newTestUserService wires a UserService with the standard mocks + a temp-dir

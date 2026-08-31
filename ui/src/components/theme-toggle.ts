@@ -3,11 +3,11 @@ import { css, html, LitElement } from "lit";
 import { customElement } from "lit/decorators.js";
 import { theme, toggleTheme } from "@/store/theme";
 import { SignalController } from "@/lib/signal-controller";
-import "./ui/breeze-icon.ts";
+import "./ui/plume-icon.ts";
 
 @localized()
-@customElement("breeze-theme-toggle")
-export class BreezeThemeToggle extends LitElement {
+@customElement("plume-theme-toggle")
+export class PlumeThemeToggle extends LitElement {
   static styles = css`
     *,
     *::before,
@@ -48,7 +48,7 @@ export class BreezeThemeToggle extends LitElement {
       <button type="button" @click="${toggleTheme}" aria-label="${msg(
         "Toggle theme",
       )}">
-        <breeze-icon name="${icon}" size="18"></breeze-icon>
+        <plume-icon name="${icon}" size="18"></plume-icon>
       </button>
     `;
   }
@@ -56,6 +56,6 @@ export class BreezeThemeToggle extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-theme-toggle": BreezeThemeToggle;
+    "plume-theme-toggle": PlumeThemeToggle;
   }
 }

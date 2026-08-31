@@ -1,11 +1,11 @@
 import { localized, msg } from "@lit/localize";
 import { css, html, LitElement } from "lit";
 import { customElement, property } from "lit/decorators.js";
-import "../../../components/ui/breeze-icon.ts";
+import "../../../components/ui/plume-icon.ts";
 
 @localized()
-@customElement("breeze-voice-controls")
-export class BreezeVoiceControls extends LitElement {
+@customElement("plume-voice-controls")
+export class PlumeVoiceControls extends LitElement {
   static styles = css`
     *,
     *::before,
@@ -74,10 +74,10 @@ export class BreezeVoiceControls extends LitElement {
         @click="${this.#onMute}"
         aria-label="${this.isMuted ? msg("Unmute") : msg("Mute")}"
       >
-        <breeze-icon
+        <plume-icon
           name="${this.isMuted ? "mic-off" : "mic"}"
           size="16"
-        ></breeze-icon>
+        ></plume-icon>
       </button>
 
       <button
@@ -86,10 +86,10 @@ export class BreezeVoiceControls extends LitElement {
         @click="${this.#onDeafen}"
         aria-label="${this.isDeafened ? msg("Undeafen") : msg("Deafen")}"
       >
-        <breeze-icon
+        <plume-icon
           name="${this.isDeafened ? "volume-x" : "headphones"}"
           size="16"
-        ></breeze-icon>
+        ></plume-icon>
       </button>
 
       <span class="divider"></span>
@@ -99,7 +99,7 @@ export class BreezeVoiceControls extends LitElement {
         @click="${this.#onLeave}"
         aria-label="${msg("Leave voice channel")}"
       >
-        <breeze-icon name="phone-off" size="16"></breeze-icon>
+        <plume-icon name="phone-off" size="16"></plume-icon>
       </button>
     `;
   }
@@ -123,6 +123,6 @@ export class BreezeVoiceControls extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-voice-controls": BreezeVoiceControls;
+    "plume-voice-controls": PlumeVoiceControls;
   }
 }

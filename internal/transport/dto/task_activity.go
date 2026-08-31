@@ -1,6 +1,6 @@
 package dto
 
-import "ipmanlk/breeze/internal/domain"
+import "ipmanlk/plume/internal/domain"
 
 // TaskActivityResponse is a single activity entry for a task's activity feed.
 type TaskActivityResponse struct {

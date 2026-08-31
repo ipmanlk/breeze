@@ -10108,7 +10108,7 @@ var SwaggerInfo = &swag.Spec{
 	Host:             "",
 	BasePath:         "/api",
 	Schemes:          []string{},
-	Title:            "Breeze API",
+	Title:            "Plume API",
 	Description:      "Self-hosted project management tool API",
 	InfoInstanceName: "swagger",
 	SwaggerTemplate:  docTemplate,

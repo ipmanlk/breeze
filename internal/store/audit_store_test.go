@@ -5,9 +5,9 @@ import (
 	"database/sql"
 	"testing"
 
-	"ipmanlk/breeze/internal/domain"
-	"ipmanlk/breeze/internal/store/migration"
-	"ipmanlk/breeze/internal/store/sqlc"
+	"ipmanlk/plume/internal/domain"
+	"ipmanlk/plume/internal/store/migration"
+	"ipmanlk/plume/internal/store/sqlc"
 
 	_ "modernc.org/sqlite"
 )

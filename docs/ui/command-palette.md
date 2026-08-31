@@ -1,6 +1,6 @@
-# Command Palette (`breeze-command-palette`)
+# Command Palette (`plume-command-palette`)
 
-Global search/command dialog for Breeze UI. The canonical implementation
+Global search/command dialog for Plume UI. The canonical implementation
 lives in `ui/src/components/search/command-palette.ts` (a Lit element). This
 doc covers how it is wired, its anatomy, and how to extend or restyle it.
 
@@ -10,8 +10,8 @@ doc covers how it is wired, its anatomy, and how to extend or restyle it.
 
 | File                                       | Purpose                                                   |
 | ------------------------------------------ | --------------------------------------------------------- |
-| `src/components/search/command-palette.ts` | The `breeze-command-palette` element                      |
-| `src/components/ui/dialog.ts`              | `breeze-dialog`: provides `placement="top"` used here    |
+| `src/components/search/command-palette.ts` | The `plume-command-palette` element                      |
+| `src/components/ui/dialog.ts`              | `plume-dialog`: provides `placement="top"` used here    |
 | `src/components/nav/nav-config.ts`         | `primaryNav` / `secondaryNav`: the page items            |
 | `src/components/top-bar.ts`                | Search trigger button (dispatches `open-command-palette`) |
 | `src/styles/index.css`                     | `--command-*` design tokens                               |
@@ -24,7 +24,7 @@ authenticated layout in `src/app-shell.ts`:
 ```ts
 import "./components/search/command-palette.ts";
 // …inside the authenticated shell render():
-<breeze-command-palette></breeze-command-palette>;
+<plume-command-palette></plume-command-palette>;
 ```
 
 It listens on `document` for opening events and keyboard shortcuts, so a single
@@ -42,7 +42,7 @@ Three ways, mirroring the React version:
      new CustomEvent("open-command-palette", { bubbles: true, composed: true }),
    );
    ```
-3. **Top-bar search button**: `breeze-top-bar`'s search trigger dispatches the
+3. **Top-bar search button**: `plume-top-bar`'s search trigger dispatches the
    event above on click.
 
 ## Component API
@@ -61,23 +61,23 @@ rather than toggling `open` (the element resets query/results/selection in
 
 ## Anatomy (CSS class structure)
 
-Rendered DOM (inside `breeze-dialog`):
+Rendered DOM (inside `plume-dialog`):
 
 ```
-breeze-dialog[placement=top]           # top-anchored, 42rem, rounded-xl, p-0
+plume-dialog[placement=top]           # top-anchored, 42rem, rounded-xl, p-0
 └─ .command                            # p-1, rounded-xl, bg-popover, overflow-hidden
    ├─ .command-input-wrapper           # p-1 pb-0
    │  └─ .command-input-group          # h-8, bg-input/30, border-input/30, rounded-lg
-   │     ├─ breeze-icon.search-icon    # 16px, opacity 0.5, left
+   │     ├─ plume-icon.search-icon    # 16px, opacity 0.5, left
    │     └─ input.command-input        # text-sm, transparent
    └─ .command-list                    # max-h-72, hidden scrollbar
       ├─ .command-empty                # shown when no items
       ├─ .command-group
       │  ├─ .command-group-heading     # text-xs font-medium muted-foreground
       │  └─ button.command-item         # px-2 py-1.5 gap-2; .selected -> bg-muted
-      │     ├─ breeze-icon.nav-icon | div.badge
+      │     ├─ plume-icon.nav-icon | div.badge
       │     ├─ .item-label | .task-content (label + subtitle)
-      │     └─ breeze-icon.check        # ml-auto, shown when .selected
+      │     └─ plume-icon.check        # ml-auto, shown when .selected
       └─ …
 ```
 
@@ -85,7 +85,7 @@ breeze-dialog[placement=top]           # top-anchored, 42rem, rounded-xl, p-0
 
 | Type         | Leading element                                               | Content                                  |
 | ------------ | ------------------------------------------------------------- | ---------------------------------------- |
-| `page` (nav) | `breeze-icon.nav-icon` (16px, muted → foreground when active) | `.item-label`                            |
+| `page` (nav) | `plume-icon.nav-icon` (16px, muted → foreground when active) | `.item-label`                            |
 | `project`    | `.badge` (16px, color bg, first letter of label)              | `.item-label`                            |
 | `task`       | `.badge` (16px, color bg, first letter of subtitle)           | `.task-content` (label + muted subtitle) |
 
@@ -102,10 +102,10 @@ resize the palette without touching component code:
 | `--command-list-h` | `18rem` | Results list max height (`max-h-72`)           |
 | `--command-top`    | `20vh`  | Top offset for `placement="top"` (`top-[20%]`) |
 
-Dialog tokens consumed (from `breeze-dialog`, overridable via inline `style`):
+Dialog tokens consumed (from `plume-dialog`, overridable via inline `style`):
 `--dialog-w`, `--dialog-radius`, `--dialog-body-padding`.
 
-The palette sets these inline on `<breeze-dialog>`:
+The palette sets these inline on `<plume-dialog>`:
 
 ```
 --dialog-w: var(--command-w);
@@ -221,14 +221,14 @@ same idea as Tailwind's `text-white`).
 
 ## Reusing top placement for other dialogs
 
-`breeze-dialog` now supports `placement="top"` (anchored at `var(--command-top)`
+`plume-dialog` now supports `placement="top"` (anchored at `var(--command-top)`
 from the top, horizontally centered). Any dialog that should sit near the top
 (search-like, quick-action) can use it:
 
 ```html
-<breeze-dialog placement="top" .open="${open}" @close="${…}">
+<plume-dialog placement="top" .open="${open}" @close="${…}">
   …
-</breeze-dialog>
+</plume-dialog>
 ```
 
 Combine with `--dialog-w`, `--dialog-radius`, `--dialog-body-padding` inline
@@ -246,6 +246,6 @@ Or via the repo Makefile: `make build-ui`.
 ## Reference (Lit implementation)
 
 The canonical implementation lives in `ui/src/components/search/command-palette.ts`
-(a Lit element). It uses `breeze-dialog` for the overlay, `nav-config.ts` for the
+(a Lit element). It uses `plume-dialog` for the overlay, `nav-config.ts` for the
 page items, and the generated SDK search API for search results.
 ```

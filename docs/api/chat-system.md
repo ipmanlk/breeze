@@ -2,7 +2,7 @@
 
 ## Overview
 
-Breeze's chat is a real-time messaging system with **global channels** (optionally linked to projects) and **direct messages (DMs)**. Each operates within an org boundary. All chat tables carry `org_id` for multi-tenancy.
+Plume's chat is a real-time messaging system with **global channels** (optionally linked to projects) and **direct messages (DMs)**. Each operates within an org boundary. All chat tables carry `org_id` for multi-tenancy.
 
 ## Core Domain Types
 
@@ -243,7 +243,7 @@ can block or fail the in-app notification that already landed:
 | Browser push (Web Push) | `desktop_notifications` pref + VAPID keys set | OS notification via service worker, even when the tab is closed |
 
 See `../ops/configuration.md` for SMTP and VAPID env vars. When neither is
-configured Breeze is air-gapped-friendly: both are silent no-ops and the
+configured Plume is air-gapped-friendly: both are silent no-ops and the
 in-app WS notification + bell badge are the only delivery path.
 
 ## Message Editing

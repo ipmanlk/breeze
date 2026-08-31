@@ -3,7 +3,7 @@ import { customElement, property } from "lit/decorators.js";
 import { contentEnterStyles } from "@/styles/shared-animations";
 import { fmtDate, fmtDateYear } from "@/lib/format/date";
 import type { DtoCycleResponse } from "@/api";
-import "../../components/ui/breeze-icon.ts";
+import "../../components/ui/plume-icon.ts";
 import { localized, msg } from "@lit/localize";
 
 /**
@@ -14,8 +14,8 @@ import { localized, msg } from "@lit/localize";
  * Properties: `cycles`.
  */
 @localized()
-@customElement("breeze-cycles-view")
-export class BreezeCyclesView extends LitElement {
+@customElement("plume-cycles-view")
+export class PlumeCyclesView extends LitElement {
   static styles = [
     contentEnterStyles,
     css`
@@ -183,18 +183,18 @@ export class BreezeCyclesView extends LitElement {
         <div class="card-title-row">
           ${isActive
             ? html`
-              <breeze-icon
+              <plume-icon
                 class="card-icon active"
                 name="circle-check"
                 size="16"
-              ></breeze-icon>
+              ></plume-icon>
             `
             : html`
-              <breeze-icon
+              <plume-icon
                 class="card-icon"
                 name="circle"
                 size="16"
-              ></breeze-icon>
+              ></plume-icon>
             `}
           <span class="card-name">${c.name}</span>
           ${isActive
@@ -239,7 +239,7 @@ export class BreezeCyclesView extends LitElement {
     if (this.cycles.length === 0) {
       return html`
         <div class="empty">
-          <breeze-icon class="empty-icon" name="circle" size="32"></breeze-icon>
+          <plume-icon class="empty-icon" name="circle" size="32"></plume-icon>
           <p class="empty-text">${msg("No cycles yet")}</p>
         </div>
       `;
@@ -282,6 +282,6 @@ export class BreezeCyclesView extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-cycles-view": BreezeCyclesView;
+    "plume-cycles-view": PlumeCyclesView;
   }
 }

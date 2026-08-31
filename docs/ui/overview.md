@@ -1,6 +1,6 @@
-# Breeze UI: Overview
+# Plume UI: Overview
 
-Frontend for Breeze. Built with Lit 3 + Vite 8 + TypeScript 6.
+Frontend for Plume. Built with Lit 3 + Vite 8 + TypeScript 6.
 
 ## Stack
 
@@ -31,12 +31,12 @@ ui/
 ├── public/              # static assets
 └── src/
     ├── main.ts          # bootstrap (sets API client config)
-    ├── app-shell.ts     # root <breeze-app> element
+    ├── app-shell.ts     # root <plume-app> element
     ├── api/             # generated OpenAPI SDK (do not edit)
     ├── styles/          # global reset + design tokens
     ├── themes/          # theme token overrides
     ├── components/      # reusable UI building blocks
-    │   ├── ui/          # leaf primitives (breeze-button, etc.)
+    │   ├── ui/          # leaf primitives (plume-button, etc.)
     │   ├── nav/         # app chrome (sidebar, top bar)
     │   └── search/      # global search
     ├── features/        # product modules (auth, dashboard, etc.)
@@ -59,8 +59,8 @@ ui/
 
 ## Project rules
 
-1. **All custom element tags start with `breeze-`**, avoiding collisions.
-2. **One element per file.** Filename = tag minus `breeze-`.
+1. **All custom element tags start with `plume-`**, avoiding collisions.
+2. **One element per file.** Filename = tag minus `plume-`.
 3. **Scoped styles only.** `static styles = css\`...\``. No global CSS from
    components.
 4. **No Tailwind, no shadcn.** CSS tokens + scoped Lit styles.

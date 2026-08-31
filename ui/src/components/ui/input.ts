@@ -2,14 +2,14 @@ import { css, html, LitElement } from "lit";
 import { customElement, property, query } from "lit/decorators.js";
 
 /**
- * Breeze input: styled shadow-DOM input.
+ * Plume input: styled shadow-DOM input.
  * Uses formAssociated + ElementInternals for native form participation
  * (appears in form.elements, supports setFormValue for FormData).
  * Renders via default Lit shadow root (no delegatesFocus: keeps
  * input:focus working correctly).
  */
-@customElement("breeze-input")
-export class BreezeInput extends LitElement {
+@customElement("plume-input")
+export class PlumeInput extends LitElement {
   static formAssociated = true;
 
   static styles = css`
@@ -150,6 +150,6 @@ export class BreezeInput extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-input": BreezeInput;
+    "plume-input": PlumeInput;
   }
 }

@@ -7,10 +7,10 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"ipmanlk/breeze/internal/apperr"
-	"ipmanlk/breeze/internal/domain"
-	"ipmanlk/breeze/internal/port"
-	"ipmanlk/breeze/internal/transport/dto"
+	"ipmanlk/plume/internal/apperr"
+	"ipmanlk/plume/internal/domain"
+	"ipmanlk/plume/internal/port"
+	"ipmanlk/plume/internal/transport/dto"
 
 	"github.com/go-chi/chi/v5"
 )

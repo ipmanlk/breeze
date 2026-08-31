@@ -2,7 +2,7 @@
     "swagger": "2.0",
     "info": {
         "description": "Self-hosted project management tool API",
-        "title": "Breeze API",
+        "title": "Plume API",
         "contact": {},
         "version": "1.0"
     },

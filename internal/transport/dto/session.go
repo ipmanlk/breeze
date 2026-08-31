@@ -3,7 +3,7 @@ package dto
 import (
 	"time"
 
-	"ipmanlk/breeze/internal/domain"
+	"ipmanlk/plume/internal/domain"
 )
 
 // SessionResponse describes a session row for the Sessions settings page.

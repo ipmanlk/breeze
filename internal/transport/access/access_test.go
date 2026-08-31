@@ -5,8 +5,8 @@ import (
 	"errors"
 	"testing"
 
-	"ipmanlk/breeze/internal/domain"
-	"ipmanlk/breeze/internal/port"
+	"ipmanlk/plume/internal/domain"
+	"ipmanlk/plume/internal/port"
 )
 
 // pmMock is a minimal ProjectMemberRepository whose Get returns a fixed

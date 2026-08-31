@@ -23,8 +23,8 @@ function toInputDate(d: Date): string {
  * Events: `close` (on dismiss), `saved` (after a successful create/update).
  */
 @localized()
-@customElement("breeze-cycle-dialog")
-export class BreezeCycleDialog extends LitElement {
+@customElement("plume-cycle-dialog")
+export class PlumeCycleDialog extends LitElement {
   static styles = css`
     *,
     *::before,
@@ -152,7 +152,7 @@ export class BreezeCycleDialog extends LitElement {
   protected render() {
     const isEdit = !!this.cycle;
     return html`
-      <breeze-dialog
+      <plume-dialog
         .open="${this.open}"
         heading="${isEdit ? "Edit cycle" : "New cycle"}"
         @close="${() => {
@@ -162,43 +162,43 @@ export class BreezeCycleDialog extends LitElement {
         }}"
       >
         <form class="body" @submit="${this._submit}" id="cycle-form">
-          <breeze-field label="Name">
-            <breeze-input
+          <plume-field label="Name">
+            <plume-input
               placeholder=${msg("Cycle name (auto if empty)")}
               .value="${this._name}"
               @input="${(
                 e: Event,
               ) => (this._name = (e.target as HTMLInputElement).value)}"
-            ></breeze-input>
-          </breeze-field>
-          <breeze-field label="Goal">
-            <breeze-input
+            ></plume-input>
+          </plume-field>
+          <plume-field label="Goal">
+            <plume-input
               placeholder=${msg("What is the goal of this cycle?")}
               .value="${this._goal}"
               @input="${(
                 e: Event,
               ) => (this._goal = (e.target as HTMLInputElement).value)}"
-            ></breeze-input>
-          </breeze-field>
+            ></plume-input>
+          </plume-field>
           <div class="grid">
-            <breeze-field label="Start">
-              <breeze-input
+            <plume-field label="Start">
+              <plume-input
                 type="date"
                 .value="${this._startsAt}"
                 @input="${(
                   e: Event,
                 ) => (this._startsAt = (e.target as HTMLInputElement).value)}"
-              ></breeze-input>
-            </breeze-field>
-            <breeze-field label="End">
-              <breeze-input
+              ></plume-input>
+            </plume-field>
+            <plume-field label="End">
+              <plume-input
                 type="date"
                 .value="${this._endsAt}"
                 @input="${(
                   e: Event,
                 ) => (this._endsAt = (e.target as HTMLInputElement).value)}"
-              ></breeze-input>
-            </breeze-field>
+              ></plume-input>
+            </plume-field>
           </div>
           ${this._error
             ? html`
@@ -209,20 +209,20 @@ export class BreezeCycleDialog extends LitElement {
 
         <div class="footer" slot="footer">
           <span class="spacer"></span>
-          <breeze-button
+          <plume-button
             variant="ghost"
             @click="${() => (this.open = false)}"
-          >Cancel</breeze-button>
-          <breeze-button
+          >Cancel</plume-button>
+          <plume-button
             ?disabled="${this._saving}"
             @click="${this._submit}"
           >${this._saving
             ? "Saving..."
             : isEdit
             ? "Save"
-            : "Create"}</breeze-button>
+            : "Create"}</plume-button>
         </div>
-      </breeze-dialog>
+      </plume-dialog>
     `;
   }
 }
@@ -235,6 +235,6 @@ function addDays(d: Date, n: number): Date {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-cycle-dialog": BreezeCycleDialog;
+    "plume-cycle-dialog": PlumeCycleDialog;
   }
 }

@@ -9,8 +9,8 @@ import "./components/dashboard-home.ts";
 import { localized } from "@lit/localize";
 
 @localized()
-@customElement("breeze-dashboard-page")
-export class BreezeDashboardPage extends LitElement {
+@customElement("plume-dashboard-page")
+export class PlumeDashboardPage extends LitElement {
   static styles = [
     pageEnterStyles,
     css`
@@ -41,20 +41,20 @@ export class BreezeDashboardPage extends LitElement {
     const { sections, isLoading } = dashboard.value;
 
     return html`
-      <breeze-app-layout>
+      <plume-app-layout>
         <div class="page-enter">
-          <breeze-dashboard-home
+          <plume-dashboard-home
             .sections="${sections}"
             .isLoading="${isLoading}"
-          ></breeze-dashboard-home>
+          ></plume-dashboard-home>
         </div>
-      </breeze-app-layout>
+      </plume-app-layout>
     `;
   }
 }
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-dashboard-page": BreezeDashboardPage;
+    "plume-dashboard-page": PlumeDashboardPage;
   }
 }

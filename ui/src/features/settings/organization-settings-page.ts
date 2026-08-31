@@ -17,7 +17,7 @@ import { canManageOrg, isOrgElevatedRole } from "@/lib/permissions";
 import { pageEnterStyles } from "@/styles/shared-animations";
 import "../../components/ui/input.ts";
 import "../../components/ui/button.ts";
-import "../../components/ui/breeze-icon.ts";
+import "../../components/ui/plume-icon.ts";
 import "../../components/ui/spinner.ts";
 import "../../layouts/app-layout.ts";
 import { localized, msg, str } from "@lit/localize";
@@ -28,8 +28,8 @@ import { localized, msg, str } from "@lit/localize";
  * (delete org with type-to-confirm).
  */
 @localized()
-@customElement("breeze-organization-settings-page")
-export class BreezeOrganizationSettingsPage extends LitElement {
+@customElement("plume-organization-settings-page")
+export class PlumeOrganizationSettingsPage extends LitElement {
   static styles = [
     pageEnterStyles,
     css`
@@ -204,7 +204,7 @@ export class BreezeOrganizationSettingsPage extends LitElement {
     `,
   ];
 
-  /** When true, suppress <breeze-app-layout> and .page-head. */
+  /** When true, suppress <plume-app-layout> and .page-head. */
   @property({ type: Boolean })
   embedded = false;
 
@@ -310,7 +310,7 @@ export class BreezeOrganizationSettingsPage extends LitElement {
       const blob = data as Blob;
       const disposition = response.headers.get("Content-Disposition") ?? "";
       const match = disposition.match(/filename="(.+)"/);
-      const filename = match ? match[1] : "breeze-backup.db";
+      const filename = match ? match[1] : "plume-backup.db";
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url;
@@ -384,12 +384,12 @@ export class BreezeOrganizationSettingsPage extends LitElement {
     if (this._loading) {
       const spinner = html`
         <div
-          class="loading"><breeze-spinner></breeze-spinner> ${msg(
+          class="loading"><plume-spinner></plume-spinner> ${msg(
             "Loading organization…",
           )}</div>
       `;
       if (this.embedded) return spinner;
-      return html`<breeze-app-layout>${spinner}</breeze-app-layout>`;
+      return html`<plume-app-layout>${spinner}</plume-app-layout>`;
     }
 
     const body = html`
@@ -408,12 +408,12 @@ export class BreezeOrganizationSettingsPage extends LitElement {
                   "The display name of your workspace",
                 )}</span>
               </div>
-              <breeze-input
+              <plume-input
                 .value=${this._name}
                 @input=${(
                   e: Event,
                 ) => (this._name = (e.target as HTMLInputElement).value)}
-              ></breeze-input>
+              ></plume-input>
             </div>
 
             <div class="field-row">
@@ -425,27 +425,27 @@ export class BreezeOrganizationSettingsPage extends LitElement {
                   "How long users can edit messages after sending. 0 = no limit.",
                 )}</span>
               </div>
-              <breeze-input
+              <plume-input
                 type="number"
                 .value=${String(this._editWindow)}
                 @input=${(e: Event) => (this._editWindow = parseInt(
                   (e.target as HTMLInputElement).value || "0",
                   10,
                 ))}
-              ></breeze-input>
+              ></plume-input>
             </div>
 
             <div class="save-row">
-              <breeze-button
+              <plume-button
                 ?disabled=${this._saving}
                 @click=${() => this.#save()}
               >
                 ${this._saving
-                  ? html`<breeze-spinner></breeze-spinner><span>${
+                  ? html`<plume-spinner></plume-spinner><span>${
                     msg("Saving…")
                   }</span>`
                   : msg("Save changes")}
-              </breeze-button>
+              </plume-button>
             </div>
           </div>
 
@@ -460,7 +460,7 @@ export class BreezeOrganizationSettingsPage extends LitElement {
                 <button class="audit-link" type="button" @click="${() =>
                   navigate("/settings/audit-log")}">
                   ${msg("View audit log")}
-                  <breeze-icon name="chevron-right" size="14"></breeze-icon>
+                  <plume-icon name="chevron-right" size="14"></plume-icon>
                 </button>
               </div>
             `
@@ -484,13 +484,13 @@ export class BreezeOrganizationSettingsPage extends LitElement {
                           "A restore is staged and will be applied on next server restart.",
                         )}
                       </span>
-                      <breeze-button
+                      <plume-button
                         variant="outline"
                         size="sm"
                         @click=${this.#cancelPendingRestore}
                       >
                         ${msg("Cancel restore")}
-                      </breeze-button>
+                      </plume-button>
                     </div>
                   `
                   : nothing}
@@ -506,16 +506,16 @@ export class BreezeOrganizationSettingsPage extends LitElement {
                     </span>
                   </div>
                   <div class="save-row">
-                    <breeze-button
+                    <plume-button
                       ?disabled=${this._downloading}
                       @click=${this.#downloadBackup}
                     >
                       ${this._downloading
-                        ? html`<breeze-spinner></breeze-spinner><span>${
+                        ? html`<plume-spinner></plume-spinner><span>${
                           msg("Downloading…")
                         }</span>`
                         : msg("Download backup")}
-                    </breeze-button>
+                    </plume-button>
                   </div>
                 </div>
 
@@ -539,7 +539,7 @@ export class BreezeOrganizationSettingsPage extends LitElement {
                           hidden
                           @change=${this.#onRestoreFileSelect}
                         />
-                        <breeze-button
+                        <plume-button
                           variant="outline"
                           ?disabled=${this._restoring}
                           @click=${() =>
@@ -548,9 +548,9 @@ export class BreezeOrganizationSettingsPage extends LitElement {
                               ?.click()}
                         >
                           ${this._restoring
-                            ? html`<breeze-spinner></breeze-spinner>`
+                            ? html`<plume-spinner></plume-spinner>`
                             : msg("Select backup file")}
-                        </breeze-button>
+                        </plume-button>
                         <span class="restore-filename">${this
                           ._restoreFileName}</span>
                       </div>
@@ -579,26 +579,26 @@ export class BreezeOrganizationSettingsPage extends LitElement {
                       }". This action cannot be undone. Type the organization name to confirm.`,
                     )}
                   </p>
-                  <breeze-input
+                  <plume-input
                     placeholder=${this._org?.name ?? ""}
                     .value=${this._deleteConfirm}
                     @input=${(e: Event) => (this._deleteConfirm = (
                       e.target as HTMLInputElement
                     ).value)}
-                  ></breeze-input>
+                  ></plume-input>
                   <div class="save-row danger-save-row">
-                    <breeze-button
+                    <plume-button
                       variant="destructive"
                       ?disabled=${this._deleting ||
                         this._deleteConfirm !== (this._org?.name ?? "")}
                       @click=${() => this.#deleteOrg()}
                     >
                       ${this._deleting
-                        ? html`<breeze-spinner></breeze-spinner><span>${
+                        ? html`<plume-spinner></plume-spinner><span>${
                           msg("Deleting…")
                         }</span>`
                         : msg("Delete organization")}
-                    </breeze-button>
+                    </plume-button>
                   </div>
                 </div>
               </div>
@@ -611,7 +611,7 @@ export class BreezeOrganizationSettingsPage extends LitElement {
       return html`${body}`;
     }
     return html`
-      <breeze-app-layout>
+      <plume-app-layout>
         <div class="page-enter">
           <div class="page-head">
             <div>
@@ -621,13 +621,13 @@ export class BreezeOrganizationSettingsPage extends LitElement {
           </div>
           <div class="page-content">${body}</div>
         </div>
-      </breeze-app-layout>
+      </plume-app-layout>
     `;
   }
 }
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-organization-settings-page": BreezeOrganizationSettingsPage;
+    "plume-organization-settings-page": PlumeOrganizationSettingsPage;
   }
 }

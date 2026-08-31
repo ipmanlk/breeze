@@ -8,11 +8,11 @@ import (
 	"path/filepath"
 	"strings"
 
-	"ipmanlk/breeze/internal/apperr"
-	"ipmanlk/breeze/internal/auth"
-	"ipmanlk/breeze/internal/domain"
-	"ipmanlk/breeze/internal/port"
-	"ipmanlk/breeze/internal/storage"
+	"ipmanlk/plume/internal/apperr"
+	"ipmanlk/plume/internal/auth"
+	"ipmanlk/plume/internal/domain"
+	"ipmanlk/plume/internal/port"
+	"ipmanlk/plume/internal/storage"
 
 	"github.com/google/uuid"
 )

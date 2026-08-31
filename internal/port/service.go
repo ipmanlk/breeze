@@ -5,7 +5,7 @@ import (
 	"io"
 	"time"
 
-	"ipmanlk/breeze/internal/domain"
+	"ipmanlk/plume/internal/domain"
 )
 
 // AccessChecker provides defense-in-depth authorization for service-level

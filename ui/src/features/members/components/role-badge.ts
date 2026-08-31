@@ -1,6 +1,6 @@
 import { css, html, LitElement } from "lit";
 import { customElement, property } from "lit/decorators.js";
-import "@/components/ui/breeze-icon.ts";
+import "@/components/ui/plume-icon.ts";
 
 /**
  * Inline role badge showing a user's org or project role.
@@ -8,8 +8,8 @@ import "@/components/ui/breeze-icon.ts";
  * Roles: owner (primary), admin (orange), member (secondary), viewer (outline).
  * Theme-aware using `light-dark()` for the admin variant.
  */
-@customElement("breeze-role-badge")
-export class BreezeRoleBadge extends LitElement {
+@customElement("plume-role-badge")
+export class PlumeRoleBadge extends LitElement {
   static styles = css`
     *,
     *::before,
@@ -84,7 +84,7 @@ export class BreezeRoleBadge extends LitElement {
     if (this.role === "guest") {
       return html`
         <span class="badge-icon">
-          <breeze-icon name="shield" size="10"></breeze-icon>
+          <plume-icon name="shield" size="10"></plume-icon>
         </span>
         ${label}
       `;
@@ -97,6 +97,6 @@ export class BreezeRoleBadge extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-role-badge": BreezeRoleBadge;
+    "plume-role-badge": PlumeRoleBadge;
   }
 }

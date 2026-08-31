@@ -16,8 +16,8 @@ import "../../components/ui/card.ts";
 import "../../layouts/guest-layout.ts";
 
 @localized()
-@customElement("breeze-login-page")
-export class BreezeLoginPage extends LitElement {
+@customElement("plume-login-page")
+export class PlumeLoginPage extends LitElement {
   static styles = [
     pageEnterStyles,
     css`
@@ -32,7 +32,7 @@ export class BreezeLoginPage extends LitElement {
         justify-content: center;
         width: 100%;
       }
-      breeze-card {
+      plume-card {
         display: block;
         box-sizing: border-box;
         width: 100%;
@@ -85,23 +85,23 @@ export class BreezeLoginPage extends LitElement {
 
   protected render() {
     return html`
-      <breeze-guest-layout>
+      <plume-guest-layout>
         <div class="page-enter">
-          <breeze-card>
+          <plume-card>
             <form @submit="${this
               .#onSubmit}" novalidate class="${this.errors.form
               ? "shake"
               : ""}">
               <div class="title">
-                <h1>Breeze</h1>
+                <h1>Plume</h1>
                 <p>${msg("Sign in to your workspace")}</p>
               </div>
-              <breeze-field
+              <plume-field
                 label=${msg("Email")}
                 .error="${this.errors.email ?? ""}"
                 ?invalid="${!!this.errors.email}"
               >
-                <breeze-input
+                <plume-input
                   id="email"
                   name="email"
                   type="email"
@@ -111,14 +111,14 @@ export class BreezeLoginPage extends LitElement {
                     e: Event,
                   ) => (this.email = (e.target as HTMLInputElement).value)}"
                   ?invalid="${!!this.errors.email}"
-                ></breeze-input>
-              </breeze-field>
-              <breeze-field
+                ></plume-input>
+              </plume-field>
+              <plume-field
                 label=${msg("Password")}
                 .error="${this.errors.password ?? ""}"
                 ?invalid="${!!this.errors.password}"
               >
-                <breeze-input
+                <plume-input
                   id="password"
                   name="password"
                   type="password"
@@ -128,22 +128,22 @@ export class BreezeLoginPage extends LitElement {
                     e: Event,
                   ) => (this.password = (e.target as HTMLInputElement).value)}"
                   ?invalid="${!!this.errors.password}"
-                ></breeze-input>
-              </breeze-field>
+                ></plume-input>
+              </plume-field>
               ${this.errors.form
                 ? html`
                   <div class="form-error">${this.errors.form}</div>
                 `
                 : null}
-              <breeze-button type="submit" fluid ?disabled="${this.submitting}">
+              <plume-button type="submit" fluid ?disabled="${this.submitting}">
                 ${this.submitting
                   ? html`
-                    <breeze-spinner></breeze-spinner><span>${msg(
+                    <plume-spinner></plume-spinner><span>${msg(
                       "Signing in...",
                     )}</span>
                   `
                   : msg("Sign in")}
-              </breeze-button>
+              </plume-button>
               <div class="forgot-link">
                 <a
                   href="/forgot-password"
@@ -154,9 +154,9 @@ export class BreezeLoginPage extends LitElement {
                 >${msg("Forgot password?")}</a>
               </div>
             </form>
-          </breeze-card>
+          </plume-card>
         </div>
-      </breeze-guest-layout>
+      </plume-guest-layout>
     `;
   }
 
@@ -204,6 +204,6 @@ export class BreezeLoginPage extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-login-page": BreezeLoginPage;
+    "plume-login-page": PlumeLoginPage;
   }
 }

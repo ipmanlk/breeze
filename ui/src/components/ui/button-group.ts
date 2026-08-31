@@ -1,7 +1,7 @@
 import { css, html, LitElement } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { localized, msg } from "@lit/localize";
-import "./breeze-icon.ts";
+import "./plume-icon.ts";
 import "./popover.ts";
 
 export interface ButtonGroupAction {
@@ -27,8 +27,8 @@ export interface ButtonGroupAction {
  * Properties: `actions` (menu items), `size` (sm is the small variant).
  */
 @localized()
-@customElement("breeze-button-group")
-export class BreezeButtonGroup extends LitElement {
+@customElement("plume-button-group")
+export class PlumeButtonGroup extends LitElement {
   static styles = css`
     *,
     *::before,
@@ -124,7 +124,7 @@ export class BreezeButtonGroup extends LitElement {
   @property({ type: Array, attribute: false })
   actions: ButtonGroupAction[] = [];
 
-  /** Renders buttons at a compact size (matches breeze-button size="sm"). */
+  /** Renders buttons at a compact size (matches plume-button size="sm"). */
   @property({ reflect: true })
   size: "default" | "sm" = "default";
 
@@ -152,13 +152,13 @@ export class BreezeButtonGroup extends LitElement {
       <button class="main-btn" @click="${this._onMainClick}">
         <slot></slot>
       </button>
-      <breeze-popover placement="bottom-end">
+      <plume-popover placement="bottom-end">
         <button
           slot="trigger"
           class="caret"
           aria-label="${msg("More actions")}"
         >
-          <breeze-icon name="chevron-down" size="12"></breeze-icon>
+          <plume-icon name="chevron-down" size="12"></plume-icon>
         </button>
         <div slot="content" class="menu">
           ${this.actions.map(
@@ -170,20 +170,20 @@ export class BreezeButtonGroup extends LitElement {
                 >
                   ${a.icon
                     ? html`
-                      <breeze-icon name="${a.icon}" size="14"></breeze-icon>
+                      <plume-icon name="${a.icon}" size="14"></plume-icon>
                     `
                     : null} ${a.label}
                 </button>
               `,
           )}
         </div>
-      </breeze-popover>
+      </plume-popover>
     `;
   }
 }
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-button-group": BreezeButtonGroup;
+    "plume-button-group": PlumeButtonGroup;
   }
 }

@@ -1,4 +1,4 @@
-// @title			Breeze API
+// @title			Plume API
 // @version		1.0
 // @description	Self-hosted project management tool API
 // @BasePath		/api
@@ -8,22 +8,22 @@ import (
 	"context"
 	"log"
 
-	"ipmanlk/breeze/internal/app"
-	"ipmanlk/breeze/internal/config"
+	"ipmanlk/plume/internal/app"
+	"ipmanlk/plume/internal/config"
 )
 
 func main() {
 	cfg, err := config.Load()
 	if err != nil {
-		log.Fatalf("breeze: invalid configuration: %v", err)
+		log.Fatalf("plume: invalid configuration: %v", err)
 	}
 
 	a, err := app.New(cfg)
 	if err != nil {
-		log.Fatalf("breeze: failed to initialize: %v", err)
+		log.Fatalf("plume: failed to initialize: %v", err)
 	}
 
 	if err := a.Run(context.Background()); err != nil {
-		log.Fatalf("breeze: %v", err)
+		log.Fatalf("plume: %v", err)
 	}
 }

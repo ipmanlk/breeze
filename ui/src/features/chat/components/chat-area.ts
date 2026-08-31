@@ -31,8 +31,8 @@ import "@/components/ui/button.ts";
 import { localized, msg } from "@lit/localize";
 
 @localized()
-@customElement("breeze-chat-area")
-export class BreezeChatArea extends LitElement {
+@customElement("plume-chat-area")
+export class PlumeChatArea extends LitElement {
   static styles = css`
     *,
     *::before,
@@ -354,7 +354,7 @@ export class BreezeChatArea extends LitElement {
       <div class="header">
         <div class="header-left">
           <span class="header-icon">
-            <breeze-icon name="${convIcon}" size="16"></breeze-icon>
+            <plume-icon name="${convIcon}" size="16"></plume-icon>
           </span>
           <span class="header-name">${getConvDisplayName(conv)}</span>
           ${(conv.type === "direct" || conv.type === "group") &&
@@ -366,7 +366,7 @@ export class BreezeChatArea extends LitElement {
                 title="Rename conversation"
                 aria-label=${msg("Rename conversation")}
               >
-                <breeze-icon name="pencil" size="12"></breeze-icon>
+                <plume-icon name="pencil" size="12"></plume-icon>
               </button>
             `
             : nothing} ${conv.topic
@@ -387,7 +387,7 @@ export class BreezeChatArea extends LitElement {
             title="Search messages"
             aria-label=${msg("Search messages")}
           >
-            <breeze-icon name="search" size="16"></breeze-icon>
+            <plume-icon name="search" size="16"></plume-icon>
           </button>
           <button
             class="header-btn"
@@ -395,7 +395,7 @@ export class BreezeChatArea extends LitElement {
             title="Members"
             aria-label=${msg("Members")}
           >
-            <breeze-icon name="users" size="16"></breeze-icon>
+            <plume-icon name="users" size="16"></plume-icon>
           </button>
           ${perms?.can_manage
             ? html`
@@ -405,14 +405,14 @@ export class BreezeChatArea extends LitElement {
                 title="Channel settings"
                 aria-label=${msg("Channel settings")}
               >
-                <breeze-icon name="settings" size="16"></breeze-icon>
+                <plume-icon name="settings" size="16"></plume-icon>
               </button>
             `
             : nothing}
         </div>
       </div>
 
-      <breeze-pinned-messages-bar
+      <plume-pinned-messages-bar
         conversationId="${conv.id}"
         conversationType="${conv.type}"
         currentUserId="${user?.id || ""}"
@@ -421,20 +421,20 @@ export class BreezeChatArea extends LitElement {
         @delete="${(e: CustomEvent) => this._onDeleteMessage(e.detail)}"
         @reply="${(e: CustomEvent) => this._onReplyTo(e.detail)}"
         @reaction="${this._onReaction}"
-      ></breeze-pinned-messages-bar>
+      ></plume-pinned-messages-bar>
 
       ${conv.type === "voice" && perms?.can_send !== false
         ? html`
-          <breeze-voice-channel-view
+          <plume-voice-channel-view
             conversationId="${conv.id}"
             conversationName="${conv.name}"
-          ></breeze-voice-channel-view>
+          ></plume-voice-channel-view>
         `
         : nothing}
 
       <div class="content-wrap">
         <div class="messages-area">
-          <breeze-message-list
+          <plume-message-list
             conversationId="${conv.id}"
             currentUserId="${user?.id || ""}"
             @reaction="${this._onReaction}"
@@ -442,14 +442,14 @@ export class BreezeChatArea extends LitElement {
             @edit="${(e: CustomEvent) => this._onEditMessage(e.detail)}"
             @delete="${(e: CustomEvent) => this._onDeleteMessage(e.detail)}"
             @pin="${(e: CustomEvent) => this._onPinMessage(e.detail)}"
-          ></breeze-message-list>
+          ></plume-message-list>
 
           ${typingNames.length > 0
             ? html`
               <div class="typing-wrap">
-                <breeze-typing-indicator
+                <plume-typing-indicator
                   .names="${typingNames}"
-                ></breeze-typing-indicator>
+                ></plume-typing-indicator>
               </div>
             `
             : nothing}
@@ -458,27 +458,27 @@ export class BreezeChatArea extends LitElement {
         <div class="input-area">
           ${editMsg
             ? html`
-              <breeze-edit-banner
+              <plume-edit-banner
                 @cancel="${() => {
                   editMessage.value = null;
                 }}"
-              ></breeze-edit-banner>
+              ></plume-edit-banner>
             `
             : nothing} ${replyMsg
             ? html`
-              <breeze-reply-banner
+              <plume-reply-banner
                 .message="${replyMsg}"
                 @cancel="${() => {
                   replyToMessage.value = null;
                 }}"
-              ></breeze-reply-banner>
+              ></plume-reply-banner>
             `
             : nothing} ${perms?.can_send !== false
             ? html`
-              <breeze-message-input
+              <plume-message-input
                 .conversation="${conv}"
                 @edited="${this._onMessageEdited}"
-              ></breeze-message-input>
+              ></plume-message-input>
             `
             : html`
               <div
@@ -492,7 +492,7 @@ export class BreezeChatArea extends LitElement {
 
       ${this._renameOpen
         ? html`
-          <breeze-dialog
+          <plume-dialog
             style="--dialog-w:24rem"
             .open="${true}"
             heading="Rename conversation"
@@ -501,7 +501,7 @@ export class BreezeChatArea extends LitElement {
             }}"
           >
             <div style="display:flex;flex-direction:column;gap:var(--space-2)">
-              <breeze-input
+              <plume-input
                 placeholder=${msg("Conversation name")}
                 .value="${this._renameValue}"
                 maxlength="100"
@@ -509,7 +509,7 @@ export class BreezeChatArea extends LitElement {
                 @input="${(e: Event) => {
                   this._renameValue = (e.target as HTMLInputElement).value;
                 }}"
-              ></breeze-input>
+              ></plume-input>
               ${this._renameError
                 ? html`
                   <p style="font-size:var(--text-xs);font-weight:500;color:var(--destructive)">
@@ -522,17 +522,17 @@ export class BreezeChatArea extends LitElement {
               slot="footer"
               style="display:flex;justify-content:flex-end;gap:var(--space-2);width:100%"
             >
-              <breeze-button variant="ghost" type="button" @click="${() => {
+              <plume-button variant="ghost" type="button" @click="${() => {
                 this._renameOpen = false;
               }}">
                 Cancel
-              </breeze-button>
-              <breeze-button ?disabled="${this._renameSaving ||
+              </plume-button>
+              <plume-button ?disabled="${this._renameSaving ||
                 !this._renameValue.trim()}" @click="${this._onRenameSubmit}">
                 ${this._renameSaving ? "Saving..." : "Save"}
-              </breeze-button>
+              </plume-button>
             </div>
-          </breeze-dialog>
+          </plume-dialog>
         `
         : nothing}
     `;
@@ -541,6 +541,6 @@ export class BreezeChatArea extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-chat-area": BreezeChatArea;
+    "plume-chat-area": PlumeChatArea;
   }
 }

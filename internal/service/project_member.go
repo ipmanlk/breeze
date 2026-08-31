@@ -4,9 +4,9 @@ import (
 	"context"
 	"fmt"
 
-	"ipmanlk/breeze/internal/apperr"
-	"ipmanlk/breeze/internal/domain"
-	"ipmanlk/breeze/internal/port"
+	"ipmanlk/plume/internal/apperr"
+	"ipmanlk/plume/internal/domain"
+	"ipmanlk/plume/internal/port"
 )
 
 type ProjectMemberService struct {

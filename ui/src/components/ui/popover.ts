@@ -3,7 +3,7 @@ import { customElement, property, query } from "lit/decorators.js";
 import { OutsideClickController } from "@/lib/outside-click-controller";
 
 /**
- * Breeze Popover: simple dropdown/popover.
+ * Plume Popover: simple dropdown/popover.
  *
  * Trigger element goes in the "trigger" slot.
  * Content goes in the "content" slot.
@@ -12,7 +12,7 @@ import { OutsideClickController } from "@/lib/outside-click-controller";
  *
  * Uses `position: fixed` for the content panel so it is never clipped by
  * overflow ancestors (dialogs, scroll containers, etc.): mirroring the
- * `breeze-select` approach. The panel is repositioned on scroll/resize to
+ * `plume-select` approach. The panel is repositioned on scroll/resize to
  * track its trigger.
  *
  * Set `closeOnSelect` to false for multi-select popovers that should stay
@@ -20,8 +20,8 @@ import { OutsideClickController } from "@/lib/outside-click-controller";
  * (`true`) closes the popover on any click inside the content: matching
  * single-select dropdowns (status pickers, action menus, etc.).
  */
-@customElement("breeze-popover")
-export class BreezePopover extends LitElement {
+@customElement("plume-popover")
+export class PlumePopover extends LitElement {
   static styles = css`
     *,
     *::before,
@@ -197,6 +197,6 @@ export class BreezePopover extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-popover": BreezePopover;
+    "plume-popover": PlumePopover;
   }
 }

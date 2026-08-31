@@ -1,5 +1,5 @@
-export { BreezeInboxPage } from "./inbox-page";
-export { BreezeNotificationItem } from "./notification-item";
+export { PlumeInboxPage } from "./inbox-page";
+export { PlumeNotificationItem } from "./notification-item";
 export {
   fetchMoreNotifications,
   fetchNotifications,

@@ -12,10 +12,10 @@ import (
 
 	"github.com/go-chi/chi/v5"
 
-	"ipmanlk/breeze/internal/apperr"
-	"ipmanlk/breeze/internal/port"
-	"ipmanlk/breeze/internal/storage"
-	"ipmanlk/breeze/internal/transport"
+	"ipmanlk/plume/internal/apperr"
+	"ipmanlk/plume/internal/port"
+	"ipmanlk/plume/internal/storage"
+	"ipmanlk/plume/internal/transport"
 )
 
 // AvatarHandler serves user avatars through an auth-protected API endpoint so

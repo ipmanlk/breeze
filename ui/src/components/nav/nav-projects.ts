@@ -5,7 +5,7 @@ import { currentPath, navigate } from "@/routes/router";
 import { projects } from "@/store/projects";
 import { sidebarIsMobile, sidebarOpen } from "@/store/sidebar";
 import { SignalController } from "@/lib/signal-controller";
-import "../ui/breeze-icon.ts";
+import "../ui/plume-icon.ts";
 import "../ui/tooltip.ts";
 
 /**
@@ -18,8 +18,8 @@ import "../ui/tooltip.ts";
  * `projects` signal.
  */
 @localized()
-@customElement("breeze-nav-projects")
-export class BreezeNavProjects extends LitElement {
+@customElement("plume-nav-projects")
+export class PlumeNavProjects extends LitElement {
   static styles = css`
     *,
     *::before,
@@ -207,13 +207,13 @@ export class BreezeNavProjects extends LitElement {
               e.stopPropagation();
             }}"
           >
-            <breeze-icon name="more-horizontal" size="16"></breeze-icon>
+            <plume-icon name="more-horizontal" size="16"></plume-icon>
           </button>
         </div>
       `;
       return collapsed
         ? html`
-          <breeze-tooltip text="${name}" side="right">${row}</breeze-tooltip>
+          <plume-tooltip text="${name}" side="right">${row}</plume-tooltip>
         `
         : row;
     };
@@ -228,14 +228,14 @@ export class BreezeNavProjects extends LitElement {
         }}"
       >
         <span class="plus-slot">
-          <breeze-icon name="plus" size="16"></breeze-icon>
+          <plume-icon name="plus" size="16"></plume-icon>
         </span>
         <span class="name">${msg("Add project")}</span>
       </a>
     `;
     const addRowWrapped = collapsed
       ? html`
-        <breeze-tooltip text="Add project" side="right">${addRow}</breeze-tooltip>
+        <plume-tooltip text="Add project" side="right">${addRow}</plume-tooltip>
       `
       : addRow;
 
@@ -252,6 +252,6 @@ export class BreezeNavProjects extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-nav-projects": BreezeNavProjects;
+    "plume-nav-projects": PlumeNavProjects;
   }
 }

@@ -9,7 +9,7 @@ import {
 } from "@/api";
 import type { DtoProjectAssignment } from "@/api";
 import "@/components/ui/button.ts";
-import "@/components/ui/breeze-icon.ts";
+import "@/components/ui/plume-icon.ts";
 import "@/components/ui/dialog.ts";
 import "@/components/ui/input.ts";
 import "@/components/ui/select.ts";
@@ -41,8 +41,8 @@ interface ProjectEntry {
  * Follows the same table + inline edit pattern as project-members-view.
  */
 @localized()
-@customElement("breeze-member-projects-dialog")
-export class BreezeMemberProjectsDialog extends LitElement {
+@customElement("plume-member-projects-dialog")
+export class PlumeMemberProjectsDialog extends LitElement {
   static styles = css`
     *,
     *::before,
@@ -280,7 +280,7 @@ export class BreezeMemberProjectsDialog extends LitElement {
 
   protected render() {
     return html`
-      <breeze-dialog
+      <plume-dialog
         .open="${this.open}"
         heading="${msg("Project assignments")} — ${this.userName}"
         style="--dialog-w:32rem"
@@ -290,7 +290,7 @@ export class BreezeMemberProjectsDialog extends LitElement {
           ${this._loading
             ? html`
               <div class="loading">
-                <breeze-spinner size="20"></breeze-spinner>
+                <plume-spinner size="20"></plume-spinner>
               </div>
             `
             : this._error && this._entries.length === 0
@@ -298,7 +298,7 @@ export class BreezeMemberProjectsDialog extends LitElement {
               <div class="empty">${this._error}</div>
             `
             : html`
-              <breeze-input
+              <plume-input
                 class="search-wrap"
                 type="search"
                 placeholder="${msg("Search projects")}"
@@ -306,7 +306,7 @@ export class BreezeMemberProjectsDialog extends LitElement {
                 @input="${(e: Event) => {
                   this._search = (e.target as HTMLInputElement).value;
                 }}"
-              ></breeze-input>
+              ></plume-input>
 
               <div class="project-list">
                 ${this.#filteredEntries.length === 0
@@ -333,7 +333,7 @@ export class BreezeMemberProjectsDialog extends LitElement {
                         >
                           ${entry.assigned
                             ? html`
-                              <breeze-icon name="check" size="10"></breeze-icon>
+                              <plume-icon name="check" size="10"></plume-icon>
                             `
                             : nothing}
                         </span>
@@ -347,14 +347,14 @@ export class BreezeMemberProjectsDialog extends LitElement {
                         </div>
                         ${entry.assigned
                           ? html`
-                            <breeze-select
+                            <plume-select
                               class="role-select"
                               .options="${getPROJECT_ROLE_OPTIONS()}"
                               .value="${entry.role}"
                               @change="${(e: CustomEvent) => {
                                 this.#setRole(entry.id, e.detail as string);
                               }}"
-                            ></breeze-select>
+                            ></plume-select>
                           `
                           : html`
                             <span style="font-size:var(--text-xs);color:var(--muted-foreground)">
@@ -378,28 +378,28 @@ export class BreezeMemberProjectsDialog extends LitElement {
         </div>
 
         <div slot="footer" class="footer">
-          <breeze-button
+          <plume-button
             variant="ghost"
             type="button"
             @click="${this.#onClose}"
           >
             ${msg("Cancel")}
-          </breeze-button>
-          <breeze-button
+          </plume-button>
+          <plume-button
             type="button"
             ?disabled="${this._loading || this._saving}"
             @click="${this.#save}"
           >
             ${this._saving ? msg("Saving...") : msg("Save")}
-          </breeze-button>
+          </plume-button>
         </div>
-      </breeze-dialog>
+      </plume-dialog>
     `;
   }
 }
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-member-projects-dialog": BreezeMemberProjectsDialog;
+    "plume-member-projects-dialog": PlumeMemberProjectsDialog;
   }
 }

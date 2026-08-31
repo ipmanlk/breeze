@@ -7,7 +7,7 @@ import { projects } from "@/store/projects";
 import "@/components/ui/dialog.ts";
 import "@/components/ui/input.ts";
 import "@/components/ui/button.ts";
-import "@/components/ui/breeze-icon.ts";
+import "@/components/ui/plume-icon.ts";
 import "@/components/ui/combobox.ts";
 import { localized, msg } from "@lit/localize";
 
@@ -17,8 +17,8 @@ import { localized, msg } from "@lit/localize";
  * Creates a text or voice channel, optionally under a category.
  */
 @localized()
-@customElement("breeze-create-channel-dialog")
-export class BreezeCreateChannelDialog extends LitElement {
+@customElement("plume-create-channel-dialog")
+export class PlumeCreateChannelDialog extends LitElement {
   static styles = css`
     *,
     *::before,
@@ -171,14 +171,14 @@ export class BreezeCreateChannelDialog extends LitElement {
     return html`
       <div>
         <p class="hint">${msg("Link to projects (optional):")}</p>
-        <breeze-combobox
+        <plume-combobox
           .options="${options}"
           .value="${this._projectIds}"
           placeholder=${msg("Select projects...")}
           @change="${(e: Event) => {
             this._projectIds = (e as CustomEvent).detail as string[];
           }}"
-        ></breeze-combobox>
+        ></plume-combobox>
       </div>
     `;
   }
@@ -188,7 +188,7 @@ export class BreezeCreateChannelDialog extends LitElement {
     const categoryId = this.#getCategoryId();
 
     return html`
-      <breeze-dialog
+      <plume-dialog
         style="--dialog-w:28rem"
         .open="${isOpen}"
         heading="${msg("Create channel")}"
@@ -203,7 +203,7 @@ export class BreezeCreateChannelDialog extends LitElement {
                 this._kind = "channel";
               }}"
             >
-              <breeze-icon name="hash" size="16"></breeze-icon>
+              <plume-icon name="hash" size="16"></plume-icon>
               <span class="kind-btn-name">${msg("Text")}</span>
               <span class="kind-btn-desc">${msg(
                 "Send messages, images, files",
@@ -216,7 +216,7 @@ export class BreezeCreateChannelDialog extends LitElement {
                 this._kind = "voice";
               }}"
             >
-              <breeze-icon name="volume-2" size="16"></breeze-icon>
+              <plume-icon name="volume-2" size="16"></plume-icon>
               <span class="kind-btn-name">${msg("Voice")}</span>
               <span class="kind-btn-desc">${msg(
                 "Voice chat with participants",
@@ -224,7 +224,7 @@ export class BreezeCreateChannelDialog extends LitElement {
             </button>
           </div>
 
-          <breeze-input
+          <plume-input
             placeholder=${msg("new-channel")}
             .value="${this._name}"
             maxlength="100"
@@ -232,7 +232,7 @@ export class BreezeCreateChannelDialog extends LitElement {
             @input="${(e: Event) => {
               this._name = (e.target as HTMLInputElement).value;
             }}"
-          ></breeze-input>
+          ></plume-input>
           <p class="hint">
             Lowercase, hyphens for spaces. Example: <code>team-updates</code>
           </p>
@@ -250,27 +250,27 @@ export class BreezeCreateChannelDialog extends LitElement {
             : ""}
         </div>
         <div slot="footer" class="footer">
-          <breeze-button
+          <plume-button
             variant="ghost"
             type="button"
             @click="${this.#onClose}"
           >
             Cancel
-          </breeze-button>
-          <breeze-button
+          </plume-button>
+          <plume-button
             ?disabled="${this._creating || !this._name.trim()}"
             @click="${this.#onSubmit}"
           >
             ${this._creating ? "Creating..." : "Create"}
-          </breeze-button>
+          </plume-button>
         </div>
-      </breeze-dialog>
+      </plume-dialog>
     `;
   }
 }
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-create-channel-dialog": BreezeCreateChannelDialog;
+    "plume-create-channel-dialog": PlumeCreateChannelDialog;
   }
 }

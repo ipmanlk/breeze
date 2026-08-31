@@ -217,8 +217,8 @@ const DS_STYLES = css`
 `;
 
 @localized()
-@customElement("breeze-dm-sidebar")
-export class BreezeDmSidebar extends LitElement {
+@customElement("plume-dm-sidebar")
+export class PlumeDmSidebar extends LitElement {
   static styles = DS_STYLES;
 
   #signals = new SignalController(this);
@@ -354,7 +354,7 @@ export class BreezeDmSidebar extends LitElement {
           title="${msg("New message")}"
           aria-label=${msg("New message")}
         >
-          <breeze-icon name="plus" size="16"></breeze-icon>
+          <plume-icon name="plus" size="16"></plume-icon>
         </button>
       </div>
 
@@ -393,14 +393,14 @@ export class BreezeDmSidebar extends LitElement {
                     aria-label=${msg("Conversation actions")}
                     @click="${(e: Event) => this._toggleMenu(e, conv.id)}"
                   >
-                    <breeze-icon name="more-vertical" size="14"></breeze-icon>
+                    <plume-icon name="more-vertical" size="14"></plume-icon>
                   </button>
                   ${this._menuConvId === conv.id
                     ? html`
                       <div class="dm-menu">
                         <button class="dm-menu-item" @click="${() =>
                           this._openRename(conv)}">
-                          <breeze-icon name="pencil" size="14"></breeze-icon>
+                          <plume-icon name="pencil" size="14"></plume-icon>
                           Rename
                         </button>
                       </div>
@@ -413,14 +413,14 @@ export class BreezeDmSidebar extends LitElement {
 
       ${this._renameConv
         ? html`
-          <breeze-dialog
+          <plume-dialog
             style="--dialog-w:24rem"
             .open="${true}"
             heading="Rename conversation"
             @close="${this._closeRename}"
           >
             <div class="ds-dlg-body">
-              <breeze-input
+              <plume-input
                 placeholder=${msg("Conversation name")}
                 .value="${this._renameValue}"
                 maxlength="100"
@@ -428,7 +428,7 @@ export class BreezeDmSidebar extends LitElement {
                 @input="${(e: Event) => {
                   this._renameValue = (e.target as HTMLInputElement).value;
                 }}"
-              ></breeze-input>
+              ></plume-input>
               ${this._error
                 ? html`
                   <p class="ds-error">${this._error}</p>
@@ -439,16 +439,16 @@ export class BreezeDmSidebar extends LitElement {
               slot="footer"
               style="display:flex;justify-content:flex-end;gap:var(--space-2);width:100%"
             >
-              <breeze-button variant="ghost" type="button" @click="${this
+              <plume-button variant="ghost" type="button" @click="${this
                 ._closeRename}">
                 Cancel
-              </breeze-button>
-              <breeze-button ?disabled="${this._saving ||
+              </plume-button>
+              <plume-button ?disabled="${this._saving ||
                 !this._renameValue.trim()}" @click="${this._onRenameSubmit}">
                 ${this._saving ? "Saving..." : "Save"}
-              </breeze-button>
+              </plume-button>
             </div>
-          </breeze-dialog>
+          </plume-dialog>
         `
         : nothing}
     `;
@@ -457,6 +457,6 @@ export class BreezeDmSidebar extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-dm-sidebar": BreezeDmSidebar;
+    "plume-dm-sidebar": PlumeDmSidebar;
   }
 }

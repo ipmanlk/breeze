@@ -2,7 +2,7 @@ import { css, html, LitElement } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { navigate } from "@/routes/router";
 import { timeAgoShort } from "@/lib/format/time-ago";
-import "../../../components/ui/breeze-icon.ts";
+import "../../../components/ui/plume-icon.ts";
 import "../../../components/ui/card.ts";
 import { localized, msg } from "@lit/localize";
 
@@ -32,8 +32,8 @@ const TYPE_ICONS: Record<string, string> = {
 };
 
 @localized()
-@customElement("breeze-activity-section")
-export class BreezeActivitySection extends LitElement {
+@customElement("plume-activity-section")
+export class PlumeActivitySection extends LitElement {
   static styles = css`
     *,
     *::before,
@@ -114,15 +114,15 @@ export class BreezeActivitySection extends LitElement {
     const activities = (this.data as Activity[] | null) ?? [];
     if (activities.length === 0) {
       return html`
-        <breeze-card>
+        <plume-card>
           <div class="title">${msg("Recent Activity")}</div>
           <div class="empty">${msg("No recent activity.")}</div>
-        </breeze-card>
+        </plume-card>
       `;
     }
 
     return html`
-      <breeze-card>
+      <plume-card>
         <div class="title">${msg("Recent Activity")}</div>
         <ul class="list">
           ${activities.map((a) => {
@@ -138,11 +138,11 @@ export class BreezeActivitySection extends LitElement {
                         : a.link,
                     )}"
                 >
-                  <breeze-icon
+                  <plume-icon
                     name="${iconName}"
                     size="14"
                     style="color:var(--muted-foreground);flex-shrink:0;margin-top:var(--space-0-5)"
-                  ></breeze-icon>
+                  ></plume-icon>
                   <span class="activity-title">${a.title}</span>
                   ${a.actor_name
                     ? html`
@@ -163,13 +163,13 @@ export class BreezeActivitySection extends LitElement {
             `;
           })}
         </ul>
-      </breeze-card>
+      </plume-card>
     `;
   }
 }
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-activity-section": BreezeActivitySection;
+    "plume-activity-section": PlumeActivitySection;
   }
 }

@@ -12,8 +12,8 @@ import { type MentionResult, searchMentions } from "@/lib/mentions";
  * the chosen result. Anchored above its host via `bottom: 100%`.
  */
 @localized()
-@customElement("breeze-mention-popover")
-export class BreezeMentionPopover extends LitElement {
+@customElement("plume-mention-popover")
+export class PlumeMentionPopover extends LitElement {
   static styles = css`
     *,
     *::before,
@@ -250,9 +250,9 @@ export class BreezeMentionPopover extends LitElement {
                         class="item-icon"
                         ?data-everyone="${r.type === "everyone"}"
                       >
-                        <breeze-icon name="${this.#iconName(
+                        <plume-icon name="${this.#iconName(
                           r.type || "",
-                        )}" size="14"></breeze-icon>
+                        )}" size="14"></plume-icon>
                       </span>
                       <span class="item-label">${r.label}</span>
                       ${r.type === "task" && r.project_name
@@ -272,6 +272,6 @@ export class BreezeMentionPopover extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-mention-popover": BreezeMentionPopover;
+    "plume-mention-popover": PlumeMentionPopover;
   }
 }

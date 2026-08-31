@@ -2,10 +2,10 @@ import { css, html, LitElement } from "lit";
 import { customElement, property } from "lit/decorators.js";
 
 /**
- * Breeze stepper: visual step indicator.
+ * Plume stepper: visual step indicator.
  */
-@customElement("breeze-stepper")
-export class BreezeStepper extends LitElement {
+@customElement("plume-stepper")
+export class PlumeStepper extends LitElement {
   static styles = css`
     *,
     *::before,
@@ -56,6 +56,6 @@ export class BreezeStepper extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-stepper": BreezeStepper;
+    "plume-stepper": PlumeStepper;
   }
 }

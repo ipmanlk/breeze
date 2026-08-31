@@ -1,7 +1,7 @@
 package dto
 
 import (
-	"ipmanlk/breeze/internal/domain"
+	"ipmanlk/plume/internal/domain"
 )
 
 // SearchResultResponse is the API representation of a single search result.

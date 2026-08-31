@@ -5,7 +5,7 @@ import (
 	"crypto/rand"
 	"encoding/base64"
 
-	"ipmanlk/breeze/internal/config"
+	"ipmanlk/plume/internal/config"
 )
 
 // generateVAPIDKeyPair generates a P-256 VAPID key pair and returns a config
@@ -18,6 +18,6 @@ func generateVAPIDKeyPair() (config.VAPIDConfig, error) {
 	return config.VAPIDConfig{
 		PublicKey:  base64.RawURLEncoding.EncodeToString(priv.PublicKey().Bytes()),
 		PrivateKey: base64.RawURLEncoding.EncodeToString(priv.Bytes()),
-		Subject:    "mailto:test@breeze.local",
+		Subject:    "mailto:test@plume.local",
 	}, nil
 }

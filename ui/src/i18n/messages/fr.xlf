@@ -811,8 +811,8 @@
   <target>Personne n'est encore là</target>
 </trans-unit>
 <trans-unit id="sb22766f582609e29">
-  <source>Breeze needs mic permission to use voice.</source>
-  <target>Breeze a besoin de l'autorisation du micro pour utiliser la voix.</target>
+  <source>Plume needs mic permission to use voice.</source>
+  <target>Plume a besoin de l'autorisation du micro pour utiliser la voix.</target>
 </trans-unit>
 <trans-unit id="sb77d0b6fa52dae24">
   <source>Join the voice channel to start talking.</source>
@@ -1649,11 +1649,11 @@
   <source>Animation &amp; Motion</source>
 <target>Animation et Mouvement</target></trans-unit>
 <trans-unit id="sf8a90ee4fc613d10">
-  <source>Control how Breeze animates and transitions</source>
+  <source>Control how Plume animates and transitions</source>
 <target>Contrôler les animations et transitions</target></trans-unit>
 <trans-unit id="sd4127e48c241bf0c">
-  <source>Your system has reduced motion enabled. Breeze animations are disabled. You can override below.</source>
-<target>Votre système a réduit les animations. Les animations de Breeze sont désactivées. Vous pouvez les réactiver ci-dessous.</target></trans-unit>
+  <source>Your system has reduced motion enabled. Plume animations are disabled. You can override below.</source>
+<target>Votre système a réduit les animations. Les animations de Plume sont désactivées. Vous pouvez les réactiver ci-dessous.</target></trans-unit>
 <trans-unit id="s31703e096afaa241">
   <source>Enable animations</source>
 <target>Activer les animations</target></trans-unit>

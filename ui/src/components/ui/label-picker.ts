@@ -5,7 +5,7 @@ import { getLabels } from "@/api";
 import type { DtoLabelResponse } from "@/api";
 import { showToast } from "@/components/ui/toast-store";
 import "./label-chip.ts";
-import "./breeze-icon.ts";
+import "./plume-icon.ts";
 import "./popover.ts";
 
 /**
@@ -18,8 +18,8 @@ import "./popover.ts";
  * `putProjectsByIdTasksByTaskIdLabels`.
  */
 @localized()
-@customElement("breeze-label-picker")
-export class BreezeLabelPicker extends LitElement {
+@customElement("plume-label-picker")
+export class PlumeLabelPicker extends LitElement {
   static styles = css`
     *,
     *::before,
@@ -167,21 +167,21 @@ export class BreezeLabelPicker extends LitElement {
         ${this.selected.map(
           (l) =>
             html`
-              <breeze-label-chip
+              <plume-label-chip
                 .label="${l}"
                 removable
                 @remove="${(e: CustomEvent) => this._remove(e.detail.id)}"
-              ></breeze-label-chip>
+              ></plume-label-chip>
             `,
         )}
-        <breeze-popover
+        <plume-popover
           close-on-select="false"
           @click="${() => {
             if (!this._loaded) this._loadLabels();
           }}"
         >
           <button slot="trigger" class="add-trigger" type="button">
-            <breeze-icon name="plus" size="11"></breeze-icon>
+            <plume-icon name="plus" size="11"></plume-icon>
             ${msg("Add label")}
           </button>
           <div slot="content" class="popover-content">
@@ -209,11 +209,11 @@ export class BreezeLabelPicker extends LitElement {
                       <span class="name">${l.name}</span>
                       ${checked
                         ? html`
-                          <breeze-icon
+                          <plume-icon
                             class="check"
                             name="check"
                             size="14"
-                          ></breeze-icon>
+                          ></plume-icon>
                         `
                         : nothing}
                     </button>
@@ -221,7 +221,7 @@ export class BreezeLabelPicker extends LitElement {
                 },
               )}
           </div>
-        </breeze-popover>
+        </plume-popover>
       </div>
     `;
   }
@@ -229,6 +229,6 @@ export class BreezeLabelPicker extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-label-picker": BreezeLabelPicker;
+    "plume-label-picker": PlumeLabelPicker;
   }
 }

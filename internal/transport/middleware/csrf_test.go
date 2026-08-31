@@ -37,12 +37,12 @@ func TestCSRFProtection_SafeMethodsPassThrough(t *testing.T) {
 }
 
 func TestCSRFProtection_SameOriginPOST_Allowed(t *testing.T) {
-	handler := CSRFProtection([]string{"http://app.breeze.local"})(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+	handler := CSRFProtection([]string{"http://app.plume.local"})(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusOK)
 	}))
 
-	req := httptest.NewRequest(http.MethodPost, "http://app.breeze.local/api/resource", nil)
-	req.Header.Set("Origin", "http://app.breeze.local")
+	req := httptest.NewRequest(http.MethodPost, "http://app.plume.local/api/resource", nil)
+	req.Header.Set("Origin", "http://app.plume.local")
 	w := httptest.NewRecorder()
 	handler.ServeHTTP(w, req)
 
@@ -53,11 +53,11 @@ func TestCSRFProtection_SameOriginPOST_Allowed(t *testing.T) {
 }
 
 func TestCSRFProtection_CrossOriginPOST_Rejected(t *testing.T) {
-	handler := CSRFProtection([]string{"http://app.breeze.local"})(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+	handler := CSRFProtection([]string{"http://app.plume.local"})(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusOK)
 	}))
 
-	req := httptest.NewRequest(http.MethodPost, "http://app.breeze.local/api/resource", nil)
+	req := httptest.NewRequest(http.MethodPost, "http://app.plume.local/api/resource", nil)
 	req.Header.Set("Origin", "http://evil.com")
 	w := httptest.NewRecorder()
 	handler.ServeHTTP(w, req)
@@ -74,12 +74,12 @@ func TestCSRFProtection_CrossOriginPOST_Rejected(t *testing.T) {
 }
 
 func TestCSRFProtection_MissingOriginOnPOST_Allowed(t *testing.T) {
-	handler := CSRFProtection([]string{"http://app.breeze.local"})(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+	handler := CSRFProtection([]string{"http://app.plume.local"})(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusOK)
 	}))
 
 	// No Origin, no Referer: programmatic client (curl, test runner).
-	req := httptest.NewRequest(http.MethodPost, "http://app.breeze.local/api/resource", nil)
+	req := httptest.NewRequest(http.MethodPost, "http://app.plume.local/api/resource", nil)
 	w := httptest.NewRecorder()
 	handler.ServeHTTP(w, req)
 
@@ -90,13 +90,13 @@ func TestCSRFProtection_MissingOriginOnPOST_Allowed(t *testing.T) {
 }
 
 func TestCSRFProtection_NullOriginRejected(t *testing.T) {
-	handler := CSRFProtection([]string{"http://app.breeze.local"})(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+	handler := CSRFProtection([]string{"http://app.plume.local"})(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusOK)
 	}))
 
 	// `Origin: null` is sent by sandboxed iframes, data: URIs, and file:
 	// origins: not a verifiable same-origin source. Must be rejected.
-	req := httptest.NewRequest(http.MethodPost, "http://app.breeze.local/api/resource", nil)
+	req := httptest.NewRequest(http.MethodPost, "http://app.plume.local/api/resource", nil)
 	req.Header.Set("Origin", "null")
 	w := httptest.NewRecorder()
 	handler.ServeHTTP(w, req)
@@ -129,13 +129,13 @@ func TestCSRFProtection_RefererFallback_Allowed(t *testing.T) {
 		host    string
 		name    string
 	}{
-		{"http://app.breeze.local/some/page", "app.breeze.local", "same-origin Referer"},
+		{"http://app.plume.local/some/page", "app.plume.local", "same-origin Referer"},
 		{"https://myserver:8080/other", "myserver:8080", "same-origin Referer with port"},
 	}
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			handler := CSRFProtection([]string{"http://app.breeze.local"})(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+			handler := CSRFProtection([]string{"http://app.plume.local"})(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 				w.WriteHeader(http.StatusOK)
 			}))
 
@@ -154,11 +154,11 @@ func TestCSRFProtection_RefererFallback_Allowed(t *testing.T) {
 }
 
 func TestCSRFProtection_RefererFallback_Rejected(t *testing.T) {
-	handler := CSRFProtection([]string{"http://app.breeze.local"})(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+	handler := CSRFProtection([]string{"http://app.plume.local"})(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusOK)
 	}))
 
-	req := httptest.NewRequest(http.MethodPost, "http://app.breeze.local/api/resource", nil)
+	req := httptest.NewRequest(http.MethodPost, "http://app.plume.local/api/resource", nil)
 	req.Header.Set("Referer", "http://evil.com/trick")
 	w := httptest.NewRecorder()
 	handler.ServeHTTP(w, req)
@@ -172,12 +172,12 @@ func TestCSRFProtection_RefererFallback_Rejected(t *testing.T) {
 func TestCSRFProtection_PUTandPATCHandDELETE_Checked(t *testing.T) {
 	for _, method := range []string{http.MethodPut, http.MethodPatch, http.MethodDelete} {
 		t.Run(method, func(t *testing.T) {
-			handler := CSRFProtection([]string{"http://app.breeze.local"})(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+			handler := CSRFProtection([]string{"http://app.plume.local"})(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 				w.WriteHeader(http.StatusOK)
 			}))
 
 			// Cross-origin should be rejected.
-			req := httptest.NewRequest(method, "http://app.breeze.local/api/resource", nil)
+			req := httptest.NewRequest(method, "http://app.plume.local/api/resource", nil)
 			req.Header.Set("Origin", "http://evil.com")
 			w := httptest.NewRecorder()
 			handler.ServeHTTP(w, req)
@@ -188,8 +188,8 @@ func TestCSRFProtection_PUTandPATCHandDELETE_Checked(t *testing.T) {
 			}
 
 			// Same-origin should be allowed.
-			req2 := httptest.NewRequest(method, "http://app.breeze.local/api/resource", nil)
-			req2.Header.Set("Origin", "http://app.breeze.local")
+			req2 := httptest.NewRequest(method, "http://app.plume.local/api/resource", nil)
+			req2.Header.Set("Origin", "http://app.plume.local")
 			w2 := httptest.NewRecorder()
 			handler.ServeHTTP(w2, req2)
 
@@ -204,8 +204,8 @@ func TestCSRFProtection_PUTandPATCHandDELETE_Checked(t *testing.T) {
 func TestCSRFProtection_AllowedOriginList(t *testing.T) {
 	// CORS origin list includes multiple possible deployment origins.
 	handler := CSRFProtection([]string{
-		"https://app.breeze.io",
-		"https://staging.breeze.io",
+		"https://app.plume.io",
+		"https://staging.plume.io",
 	})(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusOK)
 	}))
@@ -213,7 +213,7 @@ func TestCSRFProtection_AllowedOriginList(t *testing.T) {
 	// POST from a production origin should be allowed even though it
 	// doesn't match the request Host.
 	req := httptest.NewRequest(http.MethodPost, "http://localhost:8080/api/resource", nil)
-	req.Header.Set("Origin", "https://app.breeze.io")
+	req.Header.Set("Origin", "https://app.plume.io")
 	w := httptest.NewRecorder()
 	handler.ServeHTTP(w, req)
 

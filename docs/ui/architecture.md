@@ -43,7 +43,7 @@ User action → element event → feature page → API call → signal update �
 
 ## App shell flow (`app-shell.ts`)
 
-The root `<breeze-app>` element coordinates the full boot sequence:
+The root `<plume-app>` element coordinates the full boot sequence:
 
 1. **Init theme** → reads localStorage, applies data attributes
 2. **Check setup** → `GET /setup` to see if first-time setup is needed

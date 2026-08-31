@@ -1,7 +1,7 @@
 package dto
 
 import (
-	"ipmanlk/breeze/internal/domain"
+	"ipmanlk/plume/internal/domain"
 )
 
 type UserBrief struct {

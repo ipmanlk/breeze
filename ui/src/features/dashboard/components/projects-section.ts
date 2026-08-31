@@ -1,7 +1,7 @@
 import { css, html, LitElement } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { navigate } from "@/routes/router";
-import "../../../components/ui/breeze-icon.ts";
+import "../../../components/ui/plume-icon.ts";
 import "../../../components/ui/button.ts";
 import "../../../components/ui/card.ts";
 import { localized, msg } from "@lit/localize";
@@ -17,8 +17,8 @@ interface Project {
 }
 
 @localized()
-@customElement("breeze-projects-section")
-export class BreezeProjectsSection extends LitElement {
+@customElement("plume-projects-section")
+export class PlumeProjectsSection extends LitElement {
   static styles = css`
     *,
     *::before,
@@ -108,7 +108,7 @@ export class BreezeProjectsSection extends LitElement {
       font-size: var(--text-xs);
       color: var(--muted-foreground);
     }
-    .project-meta breeze-icon {
+    .project-meta plume-icon {
       flex-shrink: 0;
     }
     .empty {
@@ -126,17 +126,17 @@ export class BreezeProjectsSection extends LitElement {
     const projects = (this.data as Project[] | null) ?? [];
     if (projects.length === 0) {
       return html`
-        <breeze-card>
+        <plume-card>
           <div class="header">
             <span class="title">${msg("Projects")}</span>
           </div>
           <div class="empty">${msg("No projects yet.")}</div>
-        </breeze-card>
+        </plume-card>
       `;
     }
 
     return html`
-      <breeze-card>
+      <plume-card>
         <div class="header">
           <span class="title">${msg("Projects")}</span>
           <button
@@ -144,7 +144,7 @@ export class BreezeProjectsSection extends LitElement {
             @click="${() => navigate("/projects")}"
           >
             ${msg("All projects")}
-            <breeze-icon name="arrow-right" size="12"></breeze-icon>
+            <plume-icon name="arrow-right" size="12"></plume-icon>
           </button>
         </div>
         <div class="grid">
@@ -160,18 +160,18 @@ export class BreezeProjectsSection extends LitElement {
                     style="background:${p.color}"
                   >
                     ${p.icon ? p.icon.charAt(0).toUpperCase() : html`
-                      <breeze-icon name="folder" size="16" style="color:white"></breeze-icon>
+                      <plume-icon name="folder" size="16" style="color:white"></plume-icon>
                     `}
                   </div>
                   <div class="project-info">
                     <div class="project-name">${p.name}</div>
                     <div class="project-meta">
                       <span style="display:flex;align-items:center;gap:var(--space-0-5)">
-                        <breeze-icon name="folder" size="12"></breeze-icon>
+                        <plume-icon name="folder" size="12"></plume-icon>
                         ${p.task_count} tasks
                       </span>
                       <span style="display:flex;align-items:center;gap:var(--space-0-5)">
-                        <breeze-icon name="users" size="12"></breeze-icon>
+                        <plume-icon name="users" size="12"></plume-icon>
                         ${p.member_count}
                       </span>
                     </div>
@@ -180,13 +180,13 @@ export class BreezeProjectsSection extends LitElement {
               `,
           )}
         </div>
-      </breeze-card>
+      </plume-card>
     `;
   }
 }
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-projects-section": BreezeProjectsSection;
+    "plume-projects-section": PlumeProjectsSection;
   }
 }

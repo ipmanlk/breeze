@@ -2,7 +2,7 @@ import { css, html, LitElement, nothing } from "lit";
 import { customElement, property, query, state } from "lit/decorators.js";
 import { localized, msg } from "@lit/localize";
 import { OutsideClickController } from "@/lib/outside-click-controller";
-import "./breeze-icon.ts";
+import "./plume-icon.ts";
 
 export interface SelectOption {
   value: string;
@@ -17,7 +17,7 @@ const PANEL_MAX_H = 16; // rem: matches .panel max-height below
 const PANEL_GAP = 4; // px between trigger and panel
 
 /**
- * Breeze select: single-select popover dropdown.
+ * Plume select: single-select popover dropdown.
  *
  * Uses `position: fixed` for the dropdown panel so it is never clipped by
  * overflow ancestors (dialogs, scroll containers, etc.). The panel is at
@@ -39,8 +39,8 @@ const PANEL_GAP = 4; // px between trigger and panel
  * focus moves to the search input on open.
  */
 @localized()
-@customElement("breeze-select")
-export class BreezeSelect extends LitElement {
+@customElement("plume-select")
+export class PlumeSelect extends LitElement {
   static styles = css`
     *,
     *::before,
@@ -200,19 +200,19 @@ export class BreezeSelect extends LitElement {
   private _id = _nextSelectId++;
 
   private get _listboxId() {
-    return `breeze-select-${this._id}-listbox`;
+    return `plume-select-${this._id}-listbox`;
   }
 
   private get _triggerId() {
-    return `breeze-select-${this._id}-trigger`;
+    return `plume-select-${this._id}-trigger`;
   }
 
   private get _searchInputId() {
-    return `breeze-select-${this._id}-search`;
+    return `plume-select-${this._id}-search`;
   }
 
   private _optionId(index: number): string {
-    return `breeze-select-${this._id}-option-${index}`;
+    return `plume-select-${this._id}-option-${index}`;
   }
 
   private get _filteredOptions(): SelectOption[] {
@@ -524,7 +524,7 @@ export class BreezeSelect extends LitElement {
             ${current?.label ?? this.placeholder}
           </span>
         </span>
-        <breeze-icon name="chevron-down" size="14"></breeze-icon>
+        <plume-icon name="chevron-down" size="14"></plume-icon>
       </button>
       ${this._open
         ? html`
@@ -532,7 +532,7 @@ export class BreezeSelect extends LitElement {
             ${this.searchable
               ? html`
                 <div class="search">
-                  <breeze-icon name="search" size="14"></breeze-icon>
+                  <plume-icon name="search" size="14"></plume-icon>
                   <input
                     type="text"
                     id="${this._searchInputId}"
@@ -581,7 +581,7 @@ export class BreezeSelect extends LitElement {
                         <span class="label">${o.label}</span>
                         ${o.value === this.value
                           ? html`
-                            <breeze-icon name="check" size="14"></breeze-icon>
+                            <plume-icon name="check" size="14"></plume-icon>
                           `
                           : ""}
                       </button>
@@ -597,6 +597,6 @@ export class BreezeSelect extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-select": BreezeSelect;
+    "plume-select": PlumeSelect;
   }
 }

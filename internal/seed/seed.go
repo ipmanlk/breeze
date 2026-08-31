@@ -6,8 +6,8 @@ import (
 	"log"
 	"time"
 
-	"ipmanlk/breeze/internal/store"
-	"ipmanlk/breeze/internal/store/sqlc"
+	"ipmanlk/plume/internal/store"
+	"ipmanlk/plume/internal/store/sqlc"
 )
 
 // Seeder orchestrates the database seeding process, using the store layer
@@ -78,7 +78,7 @@ func NewSeeder(db *sql.DB) *Seeder {
 
 // Seed performs the full database population.
 func (s *Seeder) Seed() {
-	log.Println("🌱 Breeze database seeder")
+	log.Println("🌱 Plume database seeder")
 
 	// Wipe existing data
 	s.clearData()

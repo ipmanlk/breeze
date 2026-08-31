@@ -4,8 +4,8 @@ import (
 	"context"
 	"strings"
 
-	"ipmanlk/breeze/internal/domain"
-	"ipmanlk/breeze/internal/port"
+	"ipmanlk/plume/internal/domain"
+	"ipmanlk/plume/internal/port"
 )
 
 // MentionService handles @mention autocomplete search across all mentionable entity types.

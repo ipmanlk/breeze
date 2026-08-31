@@ -10,7 +10,7 @@ import (
 	"testing"
 	"time"
 
-	"ipmanlk/breeze/internal/domain"
+	"ipmanlk/plume/internal/domain"
 
 	"github.com/go-chi/chi/v5"
 )

@@ -7,7 +7,7 @@ import { timeAgoShort } from "@/lib/format/time-ago";
 import { membersApi } from "@/features/members/api";
 import type { DtoUserResponse } from "@/api";
 import "../../components/ui/spinner.ts";
-import "../../components/ui/breeze-icon.ts";
+import "../../components/ui/plume-icon.ts";
 import "../../components/ui/select.ts";
 import "../../layouts/app-layout.ts";
 import { localized, msg, str } from "@lit/localize";
@@ -48,8 +48,8 @@ function getACTION_FILTER_OPTIONS(): { value: string; label: string }[] {
 }
 
 @localized()
-@customElement("breeze-audit-log-page")
-export class BreezeAuditLogPage extends LitElement {
+@customElement("plume-audit-log-page")
+export class PlumeAuditLogPage extends LitElement {
   static styles = [
     pageEnterStyles,
     css`
@@ -190,7 +190,7 @@ export class BreezeAuditLogPage extends LitElement {
     `,
   ];
 
-  /** When true, suppress <breeze-app-layout> and .page-head. */
+  /** When true, suppress <plume-app-layout> and .page-head. */
   @property({ type: Boolean })
   embedded = false;
 
@@ -298,17 +298,17 @@ export class BreezeAuditLogPage extends LitElement {
           <div class="filters">
             <label class="filter">
               <span>${msg("Action")}</span>
-              <breeze-select
+              <plume-select
                 searchable
                 .options=${getACTION_FILTER_OPTIONS()}
                 .value=${this._actionFilter}
                 placeholder=${msg("All actions")}
                 @change=${this.#onActionFilter}
-              ></breeze-select>
+              ></plume-select>
             </label>
             <label class="filter">
               <span>${msg("Actor")}</span>
-              <breeze-select
+              <plume-select
                 searchable
                 .options=${[
                   { value: "", label: msg("All actors") },
@@ -320,14 +320,14 @@ export class BreezeAuditLogPage extends LitElement {
                 .value=${this._actorFilter}
                 placeholder=${msg("All actors")}
                 @change=${this.#onActorFilter}
-              ></breeze-select>
+              ></plume-select>
             </label>
           </div>
         `
         : null}
         ${this._loading
           ? html`<div class="loading">
-              <breeze-spinner></breeze-spinner> ${msg("Loading…")}
+              <plume-spinner></plume-spinner> ${msg("Loading…")}
             </div>`
           : this._error === "permission"
           ? html`<div class="empty">${
@@ -345,8 +345,8 @@ export class BreezeAuditLogPage extends LitElement {
               return html`
                 <div class="entry">
                   <div class="entry-icon">
-                    <breeze-icon name="${meta
-                      .icon}" size="16"></breeze-icon>
+                    <plume-icon name="${meta
+                      .icon}" size="16"></plume-icon>
                   </div>
                   <div class="entry-body">
                     <div class="entry-title">${meta.label}</div>
@@ -402,7 +402,7 @@ export class BreezeAuditLogPage extends LitElement {
       return html`${auditBody}`;
     }
     return html`
-      <breeze-app-layout>
+      <plume-app-layout>
         <div class="page-enter">
           <div class="page-head">
             <h1>${msg("Audit log")}</h1>
@@ -412,13 +412,13 @@ export class BreezeAuditLogPage extends LitElement {
           </div>
           <div class="page-content">${auditBody}</div>
         </div>
-      </breeze-app-layout>
+      </plume-app-layout>
     `;
   }
 }
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-audit-log-page": BreezeAuditLogPage;
+    "plume-audit-log-page": PlumeAuditLogPage;
   }
 }

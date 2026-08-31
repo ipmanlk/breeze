@@ -26,9 +26,9 @@ import (
 	"os"
 	"path/filepath"
 
-	"ipmanlk/breeze/internal/seed"
-	"ipmanlk/breeze/internal/store"
-	"ipmanlk/breeze/internal/store/migration"
+	"ipmanlk/plume/internal/seed"
+	"ipmanlk/plume/internal/store"
+	"ipmanlk/plume/internal/store/migration"
 
 	_ "modernc.org/sqlite"
 )
@@ -46,12 +46,12 @@ func main() {
 		os.Exit(1)
 	}
 
-	log.Println("🌱 Breeze database seeder")
+	log.Println("🌱 Plume database seeder")
 
 	// Load database path from env or use default
 	dbPath := os.Getenv("DB_PATH")
 	if dbPath == "" {
-		dbPath = "./data/breeze.db"
+		dbPath = "./data/plume.db"
 	}
 
 	// Ensure data directory exists

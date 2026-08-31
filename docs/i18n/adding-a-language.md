@@ -1,6 +1,6 @@
 # Adding a Language: Developer Runbook
 
-> **Canonical runbook for adding a new locale to Breeze.** End-to-end,
+> **Canonical runbook for adding a new locale to Plume.** End-to-end,
 > frontend + backend. Keep this in sync with the actual file paths, since it
 > is the source of truth for the operation.
 > Related: [translator-guide.md](./translator-guide.md) ·
@@ -166,7 +166,7 @@ one = "{{.Actor}} te mencionó en {{.Org}}"
 other = "{{.Actor}} te mencionó en {{.Org}}"
 
 [PasswordResetSubject]
-other = "Restablece tu contraseña de Breeze"
+other = "Restablece tu contraseña de Plume"
 ```
 
 Named variables use `text/template` syntax. `{{.Name}}` in the message is

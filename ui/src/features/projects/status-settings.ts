@@ -14,7 +14,7 @@ import {
   draggable,
   dropTargetForElements,
 } from "@atlaskit/pragmatic-drag-and-drop/element/adapter";
-import "../../components/ui/breeze-icon.ts";
+import "../../components/ui/plume-icon.ts";
 import "../../components/ui/input.ts";
 import "../../components/ui/button.ts";
 import "../../components/ui/popover.ts";
@@ -24,7 +24,7 @@ import { localized, msg } from "@lit/localize";
 /**
  * Status settings: CRUD + drag-to-reorder for a project's task statuses.
  *
- * **Light DOM** (hosted by the light-DOM `breeze-settings-view`): required for
+ * **Light DOM** (hosted by the light-DOM `plume-settings-view`): required for
  * `@atlaskit/pragmatic-drag-and-drop`, which reads `event.target` / `closest()`
  * and breaks across shadow boundaries. Styles are global, prefixed `ss-`.
  *
@@ -68,8 +68,8 @@ interface StatusDragData {
 }
 
 const SS_STYLES = `
-breeze-status-settings { display: block; }
-breeze-status-row { display: block; }
+plume-status-settings { display: block; }
+plume-status-row { display: block; }
 .ss-section-head {
   display: flex;
   align-items: center;
@@ -281,8 +281,8 @@ breeze-status-row { display: block; }
 `;
 
 @localized()
-@customElement("breeze-status-settings")
-export class BreezeStatusSettings extends LitElement {
+@customElement("plume-status-settings")
+export class PlumeStatusSettings extends LitElement {
   /** Light DOM: required for @atlaskit/pragmatic-drag-and-drop. */
   createRenderRoot() {
     return this;
@@ -468,14 +468,14 @@ export class BreezeStatusSettings extends LitElement {
           <h2 class="ss-title">${msg("Statuses")}</h2>
           ${!this._adding
             ? html`
-              <breeze-button
+              <plume-button
                 variant="outline"
                 size="sm"
                 @click="${() => (this._adding = true)}"
               >
-                <breeze-icon name="plus" size="14"></breeze-icon>
+                <plume-icon name="plus" size="14"></plume-icon>
                 Add status
-              </breeze-button>
+              </plume-button>
             `
             : nothing}
         </div>
@@ -484,12 +484,12 @@ export class BreezeStatusSettings extends LitElement {
           ${this._adding ? this.#renderAddRow() : nothing} ${this.statuses.map(
             (s) =>
               html`
-                <breeze-status-row
+                <plume-status-row
                   .status="${s}"
                   @request-delete="${(
                     e: CustomEvent,
                   ) => (this._deleting = e.detail as DtoTaskStatusResponse)}"
-                ></breeze-status-row>
+                ></plume-status-row>
               `,
           )}
           <div
@@ -504,7 +504,7 @@ export class BreezeStatusSettings extends LitElement {
         </div>
       </div>
 
-      <breeze-dialog
+      <plume-dialog
         .open="${!!this._deleting}"
         heading="${`Delete "${this._deleting?.name ?? ""}" status?`}"
         @close="${() => (this._deleting = null)}"
@@ -514,14 +514,14 @@ export class BreezeStatusSettings extends LitElement {
         </p>
         <div slot="footer" style="display:flex;gap:var(--space-2);width:100%">
           <span style="flex:1"></span>
-          <breeze-button variant="outline" size="sm" @click="${() => (this
+          <plume-button variant="outline" size="sm" @click="${() => (this
             ._deleting = null)}"
-          >Cancel</breeze-button>
-          <breeze-button variant="destructive" size="sm" @click="${this
+          >Cancel</plume-button>
+          <plume-button variant="destructive" size="sm" @click="${this
             .#confirmDelete}"
-          >Delete status</breeze-button>
+          >Delete status</plume-button>
         </div>
-      </breeze-dialog>
+      </plume-dialog>
     `;
   }
 
@@ -549,10 +549,10 @@ export class BreezeStatusSettings extends LitElement {
           }}"
         />
         ${this.#renderColorPicker(this._newColor, (c) => (this._newColor = c))}
-        <breeze-popover>
+        <plume-popover>
           <button slot="trigger" class="ss-cat-trigger" type="button">
             ${catLabel}
-            <breeze-icon name="chevron-down" size="12"></breeze-icon>
+            <plume-icon name="chevron-down" size="12"></plume-icon>
           </button>
           <div slot="content" class="ss-pop">
             ${getCategories().map(
@@ -571,7 +571,7 @@ export class BreezeStatusSettings extends LitElement {
                 `,
             )}
           </div>
-        </breeze-popover>
+        </plume-popover>
         <button
           class="ss-add-btn"
           type="button"
@@ -589,7 +589,7 @@ export class BreezeStatusSettings extends LitElement {
             this._newName = "";
           }}"
         >
-          <breeze-icon name="trash-2" size="14"></breeze-icon>
+          <plume-icon name="trash-2" size="14"></plume-icon>
         </button>
       </div>
     `;
@@ -597,7 +597,7 @@ export class BreezeStatusSettings extends LitElement {
 
   #renderColorPicker(value: string, onChange: (c: string) => void) {
     return html`
-      <breeze-popover>
+      <plume-popover>
         <button
           slot="trigger"
           class="ss-swatch-btn"
@@ -624,19 +624,19 @@ export class BreezeStatusSettings extends LitElement {
               `,
           )}
         </div>
-      </breeze-popover>
+      </plume-popover>
     `;
   }
 }
 
 /**
  * Status row: a draggable list item (@atlaskit). The list container
- * (`breeze-status-settings`) is the drop target; the row only needs to be
+ * (`plume-status-settings`) is the drop target; the row only needs to be
  * draggable and carry `data-status-id` so the container can compute gaps.
  */
 @localized()
-@customElement("breeze-status-row")
-export class BreezeStatusRow extends LitElement {
+@customElement("plume-status-row")
+export class PlumeStatusRow extends LitElement {
   /** Light DOM: required for @atlaskit/pragmatic-drag-and-drop. */
   createRenderRoot() {
     return this;
@@ -678,7 +678,7 @@ export class BreezeStatusRow extends LitElement {
       <div ${ref(this.#rowRef)} class="ss-row" data-status-id="${this.status
         .id}">
         <span class="ss-grip">
-          <breeze-icon name="grip-vertical" size="14"></breeze-icon>
+          <plume-icon name="grip-vertical" size="14"></plume-icon>
         </span>
         <span class="ss-dot" style="background:${this.status.color}"></span>
         <span class="ss-name">${this.status.name}</span>
@@ -701,7 +701,7 @@ export class BreezeStatusRow extends LitElement {
               );
             }}"
           >
-            <breeze-icon name="trash-2" size="14"></breeze-icon>
+            <plume-icon name="trash-2" size="14"></plume-icon>
           </button>
         </div>
       </div>
@@ -711,7 +711,7 @@ export class BreezeStatusRow extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-status-settings": BreezeStatusSettings;
-    "breeze-status-row": BreezeStatusRow;
+    "plume-status-settings": PlumeStatusSettings;
+    "plume-status-row": PlumeStatusRow;
   }
 }

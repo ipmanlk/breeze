@@ -2,7 +2,7 @@ import { localized, msg } from "@lit/localize";
 import { css, html, LitElement, nothing } from "lit";
 import { customElement, property, query, state } from "lit/decorators.js";
 import { OutsideClickController } from "@/lib/outside-click-controller";
-import "./breeze-icon.ts";
+import "./plume-icon.ts";
 import "./avatar.ts";
 
 export interface ComboboxOption {
@@ -13,7 +13,7 @@ export interface ComboboxOption {
 }
 
 /**
- * Breeze combobox: searchable multi-select.
+ * Plume combobox: searchable multi-select.
  *
  * The trigger shows selected items as overlapping avatars.
  * The dropdown panel has a search input and a checkbox-style option list.
@@ -27,8 +27,8 @@ export interface ComboboxOption {
 let _nextId = 0;
 
 @localized()
-@customElement("breeze-combobox")
-export class BreezeCombobox extends LitElement {
+@customElement("plume-combobox")
+export class PlumeCombobox extends LitElement {
   static styles = css`
     *,
     *::before,
@@ -80,11 +80,11 @@ export class BreezeCombobox extends LitElement {
       display: flex;
       align-items: center;
     }
-    .avatars breeze-avatar {
+    .avatars plume-avatar {
       margin-left: calc(var(--space-1) * -1);
       border: 2px solid var(--background);
     }
-    .avatars breeze-avatar:first-child {
+    .avatars plume-avatar:first-child {
       margin-left: 0;
     }
     .count {
@@ -481,13 +481,13 @@ export class BreezeCombobox extends LitElement {
                 ${selected.slice(0, 4).map(
                   (o) =>
                     html`
-                      <breeze-avatar
+                      <plume-avatar
                         size="sm"
                         src="${o.avatarUrl ?? ""}"
                         title="${o.label}"
                       >
                         ${this._getInitials(o.label)}
-                      </breeze-avatar>
+                      </plume-avatar>
                     `,
                 )} ${selected.length > 4
                   ? html`
@@ -498,18 +498,18 @@ export class BreezeCombobox extends LitElement {
             `
             : html`
               <span class="placeholder">
-                <breeze-icon name="user" size="14"></breeze-icon>
+                <plume-icon name="user" size="14"></plume-icon>
                 ${this.placeholder}
               </span>
             `}
         </div>
-        <breeze-icon class="chevron" name="chevron-down" size="14"></breeze-icon>
+        <plume-icon class="chevron" name="chevron-down" size="14"></plume-icon>
       </div>
       ${this._open
         ? html`
           <div class="panel">
             <div class="search">
-              <breeze-icon name="search" size="14"></breeze-icon>
+              <plume-icon name="search" size="14"></plume-icon>
               <input
                 type="text"
                 id="${this._searchInputId}"
@@ -553,19 +553,19 @@ export class BreezeCombobox extends LitElement {
                         <span class="checkbox">
                           ${this.value.includes(o.value)
                             ? html`
-                              <breeze-icon
+                              <plume-icon
                                 name="check"
                                 size="12"
-                              ></breeze-icon>
+                              ></plume-icon>
                             `
                             : ""}
                         </span>
-                        <breeze-avatar
+                        <plume-avatar
                           size="sm"
                           src="${o.avatarUrl ?? ""}"
                         >
                           ${this._getInitials(o.label)}
-                        </breeze-avatar>
+                        </plume-avatar>
                         <span class="name">${o.label}</span>
                       </button>
                     `,
@@ -580,6 +580,6 @@ export class BreezeCombobox extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-combobox": BreezeCombobox;
+    "plume-combobox": PlumeCombobox;
   }
 }

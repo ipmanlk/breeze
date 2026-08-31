@@ -1,10 +1,10 @@
 # Translator Guide: Editing XLIFF Files
 
 > **For translators and developers editing translations directly.**
-> No code knowledge required. If you can edit XML, you can translate Breeze.
+> No code knowledge required. If you can edit XML, you can translate Plume.
 > Related: [adding-a-language.md](./adding-a-language.md) (developer setup)
 
-Breeze's user-facing strings are stored in **XLIFF 1.2** files (`.xlf`), one
+Plume's user-facing strings are stored in **XLIFF 1.2** files (`.xlf`), one
 per locale, in `ui/src/i18n/messages/`. This is the industry-standard
 translation format, so the same files work whether you edit them by hand or
 import them into a professional translation tool (Crowdin, Lokalise,
@@ -95,7 +95,7 @@ grammatically correct order for your language:
 ## Plurals
 
 English has two plural forms (`one` / `other`); some languages have more (`few`, `many`,
-`two`, `zero`). Breeze handles plurals with **one `<trans-unit>` per plural category**, each
+`two`, `zero`). Plume handles plurals with **one `<trans-unit>` per plural category**, each
 with a distinct `id` suffix:
 
 ```xml

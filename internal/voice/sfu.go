@@ -10,7 +10,7 @@ import (
 
 	"github.com/pion/webrtc/v4"
 
-	"ipmanlk/breeze/internal/domain"
+	"ipmanlk/plume/internal/domain"
 )
 
 // SFU implements the Selective Forwarding Unit for voice channels.

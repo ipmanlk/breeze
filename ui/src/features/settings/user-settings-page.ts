@@ -25,7 +25,7 @@ import { pageEnterStyles } from "@/styles/shared-animations";
 import { navigate } from "@/routes/router";
 import "../../components/ui/switch.ts";
 import "../../components/ui/spinner.ts";
-import "../../components/ui/breeze-icon.ts";
+import "../../components/ui/plume-icon.ts";
 import "../../components/ui/field.ts";
 import "../../components/ui/input.ts";
 import "../../components/ui/select.ts";
@@ -98,8 +98,8 @@ import { timeAgoShort } from "@/lib/format/time-ago";
 import { localized, msg } from "@lit/localize";
 
 @localized()
-@customElement("breeze-user-settings-page")
-export class BreezeUserSettingsPage extends LitElement {
+@customElement("plume-user-settings-page")
+export class PlumeUserSettingsPage extends LitElement {
   static styles = [
     pageEnterStyles,
     css`
@@ -717,17 +717,17 @@ export class BreezeUserSettingsPage extends LitElement {
   protected render(): unknown {
     if (this._loading) {
       return html`
-        <breeze-app-layout>
+        <plume-app-layout>
           <div class="loading">
-            <breeze-spinner></breeze-spinner>
+            <plume-spinner></plume-spinner>
             ${msg("Loading preferences…")}
           </div>
-        </breeze-app-layout>
+        </plume-app-layout>
       `;
     }
 
     return html`
-      <breeze-app-layout>
+      <plume-app-layout>
         <div class="page-enter">
           <div class="page-head">
             <div>
@@ -753,9 +753,9 @@ export class BreezeUserSettingsPage extends LitElement {
                     )}</span>
                   </div>
                   <div class="field-control field-control-row-lg">
-                    <breeze-avatar size="lg"
+                    <plume-avatar size="lg"
                       src="${auth.value.user?.avatar_url ?? ""}">${this
-                        .#initials()}</breeze-avatar>
+                        .#initials()}</plume-avatar>
                     <label class="avatar-upload">
                       <input
                         type="file"
@@ -764,7 +764,7 @@ export class BreezeUserSettingsPage extends LitElement {
                         @change="${(e: Event) => this.#onAvatarChange(e)}"
                       />
                       ${this._avatarUploading
-                        ? html`<breeze-spinner></breeze-spinner><span>${
+                        ? html`<plume-spinner></plume-spinner><span>${
                           msg("Uploading…")
                         }</span>`
                         : msg("Upload")}
@@ -780,20 +780,20 @@ export class BreezeUserSettingsPage extends LitElement {
                     )}</span>
                   </div>
                   <div class="field-control field-control-row">
-                    <breeze-input
+                    <plume-input
                       .value="${this._profileName}"
                       @input="${(
                         e: Event,
                       ) => (this._profileName =
                         (e.target as HTMLInputElement).value)}"
-                    ></breeze-input>
-                    <breeze-button
+                    ></plume-input>
+                    <plume-button
                       ?disabled="${this._profileSaving ||
                         !this._profileName.trim()}"
                       @click="${() => this.#saveProfile()}"
                     >${this._profileSaving
-                      ? html`<breeze-spinner></breeze-spinner>`
-                      : msg("Save")}</breeze-button>
+                      ? html`<plume-spinner></plume-spinner>`
+                      : msg("Save")}</plume-button>
                   </div>
                 </div>
               </div>
@@ -808,50 +808,50 @@ export class BreezeUserSettingsPage extends LitElement {
                 </div>
 
                 <div class="security-form">
-                  <breeze-field label=${msg("Current password")}>
-                    <breeze-input
+                  <plume-field label=${msg("Current password")}>
+                    <plume-input
                       type="password"
                       .value="${this._currentPassword}"
                       @input="${(
                         e: Event,
                       ) => (this._currentPassword =
                         (e.target as HTMLInputElement).value)}"
-                    ></breeze-input>
-                  </breeze-field>
-                  <breeze-field label=${msg("New password")}>
-                    <breeze-input
+                    ></plume-input>
+                  </plume-field>
+                  <plume-field label=${msg("New password")}>
+                    <plume-input
                       type="password"
                       .value="${this._newPassword}"
                       @input="${(
                         e: Event,
                       ) => (this._newPassword =
                         (e.target as HTMLInputElement).value)}"
-                    ></breeze-input>
-                  </breeze-field>
-                  <breeze-field label=${msg("Confirm new password")}>
-                    <breeze-input
+                    ></plume-input>
+                  </plume-field>
+                  <plume-field label=${msg("Confirm new password")}>
+                    <plume-input
                       type="password"
                       .value="${this._confirmPassword}"
                       @input="${(
                         e: Event,
                       ) => (this._confirmPassword =
                         (e.target as HTMLInputElement).value)}"
-                    ></breeze-input>
-                  </breeze-field>
+                    ></plume-input>
+                  </plume-field>
                   ${this._passwordError
                     ? html`<div class="form-error">${this._passwordError}</div>`
                     : null}
                   <div>
-                    <breeze-button
+                    <plume-button
                       ?disabled="${this._passwordSaving ||
                         !this._currentPassword || !this._newPassword ||
                         !this._confirmPassword}"
                       @click="${() => this.#changePassword()}"
                     >${this._passwordSaving
-                      ? html`<breeze-spinner></breeze-spinner><span>${
+                      ? html`<plume-spinner></plume-spinner><span>${
                         msg("Saving…")
                       }</span>`
-                      : msg("Change password")}</breeze-button>
+                      : msg("Change password")}</plume-button>
                   </div>
                 </div>
               </div>
@@ -868,7 +868,7 @@ export class BreezeUserSettingsPage extends LitElement {
                 ${this._sessionsLoading
                   ? html`
                     <div class="sessions-loading">
-                      <breeze-spinner></breeze-spinner> ${msg(
+                      <plume-spinner></plume-spinner> ${msg(
                         "Loading sessions…",
                       )}
                     </div>
@@ -886,10 +886,10 @@ export class BreezeUserSettingsPage extends LitElement {
                           html`
                             <div class="session-row">
                               <div class="session-icon">
-                                <breeze-icon
+                                <plume-icon
                                   name="${sessionDeviceIcon(s.user_agent)}"
                                   size="18"
-                                ></breeze-icon>
+                                ></plume-icon>
                               </div>
                               <div class="session-info">
                                 <div class="session-title">
@@ -925,15 +925,15 @@ export class BreezeUserSettingsPage extends LitElement {
                               </div>
                               ${!s.is_current && !s.revoked_at
                                 ? html`
-                                  <breeze-button
+                                  <plume-button
                                     variant="ghost"
                                     ?disabled="${this._revokingId === s.id}"
                                     @click="${() =>
                                       this.#revokeSession(s.id ?? "")}">
                                     ${this._revokingId === s.id
-                                      ? html`<breeze-spinner></breeze-spinner>`
+                                      ? html`<plume-spinner></plume-spinner>`
                                       : msg("Revoke")}
-                                  </breeze-button>
+                                  </plume-button>
                                 `
                                 : null}
                             </div>
@@ -989,7 +989,7 @@ export class BreezeUserSettingsPage extends LitElement {
 
               <!-- Motion & Animation -->
               <div class="section">
-                <breeze-motion-settings></breeze-motion-settings>
+                <plume-motion-settings></plume-motion-settings>
               </div>
 
               <hr class="theme-section-divider" />
@@ -1009,14 +1009,14 @@ export class BreezeUserSettingsPage extends LitElement {
                     )}</span>
                   </div>
                   <div class="field-control">
-                    <breeze-select
+                    <plume-select
                       searchable
                       .options=${getLanguages()}
                       .value=${this.#current("language")}
                       placeholder=${msg("Select language")}
                       @change=${(e: CustomEvent) =>
                         this.#set("language", (e.detail as string) ?? "")}
-                    ></breeze-select>
+                    ></plume-select>
                   </div>
                 </div>
 
@@ -1028,7 +1028,7 @@ export class BreezeUserSettingsPage extends LitElement {
                     )}</span>
                   </div>
                   <div class="field-control">
-                    <breeze-select
+                    <plume-select
                       searchable
                       .options=${TIMEZONES.map((tz) => ({
                         value: tz,
@@ -1038,7 +1038,7 @@ export class BreezeUserSettingsPage extends LitElement {
                       placeholder=${msg("Select timezone")}
                       @change=${(e: CustomEvent) =>
                         this.#set("timezone", (e.detail as string) ?? "")}
-                    ></breeze-select>
+                    ></plume-select>
                   </div>
                 </div>
               </div>
@@ -1058,14 +1058,14 @@ export class BreezeUserSettingsPage extends LitElement {
                     )}</span>
                   </div>
                   <div class="field-control">
-                    <breeze-switch
+                    <plume-switch
                       .checked="${this.#current("email_notifications")}"
                       @change="${(e: CustomEvent) =>
                         this.#set(
                           "email_notifications",
                           (e.detail as { checked: boolean }).checked,
                         )}"
-                    ></breeze-switch>
+                    ></plume-switch>
                   </div>
                 </div>
 
@@ -1077,14 +1077,14 @@ export class BreezeUserSettingsPage extends LitElement {
                     )}</span>
                   </div>
                   <div class="field-control">
-                    <breeze-switch
+                    <plume-switch
                       .checked="${this.#current("desktop_notifications")}"
                       @change="${(e: CustomEvent) =>
                         this.#set(
                           "desktop_notifications",
                           (e.detail as { checked: boolean }).checked,
                         )}"
-                    ></breeze-switch>
+                    ></plume-switch>
                   </div>
                 </div>
 
@@ -1096,14 +1096,14 @@ export class BreezeUserSettingsPage extends LitElement {
                     )}</span>
                   </div>
                   <div class="field-control">
-                    <breeze-switch
+                    <plume-switch
                       .checked="${this.#current("notification_sounds")}"
                       @change="${(e: CustomEvent) =>
                         this.#set(
                           "notification_sounds",
                           (e.detail as { checked: boolean }).checked,
                         )}"
-                    ></breeze-switch>
+                    ></plume-switch>
                   </div>
                 </div>
               </div>
@@ -1118,7 +1118,7 @@ export class BreezeUserSettingsPage extends LitElement {
                 ${this._notifPrefsLoading
                   ? html`
                     <div class="sessions-loading">
-                      <breeze-spinner></breeze-spinner> ${msg(
+                      <plume-spinner></plume-spinner> ${msg(
                         "Loading preferences…",
                       )}
                     </div>
@@ -1133,14 +1133,14 @@ export class BreezeUserSettingsPage extends LitElement {
                             )}</span>
                           </div>
                           <div class="field-control">
-                            <breeze-switch
+                            <plume-switch
                               .checked="${pref.enabled}"
                               @change="${(e: CustomEvent) =>
                                 this.#toggleNotifType(
                                   pref.type ?? "",
                                   (e.detail as { checked: boolean }).checked,
                                 )}"
-                            ></breeze-switch>
+                            ></plume-switch>
                           </div>
                         </div>
                       `,
@@ -1164,14 +1164,14 @@ export class BreezeUserSettingsPage extends LitElement {
                     )}</span>
                   </div>
                   <div class="field-control">
-                    <breeze-switch
+                    <plume-switch
                       .checked="${this.#current("sidebar_collapsed")}"
                       @change="${(e: CustomEvent) =>
                         this.#set(
                           "sidebar_collapsed",
                           (e.detail as { checked: boolean }).checked,
                         )}"
-                    ></breeze-switch>
+                    ></plume-switch>
                   </div>
                 </div>
               </div>
@@ -1192,13 +1192,13 @@ export class BreezeUserSettingsPage extends LitElement {
             </div>
           </div>
         </div>
-      </breeze-app-layout>
+      </plume-app-layout>
     `;
   }
 }
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-user-settings-page": BreezeUserSettingsPage;
+    "plume-user-settings-page": PlumeUserSettingsPage;
   }
 }

@@ -10,8 +10,8 @@ import (
 	"testing"
 	"time"
 
-	"ipmanlk/breeze/internal/domain"
-	"ipmanlk/breeze/internal/transport/ws"
+	"ipmanlk/plume/internal/domain"
+	"ipmanlk/plume/internal/transport/ws"
 
 	"github.com/coder/websocket"
 )

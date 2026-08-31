@@ -9,7 +9,7 @@ import {
 } from "@/store/project-detail";
 import { showToast } from "@/components/ui/toast-store";
 import { SignalController } from "@/lib/signal-controller";
-import "../../components/ui/breeze-icon.ts";
+import "../../components/ui/plume-icon.ts";
 import "../../components/ui/popover.ts";
 import "../../components/ui/label-chip.ts";
 import "../../components/ui/button.ts";
@@ -60,8 +60,8 @@ const HEADERS: { field: SortField; label: string }[] = [
  *  - `sort-change`: detail = { field: SortField, dir: SortDir }
  */
 @localized()
-@customElement("breeze-list-view")
-export class BreezeListView extends LitElement {
+@customElement("plume-list-view")
+export class PlumeListView extends LitElement {
   static styles = css`
     *,
     *::before,
@@ -102,11 +102,11 @@ export class BreezeListView extends LitElement {
       align-items: center;
       gap: var(--space-1);
     }
-    .th-inner breeze-icon {
+    .th-inner plume-icon {
       color: var(--muted-foreground);
       opacity: 0.5;
     }
-    .th-inner.active breeze-icon {
+    .th-inner.active plume-icon {
       opacity: 1;
       color: var(--foreground);
     }
@@ -289,7 +289,7 @@ export class BreezeListView extends LitElement {
       border-radius: var(--radius-full);
       flex-shrink: 0;
     }
-    .sel-trigger breeze-icon {
+    .sel-trigger plume-icon {
       color: var(--muted-foreground);
       opacity: 0.5;
       flex-shrink: 0;
@@ -478,15 +478,15 @@ export class BreezeListView extends LitElement {
   private _sortIcon(field: SortField) {
     if (this.sortField !== field) {
       return html`
-        <breeze-icon name="arrow-up-down" size="12"></breeze-icon>
+        <plume-icon name="arrow-up-down" size="12"></plume-icon>
       `;
     }
     return this.sortDir === "asc"
       ? html`
-        <breeze-icon name="arrow-up" size="12"></breeze-icon>
+        <plume-icon name="arrow-up" size="12"></plume-icon>
       `
       : html`
-        <breeze-icon name="arrow-down" size="12"></breeze-icon>
+        <plume-icon name="arrow-down" size="12"></plume-icon>
       `;
   }
 
@@ -511,9 +511,9 @@ export class BreezeListView extends LitElement {
   }
 
   /** Close the enclosing single-select popover after a choice (Radix closes
-   * on select; breeze-popover stays open by default, so we close it). */
+   * on select; plume-popover stays open by default, so we close it). */
   private _closeSelect(e: Event) {
-    const pop = (e.target as HTMLElement | null)?.closest("breeze-popover") as
+    const pop = (e.target as HTMLElement | null)?.closest("plume-popover") as
       | ({ open: boolean })
       | null;
     if (pop) pop.open = false;
@@ -572,7 +572,7 @@ export class BreezeListView extends LitElement {
   private _renderStatusSelect(t: DtoTaskResponse) {
     const current = this.statuses.find((s) => s.id === t.status_id);
     return html`
-      <breeze-popover>
+      <plume-popover>
         <button slot="trigger" class="sel-trigger" type="button">
           <span class="label">
             ${current
@@ -584,7 +584,7 @@ export class BreezeListView extends LitElement {
                 <span class="placeholder">${msg("Select…")}</span>
               `}
           </span>
-          <breeze-icon name="chevron-down" size="12"></breeze-icon>
+          <plume-icon name="chevron-down" size="12"></plume-icon>
         </button>
         <div slot="content" class="pop">
           ${this.statuses.map((s) =>
@@ -602,14 +602,14 @@ export class BreezeListView extends LitElement {
                 <span class="name">${s.name}</span>
                 ${s.id === t.status_id
                   ? html`
-                    <breeze-icon class="check" name="check" size="14"></breeze-icon>
+                    <plume-icon class="check" name="check" size="14"></plume-icon>
                   `
                   : nothing}
               </button>
             `
           )}
         </div>
-      </breeze-popover>
+      </plume-popover>
     `;
   }
 
@@ -617,7 +617,7 @@ export class BreezeListView extends LitElement {
     const value = t.priority ?? "none";
     const current = PRIORITIES.find((p) => p.value === value);
     return html`
-      <breeze-popover>
+      <plume-popover>
         <button slot="trigger" class="sel-trigger" type="button">
           <span class="label">
             ${value && value !== "none"
@@ -629,7 +629,7 @@ export class BreezeListView extends LitElement {
                 <span class="placeholder">${msg("Set priority")}</span>
               `}
           </span>
-          <breeze-icon name="chevron-down" size="12"></breeze-icon>
+          <plume-icon name="chevron-down" size="12"></plume-icon>
         </button>
         <div slot="content" class="pop">
           ${PRIORITIES.map((p) =>
@@ -647,14 +647,14 @@ export class BreezeListView extends LitElement {
                 <span class="name" style="color:${p.color}">${p.label}</span>
                 ${p.value === value
                   ? html`
-                    <breeze-icon class="check" name="check" size="14"></breeze-icon>
+                    <plume-icon class="check" name="check" size="14"></plume-icon>
                   `
                   : nothing}
               </button>
             `
           )}
         </div>
-      </breeze-popover>
+      </plume-popover>
     `;
   }
 
@@ -670,10 +670,10 @@ export class BreezeListView extends LitElement {
             this._clearSelection()}">Clear</button>
         </div>
         <div class="bulk-actions">
-          <breeze-popover>
+          <plume-popover>
             <button slot="trigger" class="bulk-btn" type="button"
               ?disabled="${this._bulkBusy}">
-              Status <breeze-icon name="chevron-down" size="12"></breeze-icon>
+              Status <plume-icon name="chevron-down" size="12"></plume-icon>
             </button>
             <div slot="content" class="pop">
               ${this.statuses.map(
@@ -689,11 +689,11 @@ export class BreezeListView extends LitElement {
                   `,
               )}
             </div>
-          </breeze-popover>
-          <breeze-popover>
+          </plume-popover>
+          <plume-popover>
             <button slot="trigger" class="bulk-btn" type="button"
               ?disabled="${this._bulkBusy}">
-              Priority <breeze-icon name="chevron-down" size="12"></breeze-icon>
+              Priority <plume-icon name="chevron-down" size="12"></plume-icon>
             </button>
             <div slot="content" class="pop">
               ${PRIORITIES.map(
@@ -710,7 +710,7 @@ export class BreezeListView extends LitElement {
                   `,
               )}
             </div>
-          </breeze-popover>
+          </plume-popover>
         </div>
       </div>
     `;
@@ -802,10 +802,10 @@ export class BreezeListView extends LitElement {
                             ${(t.labels ?? []).slice(0, 3).map(
                               (l) =>
                                 html`
-                                  <breeze-label-chip
+                                  <plume-label-chip
                                     .label="${l}"
                                     compact
-                                  ></breeze-label-chip>
+                                  ></plume-label-chip>
                                 `,
                             )}
                           </span>
@@ -844,6 +844,6 @@ export class BreezeListView extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-list-view": BreezeListView;
+    "plume-list-view": PlumeListView;
   }
 }

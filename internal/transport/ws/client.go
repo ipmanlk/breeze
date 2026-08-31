@@ -10,8 +10,8 @@ import (
 	"github.com/coder/websocket"
 	"github.com/google/uuid"
 
-	"ipmanlk/breeze/internal/domain"
-	"ipmanlk/breeze/internal/port"
+	"ipmanlk/plume/internal/domain"
+	"ipmanlk/plume/internal/port"
 )
 
 const (

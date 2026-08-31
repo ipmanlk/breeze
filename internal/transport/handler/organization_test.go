@@ -8,8 +8,8 @@ import (
 	"strings"
 	"testing"
 
-	"ipmanlk/breeze/internal/apperr"
-	"ipmanlk/breeze/internal/domain"
+	"ipmanlk/plume/internal/apperr"
+	"ipmanlk/plume/internal/domain"
 	"log/slog"
 )
 

@@ -27,7 +27,7 @@ where the real weight is.
 
 ## What NOT to split
 
-- **UI primitives** (`breeze-button`, `breeze-dialog`, …): tiny and shared
+- **UI primitives** (`plume-button`, `plume-dialog`, …): tiny and shared
   everywhere; splitting adds chunk overhead + round trips.
 - **Stores / API client / layouts**: needed on every authenticated screen;
   splitting them only adds latency.
@@ -73,11 +73,11 @@ protected willUpdate(): void {
   const path = currentPath.value;
   if (setupRequired.value || auth.value.isLoading || !auth.value.isAuthenticated) return;
 
-  if (path === "/projects") this._ensure("breeze-projects-page", lazyPages.projects);
+  if (path === "/projects") this._ensure("plume-projects-page", lazyPages.projects);
   else if (matchRoute("/projects/:slug", path))
-    this._ensure("breeze-project-detail-page", lazyPages.projectDetail);
-  else if (path === "/inbox") this._ensure("breeze-inbox-page", lazyPages.inbox);
-  else this._ensure("breeze-dashboard-page", lazyPages.dashboard);
+    this._ensure("plume-project-detail-page", lazyPages.projectDetail);
+  else if (path === "/inbox") this._ensure("plume-inbox-page", lazyPages.inbox);
+  else this._ensure("plume-dashboard-page", lazyPages.dashboard);
 }
 ```
 
@@ -85,20 +85,20 @@ protected willUpdate(): void {
 
 ```ts
 if (path === "/inbox") {
-  return this._ready.has("breeze-inbox-page")
+  return this._ready.has("plume-inbox-page")
     ? html`
       <style>
       ${APP_STYLES}
       </style>
-      <breeze-inbox-page></breeze-inbox-page>
-      <breeze-command-palette></breeze-command-palette>
+      <plume-inbox-page></plume-inbox-page>
+      <plume-command-palette></plume-command-palette>
     `
     : html`
       <style>
       ${APP_STYLES}
       </style>
       <div class="app-loader">
-        <breeze-spinner></breeze-spinner>
+        <plume-spinner></plume-spinner>
       </div>
     `;
 }
@@ -109,13 +109,13 @@ on first paint.
 
 ## Constraints (don't break these)
 
-1. **No blank screen on navigation**: every lazy route shows `<breeze-spinner>`
-   until the page element is defined, never an empty `<breeze-app>`.
+1. **No blank screen on navigation**: every lazy route shows `<plume-spinner>`
+   until the page element is defined, never an empty `<plume-app>`.
 2. **Light DOM preserved**: `app-shell.ts` uses
    `createRenderRoot() { return this; }` for DnD compatibility. Lazy loading
    must not change this; only the _imports_ become dynamic, the render structure
    is unchanged.
-3. **DnD must keep working**: kanban lives under `breeze-project-detail-page`
+3. **DnD must keep working**: kanban lives under `plume-project-detail-page`
    in light DOM. Splitting is a transport concern, not a DOM concern, but verify
    drag still works after adding/splitting a page.
 4. **Signals/router unchanged**: `currentPath`, `matchRoute`, `navigate` stay
@@ -141,12 +141,12 @@ fetch; safe to ship before profiling.
 ## Adding a new lazy page: checklist
 
 1. Create the page element (e.g. `features/<name>/<name>-page.ts`) with
-   `@customElement("breeze-<name>-page")`.
+   `@customElement("plume-<name>-page")`.
 2. Add it to `lazyPages` in `app-shell.ts`.
 3. Add a `willUpdate()` branch calling
-   `_ensure("breeze-<name>-page", lazyPages.<name>)`.
+   `_ensure("plume-<name>-page", lazyPages.<name>)`.
 4. Add a `render()` branch: spinner-then-element (mount
-   `<breeze-command-palette>` alongside it on authenticated routes; matches
+   `<plume-command-palette>` alongside it on authenticated routes; matches
    existing pages).
 5. Audit for stray static imports:
    ```bash

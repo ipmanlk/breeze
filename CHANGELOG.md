@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to Breeze are documented here. The format is based on
+All notable changes to Plume are documented here. The format is based on
 [Keep a Changelog](https://keepachangelog.com/), and this project adheres to
 [Semantic Versioning](https://semver.org/).
 
@@ -24,7 +24,7 @@ ldflags at build time).
 
 ## [0.1.0] - 2026-08-30
 
-Initial public release. **Breeze is in beta (0.x): APIs, data schemas, and
+Initial public release. **Plume is in beta (0.x): APIs, data schemas, and
 behavior may change between releases without notice.** Pin an exact version
 in production deployments and back up your data before upgrading.
 

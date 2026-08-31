@@ -4,7 +4,7 @@ import (
 	"context"
 	"testing"
 
-	"ipmanlk/breeze/internal/domain"
+	"ipmanlk/plume/internal/domain"
 )
 
 func TestChannelPermissionService_ResolvePermissions_ChannelOverrideTakesPriority(t *testing.T) {

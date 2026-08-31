@@ -25,8 +25,8 @@ const WorkspaceNameSchema = v.object({
  * dashboard. Mirrors the setup wizard's org-name step.
  */
 @localized()
-@customElement("breeze-create-workspace-dialog")
-export class BreezeCreateWorkspaceDialog extends LitElement {
+@customElement("plume-create-workspace-dialog")
+export class PlumeCreateWorkspaceDialog extends LitElement {
   static styles = css`
     :host {
       display: contents;
@@ -95,18 +95,18 @@ export class BreezeCreateWorkspaceDialog extends LitElement {
 
   protected render() {
     return html`
-      <breeze-dialog
+      <plume-dialog
         .open="${this.open}"
         heading="${msg("Create workspace")}"
         @close="${() => (this.open = false)}"
       >
         <form @submit="${this._onSubmit}" novalidate>
-          <breeze-field
+          <plume-field
             label="${msg("Workspace name")}"
             .error="${this._error}"
             ?invalid="${!!this._error}"
           >
-            <breeze-input
+            <plume-input
               id="name"
               name="name"
               type="text"
@@ -116,37 +116,37 @@ export class BreezeCreateWorkspaceDialog extends LitElement {
                 e: Event,
               ) => (this._name = (e.target as HTMLInputElement).value)}"
               ?invalid="${!!this._error}"
-            ></breeze-input>
-          </breeze-field>
+            ></plume-input>
+          </plume-field>
           ${this._error
             ? html`<div class="form-error">${this._error}</div>`
             : nothing}
         </form>
         <div slot="footer">
-          <breeze-button
+          <plume-button
             variant="outline"
             type="button"
             @click="${() => (this.open = false)}"
-          >${msg("Cancel")}</breeze-button>
-          <breeze-button
+          >${msg("Cancel")}</plume-button>
+          <plume-button
             type="button"
             ?disabled="${this._submitting}"
             @click="${this._onSubmit}"
           >
             ${this._submitting
-              ? html`<breeze-spinner></breeze-spinner><span>${
+              ? html`<plume-spinner></plume-spinner><span>${
                 msg("Creating…")
               }</span>`
               : msg("Create workspace")}
-          </breeze-button>
+          </plume-button>
         </div>
-      </breeze-dialog>
+      </plume-dialog>
     `;
   }
 }
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-create-workspace-dialog": BreezeCreateWorkspaceDialog;
+    "plume-create-workspace-dialog": PlumeCreateWorkspaceDialog;
   }
 }

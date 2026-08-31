@@ -1,1 +1,1 @@
-export { BreezeMyTasksPage } from "./my-tasks-page.ts";
+export { PlumeMyTasksPage } from "./my-tasks-page.ts";

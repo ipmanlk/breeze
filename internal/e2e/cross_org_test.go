@@ -6,8 +6,8 @@ import (
 
 	"github.com/google/uuid"
 
-	"ipmanlk/breeze/internal/auth"
-	"ipmanlk/breeze/internal/domain"
+	"ipmanlk/plume/internal/auth"
+	"ipmanlk/plume/internal/domain"
 )
 
 // TestCrossOrgIsolation verifies that a user in org A cannot read or mutate

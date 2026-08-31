@@ -6,8 +6,8 @@ import (
 	"path/filepath"
 	"testing"
 
-	"ipmanlk/breeze/internal/store/migration"
-	"ipmanlk/breeze/internal/store/sqlc"
+	"ipmanlk/plume/internal/store/migration"
+	"ipmanlk/plume/internal/store/sqlc"
 
 	_ "modernc.org/sqlite"
 )

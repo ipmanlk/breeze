@@ -147,8 +147,8 @@ function placeCursorAtEnd(root: HTMLElement): void {
 // Custom element
 
 @localized()
-@customElement("breeze-chat-editor")
-export class BreezeChatEditor extends LitElement {
+@customElement("plume-chat-editor")
+export class PlumeChatEditor extends LitElement {
   static styles = css`
     *,
     *::before,
@@ -325,7 +325,7 @@ export class BreezeChatEditor extends LitElement {
 
   #emitChange(): void {
     this.dispatchEvent(
-      new CustomEvent("breeze-change", {
+      new CustomEvent("plume-change", {
         detail: { content: this.getContent() },
         bubbles: true,
         composed: true,
@@ -396,7 +396,7 @@ export class BreezeChatEditor extends LitElement {
     if (e.key === "Enter" && !e.shiftKey && !this.suggestOpen) {
       e.preventDefault();
       this.dispatchEvent(
-        new CustomEvent("breeze-send", {
+        new CustomEvent("plume-send", {
           bubbles: true,
           composed: true,
         }),
@@ -407,7 +407,7 @@ export class BreezeChatEditor extends LitElement {
     // Escape: bubble to parent
     if (e.key === "Escape") {
       this.dispatchEvent(
-        new CustomEvent("breeze-escape", {
+        new CustomEvent("plume-escape", {
           bubbles: true,
           composed: true,
         }),
@@ -438,6 +438,6 @@ export class BreezeChatEditor extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-chat-editor": BreezeChatEditor;
+    "plume-chat-editor": PlumeChatEditor;
   }
 }

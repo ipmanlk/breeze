@@ -20,7 +20,7 @@ import { sendWsMessage, wsClient } from "@/store/ws";
 import { fetchProjectViews, updateView } from "@/features/views/store";
 import type { View as SavedView, ViewFilters } from "@/features/views/types";
 import "../../layouts/app-layout.ts";
-import "../../components/ui/breeze-icon.ts";
+import "../../components/ui/plume-icon.ts";
 import "../../components/ui/button.ts";
 import "../../components/ui/spinner.ts";
 import "./kanban-board.ts";
@@ -42,7 +42,7 @@ import { localized, msg } from "@lit/localize";
  * The kanban board (a child of this component) uses native drag events that
  * rely on `event.target` not being retargeted by shadow DOM.
  *
- * `breeze-app-layout` (used below) keeps its shadow DOM: that's fine because
+ * `plume-app-layout` (used below) keeps its shadow DOM: that's fine because
  * it uses `<slot>` to project this component's content, and slotted content
  * stays in the light DOM (document tree) where `event.target` is not retargeted.
  *
@@ -91,7 +91,7 @@ function filtersEqual(a: ViewFilters, b: ViewFilters): boolean {
 type Layout = "board" | "list" | "settings" | "cycles" | "members";
 
 const PDP_STYLES = `
-breeze-project-detail-page {
+plume-project-detail-page {
   display: contents;
 }
 .pdp-page {
@@ -303,8 +303,8 @@ breeze-project-detail-page {
 `;
 
 @localized()
-@customElement("breeze-project-detail-page")
-export class BreezeProjectDetailPage extends LitElement {
+@customElement("plume-project-detail-page")
+export class PlumeProjectDetailPage extends LitElement {
   /** Light DOM: required for @atlaskit/pragmatic-drag-and-drop. */
   createRenderRoot() {
     return this;
@@ -595,7 +595,7 @@ export class BreezeProjectDetailPage extends LitElement {
         const p = payload as { task_id?: string } | undefined;
         if (p?.task_id) {
           document.dispatchEvent(
-            new CustomEvent("breeze-task-activity-recorded", {
+            new CustomEvent("plume-task-activity-recorded", {
               detail: { taskId: p.task_id },
             }),
           );
@@ -848,24 +848,24 @@ export class BreezeProjectDetailPage extends LitElement {
         <style>
         ${PDP_STYLES}
         </style>
-        <breeze-app-layout>
+        <plume-app-layout>
           <div class="pdp-empty page-enter">
             ${isLoading
               ? html`
-                <breeze-spinner></breeze-spinner>
+                <plume-spinner></plume-spinner>
               `
               : html`
                 <p>Project not found</p>
-                <breeze-button
+                <plume-button
                   variant="outline"
                   size="sm"
                   @click="${() => navigate("/projects")}"
                 >
                   Back to projects
-                </breeze-button>
+                </plume-button>
               `}
           </div>
-        </breeze-app-layout>
+        </plume-app-layout>
       `;
     }
 
@@ -917,16 +917,16 @@ export class BreezeProjectDetailPage extends LitElement {
       <style>
       ${PDP_STYLES}
       </style>
-      <breeze-app-layout>
+      <plume-app-layout>
         <div class="pdp-page page-enter">
           <div class="pdp-header">
-            <breeze-button
+            <plume-button
               variant="ghost"
               size="icon"
               @click="${() => navigate("/projects")}"
             >
-              <breeze-icon name="arrow-left" size="16"></breeze-icon>
-            </breeze-button>
+              <plume-icon name="arrow-left" size="16"></plume-icon>
+            </plume-button>
             <div
               class="pdp-project-icon"
               style="background:${project.color ?? "var(--muted)"}"
@@ -937,7 +937,7 @@ export class BreezeProjectDetailPage extends LitElement {
             <div class="pdp-header-actions">
               ${hasUnsavedFilters && activeView
                 ? html`
-                  <breeze-button-group
+                  <plume-button-group
                     size="sm"
                     .actions="${[
                       {
@@ -962,32 +962,32 @@ export class BreezeProjectDetailPage extends LitElement {
                       }
                     }}"
                   >
-                    <breeze-icon name="save" size="14"></breeze-icon>
+                    <plume-icon name="save" size="14"></plume-icon>
                     Save changes
-                  </breeze-button-group>
+                  </plume-button-group>
                 `
                 : hasUnsavedFilters && !activeView
                 ? html`
-                  <breeze-button
+                  <plume-button
                     size="sm"
                     variant="outline"
                     @click="${() => (this._showSaveViewDialog = true)}"
                   >
-                    <breeze-icon name="save" size="14"></breeze-icon>
+                    <plume-icon name="save" size="14"></plume-icon>
                     Save view
-                  </breeze-button>
+                  </plume-button>
                 `
                 : nothing} ${canCreateTasks
                 ? html`
-                  <breeze-button
+                  <plume-button
                     size="sm"
                     @click="${() => {
                       this._showCreate = true;
                     }}"
                   >
-                    <breeze-icon name="plus" size="16"></breeze-icon>
+                    <plume-icon name="plus" size="16"></plume-icon>
                     New task
-                  </breeze-button>
+                  </plume-button>
                 `
                 : nothing}
             </div>
@@ -1031,12 +1031,12 @@ export class BreezeProjectDetailPage extends LitElement {
             ${(effectiveLayout === "board" || effectiveLayout === "list")
               ? html`
                 <div class="pdp-filter-bar">
-                  <breeze-filter-bar
+                  <plume-filter-bar
                     .projectId="${project.id ?? ""}"
                     .statuses="${statuses}"
                     .filters="${this._filters}"
                     @filters-change="${this.#onFiltersChange}"
-                  ></breeze-filter-bar>
+                  ></plume-filter-bar>
                   ${effectiveLayout === "board"
                     ? html`
                       <button
@@ -1049,7 +1049,7 @@ export class BreezeProjectDetailPage extends LitElement {
                           : "Show subtasks on the board"}"
                         @click="${() => this.#toggleShowSubtasks()}"
                       >
-                        <breeze-icon name="list-checks" size="14"></breeze-icon>
+                        <plume-icon name="list-checks" size="14"></plume-icon>
                         ${this._showSubtasks ? "Subtasks on" : "Subtasks"}
                       </button>
                     `
@@ -1059,13 +1059,13 @@ export class BreezeProjectDetailPage extends LitElement {
               : nothing} ${hasCycles && effectiveLayout !== "settings" &&
                 effectiveLayout !== "cycles"
               ? html`
-                <breeze-cycle-bar
+                <plume-cycle-bar
                   .cycles="${cycles.value.projectId === project.id
                     ? cycles.value.cycles
                     : []}"
                   .activeCycleId="${this._cycleFilter}"
                   @cycle-change="${this.#onCycleChange}"
-                ></breeze-cycle-bar>
+                ></plume-cycle-bar>
               `
               : nothing}
           </div>
@@ -1073,7 +1073,7 @@ export class BreezeProjectDetailPage extends LitElement {
           <div class="pdp-content">
             ${effectiveLayout === "board"
               ? html`
-                <breeze-kanban-board
+                <plume-kanban-board
                   .statuses="${statuses}"
                   .tasks="${filteredTasks}"
                   .grouped="${grouped}"
@@ -1081,11 +1081,11 @@ export class BreezeProjectDetailPage extends LitElement {
                   .showSubtasks="${this._showSubtasks}"
                   @task-click="${(e: CustomEvent) =>
                     this.#onTaskClick(e.detail)}"
-                ></breeze-kanban-board>
+                ></plume-kanban-board>
               `
               : effectiveLayout === "list"
               ? html`
-                <breeze-list-view
+                <plume-list-view
                   .statuses="${statuses}"
                   .tasks="${filteredTasks}"
                   .projectId="${project.id ?? ""}"
@@ -1094,65 +1094,65 @@ export class BreezeProjectDetailPage extends LitElement {
                   @task-click="${(e: CustomEvent) =>
                     this.#onTaskClick(e.detail)}"
                   @sort-change="${this.#onSortChange}"
-                ></breeze-list-view>
+                ></plume-list-view>
               `
               : effectiveLayout === "cycles"
               ? html`
-                <breeze-cycles-view
+                <plume-cycles-view
                   .cycles="${cycles.value.projectId === project.id
                     ? cycles.value.cycles
                     : []}"
-                ></breeze-cycles-view>
+                ></plume-cycles-view>
               `
               : effectiveLayout === "members"
               ? html`
-                <breeze-project-members-view
+                <plume-project-members-view
                   .projectId="${project.id ?? ""}"
                   .canManage="${canManageMembers}"
-                ></breeze-project-members-view>
+                ></plume-project-members-view>
               `
               : effectiveLayout === "settings"
               ? html`
-                <breeze-settings-view
+                <plume-settings-view
                   .project="${project}"
                   .statuses="${statuses}"
-                ></breeze-settings-view>
+                ></plume-settings-view>
               `
               : nothing}
           </div>
         </div>
 
-        <breeze-task-dialog
+        <plume-task-dialog
           .open="${this._showCreate}"
           .project="${project}"
           .statuses="${statuses}"
           @close="${() => (this._showCreate = false)}"
-        ></breeze-task-dialog>
+        ></plume-task-dialog>
 
-        <breeze-task-detail-dialog
+        <plume-task-detail-dialog
           .task="${tasks.find(
             (t) => t.id === projectDetail.value.selectedTaskId,
           ) ?? null}"
           .project="${project}"
           .statuses="${statuses}"
           @close="${this.#onTaskDetailClose}"
-        ></breeze-task-detail-dialog>
+        ></plume-task-detail-dialog>
 
-        <breeze-save-view-dialog
+        <plume-save-view-dialog
           .open="${this._showSaveViewDialog}"
           .projectId="${project.id ?? ""}"
           .filters="${currentFilters}"
           .defaultLayout="${effectiveLayout === "list" ? "list" : "board"}"
           @close="${() => (this._showSaveViewDialog = false)}"
           @view-created="${this.#onSaveViewCreated}"
-        ></breeze-save-view-dialog>
-      </breeze-app-layout>
+        ></plume-save-view-dialog>
+      </plume-app-layout>
     `;
   }
 }
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-project-detail-page": BreezeProjectDetailPage;
+    "plume-project-detail-page": PlumeProjectDetailPage;
   }
 }

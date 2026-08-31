@@ -71,7 +71,7 @@ function onSessionLost(): void {
   isActive = false;
   // Defer to break the import cycle with the auth store: dispatch a custom
   // event the app listens for to reset auth state and redirect to /login.
-  window.dispatchEvent(new CustomEvent("breeze:session-expired"));
+  window.dispatchEvent(new CustomEvent("plume:session-expired"));
 }
 
 let isSchedulingReconnect = false;

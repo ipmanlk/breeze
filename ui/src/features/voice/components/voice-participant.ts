@@ -1,10 +1,10 @@
 import { css, html, LitElement, nothing } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import type { VoiceParticipant } from "../types";
-import "../../../components/ui/breeze-icon.ts";
+import "../../../components/ui/plume-icon.ts";
 
-@customElement("breeze-voice-participant")
-export class BreezeVoiceParticipant extends LitElement {
+@customElement("plume-voice-participant")
+export class PlumeVoiceParticipant extends LitElement {
   static styles = css`
     *,
     *::before,
@@ -61,7 +61,7 @@ export class BreezeVoiceParticipant extends LitElement {
     .badge[data-destructive] {
       color: var(--destructive);
     }
-    .badge breeze-icon {
+    .badge plume-icon {
       display: block;
     }
     .name {
@@ -104,10 +104,10 @@ export class BreezeVoiceParticipant extends LitElement {
         ${p.muted || p.deafened
           ? html`
             <span class="badge" ?data-destructive="${p.deafened}">
-              <breeze-icon
+              <plume-icon
                 name="${p.deafened ? "volume-x" : "mic-off"}"
                 size="14"
-              ></breeze-icon>
+              ></plume-icon>
             </span>
           `
           : nothing}
@@ -119,6 +119,6 @@ export class BreezeVoiceParticipant extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-voice-participant": BreezeVoiceParticipant;
+    "plume-voice-participant": PlumeVoiceParticipant;
   }
 }

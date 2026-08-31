@@ -2,13 +2,13 @@ package service
 
 import (
 	"context"
-	"ipmanlk/breeze/internal/i18n"
+	"ipmanlk/plume/internal/i18n"
 	"log/slog"
 	"testing"
 	"time"
 
-	"ipmanlk/breeze/internal/domain"
-	"ipmanlk/breeze/internal/port"
+	"ipmanlk/plume/internal/domain"
+	"ipmanlk/plume/internal/port"
 )
 
 var notifTestBundle = i18n.NewBundle()

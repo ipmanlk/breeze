@@ -1,5 +1,5 @@
 /**
- * Breeze internationalization entry point.
+ * Plume internationalization entry point.
  *
  * Wraps `@lit/localize`'s runtime configuration and exposes the functions the
  * rest of the app needs: `msg`, `str`, `@localized`, `getLocale`, and
@@ -37,10 +37,10 @@ import { configureLocalization } from "@lit/localize";
  */
 export const SOURCE_LOCALE = "en" as const;
 
-/** Locales shipped with Breeze (excludes the source locale). */
+/** Locales shipped with Plume (excludes the source locale). */
 export const TARGET_LOCALES = ["fr"] as const;
 
-/** Every locale Breeze supports, including the source. */
+/** Every locale Plume supports, including the source. */
 export const ALL_LOCALES = [SOURCE_LOCALE, ...TARGET_LOCALES] as const;
 
 export type LocaleCode = (typeof ALL_LOCALES)[number];
@@ -52,7 +52,7 @@ export const LOCALE_LABELS: Record<LocaleCode, string> = {
 };
 
 /**
- * Returns `true` if the given tag is a locale Breeze supports. Performs only a
+ * Returns `true` if the given tag is a locale Plume supports. Performs only a
  * direct check: callers that receive an arbitrary user/`Accept-Language` tag
  * should use `normalizeLocale()` which falls back through region→language→en.
  */
@@ -61,7 +61,7 @@ export function isSupportedLocale(tag: string): tag is LocaleCode {
 }
 
 /**
- * Normalize an arbitrary locale tag to one Breeze supports, applying the
+ * Normalize an arbitrary locale tag to one Plume supports, applying the
  * fallback chain: exact match → language-only match → `SOURCE_LOCALE`.
  *
  *   "fr"        → "fr"
@@ -79,7 +79,7 @@ export function normalizeLocale(tag: string | undefined | null): LocaleCode {
 }
 
 /** localStorage key caching the last selected locale (unauthenticated routes). */
-const LOCALE_STORAGE_KEY = "breeze.locale";
+const LOCALE_STORAGE_KEY = "plume.locale";
 
 /**
  * Detect the best locale for an unauthenticated user:

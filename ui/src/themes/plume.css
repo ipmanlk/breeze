@@ -1,11 +1,11 @@
-/* Breeze palette: default light/dark with accent color support */
+/* Plume palette: default light/dark with accent color support */
 
-:root[data-palette="breeze"] {
+:root[data-palette="plume"] {
   color-scheme: light dark;
 }
 
-:root[data-palette="breeze"],
-:root[data-palette="breeze"][data-theme="light"] {
+:root[data-palette="plume"],
+:root[data-palette="plume"][data-theme="light"] {
   --background: oklch(1 0 0);
   --foreground: oklch(0.141 0.005 285.823);
   --card: oklch(1 0 0);
@@ -33,7 +33,7 @@
   --sidebar-ring: oklch(0.488 0.243 264.376);
 }
 
-:root[data-palette="breeze"][data-theme="dark"] {
+:root[data-palette="plume"][data-theme="dark"] {
   --background: oklch(0.141 0.005 285.823);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.21 0.006 285.885);
@@ -61,29 +61,29 @@
   --sidebar-ring: oklch(0.546 0.245 262.881);
 }
 
-/* Accent color themes: only apply within the breeze palette */
-:root[data-palette="breeze"][data-color="default"],
-:root[data-palette="breeze"][data-color="default"][data-theme="light"] {
+/* Accent color themes: only apply within the plume palette */
+:root[data-palette="plume"][data-color="default"],
+:root[data-palette="plume"][data-color="default"][data-theme="light"] {
   --primary: oklch(0.488 0.243 264.376);
   --primary-foreground: oklch(0.985 0 0);
   --sidebar-primary: oklch(0.488 0.243 264.376);
   --sidebar-primary-foreground: oklch(0.985 0 0);
 }
-:root[data-palette="breeze"][data-color="default"][data-theme="dark"] {
+:root[data-palette="plume"][data-color="default"][data-theme="dark"] {
   --primary: oklch(0.546 0.245 262.881);
   --primary-foreground: oklch(0.985 0 0);
   --sidebar-primary: oklch(0.546 0.245 262.881);
   --sidebar-primary-foreground: oklch(0.985 0 0);
 }
 
-:root[data-palette="breeze"][data-color="zinc"][data-theme="light"] {
+:root[data-palette="plume"][data-color="zinc"][data-theme="light"] {
   --primary: oklch(0.21 0.006 285.885);
   --primary-foreground: oklch(0.985 0 0);
   --sidebar-primary: oklch(0.21 0.006 285.885);
   --sidebar-primary-foreground: oklch(0.985 0 0);
   --ring: oklch(0.21 0.006 285.885);
 }
-:root[data-palette="breeze"][data-color="zinc"][data-theme="dark"] {
+:root[data-palette="plume"][data-color="zinc"][data-theme="dark"] {
   --primary: oklch(0.985 0 0);
   --primary-foreground: oklch(0.21 0.006 285.885);
   --sidebar-primary: oklch(0.985 0 0);
@@ -91,14 +91,14 @@
   --ring: oklch(0.985 0 0);
 }
 
-:root[data-palette="breeze"][data-color="rose"][data-theme="light"] {
+:root[data-palette="plume"][data-color="rose"][data-theme="light"] {
   --primary: oklch(0.646 0.222 41.116);
   --primary-foreground: oklch(0.985 0 0);
   --sidebar-primary: oklch(0.646 0.222 41.116);
   --sidebar-primary-foreground: oklch(0.985 0 0);
   --ring: oklch(0.646 0.222 41.116);
 }
-:root[data-palette="breeze"][data-color="rose"][data-theme="dark"] {
+:root[data-palette="plume"][data-color="rose"][data-theme="dark"] {
   --primary: oklch(0.713 0.194 19.535);
   --primary-foreground: oklch(0.985 0 0);
   --sidebar-primary: oklch(0.713 0.194 19.535);
@@ -106,14 +106,14 @@
   --ring: oklch(0.713 0.194 19.535);
 }
 
-:root[data-palette="breeze"][data-color="green"][data-theme="light"] {
+:root[data-palette="plume"][data-color="green"][data-theme="light"] {
   --primary: oklch(0.723 0.191 149.579);
   --primary-foreground: oklch(0.141 0.005 285.823);
   --sidebar-primary: oklch(0.723 0.191 149.579);
   --sidebar-primary-foreground: oklch(0.141 0.005 285.823);
   --ring: oklch(0.723 0.191 149.579);
 }
-:root[data-palette="breeze"][data-color="green"][data-theme="dark"] {
+:root[data-palette="plume"][data-color="green"][data-theme="dark"] {
   --primary: oklch(0.769 0.188 142.796);
   --primary-foreground: oklch(0.141 0.005 285.823);
   --sidebar-primary: oklch(0.769 0.188 142.796);
@@ -121,14 +121,14 @@
   --ring: oklch(0.769 0.188 142.796);
 }
 
-:root[data-palette="breeze"][data-color="violet"][data-theme="light"] {
+:root[data-palette="plume"][data-color="violet"][data-theme="light"] {
   --primary: oklch(0.606 0.25 292.717);
   --primary-foreground: oklch(0.985 0 0);
   --sidebar-primary: oklch(0.606 0.25 292.717);
   --sidebar-primary-foreground: oklch(0.985 0 0);
   --ring: oklch(0.606 0.25 292.717);
 }
-:root[data-palette="breeze"][data-color="violet"][data-theme="dark"] {
+:root[data-palette="plume"][data-color="violet"][data-theme="dark"] {
   --primary: oklch(0.681 0.207 293.584);
   --primary-foreground: oklch(0.985 0 0);
   --sidebar-primary: oklch(0.681 0.207 293.584);

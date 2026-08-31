@@ -1,5 +1,5 @@
 -- +goose Up
--- Breeze schema: initial baseline.
+-- Plume schema: initial baseline.
 --
 -- This is the full schema applied on first boot. Every statement is guarded
 -- with IF NOT EXISTS / IF EXISTS so re-running it is a safe no-op.

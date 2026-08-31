@@ -3,7 +3,7 @@
 How to build an on/off toggle that is visually identical to the shadcn `Switch`.
 Read this when you need any switch/toggle control.
 
-**Prefer reusing `<breeze-switch>`** (`components/ui/switch.ts`) instead of
+**Prefer reusing `<plume-switch>`** (`components/ui/switch.ts`) instead of
 hand-rolling. Only build your own if you need a different size/variant.
 
 ---
@@ -126,8 +126,8 @@ render() {
 ```ts
 import "../../components/ui/switch.ts";
 
-<breeze-switch .checked="${this._unreadOnly}" @change="${this._toggleUnread}">
-</breeze-switch>
+<plume-switch .checked="${this._unreadOnly}" @change="${this._toggleUnread}">
+</plume-switch>
 
 private _toggleUnread(e: CustomEvent) {
   this._unreadOnly = (e.detail as { checked: boolean }).checked;
@@ -135,4 +135,4 @@ private _toggleUnread(e: CustomEvent) {
 ```
 
 Don't hand-roll a `<span role="switch">` with custom thumb CSS; reuse
-`breeze-switch`.
+`plume-switch`.

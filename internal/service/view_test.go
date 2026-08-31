@@ -4,7 +4,7 @@ import (
 	"context"
 	"testing"
 
-	"ipmanlk/breeze/internal/domain"
+	"ipmanlk/plume/internal/domain"
 )
 
 func TestViewService_Create(t *testing.T) {

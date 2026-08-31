@@ -3,8 +3,8 @@ package store
 import (
 	"context"
 
-	"ipmanlk/breeze/internal/domain"
-	"ipmanlk/breeze/internal/store/sqlc"
+	"ipmanlk/plume/internal/domain"
+	"ipmanlk/plume/internal/store/sqlc"
 )
 
 // MentionSearchStore wraps sqlc mention-search queries, converting sqlc row

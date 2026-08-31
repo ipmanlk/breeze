@@ -7,8 +7,8 @@ import { SignalController } from "@/lib/signal-controller";
 import { localized, msg } from "@lit/localize";
 
 @localized()
-@customElement("breeze-pinned-messages-bar")
-export class BreezePinnedMessagesBar extends LitElement {
+@customElement("plume-pinned-messages-bar")
+export class PlumePinnedMessagesBar extends LitElement {
   static styles = css`
     *,
     *::before,
@@ -134,14 +134,14 @@ export class BreezePinnedMessagesBar extends LitElement {
     return html`
       <button class="bar" @click="${this._toggle}">
         <span class="pin-icon">
-          <breeze-icon name="pin" size="12"></breeze-icon>
+          <plume-icon name="pin" size="12"></plume-icon>
         </span>
         <span class="count">${this._pinned.length} ${msg("pinned")}</span>
         <span class="chevron">
-          <breeze-icon
+          <plume-icon
             name="${this._expanded ? "chevron-up" : "chevron-down"}"
             size="12"
-          ></breeze-icon>
+          ></plume-icon>
         </span>
       </button>
       ${this._expanded
@@ -151,10 +151,10 @@ export class BreezePinnedMessagesBar extends LitElement {
               (m) =>
                 html`
                   <div class="pinned-item">
-                    <breeze-message-item
+                    <plume-message-item
                       .message="${m}"
                       currentUserId="${this.currentUserId}"
-                    ></breeze-message-item>
+                    ></plume-message-item>
                   </div>
                 `,
             )}
@@ -167,6 +167,6 @@ export class BreezePinnedMessagesBar extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-pinned-messages-bar": BreezePinnedMessagesBar;
+    "plume-pinned-messages-bar": PlumePinnedMessagesBar;
   }
 }

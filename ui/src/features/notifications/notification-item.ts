@@ -3,7 +3,7 @@ import { css, html, LitElement } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { listItemEnterStyles } from "@/styles/shared-animations";
 import { timeAgoShort } from "@/lib/format/time-ago";
-import "../../components/ui/breeze-icon.ts";
+import "../../components/ui/plume-icon.ts";
 
 /** Map notification type → lucide icon name. */
 const TYPE_ICON: Record<string, string> = {
@@ -56,8 +56,8 @@ const WARNING_TYPES = new Set(["task_overdue"]);
  * Shows an unread dot, type icon, title, optional body, and relative time.
  */
 @localized()
-@customElement("breeze-notification-item")
-export class BreezeNotificationItem extends LitElement {
+@customElement("plume-notification-item")
+export class PlumeNotificationItem extends LitElement {
   static styles = [
     listItemEnterStyles,
     css`
@@ -178,11 +178,11 @@ export class BreezeNotificationItem extends LitElement {
     return html`
       <button type="button" class="item" @click="${this._onClick}">
         <span class="dot ${this.isRead ? "read" : "unread"}"></span>
-        <breeze-icon
+        <plume-icon
           class="icon ${isWarning ? "warning" : ""}"
           name="${iconName}"
           size="16"
-        ></breeze-icon>
+        ></plume-icon>
         <div class="content">
           <span class="title ${this.isRead ? "" : "unread"}">
             ${this.title}
@@ -201,6 +201,6 @@ export class BreezeNotificationItem extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-notification-item": BreezeNotificationItem;
+    "plume-notification-item": PlumeNotificationItem;
   }
 }

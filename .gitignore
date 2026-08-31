@@ -31,7 +31,7 @@ Thumbs.db
 .env.local
 
 # Compiled Go binaries at the repo root; never commit these
-/breeze
+/plume
 /server
 /seed
 /e2e.test
@@ -55,4 +55,4 @@ Thumbs.db
 /.patterns/
 /.reasonix/
 # Public-snapshot copy log (tracked via add -f, never exported to the public repo)
-/breeze-copy-log
+/plume-copy-log

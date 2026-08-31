@@ -7,7 +7,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	"ipmanlk/breeze/internal/store"
+	"ipmanlk/plume/internal/store"
 	"log/slog"
 )
 

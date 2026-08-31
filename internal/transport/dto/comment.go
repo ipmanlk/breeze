@@ -3,7 +3,7 @@ package dto
 import (
 	"time"
 
-	"ipmanlk/breeze/internal/domain"
+	"ipmanlk/plume/internal/domain"
 )
 
 type CommentResponse struct {

@@ -11,8 +11,8 @@ import (
 
 	"github.com/go-chi/chi/v5"
 
-	"ipmanlk/breeze/internal/domain"
-	"ipmanlk/breeze/internal/transport/middleware"
+	"ipmanlk/plume/internal/domain"
+	"ipmanlk/plume/internal/transport/middleware"
 )
 
 type mockAttachmentService struct {

@@ -1,6 +1,6 @@
-# Breeze Documentation
+# Plume Documentation
 
-Breeze is a single Go binary with an embedded Lit/Vite SPA. The docs are
+Plume is a single Go binary with an embedded Lit/Vite SPA. The docs are
 split into three sections so you can find the part you care about without
 wading through the rest:
 
@@ -21,7 +21,7 @@ built.
 | understand the server architecture      | [api/architecture.md](api/architecture.md) |
 | add or change an HTTP endpoint          | [api/architecture.md](api/architecture.md) + [api/build-commands.md](api/build-commands.md) |
 | make a frontend change                  | [ui/overview.md](ui/overview.md) (then the doc matching the area) |
-| run/deploy Breeze                       | [ops/setup.md](ops/setup.md) + [ops/configuration.md](ops/configuration.md) |
+| run/deploy Plume                       | [ops/setup.md](ops/setup.md) + [ops/configuration.md](ops/configuration.md) |
 | add a language locale                   | [i18n.md](i18n.md) → [i18n/adding-a-language.md](i18n/adding-a-language.md) |
 
 ## Contributing to the docs

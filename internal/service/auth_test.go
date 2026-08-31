@@ -10,9 +10,9 @@ import (
 	"testing"
 	"time"
 
-	"ipmanlk/breeze/internal/apperr"
-	"ipmanlk/breeze/internal/auth"
-	"ipmanlk/breeze/internal/domain"
+	"ipmanlk/plume/internal/apperr"
+	"ipmanlk/plume/internal/auth"
+	"ipmanlk/plume/internal/domain"
 
 	"golang.org/x/crypto/argon2"
 )

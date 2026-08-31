@@ -8,9 +8,9 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"ipmanlk/breeze/internal/domain"
-	"ipmanlk/breeze/internal/port"
-	"ipmanlk/breeze/internal/transport/dto"
+	"ipmanlk/plume/internal/domain"
+	"ipmanlk/plume/internal/port"
+	"ipmanlk/plume/internal/transport/dto"
 )
 
 type mockVoiceService struct {

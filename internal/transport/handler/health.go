@@ -6,8 +6,8 @@ import (
 	"net/http"
 	"time"
 
-	"ipmanlk/breeze/internal/transport"
-	"ipmanlk/breeze/internal/version"
+	"ipmanlk/plume/internal/transport"
+	"ipmanlk/plume/internal/version"
 )
 
 // Pinger is the minimal DB-connectivity contract the health check depends on.

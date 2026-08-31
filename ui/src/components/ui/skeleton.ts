@@ -10,8 +10,8 @@ import { customElement, property } from "lit/decorators.js";
  * @property height - CSS height
  * @property count - number of skeleton lines/blocks to render
  */
-@customElement("breeze-skeleton")
-export class BreezeSkeleton extends LitElement {
+@customElement("plume-skeleton")
+export class PlumeSkeleton extends LitElement {
   @property()
   variant: "text" | "card" | "avatar" | "rect" = "text";
   @property()
@@ -82,6 +82,6 @@ export class BreezeSkeleton extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-skeleton": BreezeSkeleton;
+    "plume-skeleton": PlumeSkeleton;
   }
 }

@@ -5,7 +5,7 @@ import (
 	"time"
 
 	"github.com/google/uuid"
-	"ipmanlk/breeze/internal/lexorank"
+	"ipmanlk/plume/internal/lexorank"
 )
 
 // newUUID generates a new UUID string.

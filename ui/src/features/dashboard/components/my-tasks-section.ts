@@ -1,7 +1,7 @@
 import { css, html, LitElement } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { navigate } from "@/routes/router";
-import "../../../components/ui/breeze-icon.ts";
+import "../../../components/ui/plume-icon.ts";
 import "../../../components/ui/card.ts";
 import { localized, msg } from "@lit/localize";
 
@@ -31,8 +31,8 @@ function getPRIORITY_CONFIG(): Record<
 }
 
 @localized()
-@customElement("breeze-my-tasks-section")
-export class BreezeMyTasksSection extends LitElement {
+@customElement("plume-my-tasks-section")
+export class PlumeMyTasksSection extends LitElement {
   static styles = css`
     *,
     *::before,
@@ -137,22 +137,22 @@ export class BreezeMyTasksSection extends LitElement {
     const tasks = (this.data as DashboardTask[] | null) ?? [];
     if (tasks.length === 0) {
       return html`
-        <breeze-card>
+        <plume-card>
           <div class="header">
             <span class="title">${msg("My Tasks")}</span>
           </div>
           <div class="empty">${msg("No open tasks assigned to you.")}</div>
-        </breeze-card>
+        </plume-card>
       `;
     }
 
     return html`
-      <breeze-card>
+      <plume-card>
         <div class="header">
           <span class="title">${msg("My Tasks")}</span>
           <button class="view-all" @click="${() => navigate("/my-tasks")}">
             ${msg("View all")}
-            <breeze-icon name="arrow-right" size="12"></breeze-icon>
+            <plume-icon name="arrow-right" size="12"></plume-icon>
           </button>
         </div>
         <ul class="task-list">
@@ -181,8 +181,8 @@ export class BreezeMyTasksSection extends LitElement {
                         };
                         return html`
                           <span class="badge">
-                            <breeze-icon name="${pc
-                              .icon}" size="12"></breeze-icon>
+                            <plume-icon name="${pc
+                              .icon}" size="12"></plume-icon>
                             ${pc.label}
                           </span>
                         `;
@@ -193,13 +193,13 @@ export class BreezeMyTasksSection extends LitElement {
               `,
           )}
         </ul>
-      </breeze-card>
+      </plume-card>
     `;
   }
 }
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-my-tasks-section": BreezeMyTasksSection;
+    "plume-my-tasks-section": PlumeMyTasksSection;
   }
 }

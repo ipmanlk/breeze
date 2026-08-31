@@ -12,7 +12,7 @@ import { activeFilterEntries, humanizeKey, humanizeValue } from "./types";
 import { getTasks } from "@/api";
 import type { DtoTaskListResponse } from "@/api";
 import "../../layouts/app-layout.ts";
-import "../../components/ui/breeze-icon.ts";
+import "../../components/ui/plume-icon.ts";
 import "../../components/ui/button.ts";
 import "../../components/ui/popover.ts";
 import "../../components/ui/spinner.ts";
@@ -35,8 +35,8 @@ function toTaskParams(filters: ViewFilters): Record<string, string> {
  * View Detail Page: displays tasks for a saved view with sorting.
  */
 @localized()
-@customElement("breeze-view-detail-page")
-export class BreezeViewDetailPage extends LitElement {
+@customElement("plume-view-detail-page")
+export class PlumeViewDetailPage extends LitElement {
   static styles = [
     pageEnterStyles,
     css`
@@ -380,15 +380,15 @@ export class BreezeViewDetailPage extends LitElement {
   private _renderSortIcon(field: SortField): ReturnType<typeof html> {
     if (this._sortField !== field) {
       return html`
-        <breeze-icon name="arrow-up-down" size="12"
-          class="sort-icon-inactive"></breeze-icon>
+        <plume-icon name="arrow-up-down" size="12"
+          class="sort-icon-inactive"></plume-icon>
       `;
     }
     return html`
-      <breeze-icon
+      <plume-icon
         name="${this._sortDir === "asc" ? "arrow-up" : "arrow-down"}"
         size="12"
-      ></breeze-icon>
+      ></plume-icon>
     `;
   }
 
@@ -472,17 +472,17 @@ export class BreezeViewDetailPage extends LitElement {
   protected render() {
     if (this._isLoading || !this._view) {
       return html`
-        <breeze-app-layout>
+        <plume-app-layout>
           <div class="page page-enter">
             <div class="header">
-              <breeze-skeleton
+              <plume-skeleton
                 variant="text"
                 count="3"
                 height="1.5rem"
-              ></breeze-skeleton>
+              ></plume-skeleton>
             </div>
           </div>
-        </breeze-app-layout>
+        </plume-app-layout>
       `;
     }
 
@@ -490,46 +490,46 @@ export class BreezeViewDetailPage extends LitElement {
     const activeFilters = activeFilterEntries(this._view.filters);
 
     return html`
-      <breeze-app-layout>
+      <plume-app-layout>
         <div class="page page-enter">
           <div class="header">
-            <breeze-button
+            <plume-button
               variant="ghost"
               size="sm"
               @click="${() => navigate("/views")}"
             >
-              <breeze-icon name="arrow-left" size="16"></breeze-icon>
-            </breeze-button>
-            <breeze-icon
+              <plume-icon name="arrow-left" size="16"></plume-icon>
+            </plume-button>
+            <plume-icon
               name="${this._view.layout === "board" ? "layout-grid" : "list"}"
               size="18"
-            ></breeze-icon>
+            ></plume-icon>
             <h1>${this._view.name}</h1>
             <span class="count">${sortedTasks.length} ${sortedTasks.length === 1
               ? msg("task")
               : msg("tasks")}</span>
 
-            <breeze-popover placement="bottom-end">
+            <plume-popover placement="bottom-end">
               <button slot="trigger" class="kbd-btn" title="${msg("Actions")}">
-                <breeze-icon name="more-horizontal" size="16"></breeze-icon>
+                <plume-icon name="more-horizontal" size="16"></plume-icon>
               </button>
               <div slot="content" class="kbd-menu">
                 <button
                   class="kbd-item"
                   @click="${() => (this._showEditDialog = true)}"
                 >
-                  <breeze-icon name="pencil" size="14"></breeze-icon>
+                  <plume-icon name="pencil" size="14"></plume-icon>
                   ${msg("Edit")}
                 </button>
                 <button
                   class="kbd-item destructive"
                   @click="${this._handleDelete}"
                 >
-                  <breeze-icon name="trash-2" size="14"></breeze-icon>
+                  <plume-icon name="trash-2" size="14"></plume-icon>
                   ${msg("Delete")}
                 </button>
               </div>
-            </breeze-popover>
+            </plume-popover>
           </div>
 
           ${activeFilters.length > 0
@@ -565,11 +565,11 @@ export class BreezeViewDetailPage extends LitElement {
               `}
           </div>
         </div>
-      </breeze-app-layout>
+      </plume-app-layout>
 
       ${this._view
         ? html`
-          <breeze-save-view-dialog
+          <plume-save-view-dialog
             .open="${this._showEditDialog}"
             .viewId="${this._view.id}"
             .viewName="${this._view.name}"
@@ -581,7 +581,7 @@ export class BreezeViewDetailPage extends LitElement {
               void this._loadView();
             }}"
             @view-deleted="${() => navigate("/views")}"
-          ></breeze-save-view-dialog>
+          ></plume-save-view-dialog>
         `
         : null}
     `;
@@ -590,6 +590,6 @@ export class BreezeViewDetailPage extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-view-detail-page": BreezeViewDetailPage;
+    "plume-view-detail-page": PlumeViewDetailPage;
   }
 }

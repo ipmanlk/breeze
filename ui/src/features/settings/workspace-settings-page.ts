@@ -8,7 +8,7 @@ import { isOrgElevatedRole } from "@/lib/permissions";
 import { auth } from "@/store/auth";
 import "../../components/ui/tabs.ts";
 import "../../components/ui/spinner.ts";
-import "../../components/ui/breeze-icon.ts";
+import "../../components/ui/plume-icon.ts";
 import "../../components/ui/button.ts";
 import "../../components/ui/input.ts";
 import "../../components/ui/field.ts";
@@ -43,8 +43,8 @@ type TabId = "general" | "labels" | "audit";
  * /settings/workspace/labels, /settings/workspace/audit.
  */
 @localized()
-@customElement("breeze-workspace-settings-page")
-export class BreezeWorkspaceSettingsPage extends LitElement {
+@customElement("plume-workspace-settings-page")
+export class PlumeWorkspaceSettingsPage extends LitElement {
   static styles = [
     pageEnterStyles,
     tabContentStyles,
@@ -138,7 +138,7 @@ export class BreezeWorkspaceSettingsPage extends LitElement {
 
   protected render(): unknown {
     return html`
-      <breeze-app-layout>
+      <plume-app-layout>
         <div class="page page-enter">
           <div class="header">
             <div class="header-row">
@@ -152,11 +152,11 @@ export class BreezeWorkspaceSettingsPage extends LitElement {
           </div>
 
           <div class="tab-bar">
-            <breeze-tabs
+            <plume-tabs
               .tabs="${this._tabs}"
               .value="${this._tab}"
               @change="${this._onTabChange}"
-            ></breeze-tabs>
+            ></plume-tabs>
           </div>
 
           <div class="content">
@@ -171,18 +171,18 @@ export class BreezeWorkspaceSettingsPage extends LitElement {
             )}
           </div>
         </div>
-      </breeze-app-layout>
+      </plume-app-layout>
     `;
   }
 
   private _renderTab(): unknown {
     switch (this._tab) {
       case "general":
-        return html`<breeze-organization-settings-page embedded></breeze-organization-settings-page>`;
+        return html`<plume-organization-settings-page embedded></plume-organization-settings-page>`;
       case "labels":
-        return html`<breeze-labels-settings-page embedded></breeze-labels-settings-page>`;
+        return html`<plume-labels-settings-page embedded></plume-labels-settings-page>`;
       case "audit":
-        return html`<breeze-audit-log-page embedded></breeze-audit-log-page>`;
+        return html`<plume-audit-log-page embedded></plume-audit-log-page>`;
       default:
         return nothing;
     }
@@ -191,6 +191,6 @@ export class BreezeWorkspaceSettingsPage extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-workspace-settings-page": BreezeWorkspaceSettingsPage;
+    "plume-workspace-settings-page": PlumeWorkspaceSettingsPage;
   }
 }

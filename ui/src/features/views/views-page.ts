@@ -17,7 +17,7 @@ import { activeFilterEntries, humanizeValue } from "./types";
 import type { View } from "./types";
 import { getProjects } from "@/api";
 import "../../layouts/app-layout.ts";
-import "../../components/ui/breeze-icon.ts";
+import "../../components/ui/plume-icon.ts";
 import "../../components/ui/button.ts";
 import "../../components/ui/card.ts";
 import "../../components/ui/popover.ts";
@@ -29,8 +29,8 @@ import "./components/save-view-dialog.ts";
  * Views Page: saved views across workspace.
  */
 @localized()
-@customElement("breeze-views-page")
-export class BreezeViewsPage extends LitElement {
+@customElement("plume-views-page")
+export class PlumeViewsPage extends LitElement {
   static styles = [
     pageEnterStyles,
     css`
@@ -154,7 +154,7 @@ export class BreezeViewsPage extends LitElement {
         font-weight: 500;
         color: var(--foreground);
       }
-      .view-title breeze-icon {
+      .view-title plume-icon {
         color: var(--muted-foreground);
       }
       .pin-btn {
@@ -349,20 +349,20 @@ export class BreezeViewsPage extends LitElement {
       <div class="view-card" @click="${() => this._navigateToView(view)}">
         <div class="view-header">
           <div class="view-title">
-            <breeze-icon
+            <plume-icon
               name="${view.layout === "board" ? "layout-grid" : "list"}"
               size="16"
-            ></breeze-icon>
+            ></plume-icon>
             <span>${view.name}</span>
           </div>
           <div class="view-actions">
-            <breeze-popover>
+            <plume-popover>
               <button
                 slot="trigger"
                 class="kbd-btn"
                 title="${msg("Actions")}"
               >
-                <breeze-icon name="more-horizontal" size="14"></breeze-icon>
+                <plume-icon name="more-horizontal" size="14"></plume-icon>
               </button>
               <div slot="content" class="kbd-menu">
                 <button
@@ -373,7 +373,7 @@ export class BreezeViewsPage extends LitElement {
                     this._showSaveDialog = true;
                   }}"
                 >
-                  <breeze-icon name="pencil" size="14"></breeze-icon>
+                  <plume-icon name="pencil" size="14"></plume-icon>
                   ${msg("Edit")}
                 </button>
                 <button
@@ -383,20 +383,20 @@ export class BreezeViewsPage extends LitElement {
                     this._deleteView(view);
                   }}"
                 >
-                  <breeze-icon name="trash-2" size="14"></breeze-icon>
+                  <plume-icon name="trash-2" size="14"></plume-icon>
                   ${msg("Delete")}
                 </button>
               </div>
-            </breeze-popover>
+            </plume-popover>
             <button
               class="pin-btn ${isPinned ? "pinned" : ""}"
               @click="${(e: Event) => this._togglePin(e, view)}"
               title="${isPinned ? msg("Unpin") : msg("Pin")}"
             >
-              <breeze-icon
+              <plume-icon
                 name="${isPinned ? "star" : "pin"}"
                 size="14"
-              ></breeze-icon>
+              ></plume-icon>
             </button>
           </div>
         </div>
@@ -454,21 +454,21 @@ export class BreezeViewsPage extends LitElement {
 
     if (isLoading) {
       return html`
-        <breeze-app-layout>
+        <plume-app-layout>
           <div class="loading">
-            <breeze-skeleton
+            <plume-skeleton
               variant="card"
               count="3"
               width="100%"
               height="4rem"
-            ></breeze-skeleton>
+            ></plume-skeleton>
           </div>
-        </breeze-app-layout>
+        </plume-app-layout>
       `;
     }
 
     return html`
-      <breeze-app-layout>
+      <plume-app-layout>
         <div class="page page-enter">
           <div class="page-head">
             <div>
@@ -521,9 +521,9 @@ export class BreezeViewsPage extends LitElement {
             })}
           </div>
         </div>
-      </breeze-app-layout>
+      </plume-app-layout>
 
-      <breeze-save-view-dialog
+      <plume-save-view-dialog
         .open="${this._showSaveDialog}"
         .viewId="${this._editingView?.id ?? ""}"
         .viewName="${this._editingView?.name ?? ""}"
@@ -539,13 +539,13 @@ export class BreezeViewsPage extends LitElement {
           void fetchGlobalViews();
           void fetchPinnedViews();
         }}"
-      ></breeze-save-view-dialog>
+      ></plume-save-view-dialog>
     `;
   }
 }
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-views-page": BreezeViewsPage;
+    "plume-views-page": PlumeViewsPage;
   }
 }

@@ -2,7 +2,7 @@ import { css, html, LitElement, nothing } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import type { DtoCycleResponse } from "@/api";
 import "../../components/ui/select.ts";
-import "../../components/ui/breeze-icon.ts";
+import "../../components/ui/plume-icon.ts";
 import { localized, msg } from "@lit/localize";
 
 /**
@@ -16,8 +16,8 @@ import { localized, msg } from "@lit/localize";
  * Events: `cycle-change`: detail = cycle id (string) or null (for all tasks).
  */
 @localized()
-@customElement("breeze-cycle-bar")
-export class BreezeCycleBar extends LitElement {
+@customElement("plume-cycle-bar")
+export class PlumeCycleBar extends LitElement {
   static styles = css`
     *,
     *::before,
@@ -147,12 +147,12 @@ export class BreezeCycleBar extends LitElement {
         `
         : nothing}
       <div class="filter-wrap">
-        <breeze-select
+        <plume-select
           class="filter-select"
           .options="${options}"
           .value="${this.#selectValue}"
           @change="${this.#onCycleChange}"
-        ></breeze-select>
+        ></plume-select>
       </div>
     `;
   }
@@ -160,6 +160,6 @@ export class BreezeCycleBar extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-cycle-bar": BreezeCycleBar;
+    "plume-cycle-bar": PlumeCycleBar;
   }
 }

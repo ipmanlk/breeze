@@ -13,8 +13,8 @@ import "../../components/ui/card.ts";
 import "../../layouts/guest-layout.ts";
 
 @localized()
-@customElement("breeze-forgot-password-page")
-export class BreezeForgotPasswordPage extends LitElement {
+@customElement("plume-forgot-password-page")
+export class PlumeForgotPasswordPage extends LitElement {
   static styles = [
     pageEnterStyles,
     css`
@@ -27,7 +27,7 @@ export class BreezeForgotPasswordPage extends LitElement {
         justify-content: center;
         width: 100%;
       }
-      breeze-card {
+      plume-card {
         display: block;
         width: 100%;
         max-width: var(--container-sm);
@@ -74,9 +74,9 @@ export class BreezeForgotPasswordPage extends LitElement {
   protected render() {
     if (this.sent) {
       return html`
-        <breeze-guest-layout>
+        <plume-guest-layout>
           <div class="page-enter">
-            <breeze-card>
+            <plume-card>
               <div class="title">
                 <h1>Email sent</h1>
                 <p>If an account with that email exists, a reset link has been logged server-side. Check your server logs, or contact your administrator.</p>
@@ -86,46 +86,46 @@ export class BreezeForgotPasswordPage extends LitElement {
                   "Back to login",
                 )}</a>
               </div>
-            </breeze-card>
+            </plume-card>
           </div>
-        </breeze-guest-layout>
+        </plume-guest-layout>
       `;
     }
 
     return html`
-      <breeze-guest-layout>
+      <plume-guest-layout>
         <div class="page-enter">
-          <breeze-card>
+          <plume-card>
             <form @submit=${this.#onSubmit}>
               <div class="title">
                 <h1>Forgot password</h1>
                 <p>Enter your email to receive a reset link</p>
               </div>
-              <breeze-field label="Email">
-                <breeze-input
+              <plume-field label="Email">
+                <plume-input
                   type="email"
                   placeholder="you@example.com"
                   .value=${live(this.email)}
                   @input=${(
                     e: Event,
                   ) => (this.email = (e.target as HTMLInputElement).value)}
-                ></breeze-input>
-              </breeze-field>
-              <breeze-button type="submit" fluid ?disabled=${this.submitting ||
+                ></plume-input>
+              </plume-field>
+              <plume-button type="submit" fluid ?disabled=${this.submitting ||
                 !this.email}>
                 ${this.submitting
-                  ? html`<breeze-spinner></breeze-spinner><span>Sending...</span>`
+                  ? html`<plume-spinner></plume-spinner><span>Sending...</span>`
                   : "Send reset link"}
-              </breeze-button>
+              </plume-button>
             </form>
             <div class="back">
               <a @click=${() => (location.href = "/login")}>${msg(
                 "Back to login",
               )}</a>
             </div>
-          </breeze-card>
+          </plume-card>
         </div>
-      </breeze-guest-layout>
+      </plume-guest-layout>
     `;
   }
 
@@ -149,6 +149,6 @@ export class BreezeForgotPasswordPage extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-forgot-password-page": BreezeForgotPasswordPage;
+    "plume-forgot-password-page": PlumeForgotPasswordPage;
   }
 }

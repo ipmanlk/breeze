@@ -1,7 +1,7 @@
 package middleware
 
 // Rate limiting here is in-process (an in-memory map guarded by a mutex).
-// Breeze ships as a single self-hosted binary, so this is correct for the
+// Plume ships as a single self-hosted binary, so this is correct for the
 // documented deployment. If multi-instance horizontal scaling is ever added,
 // this limiter must be backed by shared storage (e.g. Redis); otherwise the
 // effective limit becomes limit × instances.
@@ -15,7 +15,7 @@ import (
 	"sync"
 	"time"
 
-	"ipmanlk/breeze/internal/transport"
+	"ipmanlk/plume/internal/transport"
 )
 
 type rateLimiter struct {

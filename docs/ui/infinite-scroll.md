@@ -15,8 +15,8 @@ observer in `firstUpdated()`:
 ```ts
 import { createRef, ref } from "lit/directives/ref.js";
 
-@customElement("breeze-inbox-page")
-export class BreezeInboxPage extends LitElement {
+@customElement("plume-inbox-page")
+export class PlumeInboxPage extends LitElement {
   #sentinelRef = createRef<HTMLDivElement>();
   #observer?: IntersectionObserver;
 
@@ -125,7 +125,7 @@ ${s.isLoading
   ? html`<div class="loading">${Array.from({ length: 5 }, () => html`<div class="skeleton"></div>`)}</div>`
   : displayed.length === 0
   ? html`<div class="empty">…bell icon + "All caught up"…</div>`
-  : html`${displayed.map(n => html`<breeze-notification-item …></breeze-notification-item>`)}`}
+  : html`${displayed.map(n => html`<plume-notification-item …></plume-notification-item>`)}`}
 
 ${s.isFetchingMore
   ? html`<div class="loading-more"><div class="skeleton"></div><div class="skeleton"></div></div>`

@@ -6,7 +6,7 @@
 src/components/
 ├── ui/          # leaf primitives (zero domain knowledge)
 │   ├── avatar.ts
-│   ├── breeze-icon.ts
+│   ├── plume-icon.ts
 │   ├── button.ts / button-group.ts
 │   ├── card.ts
 │   ├── combobox.ts
@@ -24,7 +24,7 @@ src/components/
 ├── nav/             # app chrome (workspace switcher, nav-list, top bar)
 ├── search/          # command palette
 ├── mention/         # @mention components
-├── breeze-task-editor.ts
+├── plume-task-editor.ts
 ├── theme-switcher.ts
 ├── theme-toggle.ts
 ├── motion-settings.ts
@@ -33,9 +33,9 @@ src/components/
 
 ## Conventions
 
-- One element per file. Filename = element tag name minus `breeze-`.
-- All custom element tags prefixed with `breeze-` (e.g., `<breeze-button>`,
-  `<breeze-spinner>`).
+- One element per file. Filename = element tag name minus `plume-`.
+- All custom element tags prefixed with `plume-` (e.g., `<plume-button>`,
+  `<plume-spinner>`).
 - Scoped styles via `static styles = css\`...\``; never global CSS from
   components.
 - Props, no store access. Events, not method calls.
@@ -46,8 +46,8 @@ src/components/
 import { css, html, LitElement } from "lit";
 import { customElement, property } from "lit/decorators.js";
 
-@customElement("breeze-button")
-export class BreezeButton extends LitElement {
+@customElement("plume-button")
+export class PlumeButton extends LitElement {
   @property({ reflect: true })
   accessor variant: "primary" | "ghost" = "primary";
   @property({ type: Boolean, reflect: true })
@@ -88,7 +88,7 @@ export class BreezeButton extends LitElement {
    `@property() accessor foo`).
 2. **Slots over render props**: use `<slot>` for content projection.
 3. **Events**: dispatch via
-   `this.dispatchEvent(new CustomEvent('breeze-<verb>', { detail, bubbles: true, composed: true }))`.
+   `this.dispatchEvent(new CustomEvent('plume-<verb>', { detail, bubbles: true, composed: true }))`.
 4. **Design tokens**: no hardcoded colors/spacing. Use `var(--color-*)`,
    `var(--space-*)`, `var(--radius-*)`.
 5. **`::part()`**: expose parts for consumer overrides via `exportparts`.

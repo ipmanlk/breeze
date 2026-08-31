@@ -27,7 +27,7 @@ export interface MotionSettings {
   scale: number;
 }
 
-const STORAGE_KEY = "breeze-motion";
+const STORAGE_KEY = "plume-motion";
 
 /** Reads the OS prefers-reduced-motion setting (SSR-safe). */
 function prefersReducedMotion(): boolean {

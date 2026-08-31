@@ -5,8 +5,8 @@ import (
 	"errors"
 	"testing"
 
-	"ipmanlk/breeze/internal/apperr"
-	"ipmanlk/breeze/internal/domain"
+	"ipmanlk/plume/internal/apperr"
+	"ipmanlk/plume/internal/domain"
 )
 
 // newSubtaskTestSvc builds a TaskService wired with a project, status, and a

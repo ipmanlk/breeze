@@ -2,8 +2,8 @@ import { css, html, LitElement } from "lit";
 import { customElement } from "lit/decorators.js";
 import "../components/theme-toggle.ts";
 
-@customElement("breeze-guest-layout")
-export class BreezeGuestLayout extends LitElement {
+@customElement("plume-guest-layout")
+export class PlumeGuestLayout extends LitElement {
   static styles = css`
     *,
     *::before,
@@ -33,7 +33,7 @@ export class BreezeGuestLayout extends LitElement {
   protected render() {
     return html`
       <div class="toggle">
-        <breeze-theme-toggle></breeze-theme-toggle>
+        <plume-theme-toggle></plume-theme-toggle>
       </div>
       <div class="center"><slot></slot></div>
     `;
@@ -42,6 +42,6 @@ export class BreezeGuestLayout extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-guest-layout": BreezeGuestLayout;
+    "plume-guest-layout": PlumeGuestLayout;
   }
 }

@@ -5,9 +5,9 @@ import (
 	"errors"
 	"testing"
 
-	"ipmanlk/breeze/internal/apperr"
-	"ipmanlk/breeze/internal/domain"
-	"ipmanlk/breeze/internal/port"
+	"ipmanlk/plume/internal/apperr"
+	"ipmanlk/plume/internal/domain"
+	"ipmanlk/plume/internal/port"
 )
 
 // testRepos holds minimal mock repos for AccessChecker tests.

@@ -1,8 +1,8 @@
 import { css, html, LitElement } from "lit";
 import { customElement, property, state } from "lit/decorators.js";
 
-@customElement("breeze-field")
-export class BreezeField extends LitElement {
+@customElement("plume-field")
+export class PlumeField extends LitElement {
   static styles = css`
     *,
     *::before,
@@ -74,6 +74,6 @@ export class BreezeField extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-field": BreezeField;
+    "plume-field": PlumeField;
   }
 }

@@ -7,10 +7,10 @@ import (
 	"fmt"
 	"time"
 
-	"ipmanlk/breeze/internal/apperr"
-	"ipmanlk/breeze/internal/domain"
-	"ipmanlk/breeze/internal/port"
-	"ipmanlk/breeze/internal/store/sqlc"
+	"ipmanlk/plume/internal/apperr"
+	"ipmanlk/plume/internal/domain"
+	"ipmanlk/plume/internal/port"
+	"ipmanlk/plume/internal/store/sqlc"
 )
 
 type NotificationStore struct {

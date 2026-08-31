@@ -1983,7 +1983,7 @@ definitions:
 info:
   contact: {}
   description: Self-hosted project management tool API
-  title: Breeze API
+  title: Plume API
   version: "1.0"
 paths:
   /account:

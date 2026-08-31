@@ -6,7 +6,7 @@ import (
 	"log/slog"
 	"time"
 
-	"ipmanlk/breeze/internal/apperr"
+	"ipmanlk/plume/internal/apperr"
 )
 
 // mapScanErr converts a sqlc scan/query error into a typed apperr value.

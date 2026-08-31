@@ -16,7 +16,7 @@ import {
 } from "@atlaskit/pragmatic-drag-and-drop/element/adapter";
 import { autoScrollForElements } from "@atlaskit/pragmatic-drag-and-drop-auto-scroll/element";
 import { combine } from "@atlaskit/pragmatic-drag-and-drop/combine";
-import "../../components/ui/breeze-icon.ts";
+import "../../components/ui/plume-icon.ts";
 import "../../components/ui/button.ts";
 import "../../components/ui/input.ts";
 import "../../components/ui/label-chip.ts";
@@ -70,7 +70,7 @@ interface TaskDragData {
 /* Shared stylesheet (rendered once by the board) */
 
 const KANBAN_STYLES = `
-breeze-kanban-board {
+plume-kanban-board {
   display: flex;
   flex: 1;
   gap: var(--space-3);
@@ -79,7 +79,7 @@ breeze-kanban-board {
   min-height: 0;
 }
 
-breeze-kanban-column {
+plume-kanban-column {
   width: var(--kanban-col-w);
   min-width: var(--kanban-col-w);
   flex-shrink: 0;
@@ -87,7 +87,7 @@ breeze-kanban-column {
   transition: background var(--dur-fast) var(--ease-1);
 }
 /* Drop target highlight */
-breeze-kanban-column[data-drop-target] {
+plume-kanban-column[data-drop-target] {
   background: color-mix(in oklch, var(--primary) 8%, transparent);
   transition: background var(--dur-fast) var(--ease-1);
 }
@@ -96,7 +96,7 @@ breeze-kanban-column[data-drop-target] {
   flex-direction: column;
   gap: var(--space-2);
 }
-breeze-kanban-column[data-over] {
+plume-kanban-column[data-over] {
   background: color-mix(in oklch, var(--primary) 5%, transparent);
   box-shadow: inset 0 0 0 1px
     color-mix(in oklch, var(--primary) 20%, transparent);
@@ -285,7 +285,7 @@ breeze-kanban-column[data-over] {
   font-family: var(--font-mono);
 }
 
-breeze-kanban-card {
+plume-kanban-card {
   display: block;
 }
 .kb-card {
@@ -302,7 +302,7 @@ breeze-kanban-card {
     border-color var(--dur-fast) var(--ease-1);
 }
 /* Card lift during drag */
-breeze-kanban-card[data-dragging] .kb-card {
+plume-kanban-card[data-dragging] .kb-card {
   opacity: 0.4;
 }
 /* Subtask cards are indented with a left accent border + a ↳ parent
@@ -452,8 +452,8 @@ function positionFromGap(gapIndex: number, tasks: DtoTaskResponse[]): string {
 /* Board */
 
 @localized()
-@customElement("breeze-kanban-board")
-export class BreezeKanbanBoard extends LitElement {
+@customElement("plume-kanban-board")
+export class PlumeKanbanBoard extends LitElement {
   /** Light DOM: required for @atlaskit/pragmatic-drag-and-drop. */
   createRenderRoot() {
     return this;
@@ -484,12 +484,12 @@ export class BreezeKanbanBoard extends LitElement {
       ${this.statuses.map(
         (s) =>
           html`
-            <breeze-kanban-column
+            <plume-kanban-column
               .status="${s}"
               .tasks="${this.grouped.get(s.id ?? "") ?? []}"
               .projectId="${this.projectId}"
               .showSubtasks="${this.showSubtasks}"
-            ></breeze-kanban-column>
+            ></plume-kanban-column>
           `,
       )}
     `;
@@ -499,8 +499,8 @@ export class BreezeKanbanBoard extends LitElement {
 /* Column */
 
 @localized()
-@customElement("breeze-kanban-column")
-export class BreezeKanbanColumn extends LitElement {
+@customElement("plume-kanban-column")
+export class PlumeKanbanColumn extends LitElement {
   /** Light DOM: required for @atlaskit/pragmatic-drag-and-drop. */
   createRenderRoot() {
     return this;
@@ -687,7 +687,7 @@ export class BreezeKanbanColumn extends LitElement {
             <span class="kb-column-count">${this.tasks.length}</span>
           </div>
           <button class="kb-column-menu" aria-label=${msg("Column options")}>
-            <breeze-icon name="more-horizontal" size="16"></breeze-icon>
+            <plume-icon name="more-horizontal" size="16"></plume-icon>
           </button>
         </div>
 
@@ -700,10 +700,10 @@ export class BreezeKanbanColumn extends LitElement {
               // top-level tasks. When off, subtasks aren't in the list at all
               // (the fetch defaults to top-level only).
               return html`
-                <breeze-kanban-card
+                <plume-kanban-card
                   .task="${t}"
                   .isSubtask="${this.showSubtasks && isSubtask}"
-                ></breeze-kanban-card>
+                ></plume-kanban-card>
               `;
             },
           )}
@@ -726,7 +726,7 @@ export class BreezeKanbanColumn extends LitElement {
                   this._isAdding = true;
                 }}"
               >
-                <breeze-icon name="plus" size="16"></breeze-icon>
+                <plume-icon name="plus" size="16"></plume-icon>
                 Add task
               </button>
             `
@@ -745,7 +745,7 @@ export class BreezeKanbanColumn extends LitElement {
                 this._isAdding = true;
               }}"
             >
-              <breeze-icon name="plus" size="16"></breeze-icon>
+              <plume-icon name="plus" size="16"></plume-icon>
               Add task
             </button>
           `
@@ -757,7 +757,7 @@ export class BreezeKanbanColumn extends LitElement {
   #renderComposer() {
     return html`
       <div class="kb-composer">
-        <breeze-input
+        <plume-input
           placeholder=${msg("Task title")}
           .value="${this._draft}"
           ?autofocus="${true}"
@@ -779,26 +779,26 @@ export class BreezeKanbanColumn extends LitElement {
               this._draft = "";
             }
           }}"
-        ></breeze-input>
+        ></plume-input>
         <div class="kb-composer-actions">
           <span class="kb-composer-hint"><kbd>↵</kbd> add · <kbd>esc</kbd>
             close</span>
           <div style="display:flex;gap:var(--space-1)">
-            <breeze-button
+            <plume-button
               variant="outline"
               size="sm"
               @click="${() => {
                 this._isAdding = false;
                 this._draft = "";
               }}"
-            >Cancel</breeze-button>
-            <breeze-button
+            >Cancel</plume-button>
+            <plume-button
               size="sm"
               ?disabled="${!this._draft.trim() || this._isCreating}"
               @click="${this.#handleAdd}"
             >
               ${this._isCreating ? "Adding..." : "Add"}
-            </breeze-button>
+            </plume-button>
           </div>
         </div>
       </div>
@@ -809,8 +809,8 @@ export class BreezeKanbanColumn extends LitElement {
 /* Card */
 
 @localized()
-@customElement("breeze-kanban-card")
-export class BreezeKanbanCard extends LitElement {
+@customElement("plume-kanban-card")
+export class PlumeKanbanCard extends LitElement {
   /** Light DOM: required for @atlaskit/pragmatic-drag-and-drop. */
   createRenderRoot() {
     return this;
@@ -900,7 +900,7 @@ export class BreezeKanbanCard extends LitElement {
         ${this.isSubtask && t.parent_title
           ? html`
             <div class="kb-card-parent" title="${t.parent_title}">
-              <breeze-icon name="corner-up-left" size="11"></breeze-icon>
+              <plume-icon name="corner-up-left" size="11"></plume-icon>
               <span class="kb-card-parent-title">${t.parent_title}</span>
             </div>
           `
@@ -925,7 +925,7 @@ export class BreezeKanbanCard extends LitElement {
             <div class="kb-card-labels">
               ${(t.labels ?? []).slice(0, 4).map(
                 (l) =>
-                  html`<breeze-label-chip .label="${l}"></breeze-label-chip>`,
+                  html`<plume-label-chip .label="${l}"></plume-label-chip>`,
               )}
             </div>
           `
@@ -950,7 +950,7 @@ export class BreezeKanbanCard extends LitElement {
                   title="${this._completedSubtaskCount} of ${this
                     ._subtaskCount} subtasks complete">
                   <span class="kb-subtask-badge">
-                    <breeze-icon name="list-checks" size="11"></breeze-icon>
+                    <plume-icon name="list-checks" size="11"></plume-icon>
                     ${this._completedSubtaskCount}/${this._subtaskCount}
                   </span>
                 </div>
@@ -993,8 +993,8 @@ export class BreezeKanbanCard extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-kanban-board": BreezeKanbanBoard;
-    "breeze-kanban-column": BreezeKanbanColumn;
-    "breeze-kanban-card": BreezeKanbanCard;
+    "plume-kanban-board": PlumeKanbanBoard;
+    "plume-kanban-column": PlumeKanbanColumn;
+    "plume-kanban-card": PlumeKanbanCard;
   }
 }

@@ -8,10 +8,10 @@ import (
 	"sync"
 	"time"
 
-	"ipmanlk/breeze/internal/apperr"
-	"ipmanlk/breeze/internal/auth"
-	"ipmanlk/breeze/internal/domain"
-	"ipmanlk/breeze/internal/port"
+	"ipmanlk/plume/internal/apperr"
+	"ipmanlk/plume/internal/auth"
+	"ipmanlk/plume/internal/domain"
+	"ipmanlk/plume/internal/port"
 
 	"github.com/google/uuid"
 )
@@ -66,7 +66,7 @@ func (s *OrganizationService) SetPostCreateHook(fn func(ctx context.Context, org
 func (s *OrganizationService) Create(ctx context.Context, name, adminName, adminEmail, adminPassword string) (*domain.Organization, *domain.User, error) {
 	// Serialize the exists-check and the create so two concurrent setup
 	// requests can't both pass the check (check-then-act). The mutex works
-	// because Breeze is a single process; combined with the unique email
+	// because Plume is a single process; combined with the unique email
 	// constraint this closes the setup race.
 	adminEmail = domain.NormalizeEmail(adminEmail)
 

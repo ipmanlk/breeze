@@ -4,7 +4,7 @@ import (
 	"reflect"
 	"testing"
 
-	"ipmanlk/breeze/internal/port"
+	"ipmanlk/plume/internal/port"
 )
 
 // TestApp_HasSessionRepoField verifies the App struct has a sessionRepo

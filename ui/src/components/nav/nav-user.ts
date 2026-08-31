@@ -6,7 +6,7 @@ import { auth, logout } from "@/store/auth";
 import { navigate } from "@/routes/router";
 import { sidebarIsMobile, sidebarOpen } from "@/store/sidebar";
 import { SignalController } from "@/lib/signal-controller";
-import "../ui/breeze-icon.ts";
+import "../ui/plume-icon.ts";
 import "../ui/avatar.ts";
 
 function initials(name: string): string {
@@ -34,8 +34,8 @@ function initials(name: string): string {
  * icons (which center via a justify-center full-width row).
  */
 @localized()
-@customElement("breeze-nav-user")
-export class BreezeNavUser extends LitElement {
+@customElement("plume-nav-user")
+export class PlumeNavUser extends LitElement {
   static styles = css`
     *,
     *::before,
@@ -76,7 +76,7 @@ export class BreezeNavUser extends LitElement {
     }
 
     /* Collapsed avatar wrapper: full-width centered row, matching the
-      breeze-nav-list / -views / -projects / workspace-switcher collapsed
+      plume-nav-list / -views / -projects / workspace-switcher collapsed
       pattern (docs/ui/sidebar.md "Collapsed items: icon-centered rows"). */
     .collapsed-wrap {
       display: flex;
@@ -165,10 +165,10 @@ export class BreezeNavUser extends LitElement {
   /**
    * Global styles for the portaled (collapsed) menu. The panel lives in
    * document.body (light DOM), outside this shadow root, so it needs global
-   * CSS: namespaced under `breeze-nav-user-portal` to avoid collisions.
+   * CSS: namespaced under `plume-nav-user-portal` to avoid collisions.
    */
   static portalStyles = `
-    .breeze-nav-user-portal {
+    .plume-nav-user-portal {
       position: fixed;
       z-index: var(--z-dropdown);
       min-width: var(--menu-w);
@@ -179,13 +179,13 @@ export class BreezeNavUser extends LitElement {
       color: var(--popover-foreground);
       box-shadow: var(--shadow-md);
     }
-    .breeze-nav-user-portal .head {
+    .plume-nav-user-portal .head {
       display: flex;
       align-items: center;
       gap: var(--space-2);
       padding: var(--space-2);
     }
-    .breeze-nav-user-portal .info {
+    .plume-nav-user-portal .info {
       display: flex;
       flex-direction: column;
       min-width: 0;
@@ -193,20 +193,20 @@ export class BreezeNavUser extends LitElement {
       white-space: nowrap;
       overflow: hidden;
     }
-    .breeze-nav-user-portal .name {
+    .plume-nav-user-portal .name {
       font-weight: 600;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
     }
-    .breeze-nav-user-portal .email {
+    .plume-nav-user-portal .email {
       font-size: var(--text-xs);
       color: var(--muted-foreground);
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
     }
-    .breeze-nav-user-portal button {
+    .plume-nav-user-portal button {
       display: block;
       width: 100%;
       text-align: left;
@@ -218,13 +218,13 @@ export class BreezeNavUser extends LitElement {
       font-size: var(--text-sm);
       cursor: pointer;
     }
-    .breeze-nav-user-portal button:hover {
+    .plume-nav-user-portal button:hover {
       background: var(--accent);
     }
-    .breeze-nav-user-portal button.danger {
+    .plume-nav-user-portal button.danger {
       color: var(--destructive);
     }
-    .breeze-nav-user-portal .sep {
+    .plume-nav-user-portal .sep {
       height: 1px;
       background: var(--border);
       margin: var(--space-1) 0;
@@ -316,10 +316,10 @@ export class BreezeNavUser extends LitElement {
 
   // Portal management for the collapsed menu
   #ensureStyles(): void {
-    if (document.getElementById("breeze-nav-user-portal-styles")) return;
+    if (document.getElementById("plume-nav-user-portal-styles")) return;
     const style = document.createElement("style");
-    style.id = "breeze-nav-user-portal-styles";
-    style.textContent = BreezeNavUser.portalStyles;
+    style.id = "plume-nav-user-portal-styles";
+    style.textContent = PlumeNavUser.portalStyles;
     document.head.appendChild(style);
   }
 
@@ -350,15 +350,15 @@ export class BreezeNavUser extends LitElement {
 
     if (!this.#portal) {
       this.#portal = document.createElement("div");
-      this.#portal.className = "breeze-nav-user-portal";
+      this.#portal.className = "plume-nav-user-portal";
     }
     this.#portal.replaceChildren();
-    // Light-DOM render of the menu contents. Uses breeze-avatar (already a
+    // Light-DOM render of the menu contents. Uses plume-avatar (already a
     // custom element registered globally) so the avatar renders identically.
     const frag = document.createDocumentFragment();
     const head = document.createElement("div");
     head.className = "head";
-    const av = document.createElement("breeze-avatar");
+    const av = document.createElement("plume-avatar");
     av.setAttribute("size", "sm");
     av.textContent = init;
     head.appendChild(av);
@@ -439,7 +439,7 @@ export class BreezeNavUser extends LitElement {
     const collapsed = !sidebarOpen.value && !sidebarIsMobile.value;
 
     const avatar = html`
-      <breeze-avatar size="sm" ${ref(this.#avatarRef)}>${init}</breeze-avatar>
+      <plume-avatar size="sm" ${ref(this.#avatarRef)}>${init}</plume-avatar>
     `;
 
     return html`
@@ -458,13 +458,13 @@ export class BreezeNavUser extends LitElement {
           <span class="name">${user.name}</span>
           <span class="email">${email}</span>
         </div>
-        <breeze-icon class="chevron" name="chevron-up" size="16"></breeze-icon>
+        <plume-icon class="chevron" name="chevron-up" size="16"></plume-icon>
       </button>
       ${this._open && !collapsed
         ? html`
           <div class="menu" role="menu">
             <div class="head">
-              <breeze-avatar size="sm">${init}</breeze-avatar>
+              <plume-avatar size="sm">${init}</plume-avatar>
               <div class="info">
                 <span class="name">${user.name}</span>
                 <span class="email">${email}</span>
@@ -489,6 +489,6 @@ export class BreezeNavUser extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-nav-user": BreezeNavUser;
+    "plume-nav-user": PlumeNavUser;
   }
 }

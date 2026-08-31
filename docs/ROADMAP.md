@@ -5,7 +5,7 @@
 > other `docs/*.md` files and `README.md`. This page exists only to record
 > directions that have been designed or discussed, so they aren't lost.
 
-Breeze ships as a single Go binary with an embedded SPA and **zero external
+Plume ships as a single Go binary with an embedded SPA and **zero external
 dependencies**. Any future feature must preserve that constraint: no new
 external services, and no breaking schema changes without additive migrations.
 
@@ -23,10 +23,10 @@ Tracked as a future item in
 An **optional, fully opt-in** AI module was designed but **not built**:
 
 - Users bring their own provider keys (BYOK) for any OpenAI-compatible
-  endpoint. Breeze never sells, proxies, or bills for AI.
+  endpoint. Plume never sells, proxies, or bills for AI.
 - Zero cost when off: no goroutines, listeners, or DB connections unless
   enabled (mirrors the existing SMTP/VAPID `Enabled()` no-op precedent).
-- Breeze can additionally expose itself as an MCP server (separate,
+- Plume can additionally expose itself as an MCP server (separate,
   token-authed listener) so external LLM clients can read/manage projects
   through the user's own credentials.
 

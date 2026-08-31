@@ -25,7 +25,7 @@ build:
 	@echo "Building UI..."
 	cd ui && deno task build
 	@echo "Building Go binary..."
-	go build -ldflags "-X ipmanlk/breeze/internal/version.Version=$$(git describe --tags --always --dirty 2>/dev/null || echo dev)" -o bin/breeze ./cmd/server
+	go build -ldflags "-X ipmanlk/plume/internal/version.Version=$$(git describe --tags --always --dirty 2>/dev/null || echo dev)" -o bin/plume ./cmd/server
 
 # build-with-codegen regenerates sqlc + swagger + api-types before building.
 # Use this after schema/handler changes so generated code is never stale.
@@ -40,7 +40,7 @@ build-ui:
 
 build-api:
 	@echo "Building Go binary..."
-	go build -ldflags "-X ipmanlk/breeze/internal/version.Version=$$(git describe --tags --always --dirty 2>/dev/null || echo dev)" -o bin/breeze ./cmd/server
+	go build -ldflags "-X ipmanlk/plume/internal/version.Version=$$(git describe --tags --always --dirty 2>/dev/null || echo dev)" -o bin/plume ./cmd/server
 
 # Database and code generation
 sqlc-gen:
@@ -103,7 +103,7 @@ clean:
 	rm -rf bin/ tmp/
 	rm -rf ui/dist/*
 	@# Remove stray binaries from earlier ad-hoc `go build`/`go test -c` runs
-	rm -f server seed e2e.test handler.test breeze
+	rm -f server seed e2e.test handler.test plume
 
 # Formatting
 fmt-go:
@@ -116,7 +116,7 @@ fmt-ui:
 
 # Full development workflow
 full-build: clean build
-	@echo "Full build complete. Binary at bin/breeze"
+	@echo "Full build complete. Binary at bin/plume"
 
 regen-all: sqlc-gen swagger-gen api-types
 	@echo "All code generation complete"

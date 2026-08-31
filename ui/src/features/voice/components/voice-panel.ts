@@ -4,8 +4,8 @@ import { SignalController } from "@/lib/signal-controller";
 import { voiceParticipants, voiceSpeaking } from "../store";
 import "./voice-participant.ts";
 
-@customElement("breeze-voice-panel")
-export class BreezeVoicePanel extends LitElement {
+@customElement("plume-voice-panel")
+export class PlumeVoicePanel extends LitElement {
   static styles = css`
     *,
     *::before,
@@ -37,10 +37,10 @@ export class BreezeVoicePanel extends LitElement {
       ${participants.map(
         (p) =>
           html`
-            <breeze-voice-participant
+            <plume-voice-participant
               .participant="${p}"
               .isSpeaking="${speaking.has(p.user_id)}"
-            ></breeze-voice-participant>
+            ></plume-voice-participant>
           `,
       )}
     `;
@@ -49,6 +49,6 @@ export class BreezeVoicePanel extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-voice-panel": BreezeVoicePanel;
+    "plume-voice-panel": PlumeVoicePanel;
   }
 }

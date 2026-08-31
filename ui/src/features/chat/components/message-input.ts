@@ -12,8 +12,8 @@ import "@/components/mention/mention-popover.ts";
 import { localized, msg } from "@lit/localize";
 
 @localized()
-@customElement("breeze-message-input")
-export class BreezeMessageInput extends LitElement {
+@customElement("plume-message-input")
+export class PlumeMessageInput extends LitElement {
   static styles = css`
     *,
     *::before,
@@ -111,8 +111,8 @@ export class BreezeMessageInput extends LitElement {
   @state()
   private _mentionLeft = 8;
 
-  @query("breeze-chat-editor")
-  private _editor!: import("./chat-editor.ts").BreezeChatEditor;
+  @query("plume-chat-editor")
+  private _editor!: import("./chat-editor.ts").PlumeChatEditor;
 
   #signals = new SignalController(this);
   #editingId = "";
@@ -315,23 +315,23 @@ export class BreezeMessageInput extends LitElement {
 
     return html`
       <div class="editor-wrap">
-        <breeze-chat-editor
+        <plume-chat-editor
           placeholder="${placeholder}"
           ?disabled="${this._sending}"
           ?suggest-open="${this._mentionOpen}"
           maxlength="50000"
-          @breeze-change="${this._onEditorChange}"
-          @breeze-send="${this._onEditorSend}"
-          @breeze-escape="${this._onEditorEscape}"
-        ></breeze-chat-editor>
+          @plume-change="${this._onEditorChange}"
+          @plume-send="${this._onEditorSend}"
+          @plume-escape="${this._onEditorEscape}"
+        ></plume-chat-editor>
         ${this._mentionOpen
           ? html`
-            <breeze-mention-popover
+            <plume-mention-popover
               .query="${this._mentionQuery}"
               .left="${this._mentionLeft}"
               @pick="${this._onMentionPick}"
               @close="${this._onMentionClose}"
-            ></breeze-mention-popover>
+            ></plume-mention-popover>
           `
           : nothing}
       </div>
@@ -345,7 +345,7 @@ export class BreezeMessageInput extends LitElement {
               new CustomEvent("attach", { bubbles: true, composed: true }),
             )}"
         >
-          <breeze-icon name="paperclip" size="16"></breeze-icon>
+          <plume-icon name="paperclip" size="16"></plume-icon>
         </button>
         <div class="emoji-wrap">
           <button
@@ -354,15 +354,15 @@ export class BreezeMessageInput extends LitElement {
             aria-label=${msg("Insert emoji")}
             @click="${this._toggleEmoji}"
           >
-            <breeze-icon name="smile" size="16"></breeze-icon>
+            <plume-icon name="smile" size="16"></plume-icon>
           </button>
           ${this._showEmoji
             ? html`
-              <breeze-reaction-picker
+              <plume-reaction-picker
                 layout="grid"
                 class="emoji-picker"
                 @pick="${this._onEmojiPick}"
-              ></breeze-reaction-picker>
+              ></plume-reaction-picker>
             `
             : nothing}
         </div>
@@ -372,7 +372,7 @@ export class BreezeMessageInput extends LitElement {
           @click="${this._send}"
           ?disabled="${!this._value.trim() || this._sending}"
         >
-          <breeze-icon name="arrow-right" size="16"></breeze-icon>
+          <plume-icon name="arrow-right" size="16"></plume-icon>
           ${sendLabel}
         </button>
       </div>
@@ -382,6 +382,6 @@ export class BreezeMessageInput extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-message-input": BreezeMessageInput;
+    "plume-message-input": PlumeMessageInput;
   }
 }

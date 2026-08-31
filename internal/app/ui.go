@@ -8,7 +8,7 @@ import (
 	"net/http"
 	"time"
 
-	ui "ipmanlk/breeze/ui"
+	ui "ipmanlk/plume/ui"
 
 	"github.com/go-chi/chi/v5"
 )

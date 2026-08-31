@@ -30,7 +30,7 @@ let gTimer: ReturnType<typeof setTimeout> | null = null;
 
 function isTyping(e: KeyboardEvent): boolean {
   // Walk the composed path so shortcuts are also ignored when the actual
-  // focused element is inside a shadow-DOM input (e.g. <breeze-input>).
+  // focused element is inside a shadow-DOM input (e.g. <plume-input>).
   for (const node of e.composedPath()) {
     if (!(node instanceof HTMLElement)) continue;
     const tag = node.tagName;

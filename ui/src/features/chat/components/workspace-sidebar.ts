@@ -22,12 +22,12 @@ import {
 } from "../conversation-dnd";
 import "@/components/ui/dialog.ts";
 import "@/components/ui/button.ts";
-import "@/components/ui/breeze-icon.ts";
+import "@/components/ui/plume-icon.ts";
 import "./channel-item.ts";
 import { localized, msg } from "@lit/localize";
 
 const WS_STYLES = `
-breeze-workspace-sidebar {
+plume-workspace-sidebar {
   display: flex;
   flex-direction: column;
   width: var(--space-64);
@@ -291,13 +291,13 @@ breeze-workspace-sidebar {
  *
  * DnD architecture (follows container-drop-target pattern):
  *  - Category headers: draggable only
- *  - Channel items: draggable only (via breeze-channel-item)
+ *  - Channel items: draggable only (via plume-channel-item)
  *  - Each `.ws-channels` div: drop target for channel drops (intra + inter category)
  *  - `.ws-cats-wrap`: drop target for category reordering
  */
 @localized()
-@customElement("breeze-workspace-sidebar")
-export class BreezeWorkspaceSidebar extends LitElement {
+@customElement("plume-workspace-sidebar")
+export class PlumeWorkspaceSidebar extends LitElement {
   createRenderRoot() {
     return this;
   }
@@ -498,7 +498,7 @@ export class BreezeWorkspaceSidebar extends LitElement {
           title="${msg("Create category")}"
           aria-label=${msg("Create category")}
         >
-          <breeze-icon name="folder-plus" size="16"></breeze-icon>
+          <plume-icon name="folder-plus" size="16"></plume-icon>
         </button>
       </div>
 
@@ -541,7 +541,7 @@ export class BreezeWorkspaceSidebar extends LitElement {
                         <span class="ws-cat-chevron${this._collapsed[cat.id]
                           ? " collapsed"
                           : ""}">
-                          <breeze-icon name="chevron-down" size="14"></breeze-icon>
+                          <plume-icon name="chevron-down" size="14"></plume-icon>
                         </span>
                         <span class="ws-cat-name">${cat
                           .name} <span class="ws-cat-count"
@@ -556,7 +556,7 @@ export class BreezeWorkspaceSidebar extends LitElement {
                             title="${msg("Edit category")}"
                             aria-label=${msg("Edit category")}
                           >
-                            <breeze-icon name="settings" size="12"></breeze-icon>
+                            <plume-icon name="settings" size="12"></plume-icon>
                           </button>
                           <button
                             class="ws-cat-action"
@@ -567,7 +567,7 @@ export class BreezeWorkspaceSidebar extends LitElement {
                             title="${msg("Add channel")}"
                             aria-label=${msg("Add channel")}
                           >
-                            <breeze-icon name="plus" size="12"></breeze-icon>
+                            <plume-icon name="plus" size="12"></plume-icon>
                           </button>
                           <button
                             class="ws-cat-action"
@@ -578,7 +578,7 @@ export class BreezeWorkspaceSidebar extends LitElement {
                             title="${msg("Delete category")}"
                             aria-label=${msg("Delete category")}
                           >
-                            <breeze-icon name="trash-2" size="12"></breeze-icon>
+                            <plume-icon name="trash-2" size="12"></plume-icon>
                           </button>
                         </div>
                       </div>
@@ -592,11 +592,11 @@ export class BreezeWorkspaceSidebar extends LitElement {
                           : catChannels.map(
                             (ch) =>
                               html`
-                                <breeze-channel-item
+                                <plume-channel-item
                                   .conv="${ch}"
                                   ?isActive="${activeId === ch.id}"
                                   @select="${() => this._selectConv(ch)}"
-                                ></breeze-channel-item>
+                                ></plume-channel-item>
                               `,
                           )}
                         <div class="ws-ch-indicator" style="display:none">
@@ -633,11 +633,11 @@ export class BreezeWorkspaceSidebar extends LitElement {
                       : unparented.map(
                         (ch) =>
                           html`
-                            <breeze-channel-item
+                            <plume-channel-item
                               .conv="${ch}"
                               ?isActive="${activeId === ch.id}"
                               @select="${() => this._selectConv(ch)}"
-                            ></breeze-channel-item>
+                            ></plume-channel-item>
                           `,
                       )}
                     <div class="ws-ch-indicator" style="display:none">
@@ -655,7 +655,7 @@ export class BreezeWorkspaceSidebar extends LitElement {
       <!-- Delete category confirmation -->
       ${delCat
         ? html`
-          <breeze-dialog
+          <plume-dialog
             style="--dialog-w:28rem"
             .open="${true}"
             heading="Delete category"
@@ -680,7 +680,7 @@ export class BreezeWorkspaceSidebar extends LitElement {
                       (ch) =>
                         html`
                           <div class="ws-del-item">
-                            <breeze-icon name="hash" size="14"></breeze-icon>
+                            <plume-icon name="hash" size="14"></plume-icon>
                             <span>${ch.name}</span>
                           </div>
                         `,
@@ -693,20 +693,20 @@ export class BreezeWorkspaceSidebar extends LitElement {
               slot="footer"
               style="display:flex;justify-content:flex-end;gap:var(--space-2);width:100%"
             >
-              <breeze-button variant="ghost" type="button" @click="${() => {
+              <plume-button variant="ghost" type="button" @click="${() => {
                 this._deleteCategory = null;
               }}">
                 Cancel
-              </breeze-button>
-              <breeze-button
+              </plume-button>
+              <plume-button
                 variant="destructive"
                 ?disabled="${this._deleting}"
                 @click="${this._onConfirmDeleteCategory}"
               >
                 ${this._deleting ? "Deleting..." : "Delete category"}
-              </breeze-button>
+              </plume-button>
             </div>
-          </breeze-dialog>
+          </plume-dialog>
         `
         : nothing}
     `;
@@ -715,6 +715,6 @@ export class BreezeWorkspaceSidebar extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-workspace-sidebar": BreezeWorkspaceSidebar;
+    "plume-workspace-sidebar": PlumeWorkspaceSidebar;
   }
 }

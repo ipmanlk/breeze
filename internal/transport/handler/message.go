@@ -11,12 +11,12 @@ import (
 	"strconv"
 	"strings"
 
-	"ipmanlk/breeze/internal/apperr"
-	"ipmanlk/breeze/internal/domain"
-	"ipmanlk/breeze/internal/port"
-	"ipmanlk/breeze/internal/storage"
-	"ipmanlk/breeze/internal/transport"
-	"ipmanlk/breeze/internal/transport/dto"
+	"ipmanlk/plume/internal/apperr"
+	"ipmanlk/plume/internal/domain"
+	"ipmanlk/plume/internal/port"
+	"ipmanlk/plume/internal/storage"
+	"ipmanlk/plume/internal/transport"
+	"ipmanlk/plume/internal/transport/dto"
 
 	"github.com/go-chi/chi/v5"
 	"github.com/google/uuid"
@@ -559,7 +559,7 @@ func (h *MessageHandler) DownloadAttachment(w http.ResponseWriter, r *http.Reque
 	defer reader.Close()
 
 	// Force a download and prevent inline rendering: serving user-uploaded
-	// files inline on the Breeze origin would allow stored XSS (e.g. an
+	// files inline on the Plume origin would allow stored XSS (e.g. an
 	// uploaded HTML file executing with the victim's cookies). nosniff stops
 	// browsers from interpreting the bytes as a different, dangerous type.
 	contentType := att.ContentType

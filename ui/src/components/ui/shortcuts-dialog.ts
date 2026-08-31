@@ -3,8 +3,8 @@ import { customElement, state } from "lit/decorators.js";
 import { localized, msg } from "@lit/localize";
 
 @localized()
-@customElement("breeze-shortcuts-dialog")
-export class BreezeShortcutsDialog extends LitElement {
+@customElement("plume-shortcuts-dialog")
+export class PlumeShortcutsDialog extends LitElement {
   @state()
   private _open = false;
 
@@ -39,7 +39,7 @@ export class BreezeShortcutsDialog extends LitElement {
 
   render() {
     return html`
-      <breeze-dialog
+      <plume-dialog
         .open="${this._open}"
         .heading="${msg("Keyboard shortcuts")}"
         @close="${this._close}"
@@ -57,7 +57,7 @@ export class BreezeShortcutsDialog extends LitElement {
           ${this._row(["?"], msg("Show this help"))}
           ${this._row(["Esc"], msg("Close dialog"))}
         </div>
-      </breeze-dialog>
+      </plume-dialog>
     `;
   }
 
@@ -101,6 +101,6 @@ export class BreezeShortcutsDialog extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-shortcuts-dialog": BreezeShortcutsDialog;
+    "plume-shortcuts-dialog": PlumeShortcutsDialog;
   }
 }

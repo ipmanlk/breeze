@@ -6,8 +6,8 @@ import (
 	"log/slog"
 	"testing"
 
-	"ipmanlk/breeze/internal/domain"
-	"ipmanlk/breeze/internal/port"
+	"ipmanlk/plume/internal/domain"
+	"ipmanlk/plume/internal/port"
 )
 
 // Minimal, behavior-driven fakes for exercising the real wsRoomAccessChecker

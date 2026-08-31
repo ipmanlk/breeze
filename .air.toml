@@ -2,8 +2,8 @@ root = "."
 tmp_dir = "tmp"
 
 [build]
-  cmd = "go build -o ./tmp/breeze ./cmd/server"
-  bin = "tmp/breeze"
+  cmd = "go build -o ./tmp/plume ./cmd/server"
+  bin = "tmp/plume"
   delay = 1000
   exclude_dir = ["ui", "tmp", "bin", "node_modules", "data", "api", "internal/store/sqlc"]
   include_ext = ["go", "tpl", "tmpl", "html"]

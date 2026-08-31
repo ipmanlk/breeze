@@ -11,7 +11,7 @@ import "@/components/ui/dialog.ts";
 import "@/components/ui/input.ts";
 import "@/components/ui/button.ts";
 import "@/components/ui/avatar.ts";
-import "@/components/ui/breeze-icon.ts";
+import "@/components/ui/plume-icon.ts";
 import "@/components/ui/spinner.ts";
 import { localized, msg } from "@lit/localize";
 
@@ -26,8 +26,8 @@ import { localized, msg } from "@lit/localize";
  *  - Resets all state on close
  */
 @localized()
-@customElement("breeze-create-dm-dialog")
-export class BreezeCreateDmDialog extends LitElement {
+@customElement("plume-create-dm-dialog")
+export class PlumeCreateDmDialog extends LitElement {
   static styles = css`
     *,
     *::before,
@@ -284,14 +284,14 @@ export class BreezeCreateDmDialog extends LitElement {
     const isGroup = this._selectedIds.length > 1;
 
     return html`
-      <breeze-dialog
+      <plume-dialog
         style="--dialog-w:28rem"
         .open="${isOpen}"
         heading="New Message"
         @close="${this.#onClose}"
       >
         <div class="body">
-          <breeze-input
+          <plume-input
             type="search"
             placeholder=${msg("Search people...")}
             .value="${this._search}"
@@ -299,7 +299,7 @@ export class BreezeCreateDmDialog extends LitElement {
             @input="${(e: Event) => {
               this._search = (e.target as HTMLInputElement).value;
             }}"
-          ></breeze-input>
+          ></plume-input>
 
           <div class="user-list">
             <div class="user-list-inner">
@@ -310,7 +310,7 @@ export class BreezeCreateDmDialog extends LitElement {
                 : this._loading
                 ? html`
                   <div class="hint">
-                    <breeze-spinner size="16"></breeze-spinner>
+                    <plume-spinner size="16"></plume-spinner>
                   </div>
                 `
                 : this._users.length === 0
@@ -327,7 +327,7 @@ export class BreezeCreateDmDialog extends LitElement {
                       class="user-row ${selected ? "selected" : ""}"
                       @click="${() => this.#toggleUser(uid)}"
                     >
-                      <breeze-avatar size="sm">${initial}</breeze-avatar>
+                      <plume-avatar size="sm">${initial}</plume-avatar>
                       <div class="user-info">
                         <div class="user-name">${u.name ?? "Unknown"}</div>
                         ${u.email
@@ -339,7 +339,7 @@ export class BreezeCreateDmDialog extends LitElement {
                       <span class="check-box ${selected ? "checked" : ""}">
                         ${selected
                           ? html`
-                            <breeze-icon name="check" size="10"></breeze-icon>
+                            <plume-icon name="check" size="10"></plume-icon>
                           `
                           : nothing}
                       </span>
@@ -365,33 +365,33 @@ export class BreezeCreateDmDialog extends LitElement {
         </div>
 
         <div slot="footer" class="footer">
-          <breeze-button
+          <plume-button
             variant="ghost"
             type="button"
             @click="${this.#onClose}"
           >
             Cancel
-          </breeze-button>
-          <breeze-button
+          </plume-button>
+          <plume-button
             type="submit"
             ?disabled="${this._creating || !hasSelection}"
             @click="${this.#onCreate}"
           >
-            <breeze-icon name="user-plus" size="16"></breeze-icon>
+            <plume-icon name="user-plus" size="16"></plume-icon>
             ${this._creating
               ? "Starting..."
               : isGroup
               ? "Start group DM"
               : "Start DM"}
-          </breeze-button>
+          </plume-button>
         </div>
-      </breeze-dialog>
+      </plume-dialog>
     `;
   }
 }
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-create-dm-dialog": BreezeCreateDmDialog;
+    "plume-create-dm-dialog": PlumeCreateDmDialog;
   }
 }

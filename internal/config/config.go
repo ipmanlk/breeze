@@ -54,7 +54,7 @@ type SMTPConfig struct {
 	From     string
 	FromName string
 	// AppURL is the public base URL used to build links in emails (e.g.
-	// https://breeze.example.com). Falls back to the request Host when empty.
+	// https://plume.example.com). Falls back to the request Host when empty.
 	AppURL string
 }
 
@@ -132,7 +132,7 @@ func Load() (Config, error) {
 	cfg := Config{
 		AppEnv:            optional("APP_ENV", "development"),
 		Port:              optional("PORT", "8080"),
-		DBPath:            optional("DB_PATH", "./data/breeze.db"),
+		DBPath:            optional("DB_PATH", "./data/plume.db"),
 		UploadDir:         optional("UPLOAD_DIR", "./data/uploads"),
 		JWTSecret:         required("JWT_SECRET", &errs),
 		CORSOrigins:       corsOrigins(),
@@ -315,7 +315,7 @@ func smtpConfig() SMTPConfig {
 		User:     os.Getenv("SMTP_USER"),
 		Pass:     os.Getenv("SMTP_PASS"),
 		From:     os.Getenv("SMTP_FROM"),
-		FromName: optional("SMTP_FROM_NAME", "Breeze"),
+		FromName: optional("SMTP_FROM_NAME", "Plume"),
 		AppURL:   strings.TrimRight(os.Getenv("APP_URL"), "/"),
 		Port:     587,
 	}
@@ -334,7 +334,7 @@ func vapidConfig() VAPIDConfig {
 	return VAPIDConfig{
 		PublicKey:  os.Getenv("VAPID_PUBLIC_KEY"),
 		PrivateKey: os.Getenv("VAPID_PRIVATE_KEY"),
-		Subject:    optional("VAPID_SUBJECT", "mailto:noreply@breeze.local"),
+		Subject:    optional("VAPID_SUBJECT", "mailto:noreply@plume.local"),
 	}
 }
 

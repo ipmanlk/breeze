@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"time"
 
-	"ipmanlk/breeze/internal/domain"
+	"ipmanlk/plume/internal/domain"
 
 	"github.com/golang-jwt/jwt/v5"
 )

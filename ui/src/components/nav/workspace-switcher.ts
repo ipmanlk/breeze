@@ -11,7 +11,7 @@ import {
 import { SignalController } from "@/lib/signal-controller";
 import { OutsideClickController } from "@/lib/outside-click-controller";
 import type { DtoWorkspaceResponse } from "@/api";
-import "../ui/breeze-icon.ts";
+import "../ui/plume-icon.ts";
 import "../ui/tooltip.ts";
 import "./create-workspace-dialog.ts";
 
@@ -28,8 +28,8 @@ import "./create-workspace-dialog.ts";
  * clip").
  */
 @localized()
-@customElement("breeze-workspace-switcher")
-export class BreezeWorkspaceSwitcher extends LitElement {
+@customElement("plume-workspace-switcher")
+export class PlumeWorkspaceSwitcher extends LitElement {
   static styles = css`
     *,
     *::before,
@@ -71,7 +71,7 @@ export class BreezeWorkspaceSwitcher extends LitElement {
     }
 
     /* Collapsed logo wrapper: full-width centered row, matching the
-      breeze-nav-list / -views / -projects collapsed pattern (see
+      plume-nav-list / -views / -projects collapsed pattern (see
       docs/ui/sidebar.md "Collapsed items: icon-centered rows"). The logo
       is a fixed 32px square; without a full-width justify-center container
       it sits at flex-start and overflows asymmetrically (clipped right by
@@ -322,9 +322,9 @@ export class BreezeWorkspaceSwitcher extends LitElement {
     // clipped dropdown.
     if (collapsed) {
       return html`
-        <breeze-tooltip text="${name}" side="right">
+        <plume-tooltip text="${name}" side="right">
           <div class="collapsed-wrap">${logo}</div>
-        </breeze-tooltip>
+        </plume-tooltip>
       `;
     }
 
@@ -342,11 +342,11 @@ export class BreezeWorkspaceSwitcher extends LitElement {
           <span class="name">${name}</span>
           <span class="slug">${slug}</span>
         </span>
-        <breeze-icon
+        <plume-icon
           class="chevron"
           name="chevrons-up-down"
           size="16"
-        ></breeze-icon>
+        ></plume-icon>
       </button>
       ${this._open
         ? html`
@@ -363,7 +363,7 @@ export class BreezeWorkspaceSwitcher extends LitElement {
               }}"
             >
               <span class="ico-box">
-                <breeze-icon name="settings" size="16"></breeze-icon>
+                <plume-icon name="settings" size="16"></plume-icon>
               </span>
               <span class="text">${msg("Workspace settings")}</span>
             </button>
@@ -373,17 +373,17 @@ export class BreezeWorkspaceSwitcher extends LitElement {
               @click="${() => this._openCreate()}"
             >
               <span class="ico-box">
-                <breeze-icon name="plus" size="16"></breeze-icon>
+                <plume-icon name="plus" size="16"></plume-icon>
               </span>
               <span class="text">${msg("Add workspace")}</span>
             </button>
           </div>
         `
         : ""}
-      <breeze-create-workspace-dialog
+      <plume-create-workspace-dialog
         .open="${this._showCreate}"
         @close="${() => (this._showCreate = false)}"
-      ></breeze-create-workspace-dialog>
+      ></plume-create-workspace-dialog>
     `;
   }
 
@@ -406,9 +406,9 @@ export class BreezeWorkspaceSwitcher extends LitElement {
             : html`<span class="sub muted">${ws.role}</span>`}
         </span>
         ${isActive
-          ? html`<breeze-icon class="check" name="check" size="16"></breeze-icon>`
+          ? html`<plume-icon class="check" name="check" size="16"></plume-icon>`
           : isSwitching
-          ? html`<breeze-icon class="check" name="loader-2" size="16"></breeze-icon>`
+          ? html`<plume-icon class="check" name="loader-2" size="16"></plume-icon>`
           : ""}
       </button>
     `;
@@ -417,6 +417,6 @@ export class BreezeWorkspaceSwitcher extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-workspace-switcher": BreezeWorkspaceSwitcher;
+    "plume-workspace-switcher": PlumeWorkspaceSwitcher;
   }
 }

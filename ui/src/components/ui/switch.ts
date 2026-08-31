@@ -2,7 +2,7 @@ import { css, html, LitElement } from "lit";
 import { customElement, property } from "lit/decorators.js";
 
 /**
- * Breeze switch: a toggle control matching the shadcn `Switch` component.
+ * Plume switch: a toggle control matching the shadcn `Switch` component.
  *
  * Default size mirrors shadcn `data-size=default`: 32 × 18.4px track with a
  * 16px thumb. The thumb is vertically centered via flexbox (`align-items:
@@ -16,13 +16,13 @@ import { customElement, property } from "lit/decorators.js";
  * `dark:bg-primary-foreground`) using the real design tokens.
  *
  * Usage:
- *   <breeze-switch ?checked="${v}" @change="${e => v = e.detail.checked}">
- *   </breeze-switch>
+ *   <plume-switch ?checked="${v}" @change="${e => v = e.detail.checked}">
+ *   </plume-switch>
  *
  * Events: `change`: `{ detail: { checked: boolean } }`, `bubbles + composed`.
  */
-@customElement("breeze-switch")
-export class BreezeSwitch extends LitElement {
+@customElement("plume-switch")
+export class PlumeSwitch extends LitElement {
   static styles = css`
     *,
     *::before,
@@ -135,6 +135,6 @@ export class BreezeSwitch extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-switch": BreezeSwitch;
+    "plume-switch": PlumeSwitch;
   }
 }

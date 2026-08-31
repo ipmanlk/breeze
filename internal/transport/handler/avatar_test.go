@@ -9,9 +9,9 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"ipmanlk/breeze/internal/domain"
-	"ipmanlk/breeze/internal/port"
-	"ipmanlk/breeze/internal/storage"
+	"ipmanlk/plume/internal/domain"
+	"ipmanlk/plume/internal/port"
+	"ipmanlk/plume/internal/storage"
 
 	"github.com/go-chi/chi/v5"
 )

@@ -10,7 +10,7 @@
 
 ## Goal
 
-A single Breeze instance hosts **many organizations** ("workspaces"). One
+A single Plume instance hosts **many organizations** ("workspaces"). One
 account (one email + one password) can belong to several workspaces, with an
 independent role per workspace. The sidebar workspace switcher lets a user
 list their workspaces, switch the active one, and create a new one.
@@ -186,7 +186,7 @@ Wiring (`app.go`): add `accountRepo`, extend `orgService`, add
 - `components/nav/workspace-switcher.ts`: replace the placeholder dropdown
   with the real list. Switch = `POST /api/workspaces/{id}/switch` → refresh
   auth + reload sidebar data (projects, views, unread, WS). "Add workspace"
-  opens a small dialog (`breeze-dialog`) posting to `POST /api/workspaces`.
+  opens a small dialog (`plume-dialog`) posting to `POST /api/workspaces`.
   Collapsed mode keeps the existing tooltip (logo centered; see the centering
   fix).
 - `store/auth.ts`: `fetchMe`/`login` now consume `workspaces` + `active_org_id`

@@ -6,8 +6,8 @@ import (
 	"path"
 	"strings"
 
-	"ipmanlk/breeze/internal/port"
-	"ipmanlk/breeze/internal/transport"
+	"ipmanlk/plume/internal/port"
+	"ipmanlk/plume/internal/transport"
 )
 
 func RequireSetup(orgRepo port.OrganizationRepository, logger *slog.Logger) func(http.Handler) http.Handler {

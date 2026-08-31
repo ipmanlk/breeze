@@ -7,9 +7,9 @@ import (
 	"path/filepath"
 	"time"
 
-	"ipmanlk/breeze/internal/domain"
-	"ipmanlk/breeze/internal/port"
-	"ipmanlk/breeze/internal/storage"
+	"ipmanlk/plume/internal/domain"
+	"ipmanlk/plume/internal/port"
+	"ipmanlk/plume/internal/storage"
 
 	"github.com/google/uuid"
 )

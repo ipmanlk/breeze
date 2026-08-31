@@ -142,7 +142,7 @@ the cap prevents runaway resource use.
 
 ## TURN Server Support
 
-For clients behind symmetric NAT, a TURN relay is required. Breeze supports
+For clients behind symmetric NAT, a TURN relay is required. Plume supports
 the **RFC 5766 TURN REST API** ephemeral credential scheme (the industry
 standard used by coturn, LiveKit, mediasoup, and Janus):
 
@@ -162,7 +162,7 @@ standard used by coturn, LiveKit, mediasoup, and Janus):
 
 ### Multiple transports (UDP / TCP / TLS)
 
-By default Breeze advertises a single plain UDP TURN URL built from
+By default Plume advertises a single plain UDP TURN URL built from
 `TURN_HOST`/`TURN_PORT` (`turn:host:3478`). For clients behind corporate
 firewalls that block UDP, or that block non-standard ports, set `TURN_URLS` to an
 explicit, comma-separated list of TURN URIs. The same per-user credential
@@ -184,7 +184,7 @@ Example coturn config (`turnserver.conf`) serving UDP + TCP + TLS:
 ```
 listening-port=3478
 tls-listening-port=5349
-realm=breeze.local
+realm=plume.local
 use-auth-secret
 static-auth-secret=<same-as-TURN_SECRET>
 # TLS cert for turns: (turns:...:443?transport=tcp)

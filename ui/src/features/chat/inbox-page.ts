@@ -9,7 +9,7 @@ import "./components/create-dm-dialog.ts";
 import { localized } from "@lit/localize";
 
 const IC_STYLES = `
-breeze-inbox-chat-page {
+plume-inbox-chat-page {
   display: block;
   height: 100svh;
   overflow: hidden;
@@ -21,8 +21,8 @@ breeze-inbox-chat-page {
  * sidebar. Styles are global, prefixed `ic-`.
  */
 @localized()
-@customElement("breeze-inbox-chat-page")
-export class BreezeInboxChatPage extends LitElement {
+@customElement("plume-inbox-chat-page")
+export class PlumeInboxChatPage extends LitElement {
   createRenderRoot() {
     return this;
   }
@@ -77,19 +77,19 @@ export class BreezeInboxChatPage extends LitElement {
       <style>
       ${IC_STYLES}
       </style>
-      <breeze-app-layout data-fullscreen>
-        <breeze-chat-layout
+      <plume-app-layout data-fullscreen>
+        <plume-chat-layout
           mode="dms"
           conversationId="${this.conversationId}"
-        ></breeze-chat-layout>
-        <breeze-create-dm-dialog></breeze-create-dm-dialog>
-      </breeze-app-layout>
+        ></plume-chat-layout>
+        <plume-create-dm-dialog></plume-create-dm-dialog>
+      </plume-app-layout>
     `;
   }
 }
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-inbox-chat-page": BreezeInboxChatPage;
+    "plume-inbox-chat-page": PlumeInboxChatPage;
   }
 }

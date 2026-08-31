@@ -45,8 +45,8 @@ const GRID_EMOJIS = [
 ];
 
 @localized()
-@customElement("breeze-reaction-picker")
-export class BreezeReactionPicker extends LitElement {
+@customElement("plume-reaction-picker")
+export class PlumeReactionPicker extends LitElement {
   static styles = css`
     *,
     *::before,
@@ -129,6 +129,6 @@ export class BreezeReactionPicker extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-reaction-picker": BreezeReactionPicker;
+    "plume-reaction-picker": PlumeReactionPicker;
   }
 }

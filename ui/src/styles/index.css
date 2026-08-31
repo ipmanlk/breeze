@@ -1,5 +1,5 @@
 @import "@fontsource-variable/geist";
-@import "../themes/breeze.css";
+@import "../themes/plume.css";
 @import "../themes/github-dark.css";
 @import "../themes/solarized.css";
 @import "../themes/dracula.css";
@@ -11,7 +11,7 @@
 @import "../themes/gruvbox.css";
 @import "../themes/rose-pine.css";
 
-/* Breeze UI: design tokens, reset, globals */
+/* Plume UI: design tokens, reset, globals */
 
 /*
  * Design Token System

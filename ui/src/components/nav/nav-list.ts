@@ -6,7 +6,7 @@ import { sidebarIsMobile, sidebarOpen } from "@/store/sidebar";
 import { unreadCount } from "@/features/notifications/store";
 import { SignalController } from "@/lib/signal-controller";
 import type { NavItem } from "./nav-config";
-import "../ui/breeze-icon.ts";
+import "../ui/plume-icon.ts";
 import "../ui/tooltip.ts";
 
 function isActive(currentPath: string, itemUrl: string): boolean {
@@ -22,8 +22,8 @@ function isActive(currentPath: string, itemUrl: string): boolean {
  * text-sidebar-foreground/70` (no uppercase).
  */
 @localized()
-@customElement("breeze-nav-list")
-export class BreezeNavList extends LitElement {
+@customElement("plume-nav-list")
+export class PlumeNavList extends LitElement {
   static styles = css`
     *,
     *::before,
@@ -88,7 +88,7 @@ export class BreezeNavList extends LitElement {
       color: var(--sidebar-accent-foreground);
       font-weight: 500;
     }
-    breeze-icon {
+    plume-icon {
       flex-shrink: 0;
       opacity: 0.85;
     }
@@ -176,7 +176,7 @@ export class BreezeNavList extends LitElement {
                   : undefined}"
                 @focus="${isProjectsLink ? preloadProjectDetail : undefined}"
               >
-                <breeze-icon name="${item.icon}" size="16"></breeze-icon>
+                <plume-icon name="${item.icon}" size="16"></plume-icon>
                 <span class="text">${item.title}</span>
                 ${badge != null
                   ? html`
@@ -187,13 +187,13 @@ export class BreezeNavList extends LitElement {
             `;
             return collapsed
               ? html`
-                <breeze-tooltip
+                <plume-tooltip
                   text="${item.title}"
                   side="right"
                   .hidden="${!collapsed}"
                 >
                   ${link}
-                </breeze-tooltip>
+                </plume-tooltip>
               `
               : link;
           })}
@@ -205,6 +205,6 @@ export class BreezeNavList extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-nav-list": BreezeNavList;
+    "plume-nav-list": PlumeNavList;
   }
 }

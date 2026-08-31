@@ -2,6 +2,6 @@
 // This lets operators determine the running version and validate upgrades.
 package version
 
-// Version is set at link time via -ldflags "-X ipmanlk/breeze/internal/version.Version=...".
+// Version is set at link time via -ldflags "-X ipmanlk/plume/internal/version.Version=...".
 // Defaults to "dev" when not set (e.g. `go run` / `go build` without ldflags).
 var Version = "dev"

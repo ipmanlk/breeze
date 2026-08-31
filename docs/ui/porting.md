@@ -14,7 +14,7 @@
 | react-hook-form      | native `<form>` + `FormData`                                               |
 | wouter               | custom `popstate` router                                                       |
 | Tailwind             | CSS tokens + scoped styles                                                 |
-| shadcn/Radix         | hand-rolled `<breeze-*>` + native `<dialog>`/`popover`                     |
+| shadcn/Radix         | hand-rolled `<plume-*>` + native `<dialog>`/`popover`                     |
 | `@tiptap/react`      | `@tiptap/core` + Lit wrapper                                               |
 | `WsManager` (React)  | Global `ws.ts` singleton + feature-local signal bridge (`wsMessageEvents`) |
 

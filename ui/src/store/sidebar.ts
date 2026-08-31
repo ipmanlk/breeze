@@ -1,6 +1,6 @@
 import { signal } from "@preact/signals-core";
 
-const STORAGE_KEY = "breeze_sidebar_state";
+const STORAGE_KEY = "plume_sidebar_state";
 const MOBILE_BREAKPOINT = 768;
 
 function getStored(): boolean {

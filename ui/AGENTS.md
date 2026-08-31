@@ -1,4 +1,4 @@
-# Breeze UI: Lit + Vite + TypeScript
+# Plume UI: Lit + Vite + TypeScript
 
 > **This is the source of truth for all frontend work.** UI-specific rules,
 > patterns, and pitfalls live here and in `docs/`, **not** in the root
@@ -57,7 +57,7 @@
 
 1. Read the relevant `docs/*.md` (and the pitfalls doc matching your task type)
    before making changes in that area.
-2. All custom element tags must start with `breeze-`. One element per file.
+2. All custom element tags must start with `plume-`. One element per file.
 3. **Scoped styles preferred**; use
    `static styles = css\`...\``in
    shadow-DOM components. Never inline`<style>`in`render()`or
@@ -67,7 +67,7 @@
    the light DOM (`createRenderRoot()
    { return this;
    }`) because DnD requires
-   it. These must (a) use a`breeze-`-prefixed or`cp-`-prefixed tag to
+   it. These must (a) use a`plume-`-prefixed or`cp-`-prefixed tag to
    namespace their global styles, and (b) inject any global CSS via a single
    shared`const
    APP_STYLES =

@@ -1,4 +1,4 @@
-/* ── Breeze Shared Animations ──────────────────────────────────
+/* ── Plume Shared Animations ──────────────────────────────────
  * All global @keyframes live here. Component-specific keyframes
  * stay scoped inside each component's `static styles` (Lit hashes
  * keyframe names in shadow DOM, so there is no collision).

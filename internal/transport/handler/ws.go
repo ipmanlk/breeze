@@ -6,10 +6,10 @@ import (
 	"net/http"
 	"time"
 
-	"ipmanlk/breeze/internal/domain"
-	"ipmanlk/breeze/internal/port"
-	"ipmanlk/breeze/internal/transport"
-	"ipmanlk/breeze/internal/transport/ws"
+	"ipmanlk/plume/internal/domain"
+	"ipmanlk/plume/internal/port"
+	"ipmanlk/plume/internal/transport"
+	"ipmanlk/plume/internal/transport/ws"
 
 	"github.com/coder/websocket"
 )

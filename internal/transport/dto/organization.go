@@ -3,7 +3,7 @@ package dto
 import (
 	"time"
 
-	"ipmanlk/breeze/internal/domain"
+	"ipmanlk/plume/internal/domain"
 )
 
 // OrganizationResponse is the full org view returned by GET /api/organization.

@@ -33,8 +33,8 @@ interface ProjectEntry {
  * to those projects upon accepting the invite.
  */
 @localized()
-@customElement("breeze-invite-dialog")
-export class BreezeInviteDialog extends LitElement {
+@customElement("plume-invite-dialog")
+export class PlumeInviteDialog extends LitElement {
   static styles = css`
     *,
     *::before,
@@ -82,10 +82,10 @@ export class BreezeInviteDialog extends LitElement {
     .section-toggle:hover {
       color: var(--foreground);
     }
-    .section-toggle breeze-icon {
+    .section-toggle plume-icon {
       transition: transform var(--dur-fast) var(--ease-1);
     }
-    .section-toggle.open breeze-icon {
+    .section-toggle.open plume-icon {
       transform: rotate(90deg);
     }
     .project-section {
@@ -401,7 +401,7 @@ export class BreezeInviteDialog extends LitElement {
     const showForm = !this._generated;
 
     return html`
-      <breeze-dialog
+      <plume-dialog
         .open="${inviteDialogOpen.value}"
         heading="${msg("Invite people")}"
         style="--dialog-w:32rem"
@@ -412,13 +412,13 @@ export class BreezeInviteDialog extends LitElement {
             <form @submit="${this._onGenerate}" class="body">
               <div class="field">
                 <label class="field-label">${msg("Role")}</label>
-                <breeze-select
+                <plume-select
                   .options="${this._roleOptions}"
                   .value="${this._role}"
                   @change="${(e: CustomEvent) => {
                     this._role = e.detail as typeof this._role;
                   }}"
-                ></breeze-select>
+                ></plume-select>
               </div>
 
               <div class="field">
@@ -428,7 +428,7 @@ export class BreezeInviteDialog extends LitElement {
                 <span class="field-hint">
                   ${msg("Optional — leave blank to allow any email")}
                 </span>
-                <breeze-input
+                <plume-input
                   id="invite-email"
                   type="email"
                   placeholder="${msg("Leave blank for any email")}"
@@ -436,7 +436,7 @@ export class BreezeInviteDialog extends LitElement {
                   @input="${(e: Event) => {
                     this._email = (e.target as HTMLInputElement).value;
                   }}"
-                ></breeze-input>
+                ></plume-input>
               </div>
 
               <!-- Optional project assignments -->
@@ -448,7 +448,7 @@ export class BreezeInviteDialog extends LitElement {
                   if (this._projectSectionOpen) this._loadProjects();
                 }}"
               >
-                <breeze-icon name="chevron-right" size="14"></breeze-icon>
+                <plume-icon name="chevron-right" size="14"></plume-icon>
                 ${msg("Assign to projects")} ${this.#assignedProjectCount > 0
                   ? html`
                     (${this.#assignedProjectCount})
@@ -498,10 +498,10 @@ export class BreezeInviteDialog extends LitElement {
                                 >
                                   ${entry.assigned
                                     ? html`
-                                      <breeze-icon
+                                      <plume-icon
                                         name="check"
                                         size="10"
-                                      ></breeze-icon>
+                                      ></plume-icon>
                                     `
                                     : nothing}
                                 </span>
@@ -516,7 +516,7 @@ export class BreezeInviteDialog extends LitElement {
                                 </div>
                                 ${entry.assigned
                                   ? html`
-                                    <breeze-select
+                                    <plume-select
                                       class="role-select"
                                       .options="${this._roleOptions}"
                                       .value="${entry.role}"
@@ -526,7 +526,7 @@ export class BreezeInviteDialog extends LitElement {
                                           e.detail as string,
                                         );
                                       }}"
-                                    ></breeze-select>
+                                    ></plume-select>
                                   `
                                   : html`
                                     <span
@@ -550,20 +550,20 @@ export class BreezeInviteDialog extends LitElement {
             </form>
 
             <div slot="footer" class="footer">
-              <breeze-button
+              <plume-button
                 variant="ghost"
                 type="button"
                 @click="${this._onClose}"
               >
                 ${msg("Cancel")}
-              </breeze-button>
-              <breeze-button
+              </plume-button>
+              <plume-button
                 ?disabled="${this._busy}"
                 type="submit"
                 @click="${this._onGenerate}"
               >
                 ${this._busy ? msg("Generating...") : msg("Generate link")}
-              </breeze-button>
+              </plume-button>
             </div>
           `
           : html`
@@ -573,14 +573,14 @@ export class BreezeInviteDialog extends LitElement {
                 <code class="result-link">
                   ${window.location.origin}${this._generated!.url}
                 </code>
-                <breeze-button
+                <plume-button
                   variant="outline"
                   size="sm"
                   type="button"
                   @click="${this._copyLink}"
                 >
                   ${this._copied ? msg("Copied") : msg("Copy")}
-                </breeze-button>
+                </plume-button>
               </div>
               <div class="result-expiry">
                 ${msg("Expires")} ${new Date(this._generated!.expires_at)
@@ -599,22 +599,22 @@ export class BreezeInviteDialog extends LitElement {
             </div>
 
             <div slot="footer" class="footer">
-              <breeze-button
+              <plume-button
                 variant="ghost"
                 type="button"
                 @click="${this._onClose}"
               >
                 ${msg("Done")}
-              </breeze-button>
+              </plume-button>
             </div>
           `}
-      </breeze-dialog>
+      </plume-dialog>
     `;
   }
 }
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-invite-dialog": BreezeInviteDialog;
+    "plume-invite-dialog": PlumeInviteDialog;
   }
 }

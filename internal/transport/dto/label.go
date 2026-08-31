@@ -1,6 +1,6 @@
 package dto
 
-import "ipmanlk/breeze/internal/domain"
+import "ipmanlk/plume/internal/domain"
 
 type LabelResponse struct {
 	ID    string `json:"id"`

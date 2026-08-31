@@ -1,5 +1,5 @@
 // Package service: webpush.go implements RFC 8291 (Message Encryption for
-// Web Push) and RFC 8292 (VAPID) so Breeze can send encrypted push payloads to
+// Web Push) and RFC 8292 (VAPID) so Plume can send encrypted push payloads to
 // browser push subscriptions using only the Go standard library.
 package service
 
@@ -23,7 +23,7 @@ import (
 	"strings"
 	"time"
 
-	"ipmanlk/breeze/internal/config"
+	"ipmanlk/plume/internal/config"
 )
 
 // WebPush encrypts payloads and delivers them to push endpoints. It is safe

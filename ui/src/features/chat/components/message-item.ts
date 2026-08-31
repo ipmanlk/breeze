@@ -9,8 +9,8 @@ import "./reaction-picker.ts";
 import { localized, msg } from "@lit/localize";
 
 @localized()
-@customElement("breeze-message-item")
-export class BreezeMessageItem extends LitElement {
+@customElement("plume-message-item")
+export class PlumeMessageItem extends LitElement {
   static styles = css`
     *,
     *::before,
@@ -548,7 +548,7 @@ export class BreezeMessageItem extends LitElement {
             title="${msg("React")}"
             aria-label=${msg("Add reaction")}
           >
-            <breeze-icon name="smile-plus" size="14"></breeze-icon>
+            <plume-icon name="smile-plus" size="14"></plume-icon>
           </button>
           <button
             class="action-btn"
@@ -556,7 +556,7 @@ export class BreezeMessageItem extends LitElement {
             title="${msg("Reply")}"
             aria-label=${msg("Reply")}
           >
-            <breeze-icon name="reply" size="14"></breeze-icon>
+            <plume-icon name="reply" size="14"></plume-icon>
           </button>
           ${isOwn
             ? html`
@@ -566,7 +566,7 @@ export class BreezeMessageItem extends LitElement {
                 title="${msg("Edit")}"
                 aria-label=${msg("Edit")}
               >
-                <breeze-icon name="pencil" size="14"></breeze-icon>
+                <plume-icon name="pencil" size="14"></plume-icon>
               </button>
             `
             : nothing}
@@ -576,9 +576,9 @@ export class BreezeMessageItem extends LitElement {
             title="${message.pinned ? msg("Unpin") : msg("Pin")}"
             aria-label="${message.pinned ? msg("Unpin") : msg("Pin")}"
           >
-            <breeze-icon name="${message.pinned
+            <plume-icon name="${message.pinned
               ? "pin-off"
-              : "pin"}" size="14"></breeze-icon>
+              : "pin"}" size="14"></plume-icon>
           </button>
           ${isOwn
             ? html`
@@ -589,17 +589,17 @@ export class BreezeMessageItem extends LitElement {
                 title="${msg("Delete")}"
                 aria-label=${msg("Delete")}
               >
-                <breeze-icon name="trash-2" size="14"></breeze-icon>
+                <plume-icon name="trash-2" size="14"></plume-icon>
               </button>
             `
             : nothing}
         </div>
         ${this._showPicker
           ? html`
-            <breeze-reaction-picker
+            <plume-reaction-picker
               class="picker"
               @pick="${this._onPickerPick}"
-            ></breeze-reaction-picker>
+            ></plume-reaction-picker>
           `
           : nothing}
       </div>
@@ -609,6 +609,6 @@ export class BreezeMessageItem extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-message-item": BreezeMessageItem;
+    "plume-message-item": PlumeMessageItem;
   }
 }

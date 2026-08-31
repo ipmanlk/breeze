@@ -10,7 +10,7 @@ import {
 } from "@/store/theme";
 import { SignalController } from "@/lib/signal-controller";
 import { OutsideClickController } from "@/lib/outside-click-controller";
-import "./ui/breeze-icon.ts";
+import "./ui/plume-icon.ts";
 
 interface PaletteGroup {
   id: string;
@@ -21,8 +21,8 @@ interface PaletteGroup {
 function getPaletteGroups(): PaletteGroup[] {
   return [
     {
-      id: "breeze",
-      label: "Breeze",
+      id: "plume",
+      label: "Plume",
       presetIds: [
         "light",
         "paper",
@@ -60,8 +60,8 @@ function getPaletteGroups(): PaletteGroup[] {
 }
 
 @localized()
-@customElement("breeze-theme-switcher")
-export class BreezeThemeSwitcher extends LitElement {
+@customElement("plume-theme-switcher")
+export class PlumeThemeSwitcher extends LitElement {
   static styles = css`
     *,
     *::before,
@@ -322,7 +322,7 @@ export class BreezeThemeSwitcher extends LitElement {
         <span class="preset-label">${preset.label}</span>
         ${active
           ? html`
-            <breeze-icon class="preset-check" name="check" size="14"></breeze-icon>
+            <plume-icon class="preset-check" name="check" size="14"></plume-icon>
           `
           : nothing}
       </button>
@@ -341,7 +341,7 @@ export class BreezeThemeSwitcher extends LitElement {
         aria-label="${msg("Switch theme")}"
         title="${msg("Switch theme")}"
       >
-        <breeze-icon name="${icon}" size="18"></breeze-icon>
+        <plume-icon name="${icon}" size="18"></plume-icon>
         ${current
           ? html`
             <span class="trigger-dot" style="background:${current
@@ -367,6 +367,6 @@ export class BreezeThemeSwitcher extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-theme-switcher": BreezeThemeSwitcher;
+    "plume-theme-switcher": PlumeThemeSwitcher;
   }
 }

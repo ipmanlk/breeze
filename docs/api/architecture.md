@@ -1,8 +1,8 @@
-# Breeze Architecture
+# Plume Architecture
 
 ## Overview
 
-Breeze is a single-binary project management application. The Go backend embeds
+Plume is a single-binary project management application. The Go backend embeds
 the compiled Lit SPA and serves it alongside a REST API. SQLite provides the
 database with zero external dependencies.
 
@@ -146,7 +146,7 @@ The frontend is a Vite + Lit 3 + TypeScript SPA (Deno runtime). See
 
 ```
 ui/src/
-├── components/         ← Lit UI primitives (breeze-button, breeze-input, …)
+├── components/         ← Lit UI primitives (plume-button, plume-input, …)
 │   ├── ui/             ← leaf primitives
 │   ├── nav/            ← app chrome (sidebar, workspace switcher, top bar)
 │   └── search/         ← command palette

@@ -5,12 +5,12 @@ import { customElement, property } from "lit/decorators.js";
  * Lightweight tooltip: shows on hover via CSS only.
  * Place as a wrapper around the target element.
  * Usage:
- *   <breeze-tooltip text="Home" side="right">
- *     <breeze-icon name="house" size="16"></breeze-icon>
- *   </breeze-tooltip>
+ *   <plume-tooltip text="Home" side="right">
+ *     <plume-icon name="house" size="16"></plume-icon>
+ *   </plume-tooltip>
  */
-@customElement("breeze-tooltip")
-export class BreezeTooltip extends LitElement {
+@customElement("plume-tooltip")
+export class PlumeTooltip extends LitElement {
   static styles = css`
     *,
     *::before,
@@ -106,6 +106,6 @@ export class BreezeTooltip extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-tooltip": BreezeTooltip;
+    "plume-tooltip": PlumeTooltip;
   }
 }

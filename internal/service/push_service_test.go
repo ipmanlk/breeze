@@ -5,8 +5,8 @@ import (
 	"log/slog"
 	"testing"
 
-	"ipmanlk/breeze/internal/config"
-	"ipmanlk/breeze/internal/domain"
+	"ipmanlk/plume/internal/config"
+	"ipmanlk/plume/internal/domain"
 )
 
 // TestPushService_DisabledWhenNoVAPID verifies the service is a no-op when

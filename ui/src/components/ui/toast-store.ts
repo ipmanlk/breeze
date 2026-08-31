@@ -25,7 +25,7 @@ let nextId = 1;
 /**
  * Show a transient toast notification. Returns the toast id (so callers can
  * dismiss it programmatically). Toasts render in a top-level host appended
- * to <body> by <breeze-toast-host>, so they survive navigation and are not
+ * to <body> by <plume-toast-host>, so they survive navigation and are not
  * scoped to a single view's lifecycle.
  */
 export function showToast(message: string, opts: ToastOptions = {}): number {

@@ -1,8 +1,8 @@
 import { css, html, LitElement } from "lit";
 import { customElement, property } from "lit/decorators.js";
 
-@customElement("breeze-avatar")
-export class BreezeAvatar extends LitElement {
+@customElement("plume-avatar")
+export class PlumeAvatar extends LitElement {
   static styles = css`
     *,
     *::before,
@@ -60,6 +60,6 @@ export class BreezeAvatar extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-avatar": BreezeAvatar;
+    "plume-avatar": PlumeAvatar;
   }
 }

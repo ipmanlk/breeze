@@ -1,6 +1,6 @@
-# Breeze i18n (Internationalization)
+# Plume i18n (Internationalization)
 
-Breeze is fully internationalizable. A user picks a language in Settings and
+Plume is fully internationalizable. A user picks a language in Settings and
 the entire product (UI, emails, push notifications, and errors) renders in
 that language, with locale-aware date/time/number formatting.
 

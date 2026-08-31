@@ -12,7 +12,7 @@ import { pageEnterStyles } from "@/styles/shared-animations";
 import "../../components/ui/button.ts";
 import "../../components/ui/spinner.ts";
 import "../../components/ui/popover.ts";
-import "../../components/ui/breeze-icon.ts";
+import "../../components/ui/plume-icon.ts";
 import "../../layouts/app-layout.ts";
 import { localized, msg } from "@lit/localize";
 
@@ -30,8 +30,8 @@ const PRESET_COLORS = [
 ];
 
 @localized()
-@customElement("breeze-labels-settings-page")
-export class BreezeLabelsSettingsPage extends LitElement {
+@customElement("plume-labels-settings-page")
+export class PlumeLabelsSettingsPage extends LitElement {
   static styles = [
     pageEnterStyles,
     css`
@@ -83,7 +83,7 @@ export class BreezeLabelsSettingsPage extends LitElement {
         display: flex;
         align-items: center;
       }
-      .search-wrap breeze-icon {
+      .search-wrap plume-icon {
         position: absolute;
         left: var(--space-2);
         color: var(--muted-foreground);
@@ -273,7 +273,7 @@ export class BreezeLabelsSettingsPage extends LitElement {
     `,
   ];
 
-  /** When true, suppress <breeze-app-layout> and .page-head. */
+  /** When true, suppress <plume-app-layout> and .page-head. */
   @property({ type: Boolean })
   embedded = false;
 
@@ -385,7 +385,7 @@ export class BreezeLabelsSettingsPage extends LitElement {
     onChange: (c: string) => void,
   ): unknown {
     return html`
-      <breeze-popover>
+      <plume-popover>
         <button
           slot="trigger"
           class="color-trigger"
@@ -409,18 +409,18 @@ export class BreezeLabelsSettingsPage extends LitElement {
               `,
           )}
         </div>
-      </breeze-popover>
+      </plume-popover>
     `;
   }
 
   protected render(): unknown {
     if (this._loading) {
       const spinner =
-        html`<div class="loading"><breeze-spinner></breeze-spinner> ${
+        html`<div class="loading"><plume-spinner></plume-spinner> ${
           msg("Loading labels…")
         }</div>`;
       if (this.embedded) return spinner;
-      return html`<breeze-app-layout>${spinner}</breeze-app-layout>`;
+      return html`<plume-app-layout>${spinner}</plume-app-layout>`;
     }
 
     const body = html`
@@ -441,20 +441,20 @@ export class BreezeLabelsSettingsPage extends LitElement {
               if (e.key === "Enter") this.#create();
             }}
           />
-          <breeze-button
+          <plume-button
             size="sm"
             ?disabled=${this._creating || !this._newName.trim()}
             @click=${() => this.#create()}
           >
             ${this._creating
-              ? html`<breeze-spinner></breeze-spinner>`
-              : html`<breeze-icon name="plus" size="14"></breeze-icon>`}
-          </breeze-button>
+              ? html`<plume-spinner></plume-spinner>`
+              : html`<plume-icon name="plus" size="14"></plume-icon>`}
+          </plume-button>
         </div>
 
         <div class="toolbar">
           <div class="search-wrap">
-            <breeze-icon name="search" size="14"></breeze-icon>
+            <plume-icon name="search" size="14"></plume-icon>
             <input
               class="search-input"
               type="text"
@@ -513,19 +513,19 @@ export class BreezeLabelsSettingsPage extends LitElement {
                           }}
                         />
                         <div class="label-actions">
-                          <breeze-button
+                          <plume-button
                             variant="ghost"
                             size="sm"
                             ?disabled=${this._savingEdit[l.id!]}
                             @click=${() => this.#saveEdit(l.id!)}
                           >${this._savingEdit[l.id!]
-                            ? html`<breeze-spinner></breeze-spinner>`
-                            : msg("Save")}</breeze-button>
-                          <breeze-button
+                            ? html`<plume-spinner></plume-spinner>`
+                            : msg("Save")}</plume-button>
+                          <plume-button
                             variant="ghost"
                             size="sm"
                             @click=${() => (this._editingId = null)}
-                          >${msg("Cancel")}</breeze-button>
+                          >${msg("Cancel")}</plume-button>
                         </div>
                       `
                       : html`
@@ -537,7 +537,7 @@ export class BreezeLabelsSettingsPage extends LitElement {
                             aria-label=${msg("Edit label")}
                             @click=${() => this.#startEdit(l)}
                           >
-                            <breeze-icon name="pencil" size="14"></breeze-icon>
+                            <plume-icon name="pencil" size="14"></plume-icon>
                           </button>
                           <button
                             class="icon-btn destructive"
@@ -545,7 +545,7 @@ export class BreezeLabelsSettingsPage extends LitElement {
                             aria-label=${msg("Delete label")}
                             @click=${() => this.#deleteLabel(l.id!)}
                           >
-                            <breeze-icon name="trash-2" size="14"></breeze-icon>
+                            <plume-icon name="trash-2" size="14"></plume-icon>
                           </button>
                         </div>
                       `}
@@ -561,20 +561,20 @@ export class BreezeLabelsSettingsPage extends LitElement {
       return html`${body}`;
     }
     return html`
-      <breeze-app-layout>
+      <plume-app-layout>
         <div class="page-enter">
           <div class="page-head">
             <h1>${msg("Labels")}</h1>
           </div>
           <div class="page-content">${body}</div>
         </div>
-      </breeze-app-layout>
+      </plume-app-layout>
     `;
   }
 }
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-labels-settings-page": BreezeLabelsSettingsPage;
+    "plume-labels-settings-page": PlumeLabelsSettingsPage;
   }
 }

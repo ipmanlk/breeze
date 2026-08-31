@@ -12,7 +12,7 @@ of the dependency graph.
 | `lexorank.ts`         | Lexorank key generation for task ordering |
 | `schemas/`            | valibot validation schemas           |
 | `format/`             | Date/number/relative-time formatters (`Intl.*`) |
-| `icons.ts`            | Icon registry + `<breeze-icon>` data |
+| `icons.ts`            | Icon registry + `<plume-icon>` data |
 | `lucide-icons.json`   | Raw Lucide icon definitions          |
 | `markdown.ts`         | Markdown → HTML rendering            |
 | `sanitize.ts`         | HTML sanitizer (rich text output)    |

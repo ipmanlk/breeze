@@ -56,7 +56,7 @@ client.interceptors.error.use(
 // WebSocket session-expired handling
 // The WS layer dispatches this when a reconnect probe to /api/auth/me returns
 // 401. Reset auth state and redirect to login.
-window.addEventListener("breeze:session-expired", () => {
+window.addEventListener("plume:session-expired", () => {
   if (redirectingToLogin) return;
   handleSessionExpired();
 });

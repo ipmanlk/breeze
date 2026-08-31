@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"strings"
 
-	"ipmanlk/breeze/internal/config"
+	"ipmanlk/plume/internal/config"
 )
 
 // SecurityHeaders sets baseline browser security headers on all responses.

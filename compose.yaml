@@ -1,23 +1,23 @@
-# Docker Compose for Breeze.
+# Docker Compose for Plume.
 #
 # Usage:
 #   cp .env.example .env
 #   docker compose up -d
 
-name: breeze
+name: plume
 
 services:
-  breeze:
+  plume:
     build:
       context: .
       args:
         # Reported by GET /api/version.
         GIT_VERSION: ${GIT_VERSION:-dev}
-    image: breeze:local
+    image: plume:local
     restart: unless-stopped
     ports:
       # Left side is the host port; change it to expose on a different one.
-      - "${BREEZE_HTTP_PORT:-8080}:8080"
+      - "${PLUME_HTTP_PORT:-8080}:8080"
     env_file:
       - .env
     environment:
@@ -25,10 +25,10 @@ services:
       # required and must come from .env.
       APP_ENV: production
       PORT: "8080"
-      DB_PATH: /data/breeze.db
+      DB_PATH: /data/plume.db
       UPLOAD_DIR: /data/uploads
     volumes:
-      - breeze-data:/data
+      - plume-data:/data
     healthcheck:
       test: ["CMD", "wget", "-qO-", "http://127.0.0.1:8080/healthz"]
       interval: 30s
@@ -37,5 +37,5 @@ services:
       retries: 3
 
 volumes:
-  breeze-data:
-    name: breeze-data
+  plume-data:
+    name: plume-data

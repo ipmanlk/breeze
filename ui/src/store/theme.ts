@@ -5,7 +5,7 @@ import { getSettingsPreferences, patchSettingsPreferences } from "@/api";
 export type Theme = "light" | "dark";
 export type ColorTheme = "default" | "zinc" | "rose" | "green" | "violet";
 export type Palette =
-  | "breeze"
+  | "plume"
   | "github-dark"
   | "solarized"
   | "dracula"
@@ -40,11 +40,11 @@ function p(
 }
 
 export const THEME_PRESETS: ThemePreset[] = [
-  // Breeze palette: core presets
+  // Plume palette: core presets
   p(
     "light",
     "Light Blue",
-    "breeze",
+    "plume",
     "light",
     "default",
     "#3b82f6",
@@ -53,7 +53,7 @@ export const THEME_PRESETS: ThemePreset[] = [
   p(
     "paper",
     "Warm Light",
-    "breeze",
+    "plume",
     "light",
     "zinc",
     "#c4a882",
@@ -62,7 +62,7 @@ export const THEME_PRESETS: ThemePreset[] = [
   p(
     "dark",
     "Dark Blue",
-    "breeze",
+    "plume",
     "dark",
     "default",
     "#1d4ed8",
@@ -71,7 +71,7 @@ export const THEME_PRESETS: ThemePreset[] = [
   p(
     "noir",
     "Dark Neutral",
-    "breeze",
+    "plume",
     "dark",
     "zinc",
     "#6b7280",
@@ -209,7 +209,7 @@ export const THEME_PRESETS: ThemePreset[] = [
 
 export const theme = signal<Theme>("dark");
 export const colorTheme = signal<ColorTheme>("default");
-export const palette = signal<Palette>("breeze");
+export const palette = signal<Palette>("plume");
 export const currentPreset = signal<string>("dark");
 
 function applyAttr(name: string, value: string): void {
@@ -217,7 +217,7 @@ function applyAttr(name: string, value: string): void {
 }
 
 export function initTheme(serverPreset?: string): void {
-  applyAttr("palette", "breeze");
+  applyAttr("palette", "plume");
 
   // Priority: server > localStorage > legacy localStorage > defaults
   if (serverPreset) {
@@ -244,9 +244,9 @@ export function initTheme(serverPreset?: string): void {
 
   theme.value = t;
   colorTheme.value = c;
-  palette.value = "breeze";
+  palette.value = "plume";
 
-  applyAttr("palette", "breeze");
+  applyAttr("palette", "plume");
   applyAttr("theme", t);
   applyAttr("color", c);
 
@@ -292,11 +292,11 @@ export function applyPreset(id: string): void {
 }
 
 export function toggleTheme(): void {
-  if (palette.value !== "breeze") return;
+  if (palette.value !== "plume") return;
 
   const next: Theme = theme.value === "light" ? "dark" : "light";
   const match = THEME_PRESETS.find((p) =>
-    p.palette === "breeze" && p.mode === next && p.color === colorTheme.value
+    p.palette === "plume" && p.mode === next && p.color === colorTheme.value
   );
   if (!match) return;
 
@@ -317,7 +317,7 @@ export function setColorTheme(c: ColorTheme): void {
   localStorage.setItem("color-theme", c);
 
   const match = THEME_PRESETS.find((p) =>
-    p.palette === "breeze" && p.mode === theme.value && p.color === c
+    p.palette === "plume" && p.mode === theme.value && p.color === c
   );
   if (match) {
     currentPreset.value = match.id;

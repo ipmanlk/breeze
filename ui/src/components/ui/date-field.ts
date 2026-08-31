@@ -2,7 +2,7 @@ import { css, html, LitElement, nothing } from "lit";
 import { customElement, property, query, state } from "lit/decorators.js";
 import { localized, msg } from "@lit/localize";
 import { OutsideClickController } from "@/lib/outside-click-controller";
-import "./breeze-icon.ts";
+import "./plume-icon.ts";
 
 const MONTHS = [
   "Jan",
@@ -53,8 +53,8 @@ function isoToDatetimeLocal(iso: string): string {
 }
 
 /**
- * Breeze date field: date/time picker that matches the rest of the form
- * controls (breeze-select / breeze-combobox).
+ * Plume date field: date/time picker that matches the rest of the form
+ * controls (plume-select / plume-combobox).
  *
  * Renders a clean trigger button showing a formatted date/time or a
  * placeholder. Opens a `position: fixed` popover containing a native
@@ -70,11 +70,11 @@ function isoToDatetimeLocal(iso: string): string {
  *   `change`    : detail is the new ISO string (or null when cleared).
  *
  * Uses `position: fixed` for the panel so it is never clipped by overflow
- * ancestors (dialogs, scroll containers, etc.): mirroring breeze-select.
+ * ancestors (dialogs, scroll containers, etc.): mirroring plume-select.
  */
 @localized()
-@customElement("breeze-date-field")
-export class BreezeDateField extends LitElement {
+@customElement("plume-date-field")
+export class PlumeDateField extends LitElement {
   static styles = css`
     *,
     *::before,
@@ -286,7 +286,7 @@ export class BreezeDateField extends LitElement {
     const panelW = this._panel.offsetWidth;
     const panelH = this._panel.offsetHeight;
     // Match the trigger width (but keep the max from CSS) so the panel
-    // lines up with the field like breeze-select.
+    // lines up with the field like plume-select.
     this._panel.style.minWidth = `${rect.width}px`;
     let left = rect.left;
     // Clamp into viewport.
@@ -383,7 +383,7 @@ export class BreezeDateField extends LitElement {
         @click="${this._toggle}"
       >
         <span class="trigger-label">
-          <breeze-icon name="calendar-days" size="14"></breeze-icon>
+          <plume-icon name="calendar-days" size="14"></plume-icon>
           <span class="${hasValue ? "text" : "placeholder text"}">
             ${hasValue ? fmtDateTime(this.value) : this.placeholder}
           </span>
@@ -403,7 +403,7 @@ export class BreezeDateField extends LitElement {
                 }
               }}"
             >
-              <breeze-icon name="x" size="14"></breeze-icon>
+              <plume-icon name="x" size="14"></plume-icon>
             </span>
           `
           : nothing}
@@ -449,6 +449,6 @@ export class BreezeDateField extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-date-field": BreezeDateField;
+    "plume-date-field": PlumeDateField;
   }
 }

@@ -10,7 +10,7 @@ import { loadWithMinTime } from "@/lib/async";
 import "@/components/ui/input.ts";
 import "@/components/ui/button.ts";
 import "@/components/ui/select.ts";
-import "@/components/ui/breeze-icon.ts";
+import "@/components/ui/plume-icon.ts";
 import "@/components/ui/spinner.ts";
 import "@/layouts/app-layout.ts";
 
@@ -64,8 +64,8 @@ function getSORT_HEADERS(): { field: SortField; label: string }[] {
 }
 
 @localized()
-@customElement("breeze-my-tasks-page")
-export class BreezeMyTasksPage extends LitElement {
+@customElement("plume-my-tasks-page")
+export class PlumeMyTasksPage extends LitElement {
   static styles = [
     pageEnterStyles,
     css`
@@ -512,16 +512,16 @@ export class BreezeMyTasksPage extends LitElement {
         this.#toggleSort(field)}">
         ${label} ${active
           ? html`
-            <breeze-icon name="${this._sortDir === "asc"
+            <plume-icon name="${this._sortDir === "asc"
               ? "arrow-up"
-              : "arrow-down"}" size="12"></breeze-icon>
+              : "arrow-down"}" size="12"></plume-icon>
           `
           : html`
-            <breeze-icon
+            <plume-icon
               class="sort-icon-inactive"
               name="arrow-up-down"
               size="12"
-            ></breeze-icon>
+            ></plume-icon>
           `}
       </button>
     `;
@@ -545,13 +545,13 @@ export class BreezeMyTasksPage extends LitElement {
           <span class="task-title">
             ${task.completed_at
               ? html`
-                <breeze-icon class="completed-icon" name="check-circle" size="14"></breeze-icon>
+                <plume-icon class="completed-icon" name="check-circle" size="14"></plume-icon>
               `
               : nothing} ${task.title ?? msg("Untitled")}
           </span>
         </div>
         <span class="priority-badge">
-          <breeze-icon name="${pc.icon}" size="10"></breeze-icon>
+          <plume-icon name="${pc.icon}" size="10"></plume-icon>
           ${pc.label}
         </span>
         <span class="cell-muted">${task.project_name ?? task.project_id}</span>
@@ -601,7 +601,7 @@ export class BreezeMyTasksPage extends LitElement {
       this._groupBy;
 
     return html`
-      <breeze-app-layout>
+      <plume-app-layout>
         <div class="page page-enter">
           <div class="page-head">
             <div class="page-head-row">
@@ -610,17 +610,17 @@ export class BreezeMyTasksPage extends LitElement {
                 <p>${msg("Tasks assigned to you across all projects.")}</p>
               </div>
               <div class="page-head-right">
-                <breeze-button
+                <plume-button
                   variant="${this._showCompleted ? "" : "outline"}"
                   size="sm"
                   @click="${() => {
                     this._showCompleted = !this._showCompleted;
                   }}"
                 >
-                  <breeze-icon name="check-circle" size="16"></breeze-icon>
+                  <plume-icon name="check-circle" size="16"></plume-icon>
                   ${msg("Completed")}
-                </breeze-button>
-                <breeze-select
+                </plume-button>
+                <plume-select
                   class="group-select"
                   .options="${getGROUP_OPTIONS()}"
                   .value="${this._groupBy}"
@@ -628,14 +628,14 @@ export class BreezeMyTasksPage extends LitElement {
                   @change="${(e: CustomEvent) => {
                     this._groupBy = e.detail as string;
                   }}"
-                ></breeze-select>
+                ></plume-select>
               </div>
             </div>
           </div>
 
           <div class="page-content">
             <div class="toolbar">
-              <breeze-input
+              <plume-input
                 class="search-input"
                 type="search"
                 placeholder="${msg("Search tasks...")}"
@@ -643,8 +643,8 @@ export class BreezeMyTasksPage extends LitElement {
                 @input="${(e: Event) => {
                   this._search = (e.target as HTMLInputElement).value;
                 }}"
-              ></breeze-input>
-              <breeze-select
+              ></plume-input>
+              <plume-select
                 class="priority-filter"
                 .options="${getPRIORITY_OPTIONS()}"
                 .value="${this._priority}"
@@ -652,20 +652,20 @@ export class BreezeMyTasksPage extends LitElement {
                 @change="${(e: CustomEvent) => {
                   this._priority = e.detail as string;
                 }}"
-              ></breeze-select>
+              ></plume-select>
               ${hasFilters
                 ? html`
-                  <breeze-button variant="ghost" size="sm" @click="${this
+                  <plume-button variant="ghost" size="sm" @click="${this
                     .#clearFilters}">
-                    <breeze-icon name="x" size="16"></breeze-icon>
+                    <plume-icon name="x" size="16"></plume-icon>
                     ${msg("Clear")}
-                  </breeze-button>
+                  </plume-button>
                 `
                 : nothing}
               <span class="task-count">
                 ${this._loading
                   ? html`
-                    <breeze-spinner></breeze-spinner>
+                    <plume-spinner></plume-spinner>
                   `
                   : html`
                     ${this._tasks.length} ${this._tasks.length === 1
@@ -690,7 +690,7 @@ export class BreezeMyTasksPage extends LitElement {
               : this.#sorted.length === 0
               ? html`
                 <div class="empty">
-                  <breeze-icon name="list" size="32"></breeze-icon>
+                  <plume-icon name="list" size="32"></plume-icon>
                   <span class="empty-text">
                     ${hasFilters
                       ? msg("No tasks match your filters.")
@@ -701,13 +701,13 @@ export class BreezeMyTasksPage extends LitElement {
               : this.#renderFlat()}
           </div>
         </div>
-      </breeze-app-layout>
+      </plume-app-layout>
     `;
   }
 }
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-my-tasks-page": BreezeMyTasksPage;
+    "plume-my-tasks-page": PlumeMyTasksPage;
   }
 }

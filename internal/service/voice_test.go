@@ -5,7 +5,7 @@ import (
 	"sync"
 	"testing"
 
-	"ipmanlk/breeze/internal/domain"
+	"ipmanlk/plume/internal/domain"
 )
 
 func newVoiceServiceForTest(t *testing.T) (*voiceService, *mockVoiceParticipantRepo, *mockVoiceSFU, *mockBroadcaster) {

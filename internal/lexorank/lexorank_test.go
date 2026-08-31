@@ -4,7 +4,7 @@ import (
 	"sort"
 	"testing"
 
-	"ipmanlk/breeze/internal/lexorank"
+	"ipmanlk/plume/internal/lexorank"
 )
 
 func TestGenerateKeyBetween(t *testing.T) {

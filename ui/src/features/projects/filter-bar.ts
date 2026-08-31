@@ -5,7 +5,7 @@ import type { DtoLabelResponse, DtoTaskStatusResponse } from "@/api";
 import "../../components/ui/input.ts";
 import "../../components/ui/button.ts";
 import "../../components/ui/avatar.ts";
-import "../../components/ui/breeze-icon.ts";
+import "../../components/ui/plume-icon.ts";
 import "../../components/ui/popover.ts";
 import "../../components/ui/label-chip.ts";
 import { localized, msg } from "@lit/localize";
@@ -62,8 +62,8 @@ function getPriorities(): {
  * Filter Bar: project task filtering with search, priority, status, assignee.
  */
 @localized()
-@customElement("breeze-filter-bar")
-export class BreezeFilterBar extends LitElement {
+@customElement("plume-filter-bar")
+export class PlumeFilterBar extends LitElement {
   static styles = css`
     *,
     *::before,
@@ -80,7 +80,7 @@ export class BreezeFilterBar extends LitElement {
       position: relative;
       width: var(--space-60);
     }
-    .search-box breeze-icon {
+    .search-box plume-icon {
       position: absolute;
       left: var(--space-2);
       top: 50%;
@@ -180,7 +180,7 @@ export class BreezeFilterBar extends LitElement {
       color: var(--foreground);
       background: var(--accent);
     }
-    .filter-btn breeze-icon {
+    .filter-btn plume-icon {
       width: var(--space-3);
       height: var(--space-3);
       color: var(--muted-foreground);
@@ -247,7 +247,7 @@ export class BreezeFilterBar extends LitElement {
       gap: var(--space-2);
       flex: 1;
     }
-    .member-item breeze-avatar {
+    .member-item plume-avatar {
       width: var(--space-6);
       height: var(--space-6);
       font-size: var(--text-2xs);
@@ -387,7 +387,7 @@ export class BreezeFilterBar extends LitElement {
     const selected = priorities.find((p) => p.value === this.filters.priority);
 
     return html`
-      <breeze-popover>
+      <plume-popover>
         <button slot="trigger" class="filter-btn">
           ${selected
             ? html`
@@ -400,12 +400,12 @@ export class BreezeFilterBar extends LitElement {
                   this._updateFilters({ priority: "" });
                 }}"
               >
-                <breeze-icon name="x" size="12"></breeze-icon>
+                <plume-icon name="x" size="12"></plume-icon>
               </span>
             `
             : html`
               <span class="label">${msg("Priority")}</span>
-              <breeze-icon name="chevron-down" size="12"></breeze-icon>
+              <plume-icon name="chevron-down" size="12"></plume-icon>
             `}
         </button>
         <div slot="content" class="popover-content">
@@ -425,14 +425,14 @@ export class BreezeFilterBar extends LitElement {
                   <span class="name" style="color: ${p.color}">${p.label}</span>
                   ${p.value === this.filters.priority
                     ? html`
-                      <breeze-icon class="check" name="check" size="14"></breeze-icon>
+                      <plume-icon class="check" name="check" size="14"></plume-icon>
                     `
                     : null}
                 </button>
               `,
           )}
         </div>
-      </breeze-popover>
+      </plume-popover>
     `;
   }
 
@@ -440,7 +440,7 @@ export class BreezeFilterBar extends LitElement {
     const selected = this.statuses.find((s) => s.id === this.filters.status_id);
 
     return html`
-      <breeze-popover>
+      <plume-popover>
         <button slot="trigger" class="filter-btn">
           ${selected
             ? html`
@@ -455,12 +455,12 @@ export class BreezeFilterBar extends LitElement {
                   this._updateFilters({ status_id: "" });
                 }}"
               >
-                <breeze-icon name="x" size="12"></breeze-icon>
+                <plume-icon name="x" size="12"></plume-icon>
               </span>
             `
             : html`
               <span class="label">${msg("Status")}</span>
-              <breeze-icon name="chevron-down" size="12"></breeze-icon>
+              <plume-icon name="chevron-down" size="12"></plume-icon>
             `}
         </button>
         <div slot="content" class="popover-content">
@@ -478,14 +478,14 @@ export class BreezeFilterBar extends LitElement {
                   <span class="name">${s.name}</span>
                   ${s.id === this.filters.status_id
                     ? html`
-                      <breeze-icon class="check" name="check" size="14"></breeze-icon>
+                      <plume-icon class="check" name="check" size="14"></plume-icon>
                     `
                     : null}
                 </button>
               `,
           )}
         </div>
-      </breeze-popover>
+      </plume-popover>
     `;
   }
 
@@ -495,7 +495,7 @@ export class BreezeFilterBar extends LitElement {
     );
 
     return html`
-      <breeze-popover>
+      <plume-popover>
         <button slot="trigger" class="filter-btn">
           ${selected
             ? html`
@@ -506,13 +506,13 @@ export class BreezeFilterBar extends LitElement {
                   this._updateFilters({ assignee_id: null });
                 }}"
               >
-                <breeze-icon name="x" size="12"></breeze-icon>
+                <plume-icon name="x" size="12"></plume-icon>
               </span>
             `
             : html`
-              <breeze-icon name="user" size="12"></breeze-icon>
+              <plume-icon name="user" size="12"></plume-icon>
               <span class="label">${msg("Assignee")}</span>
-              <breeze-icon name="chevron-down" size="12"></breeze-icon>
+              <plume-icon name="chevron-down" size="12"></plume-icon>
             `}
         </button>
         <div slot="content" class="popover-content assignee-popover">
@@ -530,14 +530,14 @@ export class BreezeFilterBar extends LitElement {
                       })}"
                   >
                     <div class="member-item">
-                      <breeze-avatar .name="${m.name ??
-                        "?"}" size="sm"></breeze-avatar>
+                      <plume-avatar .name="${m.name ??
+                        "?"}" size="sm"></plume-avatar>
                       <span class="member-name">${m.name ??
                         msg("Unknown")}</span>
                     </div>
                     ${m.id === this.filters.assignee_id
                       ? html`
-                        <breeze-icon class="check" name="check" size="14"></breeze-icon>
+                        <plume-icon class="check" name="check" size="14"></plume-icon>
                       `
                       : null}
                   </button>
@@ -550,7 +550,7 @@ export class BreezeFilterBar extends LitElement {
             `
             : null}
         </div>
-      </breeze-popover>
+      </plume-popover>
     `;
   }
 
@@ -567,7 +567,7 @@ export class BreezeFilterBar extends LitElement {
     );
 
     return html`
-      <breeze-popover close-on-select="false">
+      <plume-popover close-on-select="false">
         <button slot="trigger" class="filter-btn">
           ${selectedLabels.length > 0
             ? html`
@@ -576,9 +576,9 @@ export class BreezeFilterBar extends LitElement {
                 ${selectedLabels.slice(0, 2).map(
                   (l) =>
                     html`
-                      <breeze-label-chip
+                      <plume-label-chip
                         .label="${l}"
-                      ></breeze-label-chip>
+                      ></plume-label-chip>
                     `,
                 )}
                 ${selectedLabels.length > 2
@@ -587,7 +587,7 @@ export class BreezeFilterBar extends LitElement {
                   }</span>`
                   : null}
               </div>
-              <breeze-icon name="chevron-down" size="12"></breeze-icon>
+              <plume-icon name="chevron-down" size="12"></plume-icon>
               <span
                 class="filter-clear"
                 @click="${(e: Event) => {
@@ -595,13 +595,13 @@ export class BreezeFilterBar extends LitElement {
                   this._updateFilters({ label_ids: [] });
                 }}"
               >
-                <breeze-icon name="x" size="12"></breeze-icon>
+                <plume-icon name="x" size="12"></plume-icon>
               </span>
             `
             : html`
-              <breeze-icon name="tag" size="12"></breeze-icon>
+              <plume-icon name="tag" size="12"></plume-icon>
               <span class="label">${msg("Labels")}</span>
-              <breeze-icon name="chevron-down" size="12"></breeze-icon>
+              <plume-icon name="chevron-down" size="12"></plume-icon>
             `}
         </button>
         <div slot="content" class="popover-content">
@@ -624,7 +624,7 @@ export class BreezeFilterBar extends LitElement {
                     <span class="name">${l.name}</span>
                     ${checked
                       ? html`
-                        <breeze-icon class="check" name="check" size="14"></breeze-icon>
+                        <plume-icon class="check" name="check" size="14"></plume-icon>
                       `
                       : null}
                   </button>
@@ -632,7 +632,7 @@ export class BreezeFilterBar extends LitElement {
               },
             )}
         </div>
-      </breeze-popover>
+      </plume-popover>
     `;
   }
 
@@ -641,7 +641,7 @@ export class BreezeFilterBar extends LitElement {
 
     return html`
       <div class="search-box">
-        <breeze-icon name="search" size="14"></breeze-icon>
+        <plume-icon name="search" size="14"></plume-icon>
         <input
           type="text"
           placeholder=${msg("Search tasks...")}
@@ -652,7 +652,7 @@ export class BreezeFilterBar extends LitElement {
         ${this._searchInput
           ? html`
             <button class="search-clear" @click="${this._clearSearch}">
-              <breeze-icon name="x" size="12"></breeze-icon>
+              <plume-icon name="x" size="12"></plume-icon>
             </button>
           `
           : null}
@@ -662,7 +662,7 @@ export class BreezeFilterBar extends LitElement {
         ._renderAssigneeFilter()} ${this._renderLabelFilter()} ${activeCount > 0
         ? html`
           <button class="clear-btn" @click="${this._clearAll}">
-            <breeze-icon name="x" size="12"></breeze-icon>
+            <plume-icon name="x" size="12"></plume-icon>
             Clear
           </button>
         `
@@ -673,6 +673,6 @@ export class BreezeFilterBar extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-filter-bar": BreezeFilterBar;
+    "plume-filter-bar": PlumeFilterBar;
   }
 }

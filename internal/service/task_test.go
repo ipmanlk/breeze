@@ -6,7 +6,7 @@ import (
 	"testing"
 	"time"
 
-	"ipmanlk/breeze/internal/domain"
+	"ipmanlk/plume/internal/domain"
 )
 
 func TestTaskService_Create_Success(t *testing.T) {

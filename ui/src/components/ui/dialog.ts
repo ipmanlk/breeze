@@ -1,10 +1,10 @@
 import { css, html, LitElement, nothing } from "lit";
 import { customElement, property, query } from "lit/decorators.js";
 import { localized, msg } from "@lit/localize";
-import "./breeze-icon.ts";
+import "./plume-icon.ts";
 
 /**
- * Breeze dialog: built on the native `<dialog>` element.
+ * Plume dialog: built on the native `<dialog>` element.
  *
  * Why native `<dialog>`:
  *  - Top-layer rendering: always above page content, no z-index management.
@@ -28,8 +28,8 @@ import "./breeze-icon.ts";
  * Motion group: `--motion-overlay`
  */
 @localized()
-@customElement("breeze-dialog")
-export class BreezeDialog extends LitElement {
+@customElement("plume-dialog")
+export class PlumeDialog extends LitElement {
   static styles = css`
     *,
     *::before,
@@ -317,7 +317,7 @@ export class BreezeDialog extends LitElement {
                     this.open = false;
                   }}"
                 >
-                  <breeze-icon name="x" size="16"></breeze-icon>
+                  <plume-icon name="x" size="16"></plume-icon>
                 </button>
               `
               : nothing}
@@ -334,6 +334,6 @@ export class BreezeDialog extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-dialog": BreezeDialog;
+    "plume-dialog": PlumeDialog;
   }
 }

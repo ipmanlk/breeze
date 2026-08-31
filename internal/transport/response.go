@@ -6,9 +6,9 @@ import (
 	"log/slog"
 	"net/http"
 
-	"ipmanlk/breeze/internal/apperr"
-	"ipmanlk/breeze/internal/domain"
-	"ipmanlk/breeze/internal/i18n"
+	"ipmanlk/plume/internal/apperr"
+	"ipmanlk/plume/internal/domain"
+	"ipmanlk/plume/internal/i18n"
 
 	"github.com/go-chi/render"
 )

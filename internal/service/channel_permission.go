@@ -4,8 +4,8 @@ import (
 	"context"
 	"fmt"
 
-	"ipmanlk/breeze/internal/domain"
-	"ipmanlk/breeze/internal/port"
+	"ipmanlk/plume/internal/domain"
+	"ipmanlk/plume/internal/port"
 )
 
 type ChannelPermissionService struct {

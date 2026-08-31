@@ -3,12 +3,12 @@ import { css, html, LitElement } from "lit";
 import { customElement } from "lit/decorators.js";
 import { sidebarIsMobile, toggleSidebar } from "@/store/sidebar";
 import { SignalController } from "@/lib/signal-controller";
-import "./ui/breeze-icon.ts";
+import "./ui/plume-icon.ts";
 import "./theme-switcher.ts";
 
 @localized()
-@customElement("breeze-top-bar")
-export class BreezeTopBar extends LitElement {
+@customElement("plume-top-bar")
+export class PlumeTopBar extends LitElement {
   static styles = css`
     *,
     *::before,
@@ -124,7 +124,7 @@ export class BreezeTopBar extends LitElement {
         aria-label="${msg("Toggle Sidebar")}"
         title="${msg("Toggle Sidebar")}"
       >
-        <breeze-icon name="panel-left" size="18"></breeze-icon>
+        <plume-icon name="panel-left" size="18"></plume-icon>
         <span class="sr-only">${msg("Toggle Sidebar")}</span>
       </button>
       <button
@@ -139,7 +139,7 @@ export class BreezeTopBar extends LitElement {
             }),
           )}"
       >
-        <breeze-icon name="search" size="16"></breeze-icon>
+        <plume-icon name="search" size="16"></plume-icon>
         <span>${msg("Search...")}</span>
         <div class="kbd-group">
           <kbd>⌘</kbd>
@@ -147,7 +147,7 @@ export class BreezeTopBar extends LitElement {
         </div>
       </button>
       <div class="right">
-        <breeze-theme-switcher></breeze-theme-switcher>
+        <plume-theme-switcher></plume-theme-switcher>
       </div>
     `;
   }
@@ -155,6 +155,6 @@ export class BreezeTopBar extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-top-bar": BreezeTopBar;
+    "plume-top-bar": PlumeTopBar;
   }
 }

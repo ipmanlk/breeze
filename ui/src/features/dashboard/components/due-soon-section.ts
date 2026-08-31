@@ -1,7 +1,7 @@
 import { css, html, LitElement } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { navigate } from "@/routes/router";
-import "../../../components/ui/breeze-icon.ts";
+import "../../../components/ui/plume-icon.ts";
 import "../../../components/ui/card.ts";
 import { localized, msg } from "@lit/localize";
 
@@ -28,8 +28,8 @@ function formatRelative(t: string): string {
 }
 
 @localized()
-@customElement("breeze-due-soon-section")
-export class BreezeDueSoonSection extends LitElement {
+@customElement("plume-due-soon-section")
+export class PlumeDueSoonSection extends LitElement {
   static styles = css`
     *,
     *::before,
@@ -119,13 +119,13 @@ export class BreezeDueSoonSection extends LitElement {
     const tasks = (this.data as DashboardTask[] | null) ?? [];
     if (tasks.length === 0) {
       return html`
-        <breeze-card>
+        <plume-card>
           <div class="title">
-            <breeze-icon name="calendar-days" size="16"></breeze-icon>
+            <plume-icon name="calendar-days" size="16"></plume-icon>
             Due Soon
           </div>
           <div class="empty">Nothing due: you're all caught up.</div>
-        </breeze-card>
+        </plume-card>
       `;
     }
 
@@ -137,9 +137,9 @@ export class BreezeDueSoonSection extends LitElement {
     );
 
     return html`
-      <breeze-card>
+      <plume-card>
         <div class="title">
-          <breeze-icon name="calendar-days" size="16"></breeze-icon>
+          <plume-icon name="calendar-days" size="16"></plume-icon>
           Due Soon
         </div>
         <div class="groups">
@@ -160,11 +160,11 @@ export class BreezeDueSoonSection extends LitElement {
                               `/projects/${task.project_slug}?task=${task.id}`,
                             )}"
                         >
-                          <breeze-icon
+                          <plume-icon
                             name="clock"
                             size="12"
                             style="color:var(--destructive);flex-shrink:0"
-                          ></breeze-icon>
+                          ></plume-icon>
                           <span class="task-title">${task.title}</span>
                           ${task.due_at
                             ? html`
@@ -196,11 +196,11 @@ export class BreezeDueSoonSection extends LitElement {
                               `/projects/${task.project_slug}?task=${task.id}`,
                             )}"
                         >
-                          <breeze-icon
+                          <plume-icon
                             name="calendar-days"
                             size="12"
                             style="color:var(--muted-foreground);flex-shrink:0"
-                          ></breeze-icon>
+                          ></plume-icon>
                           <span class="task-title">${task.title}</span>
                           ${task.due_at
                             ? html`
@@ -217,13 +217,13 @@ export class BreezeDueSoonSection extends LitElement {
             `
             : ""}
         </div>
-      </breeze-card>
+      </plume-card>
     `;
   }
 }
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-due-soon-section": BreezeDueSoonSection;
+    "plume-due-soon-section": PlumeDueSoonSection;
   }
 }

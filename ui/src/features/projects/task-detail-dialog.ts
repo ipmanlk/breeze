@@ -58,10 +58,10 @@ import "../../components/ui/input.ts";
 import "../../components/ui/field.ts";
 import "../../components/ui/button.ts";
 import "../../components/ui/label-picker.ts";
-import "../../components/ui/breeze-icon.ts";
+import "../../components/ui/plume-icon.ts";
 import "../../components/ui/avatar.ts";
 import "@/features/comments/comment-thread.ts";
-import { BreezeTaskEditor } from "@/components/breeze-task-editor.ts";
+import { PlumeTaskEditor } from "@/components/plume-task-editor.ts";
 import { buildResolver, resolveLabel } from "@/features/chat/mention-utils";
 import { localized, msg } from "@lit/localize";
 
@@ -80,7 +80,7 @@ function getPriorities() {
 }
 
 /**
- * Breeze task detail dialog: full task view/edit modal.
+ * Plume task detail dialog: full task view/edit modal.
  *
  * Properties (all `attribute: false`):
  *  - `task`    : the task to display
@@ -92,8 +92,8 @@ function getPriorities() {
  *  - `delete` : dispatched when task is deleted (detail = taskId)
  */
 @localized()
-@customElement("breeze-task-detail-dialog")
-export class BreezeTaskDetailDialog extends LitElement {
+@customElement("plume-task-detail-dialog")
+export class PlumeTaskDetailDialog extends LitElement {
   static styles = [
     contentEnterStyles,
     css`
@@ -676,7 +676,7 @@ export class BreezeTaskDetailDialog extends LitElement {
         background: var(--status-dot-color, var(--muted-foreground));
         flex-shrink: 0;
       }
-      .tdd-subtask-sel-trigger breeze-icon {
+      .tdd-subtask-sel-trigger plume-icon {
         color: var(--muted-foreground);
         opacity: 0.5;
         flex-shrink: 0;
@@ -718,7 +718,7 @@ export class BreezeTaskDetailDialog extends LitElement {
         overflow: hidden;
         text-overflow: ellipsis;
       }
-      .opt breeze-icon.check {
+      .opt plume-icon.check {
         color: var(--primary);
         flex-shrink: 0;
       }
@@ -1391,8 +1391,8 @@ export class BreezeTaskDetailDialog extends LitElement {
   @state()
   private _loadedProjectId = "";
 
-  @query("breeze-task-editor")
-  private _taskEditor!: BreezeTaskEditor | null;
+  @query("plume-task-editor")
+  private _taskEditor!: PlumeTaskEditor | null;
   @query("#tdd-file-input")
   private _fileInput!: HTMLInputElement | null;
 
@@ -1538,7 +1538,7 @@ export class BreezeTaskDetailDialog extends LitElement {
       }
     };
     document.addEventListener(
-      "breeze-task-activity-recorded",
+      "plume-task-activity-recorded",
       this._activityRecordedHandler,
     );
   }
@@ -1549,7 +1549,7 @@ export class BreezeTaskDetailDialog extends LitElement {
     document.removeEventListener("keydown", this._onMenuKeydown);
     document.removeEventListener("pointerdown", this._onDescOutsideDown);
     document.removeEventListener(
-      "breeze-task-activity-recorded",
+      "plume-task-activity-recorded",
       this._activityRecordedHandler,
     );
     if (this._timerInterval) {
@@ -2166,7 +2166,7 @@ export class BreezeTaskDetailDialog extends LitElement {
     ];
 
     return html`
-      <breeze-dialog
+      <plume-dialog
         .open="${true}"
         size="full"
         noHeader
@@ -2180,7 +2180,7 @@ export class BreezeTaskDetailDialog extends LitElement {
           <div class="tdd-content">
             <div class="tdd-main">
               <div class="tdd-tabs-wrap">
-                <breeze-tabs
+                <plume-tabs
                   .tabs="${[
                     { id: "description", label: msg("Description") },
                     { id: "subtasks", label: msg("Subtasks") },
@@ -2195,7 +2195,7 @@ export class BreezeTaskDetailDialog extends LitElement {
                     this._tab = e.detail;
                     if (this._tab === "activity") void this._loadActivity();
                   }}"
-                ></breeze-tabs>
+                ></plume-tabs>
               </div>
               <div class="tdd-tab-body content-enter" role="tabpanel" aria-labelledby="tab-${this
                 ._tab}">
@@ -2234,7 +2234,7 @@ export class BreezeTaskDetailDialog extends LitElement {
             ? this._renderSubtaskDeleteConfirm()
             : nothing}
         </div>
-      </breeze-dialog>
+      </plume-dialog>
     `;
   }
 
@@ -2244,7 +2244,7 @@ export class BreezeTaskDetailDialog extends LitElement {
         <div class="tdd-title-row">
           ${this._editingTitle
             ? html`
-              <breeze-input
+              <plume-input
                 class="tdd-flex-1"
                 .value="${this._titleDraft}"
                 ?autofocus="${true}"
@@ -2257,7 +2257,7 @@ export class BreezeTaskDetailDialog extends LitElement {
                   e.stopPropagation();
                 }}"
                 @blur="${this._saveTitle}"
-              ></breeze-input>
+              ></plume-input>
             `
             : html`
               <h2
@@ -2274,7 +2274,7 @@ export class BreezeTaskDetailDialog extends LitElement {
               aria-label=${msg("Task actions")}
               @click="${() => (this._menuOpen = !this._menuOpen)}"
             >
-              <breeze-icon name="more-horizontal" size="14"></breeze-icon>
+              <plume-icon name="more-horizontal" size="14"></plume-icon>
             </button>
             ${this._menuOpen
               ? html`
@@ -2284,7 +2284,7 @@ export class BreezeTaskDetailDialog extends LitElement {
                     type="button"
                     @click="${this._close}"
                   >
-                    <breeze-icon name="x" size="14"></breeze-icon>
+                    <plume-icon name="x" size="14"></plume-icon>
                     Close
                     <span class="tdd-shortcut">Esc</span>
                   </button>
@@ -2294,7 +2294,7 @@ export class BreezeTaskDetailDialog extends LitElement {
                     type="button"
                     @click="${() => this._duplicateTask(false)}"
                   >
-                    <breeze-icon name="copy" size="14"></breeze-icon>
+                    <plume-icon name="copy" size="14"></plume-icon>
                     Duplicate task
                   </button>
                   ${this.task && (this.task.subtask_count ?? 0) > 0
@@ -2304,7 +2304,7 @@ export class BreezeTaskDetailDialog extends LitElement {
                         type="button"
                         @click="${() => this._duplicateTask(true)}"
                       >
-                        <breeze-icon name="copy" size="14"></breeze-icon>
+                        <plume-icon name="copy" size="14"></plume-icon>
                         Duplicate with subtasks
                       </button>
                     `
@@ -2316,7 +2316,7 @@ export class BreezeTaskDetailDialog extends LitElement {
                         type="button"
                         @click="${() => this._promoteToTopLevel()}"
                       >
-                        <breeze-icon name="corner-up-left" size="14"></breeze-icon>
+                        <plume-icon name="corner-up-left" size="14"></plume-icon>
                         Promote to top-level task
                       </button>
                     `
@@ -2326,7 +2326,7 @@ export class BreezeTaskDetailDialog extends LitElement {
                     type="button"
                     @click="${() => this._openMoveModal()}"
                   >
-                    <breeze-icon name="arrow-right-left" size="14"></breeze-icon>
+                    <plume-icon name="arrow-right-left" size="14"></plume-icon>
                     Move to project…
                   </button>
                   <button
@@ -2334,7 +2334,7 @@ export class BreezeTaskDetailDialog extends LitElement {
                     type="button"
                     @click="${this.#copyAsMarkdown}"
                   >
-                    <breeze-icon name="file-text" size="14"></breeze-icon>
+                    <plume-icon name="file-text" size="14"></plume-icon>
                     Copy as Markdown
                   </button>
                   <div class="tdd-dropdown-divider"></div>
@@ -2343,7 +2343,7 @@ export class BreezeTaskDetailDialog extends LitElement {
                     type="button"
                     @click="${this._promptDelete}"
                   >
-                    <breeze-icon name="trash-2" size="14"></breeze-icon>
+                    <plume-icon name="trash-2" size="14"></plume-icon>
                     Delete task
                   </button>
                 </div>
@@ -2360,14 +2360,14 @@ export class BreezeTaskDetailDialog extends LitElement {
     if (this._editingDesc) {
       return html`
         <div class="tdd-desc-edit">
-          <breeze-task-editor
+          <plume-task-editor
             .value=${this._descDraft}
             ?autofocus=${true}
             placeholder=${msg("Add description…")}
-            @breeze-change=${this._onDescChange}
-            @breeze-escape=${this._cancelDesc}
-            @breeze-save=${this._saveDesc}
-          ></breeze-task-editor>
+            @plume-change=${this._onDescChange}
+            @plume-escape=${this._cancelDesc}
+            @plume-save=${this._saveDesc}
+          ></plume-task-editor>
         </div>
       `;
     }
@@ -2379,15 +2379,15 @@ export class BreezeTaskDetailDialog extends LitElement {
           class="tdd-desc-view tdd-desc-md"
           @click="${this._startDescEdit}"
         >
-          <breeze-task-editor
+          <plume-task-editor
             .value=${task.description}
             .editable=${false}
             .mentionResolver=${resolver
               ? (type: string, id: string) => resolveLabel(resolver, type, id)
               : undefined}
-          ></breeze-task-editor>
+          ></plume-task-editor>
           <span class="tdd-desc-edit-badge" title=${msg("Edit description")}>
-            <breeze-icon name="pencil" size="13"></breeze-icon>
+            <plume-icon name="pencil" size="13"></plume-icon>
           </span>
         </div>
       `;
@@ -2416,7 +2416,7 @@ export class BreezeTaskDetailDialog extends LitElement {
               aria-label=${msg("Go back")}
               @click="${this._navigateBack}"
             >
-              <breeze-icon name="arrow-left" size="12"></breeze-icon>
+              <plume-icon name="arrow-left" size="12"></plume-icon>
             </button>
           `
           : nothing}
@@ -2484,7 +2484,7 @@ export class BreezeTaskDetailDialog extends LitElement {
                 : "Collapse"} subtasks"
               title="${this._subtasksCollapsed ? "Show" : "Hide"} subtask list"
             >
-              <breeze-icon name="chevron-down" size="14"></breeze-icon>
+              <plume-icon name="chevron-down" size="14"></plume-icon>
             </button>
           </div>
         </div>
@@ -2507,9 +2507,9 @@ export class BreezeTaskDetailDialog extends LitElement {
                       title="Drag to reorder"
                       aria-label=${msg("Drag to reorder")}
                     >
-                      <breeze-icon name="grip-vertical" size="14"></breeze-icon>
+                      <plume-icon name="grip-vertical" size="14"></plume-icon>
                     </button>
-                    <breeze-popover>
+                    <plume-popover>
                       <button slot="trigger" class="tdd-subtask-sel-trigger" type="button">
                         <span class="tdd-subtask-sel-dot"
                           style="background: ${
@@ -2520,7 +2520,7 @@ export class BreezeTaskDetailDialog extends LitElement {
                     statusMap.get(c.status_id ?? "")?.name ?? ""
                   }">
                         </span>
-                        <breeze-icon name="chevron-down" size="10"></breeze-icon>
+                        <plume-icon name="chevron-down" size="10"></plume-icon>
                       </button>
                       <div slot="content" class="pop">
                         ${
@@ -2540,14 +2540,14 @@ export class BreezeTaskDetailDialog extends LitElement {
                             .color}"></span>
                           <span class="name">${s.name}</span>
                           ${s.id === c.status_id
-                            ? html`<breeze-icon class="check" name="check" size="14"></breeze-icon>`
+                            ? html`<plume-icon class="check" name="check" size="14"></plume-icon>`
                             : nothing}
                         </button>
                       `
                     )
                   }
                       </div>
-                    </breeze-popover>
+                    </plume-popover>
 
                     ${
                     this._editingSubtaskId === c.id
@@ -2592,7 +2592,7 @@ export class BreezeTaskDetailDialog extends LitElement {
                   ${html`
                     <div class="tdd-subtask-actions">
                       <div class="tdd-subtask-assignees">
-                        <breeze-combobox
+                        <plume-combobox
                           class="tdd-subtask-assignee-picker"
                           .options="${memberOptions}"
                           .value="${(c.assignees ?? []).map((a) => a.id ?? "")
@@ -2606,7 +2606,7 @@ export class BreezeTaskDetailDialog extends LitElement {
                               await this._loadSubtasks();
                             }
                           }}"
-                        ></breeze-combobox>
+                        ></plume-combobox>
                       </div>
                       <button class="tdd-subtask-del" type="button"
                         @click="${(e: Event) => {
@@ -2614,7 +2614,7 @@ export class BreezeTaskDetailDialog extends LitElement {
                           this._confirmDeleteSubtaskId = c.id ?? "";
                         }}"
                         aria-label=${msg("Delete subtask")}>
-                        <breeze-icon name="trash-2" size="12"></breeze-icon>
+                        <plume-icon name="trash-2" size="12"></plume-icon>
                       </button>
                     </div>
                   `}
@@ -2651,15 +2651,15 @@ export class BreezeTaskDetailDialog extends LitElement {
                   }
                 }}"
               />
-              <breeze-button
+              <plume-button
                 variant="outline"
                 size="sm"
                 ?disabled="${this._creatingSubtask ||
                   !this._subtaskTitle.trim()}"
                 @click="${() => this._createSubtask(task)}"
               >
-                <breeze-icon name="plus" size="14"></breeze-icon>
-              </breeze-button>
+                <plume-icon name="plus" size="14"></plume-icon>
+              </plume-button>
             </div>
           `
           : nothing}
@@ -2697,7 +2697,7 @@ export class BreezeTaskDetailDialog extends LitElement {
 
   /** Close the enclosing single-select popover after a choice. */
   private _closeSelect(e: Event) {
-    const pop = (e.target as HTMLElement | null)?.closest("breeze-popover") as
+    const pop = (e.target as HTMLElement | null)?.closest("plume-popover") as
       | ({ open: boolean })
       | null;
     if (pop) pop.open = false;
@@ -2850,14 +2850,14 @@ export class BreezeTaskDetailDialog extends LitElement {
           ${t.completed_at
             ? html`
               <span
-                class="tdd-dep-done"><breeze-icon name="check" size="12"></breeze-icon></span>
+                class="tdd-dep-done"><plume-icon name="check" size="12"></plume-icon></span>
             `
             : nothing}
-          <breeze-button
+          <plume-button
             variant="ghost"
             size="sm"
             @click="${() => onRemove(t.id ?? "")}"
-          >Remove</breeze-button>
+          >Remove</plume-button>
         </div>
       `;
 
@@ -2866,29 +2866,29 @@ export class BreezeTaskDetailDialog extends LitElement {
         <div class="tdd-dep-section">
           <div class="tdd-dep-head">
             <span class="tdd-dep-heading">Blocked by</span>
-            <breeze-button
+            <plume-button
               variant="outline"
               size="sm"
               @click="${() => (this._depAddOpen = !this._depAddOpen)}"
-            ><breeze-icon name="plus" size="12"></breeze-icon> Add</breeze-button>
+            ><plume-icon name="plus" size="12"></plume-icon> Add</plume-button>
           </div>
           ${this._depAddOpen
             ? html`
               <div class="tdd-dep-add">
-                <breeze-popover close-on-select>
+                <plume-popover close-on-select>
                   <button slot="trigger" class="tdd-dep-add-trigger" type="button">
-                    <breeze-icon name="search" size="14"></breeze-icon>
+                    <plume-icon name="search" size="14"></plume-icon>
                     <span class="tdd-dep-add-label">${this._depAddId
                       ? candidates.find((c) => c.id === this._depAddId)
                         ?.title ?? "Select a task…"
                       : "Search tasks…"}</span>
-                    <breeze-icon name="chevron-down" size="14"></breeze-icon>
+                    <plume-icon name="chevron-down" size="14"></plume-icon>
                   </button>
                   <div slot="content" class="tdd-dep-search-pop" @click="${(
                     e: Event,
                   ) => e.stopPropagation()}">
                     <div class="tdd-dep-search">
-                      <breeze-icon name="search" size="14"></breeze-icon>
+                      <plume-icon name="search" size="14"></plume-icon>
                       <input
                         type="text"
                         placeholder=${msg("Search tasks…")}
@@ -2929,15 +2929,15 @@ export class BreezeTaskDetailDialog extends LitElement {
                           )}
                     </div>
                   </div>
-                </breeze-popover>
-                <breeze-button
+                </plume-popover>
+                <plume-button
                   variant="ghost"
                   size="sm"
                   @click="${() => {
                     this._depAddOpen = false;
                     this._depSearch = "";
                   }}"
-                >Cancel</breeze-button>
+                >Cancel</plume-button>
               </div>
             `
             : nothing}
@@ -3048,11 +3048,11 @@ export class BreezeTaskDetailDialog extends LitElement {
         ${activeEntry
           ? html`
             <div class="tdd-timer-active">
-              <breeze-icon
+              <plume-icon
                 class="tdd-timer-icon tdd-timer-active-icon"
                 name="clock"
                 size="16"
-              ></breeze-icon>
+              ></plume-icon>
               <span class="tdd-timer-display">${fmtTimer(
                 this._timerElapsed,
               )}</span>
@@ -3064,7 +3064,7 @@ export class BreezeTaskDetailDialog extends LitElement {
                 @click="${this._stopTimer}"
                 aria-label=${msg("Stop timer")}
               >
-                <breeze-icon name="square" size="14"></breeze-icon>
+                <plume-icon name="square" size="14"></plume-icon>
               </button>
             </div>
           `
@@ -3085,14 +3085,14 @@ export class BreezeTaskDetailDialog extends LitElement {
                   ) => (this._timerDesc =
                     (e.target as HTMLInputElement).value)}"
                 />
-                <breeze-button
+                <plume-button
                   variant="outline"
                   size="icon"
                   ?disabled="${!this._timerDesc.trim()}"
                   @click="${this._startTimer}"
                 >
-                  <breeze-icon name="play-circle" size="16"></breeze-icon>
-                </breeze-button>
+                  <plume-icon name="play-circle" size="16"></plume-icon>
+                </plume-button>
               </div>
             </div>
           `}
@@ -3136,15 +3136,15 @@ export class BreezeTaskDetailDialog extends LitElement {
               ) => (this._manualMinutes =
                 (e.target as HTMLInputElement).value)}"
             />
-            <breeze-button
+            <plume-button
               variant="outline"
               size="icon"
               ?disabled="${!this._manualDesc.trim() ||
                 (!this._manualHours && !this._manualMinutes)}"
               @click="${this._addManualTimeEntry}"
             >
-              <breeze-icon name="plus" size="16"></breeze-icon>
-            </breeze-button>
+              <plume-icon name="plus" size="16"></plume-icon>
+            </plume-button>
           </div>
         </div>
 
@@ -3174,7 +3174,7 @@ export class BreezeTaskDetailDialog extends LitElement {
                                 this._deleteTimeEntry(e.id ?? "")}"
                               aria-label=${msg("Delete time entry")}
                             >
-                              <breeze-icon name="trash-2" size="12"></breeze-icon>
+                              <plume-icon name="trash-2" size="12"></plume-icon>
                             </button>
                           `
                           : nothing}
@@ -3269,7 +3269,7 @@ export class BreezeTaskDetailDialog extends LitElement {
         <div class="tdd-attach-header">
           <span class="tdd-attach-header-label">Attachments</span>
           <div>
-            <breeze-button
+            <plume-button
               variant="ghost"
               size="sm"
               class="tdd-attach-btn"
@@ -3278,9 +3278,9 @@ export class BreezeTaskDetailDialog extends LitElement {
                 this._fileInput?.click();
               }}"
             >
-              <breeze-icon name="paperclip" size="12"></breeze-icon>
+              <plume-icon name="paperclip" size="12"></plume-icon>
               ${this._uploading ? "Uploading..." : "Attach"}
-            </breeze-button>
+            </plume-button>
             <input
               id="tdd-file-input"
               type="file"
@@ -3304,10 +3304,10 @@ export class BreezeTaskDetailDialog extends LitElement {
                   html`
                     <div class="tdd-attach-file">
                       <span class="tdd-attach-file-icon">
-                        <breeze-icon
+                        <plume-icon
                           name="${fileIconName(a.content_type)}"
                           size="16"
-                        ></breeze-icon>
+                        ></plume-icon>
                       </span>
                       <div class="tdd-attach-file-info">
                         <a
@@ -3328,7 +3328,7 @@ export class BreezeTaskDetailDialog extends LitElement {
                         @click="${() => this._deleteAttachment(a.id ?? "")}"
                         aria-label=${msg("Delete attachment")}
                       >
-                        <breeze-icon name="trash-2" size="12"></breeze-icon>
+                        <plume-icon name="trash-2" size="12"></plume-icon>
                       </button>
                     </div>
                   `,
@@ -3344,10 +3344,10 @@ export class BreezeTaskDetailDialog extends LitElement {
     const tid = this.task?.id ?? "";
     return html`
       <div class="tdd-comments">
-        <breeze-comment-thread
+        <plume-comment-thread
           .projectId="${pid}"
           .taskId="${tid}"
-        ></breeze-comment-thread>
+        ></plume-comment-thread>
       </div>
     `;
   }
@@ -3364,63 +3364,63 @@ export class BreezeTaskDetailDialog extends LitElement {
       <div class="tdd-prop">
         <span class="tdd-prop-label">Status</span>
         <div class="tdd-prop-value">
-          <breeze-select
+          <plume-select
             .options="${statusOptions}"
             .value="${task.status_id ?? ""}"
             @change="${(e: CustomEvent) => this._onStatusChange(e.detail)}"
-          ></breeze-select>
+          ></plume-select>
         </div>
       </div>
       <div class="tdd-prop">
         <span class="tdd-prop-label">Priority</span>
         <div class="tdd-prop-value">
-          <breeze-select
+          <plume-select
             .options="${getPriorities()}"
             .value="${task.priority ?? "none"}"
             @change="${(e: CustomEvent) => this._onPriorityChange(e.detail)}"
-          ></breeze-select>
+          ></plume-select>
         </div>
       </div>
       <div class="tdd-prop">
         <span class="tdd-prop-label">Assignees</span>
         <div class="tdd-prop-value">
-          <breeze-combobox
+          <plume-combobox
             .options="${memberOptions}"
             .value="${task.assignees?.map((a) => a.id ?? "").filter(Boolean) ??
               []}"
             placeholder=${msg("Assignees")}
             @change="${(e: CustomEvent) => this._onAssigneesChange(e.detail)}"
-          ></breeze-combobox>
+          ></plume-combobox>
         </div>
       </div>
       <div class="tdd-prop">
         <span class="tdd-prop-label">Labels</span>
         <div class="tdd-prop-value">
-          <breeze-label-picker
+          <plume-label-picker
             .selected="${task.labels ?? []}"
             @change="${(e: CustomEvent) =>
               this._onLabelsChange(e.detail.labelIds)}"
-          ></breeze-label-picker>
+          ></plume-label-picker>
         </div>
       </div>
       <div class="tdd-prop">
         <span class="tdd-prop-label">Start date</span>
         <div class="tdd-prop-value">
-          <breeze-date-field
+          <plume-date-field
             .value="${task.started_at ?? ""}"
             placeholder=${msg("Set start date")}
             @change="${(e: CustomEvent) => this._onStartDateChange(e.detail)}"
-          ></breeze-date-field>
+          ></plume-date-field>
         </div>
       </div>
       <div class="tdd-prop">
         <span class="tdd-prop-label">Due date</span>
         <div class="tdd-prop-value">
-          <breeze-date-field
+          <plume-date-field
             .value="${task.due_at ?? ""}"
             placeholder=${msg("Set due date")}
             @change="${(e: CustomEvent) => this._onDueDateChange(e.detail)}"
-          ></breeze-date-field>
+          ></plume-date-field>
         </div>
       </div>
       ${hasCycles
@@ -3428,11 +3428,11 @@ export class BreezeTaskDetailDialog extends LitElement {
           <div class="tdd-prop">
             <span class="tdd-prop-label">Cycle</span>
             <div class="tdd-prop-value">
-              <breeze-select
+              <plume-select
                 .options="${cycleOptions}"
                 .value="${task.cycle_id ?? ""}"
                 @change="${(e: CustomEvent) => this._onCycleChange(e.detail)}"
-              ></breeze-select>
+              ></plume-select>
             </div>
           </div>
         `
@@ -3440,7 +3440,7 @@ export class BreezeTaskDetailDialog extends LitElement {
       <div class="tdd-prop">
         <span class="tdd-prop-label">Estimate</span>
         <div class="tdd-prop-value">
-          <breeze-input
+          <plume-input
             type="number"
             min="0"
             placeholder=${msg("Hours")}
@@ -3448,7 +3448,7 @@ export class BreezeTaskDetailDialog extends LitElement {
             @input="${(
               e: Event,
             ) => this._onEstimateChange((e.target as HTMLInputElement).value)}"
-          ></breeze-input>
+          ></plume-input>
         </div>
       </div>
     `;
@@ -3464,15 +3464,15 @@ export class BreezeTaskDetailDialog extends LitElement {
             removed.
           </p>
           <div class="tdd-confirm-actions">
-            <breeze-button variant="ghost" @click="${this._cancelDelete}">
+            <plume-button variant="ghost" @click="${this._cancelDelete}">
               Cancel
-            </breeze-button>
-            <breeze-button
+            </plume-button>
+            <plume-button
               variant="destructive"
               @click="${this._confirmDeleteTask}"
             >
               Delete task
-            </breeze-button>
+            </plume-button>
           </div>
         </div>
       </div>
@@ -3495,19 +3495,19 @@ export class BreezeTaskDetailDialog extends LitElement {
             cannot be undone.
           </p>
           <div class="tdd-confirm-actions">
-            <breeze-button variant="ghost" @click="${() => (this
+            <plume-button variant="ghost" @click="${() => (this
               ._confirmDeleteSubtaskId = "")}">
               Cancel
-            </breeze-button>
-            <breeze-button
+            </plume-button>
+            <plume-button
               variant="destructive"
               ?disabled="${this._deletingSubtask}"
               @click="${this._confirmDeleteSubtask}"
             >
               ${this._deletingSubtask
-                ? html`<breeze-spinner></breeze-spinner>`
+                ? html`<plume-spinner></plume-spinner>`
                 : "Delete subtask"}
-            </breeze-button>
+            </plume-button>
           </div>
         </div>
       </div>
@@ -3529,8 +3529,8 @@ export class BreezeTaskDetailDialog extends LitElement {
             current project).
           </p>
           <div class="tdd-move-form">
-            <breeze-field label="Target project">
-              <breeze-select
+            <plume-field label="Target project">
+              <plume-select
                 searchable
                 .options="${otherProjects.map((p) => ({
                   value: p.id ?? "",
@@ -3541,22 +3541,22 @@ export class BreezeTaskDetailDialog extends LitElement {
                 @change="${(e: CustomEvent) => {
                   this._moveProjectId = e.detail as string;
                 }}"
-              ></breeze-select>
-            </breeze-field>
+              ></plume-select>
+            </plume-field>
           </div>
           <div class="tdd-confirm-actions">
-            <breeze-button
+            <plume-button
               variant="ghost"
               @click="${() => (this._showMoveModal = false)}"
             >
               Cancel
-            </breeze-button>
-            <breeze-button
+            </plume-button>
+            <plume-button
               ?disabled="${this._moving || !this._moveProjectId}"
               @click="${() => this._confirmMove()}"
             >
               ${this._moving ? "Moving…" : "Move task"}
-            </breeze-button>
+            </plume-button>
           </div>
         </div>
       </div>
@@ -3566,7 +3566,7 @@ export class BreezeTaskDetailDialog extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-task-detail-dialog": BreezeTaskDetailDialog;
+    "plume-task-detail-dialog": PlumeTaskDetailDialog;
   }
 }
 

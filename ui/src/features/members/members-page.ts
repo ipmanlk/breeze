@@ -22,7 +22,7 @@ import "@/components/ui/spinner.ts";
 import "@/components/ui/skeleton.ts";
 import "@/components/ui/tabs.ts";
 import "@/components/ui/avatar.ts";
-import "@/components/ui/breeze-icon.ts";
+import "@/components/ui/plume-icon.ts";
 import "@/layouts/app-layout.ts";
 
 /** @see getROLE_OPTIONS */
@@ -54,8 +54,8 @@ function getTABS(): { id: string; label: string }[] {
 type TabId = "active" | "invites" | "inactive";
 
 @localized()
-@customElement("breeze-members-page")
-export class BreezeMembersPage extends LitElement {
+@customElement("plume-members-page")
+export class PlumeMembersPage extends LitElement {
   static styles = [
     pageEnterStyles,
     tabContentStyles,
@@ -563,9 +563,9 @@ export class BreezeMembersPage extends LitElement {
     return html`
       <div class="table-row cols-member">
         <div class="member-cell">
-          <breeze-avatar size="sm">
+          <plume-avatar size="sm">
             ${name.charAt(0).toUpperCase()}
-          </breeze-avatar>
+          </plume-avatar>
           <div class="member-info">
             <div class="member-name">${name}</div>
             ${email
@@ -578,17 +578,17 @@ export class BreezeMembersPage extends LitElement {
         <div>
           ${isEditing && this.#canManage()
             ? html`
-              <breeze-select
+              <plume-select
                 class="role-select"
                 .options="${getROLE_OPTIONS()}"
                 .value="${role}"
                 @change="${(e: CustomEvent) => {
                   this.#updateRole(user.id!, e.detail as string);
                 }}"
-              ></breeze-select>
+              ></plume-select>
             `
             : html`
-              <breeze-role-badge .role="${role}"></breeze-role-badge>
+              <plume-role-badge .role="${role}"></plume-role-badge>
             `}
         </div>
         <div class="actions cols-actions-right">
@@ -605,7 +605,7 @@ export class BreezeMembersPage extends LitElement {
                       this._editingRole = user.id!;
                     }}"
                   >
-                    <breeze-icon name="pencil" size="14"></breeze-icon>
+                    <plume-icon name="pencil" size="14"></plume-icon>
                   </button>
                 `
                 : nothing}
@@ -618,7 +618,7 @@ export class BreezeMembersPage extends LitElement {
                   this._projectsTarget = { id: user.id!, name };
                 }}"
               >
-                <breeze-icon name="folder" size="14"></breeze-icon>
+                <plume-icon name="folder" size="14"></plume-icon>
               </button>
               <button
                 class="icon-btn destructive"
@@ -634,10 +634,10 @@ export class BreezeMembersPage extends LitElement {
               >
                 ${user.is_active
                   ? html`
-                    <breeze-icon name="x" size="14"></breeze-icon>
+                    <plume-icon name="x" size="14"></plume-icon>
                   `
                   : html`
-                    <breeze-icon name="reply" size="14"></breeze-icon>
+                    <plume-icon name="reply" size="14"></plume-icon>
                   `}
               </button>
             `
@@ -653,7 +653,7 @@ export class BreezeMembersPage extends LitElement {
     return html`
       <div class="table-row cols-invite">
         <div class="invite-role-cell">
-          <breeze-role-badge .role="${invite.role}"></breeze-role-badge>
+          <plume-role-badge .role="${invite.role}"></plume-role-badge>
           ${invite.email
             ? html`
               <span class="invite-email">&rarr; ${invite.email}</span>
@@ -674,7 +674,7 @@ export class BreezeMembersPage extends LitElement {
             title=${msg("Copy link")}
             @click="${() => this.#copyInviteLink(invite.id)}"
           >
-            <breeze-icon name="link" size="14"></breeze-icon>
+            <plume-icon name="link" size="14"></plume-icon>
           </button>
           <button
             class="icon-btn destructive"
@@ -683,7 +683,7 @@ export class BreezeMembersPage extends LitElement {
             ?disabled="${isBusy}"
             @click="${() => this.#confirmRevokeInvite(invite.id, invite.role)}"
           >
-            <breeze-icon name="trash-2" size="14"></breeze-icon>
+            <plume-icon name="trash-2" size="14"></plume-icon>
           </button>
         </div>
       </div>
@@ -693,7 +693,7 @@ export class BreezeMembersPage extends LitElement {
   #renderActiveTab() {
     return html`
       <div class="toolbar">
-        <breeze-input
+        <plume-input
           class="search-wrap"
           type="search"
           placeholder="${msg("Search members...")}"
@@ -701,8 +701,8 @@ export class BreezeMembersPage extends LitElement {
           @input="${(e: Event) => {
             this._search = (e.target as HTMLInputElement).value;
           }}"
-        ></breeze-input>
-        <breeze-select
+        ></plume-input>
+        <plume-select
           class="role-filter"
           .options="${getROLE_FILTER_OPTIONS()}"
           .value="${this._roleFilter}"
@@ -710,14 +710,14 @@ export class BreezeMembersPage extends LitElement {
           @change="${(e: CustomEvent) => {
             this._roleFilter = e.detail as string;
           }}"
-        ></breeze-select>
+        ></plume-select>
         ${this._membersLoading
           ? html`
-            <breeze-skeleton
+            <plume-skeleton
               variant="text"
               count="5"
               height="2.5rem"
-            ></breeze-skeleton>
+            ></plume-skeleton>
           `
           : nothing}
       </div>
@@ -734,11 +734,11 @@ export class BreezeMembersPage extends LitElement {
             : this._membersError && this._members.length === 0
             ? html`
               <div class="empty">
-                <breeze-icon
+                <plume-icon
                   class="empty-icon"
                   name="alert-circle"
                   size="32"
-                ></breeze-icon>
+                ></plume-icon>
                 <span class="empty-text">${msg(
                   "Unable to load members.",
                 )}</span>
@@ -747,7 +747,7 @@ export class BreezeMembersPage extends LitElement {
             : this._members.length === 0
             ? html`
               <div class="empty">
-                <breeze-icon class="empty-icon" name="users" size="32"></breeze-icon>
+                <plume-icon class="empty-icon" name="users" size="32"></plume-icon>
                 <span class="empty-text">
                   ${this._search || this._roleFilter
                     ? msg("No members match your filters.")
@@ -760,14 +760,14 @@ export class BreezeMembersPage extends LitElement {
         ${this._hasMore
           ? html`
             <div style="display:flex;justify-content:center;padding:var(--space-3)">
-              <breeze-button
+              <plume-button
                 variant="ghost"
                 size="sm"
                 ?disabled="${this._loadingMore || this._membersLoading}"
                 @click="${() => this.#loadMembers(true)}"
               >
                 ${this._loadingMore ? msg("Loading...") : msg("Load more")}
-              </breeze-button>
+              </plume-button>
             </div>
           `
           : nothing}
@@ -790,9 +790,9 @@ export class BreezeMembersPage extends LitElement {
             : this._invites.length === 0
             ? html`
               <div class="empty">
-                <breeze-icon class="empty-icon" name="mail" size="32"></breeze-icon>
+                <plume-icon class="empty-icon" name="mail" size="32"></plume-icon>
                 <span class="empty-text">${msg("No pending invites.")}</span>
-                <breeze-button
+                <plume-button
                   variant="ghost"
                   size="sm"
                   type="button"
@@ -801,7 +801,7 @@ export class BreezeMembersPage extends LitElement {
                   }}"
                 >
                   Create invite
-                </breeze-button>
+                </plume-button>
               </div>
             `
             : this._invites.map((inv) => this.#renderInviteRow(inv))}
@@ -824,11 +824,11 @@ export class BreezeMembersPage extends LitElement {
             : this._inactiveError && this._inactive.length === 0
             ? html`
               <div class="empty">
-                <breeze-icon
+                <plume-icon
                   class="empty-icon"
                   name="alert-circle"
                   size="32"
-                ></breeze-icon>
+                ></plume-icon>
                 <span class="empty-text">${msg(
                   "Unable to load members.",
                 )}</span>
@@ -837,7 +837,7 @@ export class BreezeMembersPage extends LitElement {
             : this._inactive.length === 0
             ? html`
               <div class="empty">
-                <breeze-icon class="empty-icon" name="circle-check" size="32"></breeze-icon>
+                <plume-icon class="empty-icon" name="circle-check" size="32"></plume-icon>
                 <span class="empty-text">${msg(
                   "No deactivated members.",
                 )}</span>
@@ -848,14 +848,14 @@ export class BreezeMembersPage extends LitElement {
         ${this._hasMore
           ? html`
             <div style="display:flex;justify-content:center;padding:var(--space-3)">
-              <breeze-button
+              <plume-button
                 variant="ghost"
                 size="sm"
                 ?disabled="${this._loadingMore || this._inactiveLoading}"
                 @click="${() => this.#loadInactive(true)}"
               >
                 ${this._loadingMore ? msg("Loading...") : msg("Load more")}
-              </breeze-button>
+              </plume-button>
             </div>
           `
           : nothing}
@@ -867,7 +867,7 @@ export class BreezeMembersPage extends LitElement {
     const canInvite = this.#canInvite();
 
     return html`
-      <breeze-app-layout>
+      <plume-app-layout>
         <div class="page page-enter">
           <div class="header">
             <div class="header-row">
@@ -877,22 +877,22 @@ export class BreezeMembersPage extends LitElement {
               </div>
               ${canInvite
                 ? html`
-                  <breeze-button size="sm" @click="${() => {
+                  <plume-button size="sm" @click="${() => {
                     inviteDialogOpen.value = true;
                   }}">
                     Invite member
-                  </breeze-button>
+                  </plume-button>
                 `
                 : nothing}
             </div>
           </div>
 
           <div class="tab-bar">
-            <breeze-tabs
+            <plume-tabs
               .tabs="${getTABS()}"
               .value="${this._tab}"
               @change="${this.#onTabChange}"
-            ></breeze-tabs>
+            ></plume-tabs>
           </div>
 
           <div class="content">
@@ -911,24 +911,24 @@ export class BreezeMembersPage extends LitElement {
             )}
           </div>
         </div>
-      </breeze-app-layout>
+      </plume-app-layout>
 
-      <breeze-invite-dialog></breeze-invite-dialog>
+      <plume-invite-dialog></plume-invite-dialog>
 
       ${this._projectsTarget
         ? html`
-          <breeze-member-projects-dialog
+          <plume-member-projects-dialog
             .open="${true}"
             .userId="${this._projectsTarget.id}"
             .userName="${this._projectsTarget.name}"
             @close="${() => {
               this._projectsTarget = null;
             }}"
-          ></breeze-member-projects-dialog>
+          ></plume-member-projects-dialog>
         `
         : nothing} ${this._confirmAction
         ? html`
-          <breeze-dialog
+          <plume-dialog
             style="--dialog-w:24rem"
             .open="${true}"
             heading="${this._confirmAction.type === "deactivate"
@@ -959,20 +959,20 @@ export class BreezeMembersPage extends LitElement {
               slot="footer"
               style="display:flex;justify-content:flex-end;gap:var(--space-2);width:100%"
             >
-              <breeze-button variant="ghost" type="button" @click="${this
+              <plume-button variant="ghost" type="button" @click="${this
                 .#cancelConfirm}">
                 ${msg("Cancel")}
-              </breeze-button>
-              <breeze-button
+              </plume-button>
+              <plume-button
                 variant="destructive"
                 @click="${this.#executeConfirmedAction}"
               >
                 ${this._confirmAction.type === "reactivate"
                   ? msg("Reactivate")
                   : msg("Deactivate")}
-              </breeze-button>
+              </plume-button>
             </div>
-          </breeze-dialog>
+          </plume-dialog>
         `
         : nothing}
     `;
@@ -981,6 +981,6 @@ export class BreezeMembersPage extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-members-page": BreezeMembersPage;
+    "plume-members-page": PlumeMembersPage;
   }
 }

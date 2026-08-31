@@ -21,8 +21,8 @@ import "../../components/ui/card.ts";
 import "../../layouts/guest-layout.ts";
 
 @localized()
-@customElement("breeze-setup-page")
-export class BreezeSetupPage extends LitElement {
+@customElement("plume-setup-page")
+export class PlumeSetupPage extends LitElement {
   static styles = [
     pageEnterStyles,
     contentEnterStyles,
@@ -58,11 +58,11 @@ export class BreezeSetupPage extends LitElement {
         font-size: var(--text-sm);
         color: var(--muted-foreground);
       }
-      breeze-stepper {
+      plume-stepper {
         width: var(--space-24);
         margin-bottom: var(--space-6);
       }
-      breeze-card {
+      plume-card {
         display: block;
         box-sizing: border-box;
         width: 100%;
@@ -91,7 +91,7 @@ export class BreezeSetupPage extends LitElement {
         display: flex;
         gap: var(--space-2);
       }
-      .row > breeze-button {
+      .row > plume-button {
         flex: 1;
       }
       .form-error {
@@ -122,29 +122,29 @@ export class BreezeSetupPage extends LitElement {
   protected render() {
     if (setupRequired.value === false) {
       return html`
-        <breeze-guest-layout>
+        <plume-guest-layout>
           <div class="page-enter">
-            <breeze-card class="done">
-              <h1>Breeze</h1>
+            <plume-card class="done">
+              <h1>Plume</h1>
               <p>${msg("This workspace has already been configured.")}</p>
-              <breeze-button fluid @click="${() => navigate("/login")}">${msg(
+              <plume-button fluid @click="${() => navigate("/login")}">${msg(
                 "Go to login",
-              )}</breeze-button>
-            </breeze-card>
+              )}</plume-button>
+            </plume-card>
           </div>
-        </breeze-guest-layout>
+        </plume-guest-layout>
       `;
     }
 
     return html`
-      <breeze-guest-layout>
+      <plume-guest-layout>
         <div class="page-enter">
           <div class="wrap">
             <div class="title">
-              <h1>Breeze</h1>
+              <h1>Plume</h1>
               <p>${msg("Set up your workspace")}</p>
             </div>
-            <breeze-stepper steps="2" current="${this.step}"></breeze-stepper>
+            <plume-stepper steps="2" current="${this.step}"></plume-stepper>
             ${this.step === 0
               ? html`
                 <div class="content-enter">${this.#renderStep0()}</div>
@@ -154,20 +154,20 @@ export class BreezeSetupPage extends LitElement {
               `}
           </div>
         </div>
-      </breeze-guest-layout>
+      </plume-guest-layout>
     `;
   }
 
   #renderStep0() {
     return html`
-      <breeze-card>
+      <plume-card>
         <form @submit="${this.#onContinue}" novalidate>
-          <breeze-field
+          <plume-field
             label=${msg("Organization name")}
             .error="${this.errors.orgName ?? ""}"
             ?invalid="${!!this.errors.orgName}"
           >
-            <breeze-input
+            <plume-input
               id="orgName"
               name="orgName"
               type="text"
@@ -177,24 +177,24 @@ export class BreezeSetupPage extends LitElement {
                 e: Event,
               ) => (this.orgName = (e.target as HTMLInputElement).value)}"
               ?invalid="${!!this.errors.orgName}"
-            ></breeze-input>
-          </breeze-field>
-          <breeze-button type="submit" fluid>${msg("Continue")}</breeze-button>
+            ></plume-input>
+          </plume-field>
+          <plume-button type="submit" fluid>${msg("Continue")}</plume-button>
         </form>
-      </breeze-card>
+      </plume-card>
     `;
   }
 
   #renderStep1() {
     return html`
-      <breeze-card>
+      <plume-card>
         <form @submit="${this.#onSubmit}" novalidate>
-          <breeze-field
+          <plume-field
             label=${msg("Your name")}
             .error="${this.errors.name ?? ""}"
             ?invalid="${!!this.errors.name}"
           >
-            <breeze-input
+            <plume-input
               id="name"
               name="name"
               type="text"
@@ -204,14 +204,14 @@ export class BreezeSetupPage extends LitElement {
                 e: Event,
               ) => (this.name = (e.target as HTMLInputElement).value)}"
               ?invalid="${!!this.errors.name}"
-            ></breeze-input>
-          </breeze-field>
-          <breeze-field
+            ></plume-input>
+          </plume-field>
+          <plume-field
             label=${msg("Email")}
             .error="${this.errors.email ?? ""}"
             ?invalid="${!!this.errors.email}"
           >
-            <breeze-input
+            <plume-input
               id="email"
               name="email"
               type="email"
@@ -221,14 +221,14 @@ export class BreezeSetupPage extends LitElement {
                 e: Event,
               ) => (this.email = (e.target as HTMLInputElement).value)}"
               ?invalid="${!!this.errors.email}"
-            ></breeze-input>
-          </breeze-field>
-          <breeze-field
+            ></plume-input>
+          </plume-field>
+          <plume-field
             label=${msg("Password")}
             .error="${this.errors.password ?? ""}"
             ?invalid="${!!this.errors.password}"
           >
-            <breeze-input
+            <plume-input
               id="password"
               name="password"
               type="password"
@@ -238,28 +238,28 @@ export class BreezeSetupPage extends LitElement {
                 e: Event,
               ) => (this.password = (e.target as HTMLInputElement).value)}"
               ?invalid="${!!this.errors.password}"
-            ></breeze-input>
-          </breeze-field>
+            ></plume-input>
+          </plume-field>
           ${this.errors.form
             ? html`
               <div class="form-error">${this.errors.form}</div>
             `
             : null}
           <div class="row">
-            <breeze-button variant="outline" type="button" @click="${() => (this
+            <plume-button variant="outline" type="button" @click="${() => (this
               .step = 0)}"
-            >${msg("Back")}</breeze-button>
-            <breeze-button type="submit" fluid ?disabled="${this.submitting}"
+            >${msg("Back")}</plume-button>
+            <plume-button type="submit" fluid ?disabled="${this.submitting}"
             >${this.submitting
               ? html`
-                <breeze-spinner></breeze-spinner><span>${msg(
+                <plume-spinner></plume-spinner><span>${msg(
                   "Setting up...",
                 )}</span>
               `
-              : msg("Create workspace")}</breeze-button>
+              : msg("Create workspace")}</plume-button>
           </div>
         </form>
-      </breeze-card>
+      </plume-card>
     `;
   }
 
@@ -328,6 +328,6 @@ export class BreezeSetupPage extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-setup-page": BreezeSetupPage;
+    "plume-setup-page": PlumeSetupPage;
   }
 }

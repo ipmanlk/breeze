@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"testing"
 
-	"ipmanlk/breeze/internal/transport/dto"
+	"ipmanlk/plume/internal/transport/dto"
 )
 
 func createProject(t *testing.T, app *e2eApp, cookie string) string {

@@ -9,7 +9,7 @@ import { customElement, property, query, state } from "lit/decorators.js";
 import { TRAILING_AT_RE } from "@/features/chat/mention-utils";
 import type { MentionResult } from "@/lib/mentions";
 import "@/components/mention/mention-popover.ts";
-import "@/components/ui/breeze-icon.ts";
+import "@/components/ui/plume-icon.ts";
 
 // Mention node: an inline atom that stores <@type:id> tokens.
 //
@@ -128,7 +128,7 @@ function createMention(resolveLabel?: MentionLabelResolver) {
 }
 
 /**
- * <breeze-task-editor>: a rich-text editor for task
+ * <plume-task-editor>: a rich-text editor for task
  * descriptions, built on TipTap (ProseMirror).
  *
  * - Stores content as **markdown** (via @tiptap/markdown), identical to the
@@ -138,13 +138,13 @@ function createMention(resolveLabel?: MentionLabelResolver) {
  *   through markdown unchanged, rendered as chips in the editor.
  * - Bubble menu for inline formatting (bold/italic/strike/code) on selection.
  * - Toolbar with heading/list/quote/undo/redo.
- * - Auto-saves via debounced `breeze-change` events (markdown string).
+ * - Auto-saves via debounced `plume-change` events (markdown string).
  *
  * Public API: getValue(), setValue(), clear(), focus().
  */
 @localized()
-@customElement("breeze-task-editor")
-export class BreezeTaskEditor extends LitElement {
+@customElement("plume-task-editor")
+export class PlumeTaskEditor extends LitElement {
   static styles = css`
     *,
     *::before,
@@ -410,7 +410,7 @@ export class BreezeTaskEditor extends LitElement {
 
   #editor: Editor | null = null;
   #changeDebounce: ReturnType<typeof setTimeout> | null = null;
-  // Tracks the last markdown emitted via breeze-change so updated() can tell
+  // Tracks the last markdown emitted via plume-change so updated() can tell
   // an external value change (task reload) from the editor's own output and
   // avoid re-applying content the user just typed (which resets the cursor).
   #lastEmitted: string | null = null;
@@ -529,7 +529,7 @@ export class BreezeTaskEditor extends LitElement {
           const e = event as KeyboardEvent;
           if (e.key === "Escape") {
             this.dispatchEvent(
-              new CustomEvent("breeze-escape", {
+              new CustomEvent("plume-escape", {
                 bubbles: true,
                 composed: true,
               }),
@@ -539,7 +539,7 @@ export class BreezeTaskEditor extends LitElement {
           // Cmd/Ctrl+Enter saves the description.
           if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) {
             this.dispatchEvent(
-              new CustomEvent("breeze-save", {
+              new CustomEvent("plume-save", {
                 bubbles: true,
                 composed: true,
               }),
@@ -595,7 +595,7 @@ export class BreezeTaskEditor extends LitElement {
       const md = this.#editor?.getMarkdown() ?? "";
       this.#lastEmitted = md;
       this.dispatchEvent(
-        new CustomEvent("breeze-change", {
+        new CustomEvent("plume-change", {
           detail: { value: md },
           bubbles: true,
           composed: true,
@@ -780,28 +780,28 @@ export class BreezeTaskEditor extends LitElement {
                     title="${msg("Bold")}"
                     @click=${() => this._run("bold")}
                   >
-                    <breeze-icon name="bold" size="15"></breeze-icon>
+                    <plume-icon name="bold" size="15"></plume-icon>
                   </button>
                   <button
                     class="tb-btn ${this._active.italic ? "is-active" : ""}"
                     title="${msg("Italic")}"
                     @click=${() => this._run("italic")}
                   >
-                    <breeze-icon name="italic" size="15"></breeze-icon>
+                    <plume-icon name="italic" size="15"></plume-icon>
                   </button>
                   <button
                     class="tb-btn ${this._active.strike ? "is-active" : ""}"
                     title="${msg("Strikethrough")}"
                     @click=${() => this._run("strike")}
                   >
-                    <breeze-icon name="strikethrough" size="15"></breeze-icon>
+                    <plume-icon name="strikethrough" size="15"></plume-icon>
                   </button>
                   <button
                     class="tb-btn ${this._active.code ? "is-active" : ""}"
                     title="${msg("Inline code")}"
                     @click=${() => this._run("code")}
                   >
-                    <breeze-icon name="code" size="15"></breeze-icon>
+                    <plume-icon name="code" size="15"></plume-icon>
                   </button>
                 </div>
                 <div class="toolbar-divider"></div>
@@ -811,7 +811,7 @@ export class BreezeTaskEditor extends LitElement {
                     title="${msg("Bullet list")}"
                     @click=${() => this._run("bulletList")}
                   >
-                    <breeze-icon name="list" size="15"></breeze-icon>
+                    <plume-icon name="list" size="15"></plume-icon>
                   </button>
                   <button
                     class="tb-btn ${this._active.orderedList
@@ -820,14 +820,14 @@ export class BreezeTaskEditor extends LitElement {
                     title="${msg("Numbered list")}"
                     @click=${() => this._run("orderedList")}
                   >
-                    <breeze-icon name="list-ordered" size="15"></breeze-icon>
+                    <plume-icon name="list-ordered" size="15"></plume-icon>
                   </button>
                   <button
                     class="tb-btn ${this._active.blockquote ? "is-active" : ""}"
                     title="${msg("Quote")}"
                     @click=${() => this._run("blockquote")}
                   >
-                    <breeze-icon name="quote" size="15"></breeze-icon>
+                    <plume-icon name="quote" size="15"></plume-icon>
                   </button>
                 </div>
                 <div class="toolbar-divider"></div>
@@ -838,7 +838,7 @@ export class BreezeTaskEditor extends LitElement {
                     ?disabled=${!this._canUndo}
                     @click=${() => this._run("undo")}
                   >
-                    <breeze-icon name="undo" size="15"></breeze-icon>
+                    <plume-icon name="undo" size="15"></plume-icon>
                   </button>
                   <button
                     class="tb-btn"
@@ -846,7 +846,7 @@ export class BreezeTaskEditor extends LitElement {
                     ?disabled=${!this._canRedo}
                     @click=${() => this._run("redo")}
                   >
-                    <breeze-icon name="redo" size="15"></breeze-icon>
+                    <plume-icon name="redo" size="15"></plume-icon>
                   </button>
                 </div>
               </div>
@@ -856,12 +856,12 @@ export class BreezeTaskEditor extends LitElement {
         </div>
         ${this._mentionOpen
           ? html`
-            <breeze-mention-popover
+            <plume-mention-popover
               .query=${this._mentionQuery}
               .left=${this._mentionLeft}
               @pick=${this._onMentionPick}
               @close=${this._onMentionClose}
-            ></breeze-mention-popover>
+            ></plume-mention-popover>
           `
           : nothing}
       </div>
@@ -871,6 +871,6 @@ export class BreezeTaskEditor extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-task-editor": BreezeTaskEditor;
+    "plume-task-editor": PlumeTaskEditor;
   }
 }

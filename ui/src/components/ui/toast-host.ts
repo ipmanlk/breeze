@@ -4,7 +4,7 @@ import { localized, msg } from "@lit/localize";
 import { repeat } from "lit/directives/repeat.js";
 import { SignalController } from "@/lib/signal-controller";
 import { dismissToast, toasts } from "./toast-store";
-import "./breeze-icon.ts";
+import "./plume-icon.ts";
 
 /**
  * Top-level toast host. Renders transient notifications in the viewport's
@@ -18,8 +18,8 @@ import "./breeze-icon.ts";
  * Motion group: --motion-overlay (enter/exit fade+slide).
  */
 @localized()
-@customElement("breeze-toast-host")
-export class BreezeToastHost extends LitElement {
+@customElement("plume-toast-host")
+export class PlumeToastHost extends LitElement {
   static styles = css`
     *,
     *::before,
@@ -131,9 +131,9 @@ export class BreezeToastHost extends LitElement {
           html`
             <div class="toast" data-variant="${t.variant}" role="status">
               <span class="icon">
-                <breeze-icon name="${this.#iconFor(
+                <plume-icon name="${this.#iconFor(
                   t.variant,
-                )}" size="16"></breeze-icon>
+                )}" size="16"></plume-icon>
               </span>
               <span class="message">${t.message}</span>
               <button
@@ -142,7 +142,7 @@ export class BreezeToastHost extends LitElement {
                 aria-label="${msg("Dismiss")}"
                 @click="${() => dismissToast(t.id)}"
               >
-                <breeze-icon name="x" size="14"></breeze-icon>
+                <plume-icon name="x" size="14"></plume-icon>
               </button>
             </div>
           `,
@@ -153,6 +153,6 @@ export class BreezeToastHost extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-toast-host": BreezeToastHost;
+    "plume-toast-host": PlumeToastHost;
   }
 }

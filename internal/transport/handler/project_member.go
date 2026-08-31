@@ -5,11 +5,11 @@ import (
 	"net/http"
 	"strconv"
 
-	"ipmanlk/breeze/internal/domain"
-	"ipmanlk/breeze/internal/port"
-	"ipmanlk/breeze/internal/transport"
-	"ipmanlk/breeze/internal/transport/access"
-	"ipmanlk/breeze/internal/transport/dto"
+	"ipmanlk/plume/internal/domain"
+	"ipmanlk/plume/internal/port"
+	"ipmanlk/plume/internal/transport"
+	"ipmanlk/plume/internal/transport/access"
+	"ipmanlk/plume/internal/transport/dto"
 
 	"github.com/go-chi/chi/v5"
 )

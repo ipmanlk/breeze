@@ -1,4 +1,4 @@
-module ipmanlk/breeze
+module ipmanlk/plume
 
 go 1.26.6
 

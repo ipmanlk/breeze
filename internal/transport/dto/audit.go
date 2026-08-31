@@ -1,6 +1,6 @@
 package dto
 
-import "ipmanlk/breeze/internal/domain"
+import "ipmanlk/plume/internal/domain"
 
 // AuditEntryResponse is a single audit-log row for the admin UI.
 type AuditEntryResponse struct {

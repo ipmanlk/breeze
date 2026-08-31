@@ -5,8 +5,8 @@ import (
 	"errors"
 	"testing"
 
-	"ipmanlk/breeze/internal/apperr"
-	"ipmanlk/breeze/internal/domain"
+	"ipmanlk/plume/internal/apperr"
+	"ipmanlk/plume/internal/domain"
 )
 
 func TestTimeEntryService_Update_RequiresOwnershipOrAdmin(t *testing.T) {

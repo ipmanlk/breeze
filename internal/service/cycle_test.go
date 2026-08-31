@@ -5,7 +5,7 @@ import (
 	"testing"
 	"time"
 
-	"ipmanlk/breeze/internal/domain"
+	"ipmanlk/plume/internal/domain"
 )
 
 func ptr(s string) *string {

@@ -5,8 +5,8 @@ import { chatApi } from "../api";
 import { localized, msg } from "@lit/localize";
 
 @localized()
-@customElement("breeze-member-list-panel")
-export class BreezeMemberListPanel extends LitElement {
+@customElement("plume-member-list-panel")
+export class PlumeMemberListPanel extends LitElement {
   static styles = css`
     *,
     *::before,
@@ -182,7 +182,7 @@ export class BreezeMemberListPanel extends LitElement {
           @click="${this._onClose}"
           aria-label=${msg("Close members panel")}
         >
-          <breeze-icon name="x" size="14"></breeze-icon>
+          <plume-icon name="x" size="14"></plume-icon>
         </button>
       </div>
       <div class="scroll">
@@ -229,6 +229,6 @@ export class BreezeMemberListPanel extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-member-list-panel": BreezeMemberListPanel;
+    "plume-member-list-panel": PlumeMemberListPanel;
   }
 }

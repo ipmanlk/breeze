@@ -7,7 +7,7 @@ package service
 import (
 	"time"
 
-	"ipmanlk/breeze/internal/domain"
+	"ipmanlk/plume/internal/domain"
 )
 
 // ---------------------------------------------------------------------------

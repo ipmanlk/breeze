@@ -4,9 +4,9 @@ import (
 	"context"
 	"fmt"
 
-	"ipmanlk/breeze/internal/domain"
-	"ipmanlk/breeze/internal/port"
-	"ipmanlk/breeze/internal/store/sqlc"
+	"ipmanlk/plume/internal/domain"
+	"ipmanlk/plume/internal/port"
+	"ipmanlk/plume/internal/store/sqlc"
 )
 
 var _ port.MessageAttachmentRepository = (*MessageAttachmentStore)(nil)

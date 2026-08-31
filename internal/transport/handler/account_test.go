@@ -10,8 +10,8 @@ import (
 
 	"log/slog"
 
-	"ipmanlk/breeze/internal/apperr"
-	"ipmanlk/breeze/internal/domain"
+	"ipmanlk/plume/internal/apperr"
+	"ipmanlk/plume/internal/domain"
 )
 
 func TestAccountHandler_UpdateProfile_Success(t *testing.T) {

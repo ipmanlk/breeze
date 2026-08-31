@@ -3,8 +3,8 @@ package service
 import (
 	"context"
 
-	"ipmanlk/breeze/internal/domain"
-	"ipmanlk/breeze/internal/port"
+	"ipmanlk/plume/internal/domain"
+	"ipmanlk/plume/internal/port"
 )
 
 // mentionHydrator resolves <@type:id> tokens in text into a domain.Mentions

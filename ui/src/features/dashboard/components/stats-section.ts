@@ -1,7 +1,7 @@
 import { css, html, LitElement } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { localized, msg } from "@lit/localize";
-import "../../../components/ui/breeze-icon.ts";
+import "../../../components/ui/plume-icon.ts";
 import "../../../components/ui/card.ts";
 
 interface DashboardStats {
@@ -53,8 +53,8 @@ function getSTAT_ITEMS(): {
 }
 
 @localized()
-@customElement("breeze-stats-section")
-export class BreezeStatsSection extends LitElement {
+@customElement("plume-stats-section")
+export class PlumeStatsSection extends LitElement {
   static styles = css`
     *,
     *::before,
@@ -101,17 +101,17 @@ export class BreezeStatsSection extends LitElement {
     };
 
     return html`
-      <breeze-card style="border-style:dashed">
+      <plume-card style="border-style:dashed">
         <div class="grid">
           ${getSTAT_ITEMS().map(
             ({ key, label, icon, color }) =>
               html`
                 <div class="stat">
-                  <breeze-icon
+                  <plume-icon
                     name="${icon}"
                     size="20"
                     style="color:${color}"
-                  ></breeze-icon>
+                  ></plume-icon>
                   <span class="stat-value">${stats[
                     key as keyof DashboardStats
                   ]}</span>
@@ -120,13 +120,13 @@ export class BreezeStatsSection extends LitElement {
               `,
           )}
         </div>
-      </breeze-card>
+      </plume-card>
     `;
   }
 }
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-stats-section": BreezeStatsSection;
+    "plume-stats-section": PlumeStatsSection;
   }
 }

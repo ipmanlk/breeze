@@ -10,8 +10,8 @@ import (
 	"net/smtp"
 	"strings"
 
-	"ipmanlk/breeze/internal/config"
-	"ipmanlk/breeze/internal/port"
+	"ipmanlk/plume/internal/config"
+	"ipmanlk/plume/internal/port"
 )
 
 // mailer is the port.Mailer implementation. When SMTP is not configured
@@ -64,7 +64,7 @@ func (m *mailer) Send(ctx context.Context, to, subject, htmlBody, textBody strin
 	from := m.cfg.From
 	fromName := m.cfg.FromName
 	if fromName == "" {
-		fromName = "Breeze"
+		fromName = "Plume"
 	}
 
 	headers := map[string]string{
@@ -77,7 +77,7 @@ func (m *mailer) Send(ctx context.Context, to, subject, htmlBody, textBody strin
 	var body strings.Builder
 	if textBody != "" && htmlBody != "" {
 		// Multipart alternative: text + HTML.
-		boundary := "breeze-" + randomBoundary()
+		boundary := "plume-" + randomBoundary()
 		headers["Content-Type"] = fmt.Sprintf("multipart/alternative; boundary=%s", boundary)
 		for k, v := range headers {
 			fmt.Fprintf(&body, "%s: %s\r\n", k, v)

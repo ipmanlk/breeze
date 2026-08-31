@@ -4,7 +4,7 @@ import { customElement, state } from "lit/decorators.js";
 import { type MotionSettings, motionSettings } from "@/store/motion";
 import "../components/ui/switch.ts";
 import "../components/ui/button.ts";
-import "../components/ui/breeze-icon.ts";
+import "../components/ui/plume-icon.ts";
 
 interface MotionGroup {
   key: keyof MotionSettings;
@@ -72,11 +72,11 @@ function getMotionGroups(): MotionGroup[] {
  * speed slider, and per-group toggles. Read/writes the motionSettings store.
  *
  * Usage:
- *   <breeze-motion-settings></breeze-motion-settings>
+ *   <plume-motion-settings></plume-motion-settings>
  */
 @localized()
-@customElement("breeze-motion-settings")
-export class BreezeMotionSettings extends LitElement {
+@customElement("plume-motion-settings")
+export class PlumeMotionSettings extends LitElement {
   static styles = css`
     *,
     *::before,
@@ -229,7 +229,7 @@ export class BreezeMotionSettings extends LitElement {
       color: var(--warning-foreground);
       margin-bottom: var(--space-3);
     }
-    .reduced-banner breeze-icon {
+    .reduced-banner plume-icon {
       flex-shrink: 0;
     }
   `;
@@ -293,16 +293,16 @@ export class BreezeMotionSettings extends LitElement {
       <div class="section">
         <div class="section-header">
           <h2>${msg("Animation & Motion")}</h2>
-          <p>${msg("Control how Breeze animates and transitions")}</p>
+          <p>${msg("Control how Plume animates and transitions")}</p>
         </div>
 
         ${this._reducedMotion
           ? html`
             <div class="reduced-banner">
-              <breeze-icon name="alert-circle" size="14"></breeze-icon>
+              <plume-icon name="alert-circle" size="14"></plume-icon>
               <span>
                 ${msg(
-                  "Your system has reduced motion enabled. Breeze animations are disabled. You can override below.",
+                  "Your system has reduced motion enabled. Plume animations are disabled. You can override below.",
                 )}
               </span>
             </div>
@@ -318,10 +318,10 @@ export class BreezeMotionSettings extends LitElement {
             </span>
           </div>
           <div class="field-control">
-            <breeze-switch
+            <plume-switch
               .checked="${s.global}"
               @change="${this._setMaster}"
-            ></breeze-switch>
+            ></plume-switch>
           </div>
         </div>
 
@@ -363,7 +363,7 @@ export class BreezeMotionSettings extends LitElement {
           }}"
         >
           <span class="chevron${this._showAdvanced ? " open" : ""}">
-            <breeze-icon name="chevron-right" size="14"></breeze-icon>
+            <plume-icon name="chevron-right" size="14"></plume-icon>
           </span>
           <span
             style="font-size:var(--text-sm);font-weight:500;color:var(--muted-foreground)"
@@ -382,11 +382,11 @@ export class BreezeMotionSettings extends LitElement {
                     <span class="description">${g.description}</span>
                   </div>
                   <div class="field-control">
-                    <breeze-switch
+                    <plume-switch
                       .checked="${s[g.key] as boolean}"
                       ?disabled="${!s.global}"
                       @change="${(e: CustomEvent) => this._setGroup(g.key, e)}"
-                    ></breeze-switch>
+                    ></plume-switch>
                   </div>
                 </div>
               `,
@@ -394,9 +394,9 @@ export class BreezeMotionSettings extends LitElement {
         </div>
 
         <div class="reset-btn">
-          <breeze-button variant="outline" size="sm" @click="${this._reset}">
+          <plume-button variant="outline" size="sm" @click="${this._reset}">
           ${msg("Reset to defaults")}
-          </breeze-button>
+          </plume-button>
         </div>
       </div>
     `;
@@ -405,6 +405,6 @@ export class BreezeMotionSettings extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-motion-settings": BreezeMotionSettings;
+    "plume-motion-settings": PlumeMotionSettings;
   }
 }

@@ -7,10 +7,10 @@ import (
 	"strings"
 	"time"
 
-	"ipmanlk/breeze/internal/apperr"
-	"ipmanlk/breeze/internal/domain"
-	"ipmanlk/breeze/internal/i18n"
-	"ipmanlk/breeze/internal/port"
+	"ipmanlk/plume/internal/apperr"
+	"ipmanlk/plume/internal/domain"
+	"ipmanlk/plume/internal/i18n"
+	"ipmanlk/plume/internal/port"
 
 	"github.com/google/uuid"
 )

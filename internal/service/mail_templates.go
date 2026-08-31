@@ -85,17 +85,17 @@ func execText(name string, data any) string {
 }
 
 // PasswordResetEmail builds the password reset email. resetURL is the full
-// link the recipient clicks (e.g. https://breeze.example.com/reset-password?token=...).
+// link the recipient clicks (e.g. https://plume.example.com/reset-password?token=...).
 func PasswordResetEmail(resetURL string) EmailTemplate {
 	return EmailTemplate{
-		Subject: "Reset your Breeze password",
+		Subject: "Reset your Plume password",
 		Text:    execText("reset.txt", resetEmailData{URL: resetURL}),
 		HTML:    execHTML("reset.html", resetEmailData{URL: resetURL}),
 	}
 }
 
 // InviteEmail builds the invite email. joinURL is the full link the invitee
-// clicks to accept (e.g. https://breeze.example.com/join?token=...).
+// clicks to accept (e.g. https://plume.example.com/join?token=...).
 func InviteEmail(inviterName, orgName, joinURL string) EmailTemplate {
 	inviter := inviterName
 	if inviter == "" {
@@ -103,7 +103,7 @@ func InviteEmail(inviterName, orgName, joinURL string) EmailTemplate {
 	}
 	org := orgName
 	if org == "" {
-		org = "a Breeze workspace"
+		org = "a Plume workspace"
 	}
 	return EmailTemplate{
 		// Subject is an email header (plain text), not HTML.

@@ -10,18 +10,18 @@ import "./components/chat-layout.ts";
 import { localized, msg } from "@lit/localize";
 
 const CP_STYLES = `
-breeze-chat-page { display: block; }
+plume-chat-page { display: block; }
 `;
 
 /**
  * Light DOM: required for @atlaskit/pragmatic-drag-and-drop in the workspace
- * sidebar. `breeze-app-layout` keeps its shadow DOM (content is slotted into
+ * sidebar. `plume-app-layout` keeps its shadow DOM (content is slotted into
  * the light DOM tree), but this page must be light DOM so the chain from the
  * sidebar up to the document is unbroken. Styles are global, prefixed `cp-`.
  */
 @localized()
-@customElement("breeze-chat-page")
-export class BreezeChatPage extends LitElement {
+@customElement("plume-chat-page")
+export class PlumeChatPage extends LitElement {
   createRenderRoot() {
     return this;
   }
@@ -78,18 +78,18 @@ export class BreezeChatPage extends LitElement {
       <style>
       ${CP_STYLES}
       </style>
-      <breeze-app-layout data-fullscreen>
-        <breeze-chat-layout
+      <plume-app-layout data-fullscreen>
+        <plume-chat-layout
           mode="workspace"
           conversationId="${this.conversationId}"
-        ></breeze-chat-layout>
-      </breeze-app-layout>
+        ></plume-chat-layout>
+      </plume-app-layout>
     `;
   }
 }
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-chat-page": BreezeChatPage;
+    "plume-chat-page": PlumeChatPage;
   }
 }

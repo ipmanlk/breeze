@@ -7,7 +7,7 @@ import { projects } from "@/store/projects";
 import "@/components/ui/dialog.ts";
 import "@/components/ui/input.ts";
 import "@/components/ui/button.ts";
-import "@/components/ui/breeze-icon.ts";
+import "@/components/ui/plume-icon.ts";
 import "@/components/ui/combobox.ts";
 import { localized, msg } from "@lit/localize";
 
@@ -18,8 +18,8 @@ import { localized, msg } from "@lit/localize";
  * On success, prepends the new category to the conversation list and closes.
  */
 @localized()
-@customElement("breeze-create-category-dialog")
-export class BreezeCreateCategoryDialog extends LitElement {
+@customElement("plume-create-category-dialog")
+export class PlumeCreateCategoryDialog extends LitElement {
   static styles = css`
     *,
     *::before,
@@ -123,14 +123,14 @@ export class BreezeCreateCategoryDialog extends LitElement {
         <p class="hint" style="margin-bottom:var(--space-1)">
           Link to projects (optional):
         </p>
-        <breeze-combobox
+        <plume-combobox
           .options="${options}"
           .value="${this._projectIds}"
           placeholder=${msg("Select projects...")}
           @change="${(e: Event) => {
             this._projectIds = (e as CustomEvent).detail as string[];
           }}"
-        ></breeze-combobox>
+        ></plume-combobox>
       </div>
     `;
   }
@@ -139,21 +139,21 @@ export class BreezeCreateCategoryDialog extends LitElement {
     const isOpen = showCreateCategory.value;
 
     return html`
-      <breeze-dialog
+      <plume-dialog
         style="--dialog-w:28rem"
         .open="${isOpen}"
         heading="Create category"
         @close="${this.#onClose}"
       >
         <div class="body">
-          <breeze-input
+          <plume-input
             placeholder=${msg("e.g. Engineering")}
             .value="${this._name}"
             autofocus
             @input="${(e: Event) => {
               this._name = (e.target as HTMLInputElement).value;
             }}"
-          ></breeze-input>
+          ></plume-input>
           ${this.#renderProjectPicker()} ${this._error
             ? html`
               <p class="error">${this._error}</p>
@@ -161,28 +161,28 @@ export class BreezeCreateCategoryDialog extends LitElement {
             : ""}
         </div>
         <div slot="footer" class="footer">
-          <breeze-button
+          <plume-button
             variant="ghost"
             type="button"
             @click="${this.#onClose}"
           >
             Cancel
-          </breeze-button>
-          <breeze-button
+          </plume-button>
+          <plume-button
             variant=""
             ?disabled="${this._creating || !this._name.trim()}"
             @click="${this.#onSubmit}"
           >
             ${this._creating ? "Creating..." : "Create"}
-          </breeze-button>
+          </plume-button>
         </div>
-      </breeze-dialog>
+      </plume-dialog>
     `;
   }
 }
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-create-category-dialog": BreezeCreateCategoryDialog;
+    "plume-create-category-dialog": PlumeCreateCategoryDialog;
   }
 }

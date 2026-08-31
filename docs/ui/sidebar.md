@@ -1,8 +1,8 @@
 # Sidebar (shadcn parity)
 
-Hard-won lessons from porting the shadcn `Sidebar` to Lit (`breeze-app-layout`
+Hard-won lessons from porting the shadcn `Sidebar` to Lit (`plume-app-layout`
 
-- the `breeze-nav-*` components). Read this before touching the sidebar or
+- the `plume-nav-*` components). Read this before touching the sidebar or
   adding a sidebar section/item. The canonical implementation is
   `src/layouts/app-layout.ts` + `src/components/nav/`.
 
@@ -15,7 +15,7 @@ own `p-2` (8px). Match this exactly or the section gaps look wrong:
 | ---------------------- | --------------------------------------------------------- | ------------------------------------------------------------------------------ |
 | `SidebarHeader/Footer` | `flex flex-col gap-2 p-2`                                 | wrapper `padding: var(--space-2)`                                              |
 | `SidebarContent`       | `flex-1 gap-0 overflow-auto`                              | `.nav-scroll { flex:1; gap:0; overflow-y:auto }`                               |
-| `SidebarGroup`         | `flex flex-col p-2`                                       | each `breeze-nav-*` root: `padding: var(--space-2)`                            |
+| `SidebarGroup`         | `flex flex-col p-2`                                       | each `plume-nav-*` root: `padding: var(--space-2)`                            |
 | `SidebarMenu`          | `flex flex-col gap-0`                                     | `.menu { gap: 0 }`; items are **flush**                                       |
 | `SidebarMenuButton`    | `h-8 p-2 gap-2 rounded-md`                                | `a { height: var(--space-8); padding: 0 var(--space-2); gap: var(--space-2) }` |
 | `SidebarMenuButton sm` | `h-7 text-xs p-2 gap-2`                                   | `height: var(--space-7); font-size: var(--text-xs)`                            |
@@ -126,7 +126,7 @@ secondary:
 ```ts
 if (collapsed) {
   return html`
-    <breeze-tooltip text="${name}" side="right">${logo}</breeze-tooltip>
+    <plume-tooltip text="${name}" side="right">${logo}</plume-tooltip>
   `;
 }
 return html`
@@ -193,22 +193,22 @@ is an absolutely-positioned **sibling**, shown on `.item:hover`:
 
 The button is no longer inside the anchor, so clicking it never navigates (no
 `stopPropagation` hack needed), and the HTML is valid. This is how
-`breeze-nav-projects` (more) and `breeze-nav-views` (unpin) are built.
+`plume-nav-projects` (more) and `plume-nav-views` (unpin) are built.
 
 ## Collapsed items: icon-centered rows
 
 shadcn collapsed buttons are `size-8` (32px square) with the icon centered. Our
 rows stay full-width with `justify-content: center` and the label hidden; the
-icon centers in the full width. This is consistent across `breeze-nav-list` /
+icon centers in the full width. This is consistent across `plume-nav-list` /
 `-projects` / `-views` and avoids per-component centering math. Wrap the whole
-row in `<breeze-tooltip text side="right">` when collapsed so hovering reveals
+row in `<plume-tooltip text side="right">` when collapsed so hovering reveals
 the name.
 
 ## Fetching sidebar data once
 
 The sidebar is re-instantiated per page (each page wraps its content in
-`<breeze-app-layout>`), so fetching in `connectedCallback` would re-fetch on
+`<plume-app-layout>`), so fetching in `connectedCallback` would re-fetch on
 every navigation. Instead, fetch sidebar data (projects, pinned views, unread
-count) **once** in the persistent `breeze-app` shell when auth resolves, guarded
+count) **once** in the persistent `plume-app` shell when auth resolves, guarded
 by a `#loaded` flag. The nav components only **read** the signals and re-render
 on change. See `src/app-shell.ts`.

@@ -8,7 +8,7 @@ import (
 	"testing"
 	"time"
 
-	"ipmanlk/breeze/internal/config"
+	"ipmanlk/plume/internal/config"
 )
 
 func TestMailer_DisabledWhenNoHost(t *testing.T) {
@@ -23,14 +23,14 @@ func TestMailer_DisabledWhenNoHost(t *testing.T) {
 }
 
 func TestMailer_EnabledWhenHostSet(t *testing.T) {
-	m := NewMailer(config.SMTPConfig{Host: "localhost", Port: 2525, From: "breeze@t.com"}, slog.Default())
+	m := NewMailer(config.SMTPConfig{Host: "localhost", Port: 2525, From: "plume@t.com"}, slog.Default())
 	if !m.Enabled() {
 		t.Fatal("mailer should be enabled when Host is set")
 	}
 }
 
 func TestPasswordResetEmail_ContainsLink(t *testing.T) {
-	url := "https://breeze.example.com/reset-password?token=abc"
+	url := "https://plume.example.com/reset-password?token=abc"
 	tmpl := PasswordResetEmail(url)
 	if !strings.Contains(tmpl.Text, url) {
 		t.Errorf("text body missing reset URL")
@@ -44,7 +44,7 @@ func TestPasswordResetEmail_ContainsLink(t *testing.T) {
 }
 
 func TestInviteEmail_ContainsLinkAndNames(t *testing.T) {
-	url := "https://breeze.example.com/join?token=xyz"
+	url := "https://plume.example.com/join?token=xyz"
 	tmpl := InviteEmail("Alice", "Acme", url)
 	if !strings.Contains(tmpl.Text, "Alice") || !strings.Contains(tmpl.Text, "Acme") {
 		t.Errorf("text body missing inviter/org name: %q", tmpl.Text)
@@ -55,11 +55,11 @@ func TestInviteEmail_ContainsLinkAndNames(t *testing.T) {
 }
 
 func TestNotificationEmail_ContainsTitleAndLink(t *testing.T) {
-	tmpl := NotificationEmail("Task due: Fix bug", "Fix bug is due tomorrow", "https://breeze.example.com/projects/p?task=t1")
+	tmpl := NotificationEmail("Task due: Fix bug", "Fix bug is due tomorrow", "https://plume.example.com/projects/p?task=t1")
 	if !strings.Contains(tmpl.Text, "Fix bug") {
 		t.Errorf("text body missing title")
 	}
-	if !strings.Contains(tmpl.Text, "https://breeze.example.com/projects/p?task=t1") {
+	if !strings.Contains(tmpl.Text, "https://plume.example.com/projects/p?task=t1") {
 		t.Errorf("text body missing link")
 	}
 	if !strings.Contains(tmpl.HTML, "Task due: Fix bug") {
@@ -176,10 +176,10 @@ func TestMailer_SendTLS_ContextCancellation(t *testing.T) {
 }
 
 func TestJoinAndResetURL(t *testing.T) {
-	if got := joinURL("https://breeze.example.com/", "tok"); got != "https://breeze.example.com/join?token=tok" {
+	if got := joinURL("https://plume.example.com/", "tok"); got != "https://plume.example.com/join?token=tok" {
 		t.Errorf("joinURL = %q", got)
 	}
-	if got := resetURL("https://breeze.example.com", "tok"); got != "https://breeze.example.com/reset-password?token=tok" {
+	if got := resetURL("https://plume.example.com", "tok"); got != "https://plume.example.com/reset-password?token=tok" {
 		t.Errorf("resetURL = %q", got)
 	}
 }
@@ -207,7 +207,7 @@ func TestSanitizeHeaderValue(t *testing.T) {
 // before the header is written. Uses a no-op SMTP (disabled mailer) so only
 // header construction is exercised.
 func TestMailer_HeaderInjection_Subject(t *testing.T) {
-	m := NewMailer(config.SMTPConfig{Host: "localhost", Port: 2525, From: "breeze@t.com"}, slog.Default())
+	m := NewMailer(config.SMTPConfig{Host: "localhost", Port: 2525, From: "plume@t.com"}, slog.Default())
 	_ = m // header sanitization happens in Send; verified via TestSanitizeHeaderValue
 	// Direct proof: the notification subject path feeds user data into the
 	// Subject header, which sanitizeHeaderValue now guards.
@@ -224,7 +224,7 @@ func TestMailer_HeaderInjection_Subject(t *testing.T) {
 func TestNotificationEmail_EscapesBodyAndTitle(t *testing.T) {
 	title := `Task due: <script>alert(1)</script>`
 	body := `<img src=x onerror=alert(1)> <b>bold</b> <@user:abc>`
-	tmpl := NotificationEmail(title, body, "https://breeze.example.com/p")
+	tmpl := NotificationEmail(title, body, "https://plume.example.com/p")
 
 	if strings.Contains(tmpl.HTML, "<script") {
 		t.Errorf("title <script> not escaped in HTML: %s", tmpl.HTML)
@@ -277,7 +277,7 @@ func TestNotificationEmail_DropsDangerousLinkScheme(t *testing.T) {
 // TestInviteEmail_EscapesUserNames verifies that inviter/org names are
 // HTML-escaped in the invite email body.
 func TestInviteEmail_EscapesUserNames(t *testing.T) {
-	tmpl := InviteEmail(`<b>Alice</b><script>`, `Acme & Co`, "https://breeze.example.com/join?token=x")
+	tmpl := InviteEmail(`<b>Alice</b><script>`, `Acme & Co`, "https://plume.example.com/join?token=x")
 	if strings.Contains(tmpl.HTML, "<script") {
 		t.Errorf("inviter <script> not escaped: %s", tmpl.HTML)
 	}

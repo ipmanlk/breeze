@@ -5,10 +5,10 @@ import (
 	"log/slog"
 	"net/http"
 
-	"ipmanlk/breeze/internal/domain"
-	"ipmanlk/breeze/internal/i18n"
-	"ipmanlk/breeze/internal/port"
-	"ipmanlk/breeze/internal/transport"
+	"ipmanlk/plume/internal/domain"
+	"ipmanlk/plume/internal/i18n"
+	"ipmanlk/plume/internal/port"
+	"ipmanlk/plume/internal/transport"
 )
 
 func RequireAuth(authService port.AuthService, userPrefsRepo port.UserPreferencesRepository, logger *slog.Logger) func(http.Handler) http.Handler {

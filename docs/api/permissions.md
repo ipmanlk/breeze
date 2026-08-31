@@ -2,7 +2,7 @@
 
 ## Overview
 
-Breeze uses a three-axis permission model:
+Plume uses a three-axis permission model:
 
 1. **Org role** (on `users` table): the user's base role within the organization
 2. **Project membership** (on `project_members` table): per-project role escalation

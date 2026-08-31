@@ -16,7 +16,7 @@ import {
   unreadCount,
 } from "./store";
 import { SignalController } from "@/lib/signal-controller";
-import "../../components/ui/breeze-icon.ts";
+import "../../components/ui/plume-icon.ts";
 import "../../components/ui/spinner.ts";
 import "../../components/ui/switch.ts";
 import "../../layouts/app-layout.ts";
@@ -26,8 +26,8 @@ import "./notification-item.ts";
  * Inbox page: notifications list with unread-only toggle and mark-all-read.
  */
 @localized()
-@customElement("breeze-inbox-page")
-export class BreezeInboxPage extends LitElement {
+@customElement("plume-inbox-page")
+export class PlumeInboxPage extends LitElement {
   static styles = [
     pageEnterStyles,
     listItemEnterStyles,
@@ -236,7 +236,7 @@ export class BreezeInboxPage extends LitElement {
       : s.items;
 
     return html`
-      <breeze-app-layout>
+      <plume-app-layout>
         <div class="page page-enter">
           <div class="header">
             <div>
@@ -248,10 +248,10 @@ export class BreezeInboxPage extends LitElement {
             <div class="header-actions">
               <label class="toggle-label">
                 ${msg("Unread only")}
-                <breeze-switch
+                <plume-switch
                   .checked="${this._unreadOnly}"
                   @change="${this._toggleUnread}"
-                ></breeze-switch>
+                ></plume-switch>
               </label>
               <button
                 class="mark-all-btn"
@@ -276,11 +276,11 @@ export class BreezeInboxPage extends LitElement {
               : displayed.length === 0
               ? html`
                 <div class="empty">
-                  <breeze-icon
+                  <plume-icon
                     class="empty-icon"
                     name="bell"
                     size="48"
-                  ></breeze-icon>
+                  ></plume-icon>
                   <h2>${msg("All caught up")}</h2>
                   <p>${msg("Notifications will appear here.")}</p>
                 </div>
@@ -289,7 +289,7 @@ export class BreezeInboxPage extends LitElement {
                 ${displayed.map(
                   (n) =>
                     n && html`
-                      <breeze-notification-item
+                      <plume-notification-item
                         class="list-item-enter"
                         .itemId="${n.id ?? ""}"
                         .type="${n.type ?? ""}"
@@ -301,7 +301,7 @@ export class BreezeInboxPage extends LitElement {
                         .isRead="${n.is_read ?? false}"
                         .createdAt="${n.created_at ?? ""}"
                         @notification-click="${this._onNotificationClick}"
-                      ></breeze-notification-item>
+                      ></plume-notification-item>
                     `,
                 )}
               `}
@@ -316,13 +316,13 @@ export class BreezeInboxPage extends LitElement {
               : nothing}
           </div>
         </div>
-      </breeze-app-layout>
+      </plume-app-layout>
     `;
   }
 }
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-inbox-page": BreezeInboxPage;
+    "plume-inbox-page": PlumeInboxPage;
   }
 }

@@ -3,7 +3,7 @@ package ws
 import (
 	"encoding/json"
 
-	"ipmanlk/breeze/internal/domain"
+	"ipmanlk/plume/internal/domain"
 )
 
 type wireEnvelope struct {

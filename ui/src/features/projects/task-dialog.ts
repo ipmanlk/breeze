@@ -16,7 +16,7 @@ import "../../components/ui/tabs.ts";
 import "../../components/ui/input.ts";
 import "../../components/ui/field.ts";
 import "../../components/ui/button.ts";
-import "../../components/ui/breeze-icon.ts";
+import "../../components/ui/plume-icon.ts";
 import { localized, msg } from "@lit/localize";
 
 function getPriorities() {
@@ -34,10 +34,10 @@ function getPriorities() {
 }
 
 /**
- * Breeze task dialog: "Create task" modal.
+ * Plume task dialog: "Create task" modal.
  *
  * Properties:
- *  - `open`      : controls visibility (delegated to `breeze-dialog`)
+ *  - `open`      : controls visibility (delegated to `plume-dialog`)
  *  - `project`   : the project context (for cycles, project ID)
  *  - `statuses`  : available task statuses
  *  - `defaultStatusId`: pre-selected status
@@ -50,8 +50,8 @@ function getPriorities() {
  * reset on every open.
  */
 @localized()
-@customElement("breeze-task-dialog")
-export class BreezeTaskDialog extends LitElement {
+@customElement("plume-task-dialog")
+export class PlumeTaskDialog extends LitElement {
   static styles = css`
     *,
     *::before,
@@ -287,7 +287,7 @@ export class BreezeTaskDialog extends LitElement {
     ];
 
     return html`
-      <breeze-dialog
+      <plume-dialog
         .open="${this.open}"
         heading="${this.parentId ? "Create subtask" : "Create task"}"
         @close="${() => {
@@ -297,24 +297,24 @@ export class BreezeTaskDialog extends LitElement {
         }}"
       >
         <div class="td-body">
-          <breeze-field label="Task title">
-            <breeze-input
+          <plume-field label="Task title">
+            <plume-input
               placeholder=${msg("Enter task title...")}
               .value="${this._title}"
               @input="${(
                 e: Event,
               ) => (this._title = (e.target as HTMLInputElement).value)}"
-            ></breeze-input>
-          </breeze-field>
+            ></plume-input>
+          </plume-field>
 
-          <breeze-tabs
+          <plume-tabs
             .tabs="${[
               { id: "properties", label: msg("Properties") },
               { id: "description", label: msg("Description") },
             ]}"
             .value="${this._tab}"
             @change="${(e: CustomEvent) => (this._tab = e.detail)}"
-          ></breeze-tabs>
+          ></plume-tabs>
 
           <div class="td-tab-content" role="tabpanel"
             aria-labelledby="tab-${this._tab}">
@@ -338,16 +338,16 @@ export class BreezeTaskDialog extends LitElement {
             `
             : nothing}
           <span class="td-spacer"></span>
-          <breeze-button
+          <plume-button
             variant="ghost"
             @click="${() => (this.open = false)}"
-          >Cancel</breeze-button>
-          <breeze-button
+          >Cancel</plume-button>
+          <plume-button
             ?disabled="${this._submitting || !this._isValid}"
             @click="${this._submit}"
-          >${this._submitting ? "Creating..." : "Create task"}</breeze-button>
+          >${this._submitting ? "Creating..." : "Create task"}</plume-button>
         </div>
-      </breeze-dialog>
+      </plume-dialog>
     `;
   }
 
@@ -359,61 +359,61 @@ export class BreezeTaskDialog extends LitElement {
   ) {
     return html`
       <div class="td-grid">
-        <breeze-field label="Status">
-          <breeze-select
+        <plume-field label="Status">
+          <plume-select
             .options="${statusOptions}"
             .value="${this._statusId}"
             @change="${(e: CustomEvent) => (this._statusId = e.detail)}"
-          ></breeze-select>
-        </breeze-field>
-        <breeze-field label="Priority">
-          <breeze-select
+          ></plume-select>
+        </plume-field>
+        <plume-field label="Priority">
+          <plume-select
             .options="${getPriorities()}"
             .value="${this._priority}"
             @change="${(e: CustomEvent) => (this._priority = e.detail)}"
-          ></breeze-select>
-        </breeze-field>
-        <breeze-field label="Assignees" class="full">
-          <breeze-combobox
+          ></plume-select>
+        </plume-field>
+        <plume-field label="Assignees" class="full">
+          <plume-combobox
             .options="${memberOptions}"
             .value="${this._assigneeIds}"
             placeholder=${msg("Assignees")}
             @change="${(e: CustomEvent) => (this._assigneeIds = e.detail)}"
-          ></breeze-combobox>
-        </breeze-field>
-        <breeze-field label="Start date">
-          <breeze-input
+          ></plume-combobox>
+        </plume-field>
+        <plume-field label="Start date">
+          <plume-input
             type="datetime-local"
             .value="${this._startedAt}"
             @input="${(
               e: Event,
             ) => (this._startedAt = (e.target as HTMLInputElement).value)}"
-          ></breeze-input>
-        </breeze-field>
-        <breeze-field label="Due date">
-          <breeze-input
+          ></plume-input>
+        </plume-field>
+        <plume-field label="Due date">
+          <plume-input
             type="datetime-local"
             .value="${this._dueAt}"
             @input="${(
               e: Event,
             ) => (this._dueAt = (e.target as HTMLInputElement).value)}"
-          ></breeze-input>
-        </breeze-field>
+          ></plume-input>
+        </plume-field>
         ${hasCycles
           ? html`
-            <breeze-field label="Cycle">
-              <breeze-select
+            <plume-field label="Cycle">
+              <plume-select
                 .options="${cycleOptions}"
                 .value="${this._cycleId ?? ""}"
                 @change="${(
                   e: CustomEvent,
                 ) => (this._cycleId = e.detail || null)}"
-              ></breeze-select>
-            </breeze-field>
+              ></plume-select>
+            </plume-field>
           `
           : nothing}
-        <breeze-field label="Estimate (hours)">
-          <breeze-input
+        <plume-field label="Estimate (hours)">
+          <plume-input
             type="number"
             min="0"
             placeholder="0"
@@ -422,8 +422,8 @@ export class BreezeTaskDialog extends LitElement {
               const v = (e.target as HTMLInputElement).value;
               this._estimate = v ? Number(v) : null;
             }}"
-          ></breeze-input>
-        </breeze-field>
+          ></plume-input>
+        </plume-field>
       </div>
     `;
   }
@@ -444,6 +444,6 @@ export class BreezeTaskDialog extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-task-dialog": BreezeTaskDialog;
+    "plume-task-dialog": PlumeTaskDialog;
   }
 }

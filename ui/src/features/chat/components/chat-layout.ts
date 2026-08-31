@@ -35,7 +35,7 @@ import { localized } from "@lit/localize";
 export type ChatMode = "workspace" | "dms";
 
 const CL_STYLES = `
-breeze-chat-layout {
+plume-chat-layout {
   display: flex;
   flex: 1;
   min-height: 0;
@@ -66,12 +66,12 @@ breeze-chat-layout {
  * Three-column chat layout: sidebar | chat area | member/settings panel.
  *
  * **Light DOM**: required for @atlaskit/pragmatic-drag-and-drop in the
- * workspace sidebar. `breeze-app-layout` keeps its shadow DOM (content is
+ * workspace sidebar. `plume-app-layout` keeps its shadow DOM (content is
  * slotted into the light DOM tree), but this component and its parent
- * `breeze-chat-page` must be light DOM so the chain from the sidebar up to
+ * `plume-chat-page` must be light DOM so the chain from the sidebar up to
  * the document is unbroken. Styles are global, prefixed `cl-`.
  *
- * Host styles fill the `.content` area of `breeze-app-layout` edge-to-edge:
+ * Host styles fill the `.content` area of `plume-app-layout` edge-to-edge:
  * - `flex: 1; min-height: 0` fills the remaining height in the flex column
  * - `margin: calc(-1 * var(--space-4))` cancels `.content`'s padding on all sides
  *
@@ -83,8 +83,8 @@ breeze-chat-layout {
  * survives refreshes and works with browser back/forward navigation.
  */
 @localized()
-@customElement("breeze-chat-layout")
-export class BreezeChatLayout extends LitElement {
+@customElement("plume-chat-layout")
+export class PlumeChatLayout extends LitElement {
   createRenderRoot() {
     return this;
   }
@@ -465,42 +465,42 @@ export class BreezeChatLayout extends LitElement {
       </style>
       ${this.mode === "workspace"
         ? html`
-          <breeze-workspace-sidebar></breeze-workspace-sidebar>
+          <plume-workspace-sidebar></plume-workspace-sidebar>
         `
         : html`
-          <breeze-dm-sidebar></breeze-dm-sidebar>
+          <plume-dm-sidebar></plume-dm-sidebar>
         `}
       <div class="cl-main">
-        <breeze-chat-area></breeze-chat-area>
+        <plume-chat-area></plume-chat-area>
         ${settingsOpen && (settingsConvId.value || activeConv)
           ? html`
-            <breeze-channel-settings-panel
+            <plume-channel-settings-panel
               .conversationId="${settingsConvId.value ?? activeConv?.id ?? ""}"
-            ></breeze-channel-settings-panel>
+            ></plume-channel-settings-panel>
           `
           : membersOpen && activeConv
           ? html`
-            <breeze-member-list-panel
+            <plume-member-list-panel
               conversationId="${activeConv.id}"
               .presence="${presence.value}"
               @close="${() => {
                 showMemberList.value = false;
               }}"
-            ></breeze-member-list-panel>
+            ></plume-member-list-panel>
           `
           : ""}
       </div>
 
-      <breeze-create-category-dialog></breeze-create-category-dialog>
-      <breeze-create-channel-dialog></breeze-create-channel-dialog>
-      <breeze-create-dm-dialog></breeze-create-dm-dialog>
-      <breeze-chat-search-dialog></breeze-chat-search-dialog>
+      <plume-create-category-dialog></plume-create-category-dialog>
+      <plume-create-channel-dialog></plume-create-channel-dialog>
+      <plume-create-dm-dialog></plume-create-dm-dialog>
+      <plume-chat-search-dialog></plume-chat-search-dialog>
     `;
   }
 }
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-chat-layout": BreezeChatLayout;
+    "plume-chat-layout": PlumeChatLayout;
   }
 }

@@ -3,7 +3,7 @@ package port
 import (
 	"context"
 
-	"ipmanlk/breeze/internal/domain"
+	"ipmanlk/plume/internal/domain"
 )
 
 // AccessService performs authorization checks that were previously scattered

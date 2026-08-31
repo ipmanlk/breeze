@@ -8,7 +8,7 @@ import "./due-soon-section.ts";
 import "./activity-section.ts";
 import "./stats-section.ts";
 import "./projects-section.ts";
-import "../../../components/ui/breeze-icon.ts";
+import "../../../components/ui/plume-icon.ts";
 import "../../../components/ui/button.ts";
 import "../../../components/ui/card.ts";
 import { localized, msg } from "@lit/localize";
@@ -52,8 +52,8 @@ const SECTION_ICONS: Record<string, string> = {
 };
 
 @localized()
-@customElement("breeze-dashboard-home")
-export class BreezeDashboardHome extends LitElement {
+@customElement("plume-dashboard-home")
+export class PlumeDashboardHome extends LitElement {
   static styles = css`
     *,
     *::before,
@@ -332,13 +332,13 @@ export class BreezeDashboardHome extends LitElement {
         </div>
         <div class="actions">
           <div style="position:relative">
-            <breeze-button size="sm" @click="${() => {
+            <plume-button size="sm" @click="${() => {
               this.showNew = !this.showNew;
               this.showCustomize = false;
             }}">
-              <breeze-icon name="plus" size="16"></breeze-icon>
+              <plume-icon name="plus" size="16"></plume-icon>
               ${msg("New")}
-            </breeze-button>
+            </plume-button>
             ${this.showNew
               ? html`
                 <div class="new-dropdown">
@@ -348,7 +348,7 @@ export class BreezeDashboardHome extends LitElement {
                       navigate("/projects");
                     }}"
                   >
-                    <breeze-icon name="folder" size="16"></breeze-icon>
+                    <plume-icon name="folder" size="16"></plume-icon>
                     ${msg("New project")}
                   </button>
                   <button
@@ -357,7 +357,7 @@ export class BreezeDashboardHome extends LitElement {
                       navigate("/my-tasks");
                     }}"
                   >
-                    <breeze-icon name="check-square" size="16"></breeze-icon>
+                    <plume-icon name="check-square" size="16"></plume-icon>
                     ${msg("New task")}
                   </button>
                   <button
@@ -366,7 +366,7 @@ export class BreezeDashboardHome extends LitElement {
                       navigate("/messages");
                     }}"
                   >
-                    <breeze-icon name="message-square" size="16"></breeze-icon>
+                    <plume-icon name="message-square" size="16"></plume-icon>
                     ${msg("New message")}
                   </button>
                 </div>
@@ -374,13 +374,13 @@ export class BreezeDashboardHome extends LitElement {
               : ""}
           </div>
           <div style="position:relative">
-            <breeze-button variant="outline" size="sm" @click="${() => {
+            <plume-button variant="outline" size="sm" @click="${() => {
               this.showCustomize = !this.showCustomize;
               this.showNew = false;
             }}">
-              <breeze-icon name="settings-2" size="16"></breeze-icon>
+              <plume-icon name="settings-2" size="16"></plume-icon>
               ${msg("Customize")}
-            </breeze-button>
+            </plume-button>
             ${this.showCustomize
               ? html`
                 <div class="customize-panel">
@@ -396,11 +396,11 @@ export class BreezeDashboardHome extends LitElement {
                         class="item"
                         @click="${() => this.#toggleSection(type)}"
                       >
-                        <breeze-icon
+                        <plume-icon
                           name="check"
                           size="16"
                           style="opacity:${checked ? 1 : 0};flex-shrink:0"
-                        ></breeze-icon>
+                        ></plume-icon>
                         <div class="item-label">
                           <span>${meta.label}</span>
                           <span class="item-desc">${meta.description}</span>
@@ -422,12 +422,12 @@ export class BreezeDashboardHome extends LitElement {
               ${SECTION_TYPES.slice(0, 2).map(
                 (_t) =>
                   html`
-                    <breeze-card class="skel-card">
+                    <plume-card class="skel-card">
                       <div class="skel-line skel-title skeleton-shimmer"></div>
                       <div class="skel-line skel-row-full skeleton-shimmer"></div>
                       <div class="skel-line skel-row-75 skeleton-shimmer"></div>
                       <div class="skel-line skel-row-50 skeleton-shimmer"></div>
-                    </breeze-card>
+                    </plume-card>
                   `,
               )}
             </div>
@@ -456,11 +456,11 @@ export class BreezeDashboardHome extends LitElement {
                   return html`
                     <div class="empty-state">
                       <div class="icon-wrap">
-                        <breeze-icon
+                        <plume-icon
                           name="${iconName}"
                           size="20"
                           style="color:var(--muted-foreground)"
-                        ></breeze-icon>
+                        ></plume-icon>
                       </div>
                       <div class="label">${label}</div>
                       <div class="sublabel">${msg("Nothing to show yet.")}</div>
@@ -479,27 +479,27 @@ export class BreezeDashboardHome extends LitElement {
     switch (s.type) {
       case "my_tasks":
         return html`
-          <breeze-my-tasks-section .data="${s.data}"></breeze-my-tasks-section>
+          <plume-my-tasks-section .data="${s.data}"></plume-my-tasks-section>
         `;
       case "due_soon":
         return html`
-          <breeze-due-soon-section .data="${s.data}"></breeze-due-soon-section>
+          <plume-due-soon-section .data="${s.data}"></plume-due-soon-section>
         `;
       case "activity":
         return html`
-          <breeze-activity-section
+          <plume-activity-section
             .data="${s.data}"
-          ></breeze-activity-section>
+          ></plume-activity-section>
         `;
       case "stats":
         return html`
-          <breeze-stats-section .data="${s.data}"></breeze-stats-section>
+          <plume-stats-section .data="${s.data}"></plume-stats-section>
         `;
       case "projects":
         return html`
-          <breeze-projects-section
+          <plume-projects-section
             .data="${s.data}"
-          ></breeze-projects-section>
+          ></plume-projects-section>
         `;
       default:
         return html`
@@ -510,6 +510,6 @@ export class BreezeDashboardHome extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-dashboard-home": BreezeDashboardHome;
+    "plume-dashboard-home": PlumeDashboardHome;
   }
 }

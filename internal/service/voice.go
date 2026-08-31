@@ -7,10 +7,10 @@ import (
 	"sync"
 
 	"github.com/google/uuid"
-	"ipmanlk/breeze/internal/apperr"
-	"ipmanlk/breeze/internal/domain"
-	"ipmanlk/breeze/internal/port"
-	"ipmanlk/breeze/internal/voice"
+	"ipmanlk/plume/internal/apperr"
+	"ipmanlk/plume/internal/domain"
+	"ipmanlk/plume/internal/port"
+	"ipmanlk/plume/internal/voice"
 )
 
 // VoiceServiceDeps holds dependencies for VoiceService.

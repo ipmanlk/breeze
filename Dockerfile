@@ -1,4 +1,4 @@
-# Multi-stage production Dockerfile for Breeze.
+# Multi-stage production Dockerfile for Plume.
 # Builds the embedded UI + Go binary, then ships a minimal runtime image.
 
 # ---- Build stage ----
@@ -29,7 +29,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends unzip \
 # build arg instead (e.g. --build-arg GIT_VERSION="$(git describe --tags)").
 ARG GIT_VERSION=dev
 RUN cd ui && deno install && deno task build
-RUN go build -ldflags "-X ipmanlk/breeze/internal/version.Version=${GIT_VERSION}" -o bin/breeze ./cmd/server
+RUN go build -ldflags "-X ipmanlk/plume/internal/version.Version=${GIT_VERSION}" -o bin/plume ./cmd/server
 
 # ---- Runtime stage ----
 FROM debian:bookworm-slim
@@ -43,22 +43,22 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # The binary serves the embedded UI; it only needs the data dir for SQLite +
 # uploads. /data is the volume mount point. Create it owned by the runtime
 # user so a fresh named volume or bind mount is writable on first start.
-RUN groupadd --system --gid 1001 breeze \
-    && useradd --system --uid 1001 --gid breeze --no-create-home --home-dir /data breeze \
+RUN groupadd --system --gid 1001 plume \
+    && useradd --system --uid 1001 --gid plume --no-create-home --home-dir /data plume \
     && mkdir -p /data \
-    && chown -R breeze:breeze /data
+    && chown -R plume:plume /data
 WORKDIR /data
-COPY --from=build /src/bin/breeze /usr/local/bin/breeze
+COPY --from=build /src/bin/plume /usr/local/bin/plume
 
 ENV PORT=8080 \
-    DB_PATH=/data/breeze.db \
+    DB_PATH=/data/plume.db \
     UPLOAD_DIR=/data/uploads
 
 HEALTHCHECK --interval=30s --timeout=5s --start-period=5s --retries=3 \
     CMD wget -qO- http://127.0.0.1:8080/healthz || exit 1
 
 EXPOSE 8080
-USER breeze
+USER plume
 VOLUME ["/data"]
 
-ENTRYPOINT ["/usr/local/bin/breeze"]
+ENTRYPOINT ["/usr/local/bin/plume"]

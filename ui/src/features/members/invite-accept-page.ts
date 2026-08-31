@@ -27,15 +27,15 @@ const AcceptInviteSchema = v.object({
 });
 
 @localized()
-@customElement("breeze-invite-accept-page")
-export class BreezeInviteAcceptPage extends LitElement {
+@customElement("plume-invite-accept-page")
+export class PlumeInviteAcceptPage extends LitElement {
   static styles = [
     pageEnterStyles,
     css`
       :host {
         display: contents;
       }
-      breeze-card {
+      plume-card {
         display: block;
         box-sizing: border-box;
         width: 100%;
@@ -184,7 +184,7 @@ export class BreezeInviteAcceptPage extends LitElement {
     if (this._validating) {
       return html`
         <div class="loading-wrap page-enter">
-          <breeze-spinner size="24"></breeze-spinner>
+          <plume-spinner size="24"></plume-spinner>
         </div>
       `;
     }
@@ -200,9 +200,9 @@ export class BreezeInviteAcceptPage extends LitElement {
     }
 
     return html`
-      <breeze-guest-layout>
+      <plume-guest-layout>
         <div class="page-enter">
-          <breeze-card>
+          <plume-card>
             <form @submit="${this.#onSubmit}" novalidate>
               <div class="title">
                 <span class="icon">&#128279;</span>
@@ -210,12 +210,12 @@ export class BreezeInviteAcceptPage extends LitElement {
                 <p>${msg("Accept your invite to get started.")}</p>
               </div>
 
-              <breeze-field
+              <plume-field
                 label=${msg("Full name")}
                 .error="${this._fieldErrors["name"] ?? ""}"
                 ?invalid="${!!this._fieldErrors["name"]}"
               >
-                <breeze-input
+                <plume-input
                   id="name"
                   name="name"
                   placeholder=${msg("Jane Doe")}
@@ -224,15 +224,15 @@ export class BreezeInviteAcceptPage extends LitElement {
                     this._name = (e.target as HTMLInputElement).value;
                   }}"
                   ?invalid="${!!this._fieldErrors["name"]}"
-                ></breeze-input>
-              </breeze-field>
+                ></plume-input>
+              </plume-field>
 
-              <breeze-field
+              <plume-field
                 label=${msg("Email")}
                 .error="${this._fieldErrors["email"] ?? ""}"
                 ?invalid="${!!this._fieldErrors["email"]}"
               >
-                <breeze-input
+                <plume-input
                   id="email"
                   name="email"
                   type="email"
@@ -242,15 +242,15 @@ export class BreezeInviteAcceptPage extends LitElement {
                     this._email = (e.target as HTMLInputElement).value;
                   }}"
                   ?invalid="${!!this._fieldErrors["email"]}"
-                ></breeze-input>
-              </breeze-field>
+                ></plume-input>
+              </plume-field>
 
-              <breeze-field
+              <plume-field
                 label=${msg("Password")}
                 .error="${this._fieldErrors["password"] ?? ""}"
                 ?invalid="${!!this._fieldErrors["password"]}"
               >
-                <breeze-input
+                <plume-input
                   id="password"
                   name="password"
                   type="password"
@@ -260,8 +260,8 @@ export class BreezeInviteAcceptPage extends LitElement {
                     this._password = (e.target as HTMLInputElement).value;
                   }}"
                   ?invalid="${!!this._fieldErrors["password"]}"
-                ></breeze-input>
-              </breeze-field>
+                ></plume-input>
+              </plume-field>
 
               ${this._error
                 ? html`
@@ -269,24 +269,24 @@ export class BreezeInviteAcceptPage extends LitElement {
                 `
                 : null}
 
-              <breeze-button type="submit" fluid ?disabled="${this
+              <plume-button type="submit" fluid ?disabled="${this
                 ._submitting}">
                 ${this._submitting
                   ? html`
-                    <breeze-spinner></breeze-spinner> ${msg("Joining...")}
+                    <plume-spinner></plume-spinner> ${msg("Joining...")}
                   `
                   : msg("Join workspace")}
-              </breeze-button>
+              </plume-button>
             </form>
-          </breeze-card>
+          </plume-card>
         </div>
-      </breeze-guest-layout>
+      </plume-guest-layout>
     `;
   }
 }
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-invite-accept-page": BreezeInviteAcceptPage;
+    "plume-invite-accept-page": PlumeInviteAcceptPage;
   }
 }

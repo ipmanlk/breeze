@@ -20,8 +20,8 @@ import "../../layouts/guest-layout.ts";
  * Reset password page. Expects a `token` query parameter from the reset link.
  */
 @localized()
-@customElement("breeze-reset-password-page")
-export class BreezeResetPasswordPage extends LitElement {
+@customElement("plume-reset-password-page")
+export class PlumeResetPasswordPage extends LitElement {
   static styles = [
     pageEnterStyles,
     css`
@@ -34,7 +34,7 @@ export class BreezeResetPasswordPage extends LitElement {
         justify-content: center;
         width: 100%;
       }
-      breeze-card {
+      plume-card {
         display: block;
         width: 100%;
         max-width: var(--container-sm);
@@ -109,48 +109,48 @@ export class BreezeResetPasswordPage extends LitElement {
   protected render() {
     if (this.validating) {
       return html`
-        <breeze-guest-layout>
+        <plume-guest-layout>
           <div class="page-enter">
-            <breeze-card>
+            <plume-card>
               <div class="title">
-                <breeze-spinner></breeze-spinner>
+                <plume-spinner></plume-spinner>
                 <p>${msg("Validating reset link...")}</p>
               </div>
-            </breeze-card>
+            </plume-card>
           </div>
-        </breeze-guest-layout>
+        </plume-guest-layout>
       `;
     }
 
     if (this.tokenInvalid) {
       return html`
-        <breeze-guest-layout>
+        <plume-guest-layout>
           <div class="page-enter">
-            <breeze-card>
+            <plume-card>
               <div class="title">
                 <h1>${msg("Invalid or expired reset link")}</h1>
                 <p>${msg(
                   "This password reset link is invalid or has expired. Please request a new one.",
                 )}</p>
               </div>
-            </breeze-card>
+            </plume-card>
           </div>
-        </breeze-guest-layout>
+        </plume-guest-layout>
       `;
     }
 
     return html`
-      <breeze-guest-layout>
+      <plume-guest-layout>
         <div class="page-enter">
-          <breeze-card>
+          <plume-card>
             <form @submit=${this.#onSubmit}>
               <div class="title">
                 <h1>${msg("Set new password")}</h1>
                 <p>${msg("Enter your new password")}</p>
               </div>
-              <breeze-field label="${msg("New password")}" ?invalid=${!!this
+              <plume-field label="${msg("New password")}" ?invalid=${!!this
                 .error}>
-                <breeze-input
+                <plume-input
                   type="password"
                   placeholder="${msg("At least 8 characters")}"
                   .value=${live(this.newPassword)}
@@ -158,33 +158,33 @@ export class BreezeResetPasswordPage extends LitElement {
                     e: Event,
                   ) => (this.newPassword =
                     (e.target as HTMLInputElement).value)}
-                ></breeze-input>
-              </breeze-field>
-              <breeze-field label=${msg("Confirm new password")}>
-                <breeze-input
+                ></plume-input>
+              </plume-field>
+              <plume-field label=${msg("Confirm new password")}>
+                <plume-input
                   type="password"
                   .value=${live(this.confirmPassword)}
                   @input=${(
                     e: Event,
                   ) => (this.confirmPassword =
                     (e.target as HTMLInputElement).value)}
-                ></breeze-input>
-              </breeze-field>
+                ></plume-input>
+              </plume-field>
               ${this.error
                 ? html`<div class="form-error">${this.error}</div>`
                 : null}
-              <breeze-button type="submit" fluid ?disabled=${this.submitting ||
+              <plume-button type="submit" fluid ?disabled=${this.submitting ||
                 !this.newPassword || !this.confirmPassword}>
                 ${this.submitting
-                  ? html`<breeze-spinner></breeze-spinner><span>${
+                  ? html`<plume-spinner></plume-spinner><span>${
                     msg("Resetting...")
                   }</span>`
                   : msg("Reset password")}
-              </breeze-button>
+              </plume-button>
             </form>
-          </breeze-card>
+          </plume-card>
         </div>
-      </breeze-guest-layout>
+      </plume-guest-layout>
     `;
   }
 
@@ -219,6 +219,6 @@ export class BreezeResetPasswordPage extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-reset-password-page": BreezeResetPasswordPage;
+    "plume-reset-password-page": PlumeResetPasswordPage;
   }
 }

@@ -6,7 +6,7 @@ import (
 	"testing"
 	"time"
 
-	"ipmanlk/breeze/internal/domain"
+	"ipmanlk/plume/internal/domain"
 )
 
 var ctx = context.Background()

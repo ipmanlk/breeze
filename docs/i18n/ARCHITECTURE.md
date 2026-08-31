@@ -1,6 +1,6 @@
 # i18n Architecture
 
-> **How Breeze's internationalization fits together.** Reference for developers.
+> **How Plume's internationalization fits together.** Reference for developers.
 > For *how to add a language*, see [adding-a-language.md](./adding-a-language.md).
 
 ## Component map
@@ -95,7 +95,7 @@ BOOT (authenticated)
   3. document.documentElement.lang = "fr"
 
 BOOT (unauthenticated; login/setup)
-  1. detect: localStorage('breeze.locale') → navigator.language → "en"
+  1. detect: localStorage('plume.locale') → navigator.language → "en"
   2. setLocale(detected)
 
 USER CHANGES LANGUAGE in Settings

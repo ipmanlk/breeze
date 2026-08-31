@@ -34,7 +34,7 @@ func TestLocal_SaveGet_RoundTrip(t *testing.T) {
 	tmp := t.TempDir()
 	s := NewLocal(tmp)
 
-	payload := []byte("hello breeze")
+	payload := []byte("hello plume")
 	if err := s.Save(context.Background(), "tasks/t1/att.bin", bytes.NewReader(payload)); err != nil {
 		t.Fatalf("Save: %v", err)
 	}

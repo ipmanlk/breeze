@@ -8,16 +8,16 @@ import (
 	"path/filepath"
 	"strings"
 
-	"ipmanlk/breeze/internal/domain"
-	"ipmanlk/breeze/internal/port"
-	"ipmanlk/breeze/internal/transport"
-	"ipmanlk/breeze/internal/transport/dto"
+	"ipmanlk/plume/internal/domain"
+	"ipmanlk/plume/internal/port"
+	"ipmanlk/plume/internal/transport"
+	"ipmanlk/plume/internal/transport/dto"
 
 	"github.com/go-chi/chi/v5"
 )
 
 // blockedAttachmentTypes are content types that must never be served inline on
-// the Breeze origin because a browser would execute them (stored XSS). Uploads
+// the Plume origin because a browser would execute them (stored XSS). Uploads
 // of these types are rejected outright; if one ever reaches storage it is
 // forced to application/octet-stream on download.
 var blockedAttachmentTypes = map[string]bool{
@@ -214,7 +214,7 @@ func (h *AttachmentHandler) Download(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// Force a download and prevent inline rendering: serving user-uploaded
-	// files inline on the Breeze origin would allow stored XSS (e.g. an
+	// files inline on the Plume origin would allow stored XSS (e.g. an
 	// uploaded HTML file executing with the victim's cookies). nosniff stops
 	// browsers from interpreting the bytes as a different, dangerous type.
 	if isBlockedAttachmentType(contentType) {

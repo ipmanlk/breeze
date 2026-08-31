@@ -1,4 +1,4 @@
-# Breeze
+# Plume
 
 > **Status: beta (v0.1.0).** Early, unstable release — APIs and data schemas
 > may change between versions. Back up your data before upgrading.
@@ -7,30 +7,30 @@ Self-hosted alternative to Linear and ClickUp with project management, task trac
 
 ## Try it
 
-A live demo is available at **https://breeze-demo.minihq.app/**
+A live demo is available at **https://plume-demo.minihq.app/**
 
 | Email | Password | Role |
 |-------|----------|------|
-| `demo@breeze.app` | `demo1234` | Owner |
-| `member@breeze.app` | `demo1234` | Member |
-| `guest@breeze.app` | `demo1234` | Guest |
+| `demo@plume.app` | `demo1234` | Owner |
+| `member@plume.app` | `demo1234` | Member |
+| `guest@plume.app` | `demo1234` | Guest |
 
 ## Screenshots
 
 <p align="center">
-  <img src="screenshots/dashboard.png" alt="Breeze dashboard" width="720">
+  <img src="screenshots/dashboard.png" alt="Plume dashboard" width="720">
   <br>
   <em>Dashboard overview</em>
 </p>
 
 <p align="center">
-  <img src="screenshots/kanban.png" alt="Breeze kanban board" width="720">
+  <img src="screenshots/kanban.png" alt="Plume kanban board" width="720">
   <br>
   <em>Kanban board</em>
 </p>
 
 <p align="center">
-  <img src="screenshots/workspace-chat.png" alt="Breeze workspace chat" width="720">
+  <img src="screenshots/workspace-chat.png" alt="Plume workspace chat" width="720">
   <br>
   <em>Workspace chat</em>
 </p>
@@ -88,11 +88,11 @@ to building from source.
 cp .env.example .env
 #    Edit .env and set JWT_SECRET (required, at least 32 characters)
 
-# 2. Build the UI and the Go binary (output: bin/breeze)
+# 2. Build the UI and the Go binary (output: bin/plume)
 make build
 
 # 3. Run it (listens on PORT, default 8080)
-./bin/breeze
+./bin/plume
 ```
 
 Open http://localhost:8080. The first-run setup wizard guides you through
@@ -120,14 +120,14 @@ and reverse-proxy examples.
 
 ## Configuration
 
-Breeze is configured with environment variables, optionally loaded from a
+Plume is configured with environment variables, optionally loaded from a
 `.env` file. The full reference is in
 [docs/ops/configuration.md](docs/ops/configuration.md).
 
 | Variable     | Default            | Description                          |
 | ------------ | ------------------ | ------------------------------------ |
 | `PORT`       | `8080`             | HTTP listen port                     |
-| `DB_PATH`    | `./data/breeze.db` | Path to the SQLite database file     |
+| `DB_PATH`    | `./data/plume.db` | Path to the SQLite database file     |
 | `UPLOAD_DIR` | `./data/uploads`   | Directory for uploaded attachments   |
 | `JWT_SECRET` | required           | Secret key for signing JWT tokens (at least 32 characters) |
 

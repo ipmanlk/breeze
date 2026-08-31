@@ -11,9 +11,9 @@ import (
 	"testing"
 	"time"
 
-	"ipmanlk/breeze/internal/domain"
-	"ipmanlk/breeze/internal/port"
-	"ipmanlk/breeze/internal/transport/dto"
+	"ipmanlk/plume/internal/domain"
+	"ipmanlk/plume/internal/port"
+	"ipmanlk/plume/internal/transport/dto"
 
 	"github.com/go-chi/chi/v5"
 )

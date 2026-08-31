@@ -16,9 +16,9 @@ import { buildResolver } from "@/features/chat/mention-utils";
 import { SignalController } from "@/lib/signal-controller";
 import { timeAgo } from "@/lib/format/time-ago";
 import "../../components/ui/avatar.ts";
-import "../../components/ui/breeze-icon.ts";
+import "../../components/ui/plume-icon.ts";
 import "../../components/ui/button.ts";
-import { BreezeCommentComposer } from "./comment-composer";
+import { PlumeCommentComposer } from "./comment-composer";
 import "./comment-composer.ts";
 
 /** Absolute time for the hover tooltip. */
@@ -70,8 +70,8 @@ function buildTree(comments: DtoCommentResponse[]): CommentNode[] {
  * - Avatars, author + relative time, hover for absolute timestamp
  */
 @localized()
-@customElement("breeze-comment-thread")
-export class BreezeCommentThread extends LitElement {
+@customElement("plume-comment-thread")
+export class PlumeCommentThread extends LitElement {
   static styles = css`
     *,
     *::before,
@@ -316,12 +316,12 @@ export class BreezeCommentThread extends LitElement {
   @state()
   private _editingId: string | null = null;
 
-  @query(".composer > breeze-comment-composer")
-  private _mainComposer!: BreezeCommentComposer;
-  @query("breeze-comment-composer[editing]")
-  private _editingComposer!: BreezeCommentComposer | null;
-  @query(".reply-composer > breeze-comment-composer")
-  private _replyComposer!: BreezeCommentComposer | null;
+  @query(".composer > plume-comment-composer")
+  private _mainComposer!: PlumeCommentComposer;
+  @query("plume-comment-composer[editing]")
+  private _editingComposer!: PlumeCommentComposer | null;
+  @query(".reply-composer > plume-comment-composer")
+  private _replyComposer!: PlumeCommentComposer | null;
 
   #signals = new SignalController(this);
   #wsMessageHandler: ((e: MessageEvent) => void) | null = null;
@@ -371,7 +371,7 @@ export class BreezeCommentThread extends LitElement {
       }
     }
     // Focus the reply composer as soon as it appears. Deferred to the next
-    // frame so the nested breeze-chat-editor (and its contenteditable) has
+    // frame so the nested plume-chat-editor (and its contenteditable) has
     // rendered its shadow DOM: otherwise focus() is a no-op.
     if (changed.has("_replyTo") && this._replyTo) {
       requestAnimationFrame(() => {
@@ -538,7 +538,7 @@ export class BreezeCommentThread extends LitElement {
     if (!content || !this.projectId || !this.taskId || this._sending) return;
     this._sending = true;
     const parentId = this._replyTo;
-    const composer = e.target as BreezeCommentComposer | null;
+    const composer = e.target as PlumeCommentComposer | null;
     try {
       await postProjectsByIdTasksByTaskIdComments({
         path: { id: this.projectId, taskId: this.taskId },
@@ -633,12 +633,12 @@ export class BreezeCommentThread extends LitElement {
         ${this._hasMore
           ? html`
             <div class="load-more">
-              <breeze-button
+              <plume-button
                 variant="ghost"
                 size="sm"
                 ?disabled="${this._loading}"
                 @click="${() => this._loadMore()}"
-              >${msg("Load older comments")}</breeze-button>
+              >${msg("Load older comments")}</plume-button>
             </div>
           `
           : nothing}
@@ -646,11 +646,11 @@ export class BreezeCommentThread extends LitElement {
           ? this._renderEmpty()
           : tree.map((node) => this._renderComment(node))}
         <div class="composer">
-          <breeze-comment-composer
+          <plume-comment-composer
             placeholder="${msg("Write a comment…")}"
             ?sending="${this._sending}"
             @submit="${this._onSubmit}"
-          ></breeze-comment-composer>
+          ></plume-comment-composer>
         </div>
       </div>
     `;
@@ -660,7 +660,7 @@ export class BreezeCommentThread extends LitElement {
     return html`
       <div class="empty">
         <span class="empty-icon">
-          <breeze-icon name="message-square" size="20"></breeze-icon>
+          <plume-icon name="message-square" size="20"></plume-icon>
         </span>
         <span class="empty-title">${msg("No comments yet")}</span>
         <span class="empty-sub">
@@ -685,19 +685,19 @@ export class BreezeCommentThread extends LitElement {
       return html`
         <div class="comment-row">
           <div class="comment">
-            <breeze-avatar
+            <plume-avatar
               size="sm"
               src="${node.author_avatar_url ?? ""}"
-            >${commentInitials(node.author_name)}</breeze-avatar>
+            >${commentInitials(node.author_name)}</plume-avatar>
             <div class="comment-body">
               <div class="edit-wrap">
-                <breeze-comment-composer
+                <plume-comment-composer
                   .placeholder=${msg("Edit comment…")}
                   ?editing=${true}
                   ?sending=${this._sending}
                   @submit="${this._onEditSubmit}"
                   @cancel="${() => (this._editingId = null)}"
-                ></breeze-comment-composer>
+                ></plume-comment-composer>
               </div>
             </div>
           </div>
@@ -713,10 +713,10 @@ export class BreezeCommentThread extends LitElement {
     return html`
       <div class="comment-row">
         <div class="comment">
-          <breeze-avatar
+          <plume-avatar
             size="sm"
             src="${node.author_avatar_url ?? ""}"
-          >${commentInitials(node.author_name)}</breeze-avatar>
+          >${commentInitials(node.author_name)}</plume-avatar>
           <div class="comment-body">
             <div class="comment-head">
               <span class="comment-author">${node.author_name ??
@@ -741,7 +741,7 @@ export class BreezeCommentThread extends LitElement {
                     ? null
                     : node.id)}"
                 >
-                  <breeze-icon name="reply" size="13"></breeze-icon>
+                  <plume-icon name="reply" size="13"></plume-icon>
                   ${msg("Reply")}
                 </button>
                 ${isMine
@@ -753,7 +753,7 @@ export class BreezeCommentThread extends LitElement {
                         this._replyTo = null;
                       }}"
                     >
-                      <breeze-icon name="pencil" size="13"></breeze-icon>
+                      <plume-icon name="pencil" size="13"></plume-icon>
                       ${msg("Edit")}
                     </button>
                     <button
@@ -761,7 +761,7 @@ export class BreezeCommentThread extends LitElement {
                       data-danger
                       @click="${() => this._onDelete(node.id)}"
                     >
-                      <breeze-icon name="trash-2" size="13"></breeze-icon>
+                      <plume-icon name="trash-2" size="13"></plume-icon>
                       ${msg("Delete")}
                     </button>
                   `
@@ -776,12 +776,12 @@ export class BreezeCommentThread extends LitElement {
             ${this._replyTo === node.id
               ? html`
                 <div class="reply-composer">
-                  <breeze-comment-composer
+                  <plume-comment-composer
                     placeholder="${msg("Reply…")}"
                     ?sending="${this._sending}"
                     @submit="${this._onSubmit}"
                     @cancel="${() => (this._replyTo = null)}"
-                  ></breeze-comment-composer>
+                  ></plume-comment-composer>
                 </div>
               `
               : nothing}
@@ -799,6 +799,6 @@ export class BreezeCommentThread extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-comment-thread": BreezeCommentThread;
+    "plume-comment-thread": PlumeCommentThread;
   }
 }

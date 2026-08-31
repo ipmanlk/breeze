@@ -12,7 +12,7 @@ import {
 import type { DtoCreateProjectRequest } from "@/api";
 import { SignalController } from "@/lib/signal-controller";
 import "../../layouts/app-layout.ts";
-import "../../components/ui/breeze-icon.ts";
+import "../../components/ui/plume-icon.ts";
 import "../../components/ui/button.ts";
 import "../../components/ui/card.ts";
 import "../../components/ui/input.ts";
@@ -40,8 +40,8 @@ function getColors() {
 }
 
 @localized()
-@customElement("breeze-projects-page")
-export class BreezeProjectsPage extends LitElement {
+@customElement("plume-projects-page")
+export class PlumeProjectsPage extends LitElement {
   static styles = [
     pageEnterStyles,
     css`
@@ -426,12 +426,12 @@ export class BreezeProjectsPage extends LitElement {
                 >
                   ${this._color === c.value
                     ? html`
-                      <breeze-icon
+                      <plume-icon
                         class="check"
                         name="check"
                         size="16"
                         style="color:white"
-                      ></breeze-icon>
+                      ></plume-icon>
                     `
                     : ""}
                 </button>
@@ -472,7 +472,7 @@ export class BreezeProjectsPage extends LitElement {
     const { projects: list, isLoading } = projects.value;
 
     return html`
-      <breeze-app-layout>
+      <plume-app-layout>
         <div class="page page-enter">
           <div class="page-head">
             <div>
@@ -480,7 +480,7 @@ export class BreezeProjectsPage extends LitElement {
               <p>All projects in your workspace.</p>
             </div>
             <div style="display:flex;align-items:center;gap:var(--space-3)">
-              <breeze-switch
+              <plume-switch
                 ?checked="${this._showArchived}"
                 @change="${(e: CustomEvent) => {
                   this._showArchived =
@@ -491,14 +491,14 @@ export class BreezeProjectsPage extends LitElement {
                     fetchProjects();
                   }
                 }}"
-              ></breeze-switch>
+              ></plume-switch>
               <span style="font-size:var(--text-sm);color:var(--muted-foreground)">Show archived</span>
-              <breeze-button size="sm" @click="${() => {
+              <plume-button size="sm" @click="${() => {
                 this._showCreate = true;
               }}">
-                <breeze-icon name="plus" size="16"></breeze-icon>
+                <plume-icon name="plus" size="16"></plume-icon>
                 New project
-              </breeze-button>
+              </plume-button>
             </div>
           </div>
 
@@ -559,7 +559,7 @@ export class BreezeProjectsPage extends LitElement {
                           </div>
                           ${p.is_archived
                             ? html`
-                              <breeze-button
+                              <plume-button
                                 variant="outline"
                                 size="sm"
                                 @click="${async (e: Event) => {
@@ -568,7 +568,7 @@ export class BreezeProjectsPage extends LitElement {
                                 }}"
                               >
                                 Restore
-                              </breeze-button>
+                              </plume-button>
                             `
                             : ""}
                         </button>
@@ -591,19 +591,19 @@ export class BreezeProjectsPage extends LitElement {
               <div class="dialog">
                 <h2>Create project</h2>
                 <div class="field-group">
-                  <breeze-field label="Name" .error="${!this._name.trim() &&
+                  <plume-field label="Name" .error="${!this._name.trim() &&
                       this._isSubmitting
                     ? "Name is required"
                     : ""}">
-                    <breeze-input
+                    <plume-input
                       name="name"
                       placeholder=${msg("e.g. Q4 Launch")}
                       .value="${this._name}"
                       @input="${(e: Event) => {
                         this._name = (e.target as HTMLInputElement).value;
                       }}"
-                    ></breeze-input>
-                  </breeze-field>
+                    ></plume-input>
+                  </plume-field>
 
                   <div class="cycle-toggle">
                     <div>
@@ -630,20 +630,20 @@ export class BreezeProjectsPage extends LitElement {
                       this._showAdvanced = !this._showAdvanced;
                     }}"
                   >
-                    <breeze-icon
+                    <plume-icon
                       name="chevron-down"
                       size="12"
                       style="transform:rotate(${this._showAdvanced
                         ? "0"
                         : "-90deg"});transition:transform var(--dur-fast) var(--ease-1)"
-                    ></breeze-icon>
+                    ></plume-icon>
                     Advanced options
                   </button>
 
                   ${this._showAdvanced
                     ? html`
                       <div class="advanced-content">
-                        <breeze-field label="Description">
+                        <plume-field label="Description">
                           <textarea
                             style="display:block;width:100%;min-height: var(--space-20);padding:var(--space-3);border:1px solid var(--input);border-radius:var(--radius-md);background:var(--background);color:var(--foreground);font-size:var(--text-sm);font-family:inherit;resize:vertical;box-sizing:border-box;outline:none"
                             placeholder=${msg("What is this project about?")}
@@ -653,11 +653,11 @@ export class BreezeProjectsPage extends LitElement {
                                 (e.target as HTMLTextAreaElement).value;
                             }}"
                           ></textarea>
-                        </breeze-field>
+                        </plume-field>
 
-                        <breeze-field label="Color">
+                        <plume-field label="Color">
                           ${this.#renderColorPicker()}
-                        </breeze-field>
+                        </plume-field>
                       </div>
                     `
                     : ""} ${this._apiError
@@ -668,32 +668,32 @@ export class BreezeProjectsPage extends LitElement {
                 </div>
 
                 <div class="dialog-actions">
-                  <breeze-button
+                  <plume-button
                     variant="outline"
                     size="sm"
                     @click="${this.#closeDialog}"
                   >
                     Cancel
-                  </breeze-button>
-                  <breeze-button
+                  </plume-button>
+                  <plume-button
                     size="sm"
                     ?disabled="${this._isSubmitting || !this._name.trim()}"
                     @click="${this.#onCreate}"
                   >
                     ${this._isSubmitting ? "Creating..." : "Create project"}
-                  </breeze-button>
+                  </plume-button>
                 </div>
               </div>
             </div>
           `
           : ""}
-      </breeze-app-layout>
+      </plume-app-layout>
     `;
   }
 }
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-projects-page": BreezeProjectsPage;
+    "plume-projects-page": PlumeProjectsPage;
   }
 }

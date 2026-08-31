@@ -11,9 +11,9 @@ import (
 	"time"
 
 	"github.com/google/uuid"
-	"ipmanlk/breeze/internal/apperr"
-	"ipmanlk/breeze/internal/port"
-	"ipmanlk/breeze/internal/store"
+	"ipmanlk/plume/internal/apperr"
+	"ipmanlk/plume/internal/port"
+	"ipmanlk/plume/internal/store"
 )
 
 // File suffixes used by the staged-restore flow.
@@ -43,8 +43,8 @@ var _ port.BackupService = (*backupService)(nil)
 // temp file and returns a reader over it. The reader removes the temp file
 // when closed.
 func (s *backupService) DownloadBackup(ctx context.Context) (io.ReadCloser, string, error) {
-	filename := "breeze-backup-" + time.Now().UTC().Format("20060102T150405Z") + ".db"
-	tmpPath := filepath.Join(os.TempDir(), "breeze-backup-"+uuid.New().String()+".db")
+	filename := "plume-backup-" + time.Now().UTC().Format("20060102T150405Z") + ".db"
+	tmpPath := filepath.Join(os.TempDir(), "plume-backup-"+uuid.New().String()+".db")
 
 	// VACUUM INTO creates a consistent snapshot with the WAL fully
 	// checkpointed, without closing the live connection.
@@ -124,13 +124,13 @@ func validateBackup(ctx context.Context, path string) error {
 	}
 
 	// Confirm the schema has the organizations table (rejects random files
-	// that happen to be valid SQLite but aren't Breeze backups).
+	// that happen to be valid SQLite but aren't Plume backups).
 	var name string
 	err = tmpDB.QueryRowContext(ctx,
 		"SELECT name FROM sqlite_master WHERE type='table' AND name='organizations' LIMIT 1",
 	).Scan(&name)
 	if err != nil {
-		return apperr.InvalidInput("unexpected schema; not a Breeze database (missing organizations table)")
+		return apperr.InvalidInput("unexpected schema; not a Plume database (missing organizations table)")
 	}
 	return nil
 }

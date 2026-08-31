@@ -1,4 +1,4 @@
-// Breeze service worker; receives Web Push events and displays OS-level
+// Plume service worker; receives Web Push events and displays OS-level
 // notifications even when the app tab is closed. Registered from main.ts.
 //
 // Push payloads arrive aes128gcm-encrypted; the browser decrypts them before
@@ -16,7 +16,7 @@ self.addEventListener("activate", (event) => {
 });
 
 self.addEventListener("push", (event) => {
-  let payload = { title: "Breeze", body: "" };
+  let payload = { title: "Plume", body: "" };
   try {
     if (event.data) {
       payload = event.data.json();
@@ -24,13 +24,13 @@ self.addEventListener("push", (event) => {
   } catch {
     // Some push services send a plain-text payload; fall back to it.
     if (event.data) {
-      payload = { title: "Breeze", body: event.data.text() };
+      payload = { title: "Plume", body: event.data.text() };
     }
   }
   const { title, body, link, tag } = payload;
   const options = {
     body: body || "",
-    tag: tag || "breeze-notification",
+    tag: tag || "plume-notification",
     // Reuse the same notification tag so a flood of mentions collapses.
     renotify: true,
     data: { link: link || "" },
@@ -38,7 +38,7 @@ self.addEventListener("push", (event) => {
     badge: "/favicon.svg",
   };
   event.waitUntil(
-    self.registration.showNotification(title || "Breeze", options),
+    self.registration.showNotification(title || "Plume", options),
   );
 });
 
@@ -51,7 +51,7 @@ self.addEventListener("notificationclick", (event) => {
         type: "window",
         includeUncontrolled: true,
       });
-      // Focus an existing tab if one is open to Breeze.
+      // Focus an existing tab if one is open to Plume.
       for (const client of allClients) {
         if (client.url.includes(self.location.origin)) {
           if (link) {

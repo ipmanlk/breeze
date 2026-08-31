@@ -2,7 +2,7 @@ import { css, html, LitElement, nothing } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { localized, msg } from "@lit/localize";
 import type { DtoLabelResponse } from "@/api";
-import "./breeze-icon.ts";
+import "./plume-icon.ts";
 
 /**
  * Label chip: a small colored pill with the label's name. Used on kanban
@@ -11,8 +11,8 @@ import "./breeze-icon.ts";
  * Set `removable` to render an "x" that dispatches a `remove` event.
  */
 @localized()
-@customElement("breeze-label-chip")
-export class BreezeLabelChip extends LitElement {
+@customElement("plume-label-chip")
+export class PlumeLabelChip extends LitElement {
   static styles = css`
     *,
     *::before,
@@ -114,7 +114,7 @@ export class BreezeLabelChip extends LitElement {
                 );
               }}"
             >
-              <breeze-icon name="x" size="11"></breeze-icon>
+              <plume-icon name="x" size="11"></plume-icon>
             </button>
           `
           : nothing}
@@ -125,6 +125,6 @@ export class BreezeLabelChip extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-label-chip": BreezeLabelChip;
+    "plume-label-chip": PlumeLabelChip;
   }
 }

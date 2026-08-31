@@ -6,8 +6,8 @@ export interface TabItem {
   label: string;
 }
 
-@customElement("breeze-tabs")
-export class BreezeTabs extends LitElement {
+@customElement("plume-tabs")
+export class PlumeTabs extends LitElement {
   static styles = css`
     *,
     *::before,
@@ -113,6 +113,6 @@ export class BreezeTabs extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-tabs": BreezeTabs;
+    "plume-tabs": PlumeTabs;
   }
 }

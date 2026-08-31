@@ -8,9 +8,9 @@ import (
 	"testing"
 	"time"
 
-	"ipmanlk/breeze/internal/apperr"
-	"ipmanlk/breeze/internal/domain"
-	"ipmanlk/breeze/internal/port"
+	"ipmanlk/plume/internal/apperr"
+	"ipmanlk/plume/internal/domain"
+	"ipmanlk/plume/internal/port"
 )
 
 // stubTaskRepoForDownload is a minimal port.TaskRepository that only

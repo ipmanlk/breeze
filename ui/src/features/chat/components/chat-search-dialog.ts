@@ -16,7 +16,7 @@ import { identify } from "@/lib/sdk-helpers";
 import type { DtoMessageSearchItemResponse } from "@/api/types.gen";
 import "@/components/ui/dialog.ts";
 import "@/components/ui/button.ts";
-import "@/components/ui/breeze-icon.ts";
+import "@/components/ui/plume-icon.ts";
 import "@/components/ui/select.ts";
 import { localized, msg } from "@lit/localize";
 
@@ -36,15 +36,15 @@ function getScopeOptions() {
  *
  * Features:
  *  - Search input with clear button
- *  - Scope selector (breeze-select)
+ *  - Scope selector (plume-select)
  *  - Filter chips (has file, has link, pinned)
  *  - Results list with cursor-based pagination (Load more)
  *  - Click result → navigate to conversation + highlight message
  *  - Loading, empty, and no-results states
  */
 @localized()
-@customElement("breeze-chat-search-dialog")
-export class BreezeChatSearchDialog extends LitElement {
+@customElement("plume-chat-search-dialog")
+export class PlumeChatSearchDialog extends LitElement {
   static styles = css`
     *,
     *::before,
@@ -424,7 +424,7 @@ export class BreezeChatSearchDialog extends LitElement {
     const total = this._items.length;
 
     return html`
-      <breeze-dialog
+      <plume-dialog
         style="--dialog-w:42rem"
         .open="${isOpen}"
         heading="Search Messages"
@@ -436,7 +436,7 @@ export class BreezeChatSearchDialog extends LitElement {
             <div class="search-row">
               <div class="search-input-wrap">
                 <span class="search-icon">
-                  <breeze-icon name="search" size="16"></breeze-icon>
+                  <plume-icon name="search" size="16"></plume-icon>
                 </span>
                 <input
                   class="search-input"
@@ -457,18 +457,18 @@ export class BreezeChatSearchDialog extends LitElement {
                       }}"
                       aria-label=${msg("Clear")}
                     >
-                      <breeze-icon name="x" size="14"></breeze-icon>
+                      <plume-icon name="x" size="14"></plume-icon>
                     </button>
                   `
                   : nothing}
               </div>
-              <breeze-select
+              <plume-select
                 .options="${getScopeOptions()}"
                 .value="${this._scope}"
                 @change="${(e: CustomEvent) => {
                   this._scope = e.detail as string;
                 }}"
-              ></breeze-select>
+              ></plume-select>
             </div>
 
             <div class="filter-row">
@@ -476,21 +476,21 @@ export class BreezeChatSearchDialog extends LitElement {
                 class="filter-chip ${this._hasAttachment ? "active" : ""}"
                 @click="${() => this.#toggleFilter("attachment")}"
               >
-                <breeze-icon name="paperclip" size="12"></breeze-icon>
+                <plume-icon name="paperclip" size="12"></plume-icon>
                 Has file
               </button>
               <button
                 class="filter-chip ${this._hasLink ? "active" : ""}"
                 @click="${() => this.#toggleFilter("link")}"
               >
-                <breeze-icon name="link" size="12"></breeze-icon>
+                <plume-icon name="link" size="12"></plume-icon>
                 Has link
               </button>
               <button
                 class="filter-chip ${this._isPinned ? "active" : ""}"
                 @click="${() => this.#toggleFilter("pinned")}"
               >
-                <breeze-icon name="pin" size="12"></breeze-icon>
+                <plume-icon name="pin" size="12"></plume-icon>
                 Pinned
               </button>
             </div>
@@ -502,7 +502,7 @@ export class BreezeChatSearchDialog extends LitElement {
               ? html`
                 <div class="state-msg">
                   <span class="state-msg-icon">
-                    <breeze-icon name="loader-2" size="20"></breeze-icon>
+                    <plume-icon name="loader-2" size="20"></plume-icon>
                   </span>
                   <span>Searching messages…</span>
                 </div>
@@ -511,7 +511,7 @@ export class BreezeChatSearchDialog extends LitElement {
               ? html`
                 <div class="state-msg">
                   <span class="state-msg-icon">
-                    <breeze-icon name="message-square" size="32"></breeze-icon>
+                    <plume-icon name="message-square" size="32"></plume-icon>
                   </span>
                   <span>Type a query to search</span>
                   <span class="state-msg-sub">Search across channels, DMs, and file names</span>
@@ -521,7 +521,7 @@ export class BreezeChatSearchDialog extends LitElement {
               ? html`
                 <div class="state-msg">
                   <span class="state-msg-icon">
-                    <breeze-icon name="search" size="32"></breeze-icon>
+                    <plume-icon name="search" size="32"></plume-icon>
                   </span>
                   <span>No results found</span>
                   <span class="state-msg-sub">Try a different query or adjust filters</span>
@@ -544,7 +544,7 @@ export class BreezeChatSearchDialog extends LitElement {
                       >
                         <div class="result-meta">
                           <span class="result-conv">
-                            <breeze-icon name="hash" size="12"></breeze-icon>
+                            <plume-icon name="hash" size="12"></plume-icon>
                             ${convName}
                           </span>
                           <span class="result-meta-dot">·</span>
@@ -557,7 +557,7 @@ export class BreezeChatSearchDialog extends LitElement {
                             ? html`
                               <span class="result-meta-dot">·</span>
                               <span class="result-badge">
-                                <breeze-icon name="paperclip" size="12"></breeze-icon>
+                                <plume-icon name="paperclip" size="12"></plume-icon>
                                 ${msg.attachments.length}
                               </span>
                             `
@@ -565,7 +565,7 @@ export class BreezeChatSearchDialog extends LitElement {
                             ? html`
                               <span class="result-meta-dot">·</span>
                               <span class="result-badge pin">
-                                <breeze-icon name="pin" size="12"></breeze-icon>
+                                <plume-icon name="pin" size="12"></plume-icon>
                                 Pinned
                               </span>
                             `
@@ -589,14 +589,14 @@ export class BreezeChatSearchDialog extends LitElement {
                 )} ${this._hasMore
                   ? html`
                     <div class="load-more-wrap">
-                      <breeze-button
+                      <plume-button
                         variant="ghost"
                         size="sm"
                         ?disabled="${this._loadingMore}"
                         @click="${this.#loadMore}"
                       >
                         ${this._loadingMore ? "Loading…" : "Load more"}
-                      </breeze-button>
+                      </plume-button>
                     </div>
                   `
                   : nothing}
@@ -614,21 +614,21 @@ export class BreezeChatSearchDialog extends LitElement {
             : html`
               <span></span>
             `}
-          <breeze-button
+          <plume-button
             variant="ghost"
             type="button"
             @click="${this.#onClose}"
           >
             Close
-          </breeze-button>
+          </plume-button>
         </div>
-      </breeze-dialog>
+      </plume-dialog>
     `;
   }
 }
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-chat-search-dialog": BreezeChatSearchDialog;
+    "plume-chat-search-dialog": PlumeChatSearchDialog;
   }
 }

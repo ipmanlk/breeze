@@ -4,4 +4,4 @@
 
 View it: {{.Link}}{{end}}
 
-— The Breeze team
+— The Plume team

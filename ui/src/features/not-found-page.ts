@@ -5,8 +5,8 @@ import { localized, msg } from "@lit/localize";
 import "../components/ui/button.ts";
 
 @localized()
-@customElement("breeze-not-found-page")
-export class BreezeNotFoundPage extends LitElement {
+@customElement("plume-not-found-page")
+export class PlumeNotFoundPage extends LitElement {
   static styles = [
     pageEnterStyles,
     css`
@@ -48,9 +48,9 @@ export class BreezeNotFoundPage extends LitElement {
             "The page you're looking for doesn't exist or may have been moved.",
           )}
         </p>
-        <breeze-button variant="default" @click="${() => this.#goHome()}">
+        <plume-button variant="default" @click="${() => this.#goHome()}">
           ${msg("Go to dashboard")}
-        </breeze-button>
+        </plume-button>
       </div>
     `;
   }
@@ -63,6 +63,6 @@ export class BreezeNotFoundPage extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-not-found-page": BreezeNotFoundPage;
+    "plume-not-found-page": PlumeNotFoundPage;
   }
 }

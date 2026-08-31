@@ -4,9 +4,9 @@ import (
 	"context"
 	"log/slog"
 
-	"ipmanlk/breeze/internal/domain"
-	"ipmanlk/breeze/internal/port"
-	"ipmanlk/breeze/internal/transport/ws"
+	"ipmanlk/plume/internal/domain"
+	"ipmanlk/plume/internal/port"
+	"ipmanlk/plume/internal/transport/ws"
 )
 
 // wsRoomAccessChecker implements ws.RoomAccessChecker. It authorizes

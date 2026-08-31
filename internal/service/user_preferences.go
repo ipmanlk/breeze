@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"slices"
 
-	"ipmanlk/breeze/internal/domain"
-	"ipmanlk/breeze/internal/port"
+	"ipmanlk/plume/internal/domain"
+	"ipmanlk/plume/internal/port"
 )
 
 // validThemePresets is the set of preset IDs the frontend recognises.

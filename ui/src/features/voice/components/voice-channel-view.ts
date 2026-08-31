@@ -23,8 +23,8 @@ import "./voice-panel.ts";
 import "./voice-controls.ts";
 
 @localized()
-@customElement("breeze-voice-channel-view")
-export class BreezeVoiceChannelView extends LitElement {
+@customElement("plume-voice-channel-view")
+export class PlumeVoiceChannelView extends LitElement {
   static styles = css`
     *,
     *::before,
@@ -363,7 +363,7 @@ export class BreezeVoiceChannelView extends LitElement {
       <span class="count" title="${msg("Participants")}${max
         ? " (cap " + max + ")"
         : ""}">
-        <breeze-icon name="users" size="12"></breeze-icon>
+        <plume-icon name="users" size="12"></plume-icon>
         ${max > 0 ? `${n}/${max}` : n}
       </span>
     `;
@@ -388,7 +388,7 @@ export class BreezeVoiceChannelView extends LitElement {
       <div class="header">
         <div class="header-left">
           <span class="header-icon">
-            <breeze-icon name="volume-2" size="14"></breeze-icon>
+            <plume-icon name="volume-2" size="14"></plume-icon>
           </span>
           <span class="header-name">${this.conversationName}</span>
         </div>
@@ -397,7 +397,7 @@ export class BreezeVoiceChannelView extends LitElement {
           ${isConnecting
             ? html`
               <span class="connecting">
-                <breeze-icon name="loader-2" size="14"></breeze-icon>
+                <plume-icon name="loader-2" size="14"></plume-icon>
                 Connecting…
               </span>
             `
@@ -407,22 +407,22 @@ export class BreezeVoiceChannelView extends LitElement {
 
       ${isConnected
         ? html`
-          <breeze-voice-panel></breeze-voice-panel>
-          <breeze-voice-controls
+          <plume-voice-panel></plume-voice-panel>
+          <plume-voice-controls
             .isMuted="${voiceIsMuted.value}"
             .isDeafened="${voiceIsDeafened.value}"
             @mute="${this.#onMute}"
             @deafen="${this.#onDeafen}"
             @leave="${this.#onLeave}"
-          ></breeze-voice-controls>
+          ></plume-voice-controls>
         `
         : html`
           <div class="join-row">
             <div class="join-icon" ?data-error="${state === "error"}">
-              <breeze-icon
+              <plume-icon
                 name="${state === "error" ? "mic-off" : "phone"}"
                 size="18"
-              ></breeze-icon>
+              ></plume-icon>
             </div>
             <div class="join-text">
               <p class="join-title">
@@ -432,7 +432,7 @@ export class BreezeVoiceChannelView extends LitElement {
               </p>
               <p class="join-sub">
                 ${state === "error"
-                  ? msg("Breeze needs mic permission to use voice.")
+                  ? msg("Plume needs mic permission to use voice.")
                   : msg("Join the voice channel to start talking.")}
               </p>
             </div>
@@ -441,10 +441,10 @@ export class BreezeVoiceChannelView extends LitElement {
               ?data-outline="${state === "error"}"
               @click="${this.#onJoin}"
             >
-              <breeze-icon
+              <plume-icon
                 name="${state === "error" ? "mic-off" : "phone"}"
                 size="14"
-              ></breeze-icon>
+              ></plume-icon>
               ${state === "error" ? msg("Retry") : msg("Join Voice")}
             </button>
           </div>
@@ -466,6 +466,6 @@ export class BreezeVoiceChannelView extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-voice-channel-view": BreezeVoiceChannelView;
+    "plume-voice-channel-view": PlumeVoiceChannelView;
   }
 }

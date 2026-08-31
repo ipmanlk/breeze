@@ -4,9 +4,9 @@ import (
 	"log/slog"
 	"net/http"
 
-	"ipmanlk/breeze/internal/port"
-	"ipmanlk/breeze/internal/transport"
-	"ipmanlk/breeze/internal/transport/dto"
+	"ipmanlk/plume/internal/port"
+	"ipmanlk/plume/internal/transport"
+	"ipmanlk/plume/internal/transport/dto"
 )
 
 // AccountHandler exposes self-service account endpoints: edit display name,

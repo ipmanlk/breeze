@@ -7,10 +7,10 @@ import (
 	"log/slog"
 	"time"
 
-	"ipmanlk/breeze/internal/apperr"
-	"ipmanlk/breeze/internal/domain"
-	"ipmanlk/breeze/internal/i18n"
-	"ipmanlk/breeze/internal/port"
+	"ipmanlk/plume/internal/apperr"
+	"ipmanlk/plume/internal/domain"
+	"ipmanlk/plume/internal/i18n"
+	"ipmanlk/plume/internal/port"
 
 	"github.com/google/uuid"
 )
@@ -176,7 +176,7 @@ func (s *NotificationService) maybeSendPush(ctx context.Context, userID, title, 
 		Title: title,
 		Body:  body,
 		Link:  link,
-		Tag:   "breeze-notification",
+		Tag:   "plume-notification",
 	}); err != nil {
 		s.logger.Warn("push notification", "error", err, "user_id", userID)
 	}

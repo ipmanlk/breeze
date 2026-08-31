@@ -3,7 +3,7 @@ package ws
 import (
 	"context"
 
-	"ipmanlk/breeze/internal/domain"
+	"ipmanlk/plume/internal/domain"
 )
 
 // RoomAccessChecker verifies whether a user may subscribe to / broadcast into

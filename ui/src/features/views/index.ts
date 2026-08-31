@@ -18,6 +18,6 @@ export {
   updateView,
   views,
 } from "./store";
-export { BreezeViewsPage } from "./views-page";
-export { BreezeViewDetailPage } from "./view-detail-page";
-export { BreezeSaveViewDialog } from "./components/save-view-dialog";
+export { PlumeViewsPage } from "./views-page";
+export { PlumeViewDetailPage } from "./view-detail-page";
+export { PlumeSaveViewDialog } from "./components/save-view-dialog";

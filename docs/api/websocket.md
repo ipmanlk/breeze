@@ -232,7 +232,7 @@ through `sendWsMessage(data)` (no-op unless the socket is open).
 Exponential backoff: 1s → 2s → 4s → … capped at 30s (plus random jitter), with
 a hard cap of 10 attempts before resetting. Before each attempt the client
 probes `GET /api/auth/me`; a 401 means the session is gone, so reconnecting
-stops and a `breeze:session-expired` event triggers logout + redirect.
+stops and a `plume:session-expired` event triggers logout + redirect.
 
 ### Architecture
 

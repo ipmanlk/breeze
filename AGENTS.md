@@ -1,8 +1,8 @@
-# AGENTS.md: Breeze
+# AGENTS.md: Plume
 
 ## Project
 
-Breeze is a self-hosted project management tool that ships as a **single Go binary** with an embedded Lit/Vite SPA. SQLite database, zero external deps.
+Plume is a self-hosted project management tool that ships as a **single Go binary** with an embedded Lit/Vite SPA. SQLite database, zero external deps.
 
 **Core philosophy:** Clean layered architecture, test-first, OpenAPI-driven type generation. **All serialized field names (Go json tags, REST DTOs, WS payloads) must use snake_case, never camelCase.**
 
@@ -101,7 +101,7 @@ Full reference in `docs/ops/configuration.md`. Quick list:
 | Variable     | Default            | Description                |
 | ------------ | ------------------ | -------------------------- |
 | `PORT`       | `8080`             | HTTP listen port           |
-| `DB_PATH`    | `./data/breeze.db` | SQLite database path       |
+| `DB_PATH`    | `./data/plume.db` | SQLite database path       |
 | `UPLOAD_DIR` | `./data/uploads`   | File storage root          |
 | `JWT_SECRET` | (required)         | Secret key for JWT signing |
 

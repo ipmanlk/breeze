@@ -5,8 +5,8 @@ import { stripHtml } from "../utils";
 import { localized, msg } from "@lit/localize";
 
 @localized()
-@customElement("breeze-reply-banner")
-export class BreezeReplyBanner extends LitElement {
+@customElement("plume-reply-banner")
+export class PlumeReplyBanner extends LitElement {
   static styles = css`
     *,
     *::before,
@@ -69,21 +69,21 @@ export class BreezeReplyBanner extends LitElement {
   protected render() {
     return html`
       <span class="label">
-        <breeze-icon name="reply" size="14"></breeze-icon>
+        <plume-icon name="reply" size="14"></plume-icon>
         Replying
       </span>
       <span class="preview">${stripHtml(this.message.content || "")}</span>
       <button class="cancel" @click="${this
         ._onCancel}" aria-label=${msg("Cancel reply")}>
-        <breeze-icon name="x" size="14"></breeze-icon>
+        <plume-icon name="x" size="14"></plume-icon>
       </button>
     `;
   }
 }
 
 @localized()
-@customElement("breeze-edit-banner")
-export class BreezeEditBanner extends LitElement {
+@customElement("plume-edit-banner")
+export class PlumeEditBanner extends LitElement {
   static styles = css`
     *,
     *::before,
@@ -138,13 +138,13 @@ export class BreezeEditBanner extends LitElement {
   protected render() {
     return html`
       <span class="label">
-        <breeze-icon name="check" size="14"></breeze-icon>
+        <plume-icon name="check" size="14"></plume-icon>
         Editing
       </span>
       <span class="preview">Press Enter to save, Escape to cancel</span>
       <button class="cancel" @click="${this
         ._onCancel}" aria-label=${msg("Cancel edit")}>
-        <breeze-icon name="x" size="14"></breeze-icon>
+        <plume-icon name="x" size="14"></plume-icon>
       </button>
     `;
   }
@@ -152,7 +152,7 @@ export class BreezeEditBanner extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-reply-banner": BreezeReplyBanner;
-    "breeze-edit-banner": BreezeEditBanner;
+    "plume-reply-banner": PlumeReplyBanner;
+    "plume-edit-banner": PlumeEditBanner;
   }
 }

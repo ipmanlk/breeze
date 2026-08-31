@@ -14,14 +14,14 @@ import { OutsideClickController } from "@/lib/outside-click-controller";
 import { SignalController } from "@/lib/signal-controller";
 import { canManageOrg } from "@/lib/permissions";
 import { auth } from "@/store/auth";
-import "@/components/ui/breeze-icon.ts";
+import "@/components/ui/plume-icon.ts";
 import "@/components/ui/dialog.ts";
 import "@/components/ui/input.ts";
 import "@/components/ui/button.ts";
 import { localized, msg } from "@lit/localize";
 
 const CI_STYLES = `
-breeze-channel-item { display: block; position: relative; }
+plume-channel-item { display: block; position: relative; }
 .ci-row {
   display: flex;
   align-items: center;
@@ -194,8 +194,8 @@ breeze-channel-item { display: block; position: relative; }
  *  - Inline rename and delete confirmation dialogs
  */
 @localized()
-@customElement("breeze-channel-item")
-export class BreezeChannelItem extends LitElement {
+@customElement("plume-channel-item")
+export class PlumeChannelItem extends LitElement {
   createRenderRoot() {
     return this;
   }
@@ -411,11 +411,11 @@ export class BreezeChannelItem extends LitElement {
         ?data-active="${isActive}"
       >
         <span class="ci-grip">
-          <breeze-icon name="grip-vertical" size="12"></breeze-icon>
+          <plume-icon name="grip-vertical" size="12"></plume-icon>
         </span>
         <button type="button" class="ci-main-btn" @click="${this._onClick}">
           <span class="ci-icon">
-            <breeze-icon name="${iconName}" size="14"></breeze-icon>
+            <plume-icon name="${iconName}" size="14"></plume-icon>
           </span>
           <span class="ci-name">${conv.name}</span>
           ${conv.unread_count > 0
@@ -435,23 +435,23 @@ export class BreezeChannelItem extends LitElement {
               aria-label=${msg("Channel actions")}
               @click="${this._toggleMenu}"
             >
-              <breeze-icon name="more-vertical" size="14"></breeze-icon>
+              <plume-icon name="more-vertical" size="14"></plume-icon>
             </button>
             ${this._menuOpen
               ? html`
                 <div class="ci-menu">
                   <button class="ci-menu-item" @click="${this._openSettings}">
-                    <breeze-icon name="settings" size="14"></breeze-icon>
+                    <plume-icon name="settings" size="14"></plume-icon>
                     ${msg("Settings")}
                   </button>
                   <button class="ci-menu-item" @click="${this._openRename}">
-                    <breeze-icon name="pencil" size="14"></breeze-icon>
+                    <plume-icon name="pencil" size="14"></plume-icon>
                     ${msg("Rename")}
                   </button>
                   <div class="ci-menu-divider"></div>
                   <button class="ci-menu-item destructive" @click="${this
                     ._openDelete}">
-                    <breeze-icon name="trash-2" size="14"></breeze-icon>
+                    <plume-icon name="trash-2" size="14"></plume-icon>
                     ${msg("Delete")}
                   </button>
                 </div>
@@ -464,7 +464,7 @@ export class BreezeChannelItem extends LitElement {
       <!-- Rename dialog -->
       ${this._renameOpen
         ? html`
-          <breeze-dialog
+          <plume-dialog
             style="--dialog-w:24rem"
             .open="${true}"
             heading="Rename channel"
@@ -473,7 +473,7 @@ export class BreezeChannelItem extends LitElement {
             }}"
           >
             <div class="ci-dlg-body">
-              <breeze-input
+              <plume-input
                 placeholder=${msg("channel-name")}
                 .value="${this._renameValue}"
                 maxlength="100"
@@ -481,7 +481,7 @@ export class BreezeChannelItem extends LitElement {
                 @input="${(e: Event) => {
                   this._renameValue = (e.target as HTMLInputElement).value;
                 }}"
-              ></breeze-input>
+              ></plume-input>
               ${this._error
                 ? html`
                   <p class="ci-error">${this._error}</p>
@@ -492,24 +492,24 @@ export class BreezeChannelItem extends LitElement {
               slot="footer"
               style="display:flex;justify-content:flex-end;gap:var(--space-2);width:100%"
             >
-              <breeze-button variant="ghost" type="button" @click="${() => {
+              <plume-button variant="ghost" type="button" @click="${() => {
                 this._renameOpen = false;
               }}">
                 Cancel
-              </breeze-button>
-              <breeze-button ?disabled="${this._saving ||
+              </plume-button>
+              <plume-button ?disabled="${this._saving ||
                 !this._renameValue.trim()}" @click="${this._onRenameSubmit}">
                 ${this._saving ? "Saving..." : "Save"}
-              </breeze-button>
+              </plume-button>
             </div>
-          </breeze-dialog>
+          </plume-dialog>
         `
         : nothing}
 
       <!-- Delete confirmation dialog -->
       ${this._deleteOpen
         ? html`
-          <breeze-dialog
+          <plume-dialog
             style="--dialog-w:28rem"
             .open="${true}"
             heading="Delete channel"
@@ -526,20 +526,20 @@ export class BreezeChannelItem extends LitElement {
               slot="footer"
               style="display:flex;justify-content:flex-end;gap:var(--space-2);width:100%"
             >
-              <breeze-button variant="ghost" type="button" @click="${() => {
+              <plume-button variant="ghost" type="button" @click="${() => {
                 this._deleteOpen = false;
               }}">
                 Cancel
-              </breeze-button>
-              <breeze-button
+              </plume-button>
+              <plume-button
                 variant="destructive"
                 ?disabled="${this._deleting}"
                 @click="${this._onDeleteConfirm}"
               >
                 ${this._deleting ? "Deleting..." : "Delete channel"}
-              </breeze-button>
+              </plume-button>
             </div>
-          </breeze-dialog>
+          </plume-dialog>
         `
         : nothing}
     `;
@@ -548,6 +548,6 @@ export class BreezeChannelItem extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-channel-item": BreezeChannelItem;
+    "plume-channel-item": PlumeChannelItem;
   }
 }

@@ -3,7 +3,7 @@ package port
 import (
 	"context"
 
-	"ipmanlk/breeze/internal/domain"
+	"ipmanlk/plume/internal/domain"
 )
 
 // Add these to repo.go alongside the existing repository interfaces.

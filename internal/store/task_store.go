@@ -8,10 +8,10 @@ import (
 	"fmt"
 	"time"
 
-	"ipmanlk/breeze/internal/domain"
-	"ipmanlk/breeze/internal/lexorank"
-	"ipmanlk/breeze/internal/port"
-	"ipmanlk/breeze/internal/store/sqlc"
+	"ipmanlk/plume/internal/domain"
+	"ipmanlk/plume/internal/lexorank"
+	"ipmanlk/plume/internal/port"
+	"ipmanlk/plume/internal/store/sqlc"
 )
 
 type TaskStore struct {

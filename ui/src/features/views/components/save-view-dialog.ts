@@ -23,8 +23,8 @@ function getLayoutOptions(): SelectOption[] {
  * In edit mode: `viewId` is set, name/layout are pre-filled.
  */
 @localized()
-@customElement("breeze-save-view-dialog")
-export class BreezeSaveViewDialog extends LitElement {
+@customElement("plume-save-view-dialog")
+export class PlumeSaveViewDialog extends LitElement {
   static styles = css`
     *,
     *::before,
@@ -198,7 +198,7 @@ export class BreezeSaveViewDialog extends LitElement {
   render() {
     const isEdit = !!this.viewId;
     return html`
-      <breeze-dialog
+      <plume-dialog
         .open="${this.open}"
         heading="${isEdit ? msg("Edit View") : msg("Save View")}"
         @close="${this._onClose}"
@@ -207,31 +207,31 @@ export class BreezeSaveViewDialog extends LitElement {
         <div class="form">
           <div class="field">
             <label class="field-label" for="view-name">${msg("Name")}</label>
-            <breeze-input
+            <plume-input
               id="view-name"
               placeholder="${msg("e.g. High Priority")}"
               .value="${this._name}"
               @input="${(e: Event) => {
                 this._name = (e.target as HTMLInputElement).value;
               }}"
-            ></breeze-input>
+            ></plume-input>
           </div>
           <div class="field">
             <label class="field-label">${msg("Layout")}</label>
-            <breeze-select
+            <plume-select
               .options="${getLayoutOptions()}"
               .value="${this._layout}"
               @change="${(e: CustomEvent) => {
                 this._layout = e.detail as ViewLayout;
               }}"
-            ></breeze-select>
+            ></plume-select>
           </div>
         </div>
 
         <div slot="footer" class="footer-actions">
           ${isEdit
             ? html`
-              <breeze-button
+              <plume-button
                 class="delete-btn"
                 variant="destructive"
                 size="sm"
@@ -239,31 +239,31 @@ export class BreezeSaveViewDialog extends LitElement {
                 @click="${this._delete}"
               >
                 ${msg("Delete")}
-              </breeze-button>
+              </plume-button>
             `
             : nothing}
-          <breeze-button
+          <plume-button
             variant="outline"
             size="sm"
             @click="${this._onClose}"
           >
             ${msg("Cancel")}
-          </breeze-button>
-          <breeze-button
+          </plume-button>
+          <plume-button
             size="sm"
             ?disabled="${!this._name.trim() || this._saving}"
             @click="${this._save}"
           >
             ${isEdit ? msg("Save") : msg("Save view")}
-          </breeze-button>
+          </plume-button>
         </div>
-      </breeze-dialog>
+      </plume-dialog>
     `;
   }
 }
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-save-view-dialog": BreezeSaveViewDialog;
+    "plume-save-view-dialog": PlumeSaveViewDialog;
   }
 }

@@ -1,4 +1,4 @@
-// Package i18n provides Breeze's internationalization runtime for the Go
+// Package i18n provides Plume's internationalization runtime for the Go
 // backend: an embedded message bundle (go-i18n + TOML), locale resolution
 // (user preference → Accept-Language → source), and a per-request Localizer
 // factory.
@@ -31,7 +31,7 @@ import (
 // final fallback when no translation is available.
 const SourceLocale = "en"
 
-// supportedLocales is the set of locales Breeze ships message files for.
+// supportedLocales is the set of locales Plume ships message files for.
 // SourceLocale is always first. Keep in sync with ui/lit-localize.json's
 // sourceLocale + targetLocales, and with the .toml files under messages/.
 var supportedLocales = []string{SourceLocale, "fr"}
@@ -48,7 +48,7 @@ func supportedTags() []language.Tag {
 	return tags
 }
 
-// SupportedLocales returns the locales Breeze has message catalogs for
+// SupportedLocales returns the locales Plume has message catalogs for
 // (including the source). Used by validation and the Settings dropdown.
 func SupportedLocales() []string {
 	out := make([]string, len(supportedLocales))

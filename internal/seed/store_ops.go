@@ -6,9 +6,9 @@ import (
 	"math/rand"
 	"time"
 
-	"ipmanlk/breeze/internal/auth"
-	"ipmanlk/breeze/internal/domain"
-	"ipmanlk/breeze/internal/lexorank"
+	"ipmanlk/plume/internal/auth"
+	"ipmanlk/plume/internal/domain"
+	"ipmanlk/plume/internal/lexorank"
 )
 
 // ---- tables-to-clear list ----
@@ -73,7 +73,7 @@ func (s *Seeder) clearData() {
 		}
 		log.Printf("  Cleared %s", table)
 	}
-	// Note: sqlite_sequence is not used; all Breeze PKs are UUIDs, not AUTOINCREMENT.
+	// Note: sqlite_sequence is not used; all Plume PKs are UUIDs, not AUTOINCREMENT.
 	log.Println("Database wiped.")
 }
 
@@ -103,7 +103,7 @@ func (s *Seeder) createUserAndOrg() (userID, orgID string) {
 	accountID := newUUID()
 	if err := s.stores.Account.Create(s.ctx, &domain.Account{
 		ID:           accountID,
-		Email:        "demo@breeze.app",
+		Email:        "demo@plume.app",
 		PasswordHash: passwordHash,
 		CreatedAt:    now,
 		UpdatedAt:    now,
@@ -115,7 +115,7 @@ func (s *Seeder) createUserAndOrg() (userID, orgID string) {
 		ID:        userID,
 		AccountID: accountID,
 		OrgID:     orgID,
-		Email:     "demo@breeze.app",
+		Email:     "demo@plume.app",
 		Name:      "Demo Admin",
 		Role:      "owner",
 		IsActive:  true,
@@ -141,7 +141,7 @@ func (s *Seeder) createSecondUser(orgID string) string {
 	accountID := newUUID()
 	if err := s.stores.Account.Create(s.ctx, &domain.Account{
 		ID:           accountID,
-		Email:        "member@breeze.app",
+		Email:        "member@plume.app",
 		PasswordHash: passwordHash,
 		CreatedAt:    now,
 		UpdatedAt:    now,
@@ -153,7 +153,7 @@ func (s *Seeder) createSecondUser(orgID string) string {
 		ID:        userID,
 		AccountID: accountID,
 		OrgID:     orgID,
-		Email:     "member@breeze.app",
+		Email:     "member@plume.app",
 		Name:      "Demo Member",
 		Role:      "member",
 		IsActive:  true,
@@ -177,7 +177,7 @@ func (s *Seeder) createGuestUser(orgID string) string {
 	accountID := newUUID()
 	if err := s.stores.Account.Create(s.ctx, &domain.Account{
 		ID:           accountID,
-		Email:        "guest@breeze.app",
+		Email:        "guest@plume.app",
 		PasswordHash: passwordHash,
 		CreatedAt:    now,
 		UpdatedAt:    now,
@@ -189,7 +189,7 @@ func (s *Seeder) createGuestUser(orgID string) string {
 		ID:        userID,
 		AccountID: accountID,
 		OrgID:     orgID,
-		Email:     "guest@breeze.app",
+		Email:     "guest@plume.app",
 		Name:      "Demo Guest",
 		Role:      "guest",
 		IsActive:  true,

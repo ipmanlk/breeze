@@ -1,6 +1,6 @@
 package dto
 
-import "ipmanlk/breeze/internal/domain"
+import "ipmanlk/plume/internal/domain"
 
 type CreateStatusRequest struct {
 	Name     string `json:"name" validate:"required"`

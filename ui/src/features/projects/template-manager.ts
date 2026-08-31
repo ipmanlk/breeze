@@ -10,17 +10,17 @@ import {
   postProjectsByIdTemplatesByTemplateIdInstantiate,
 } from "@/api";
 import { showToast } from "@/components/ui/toast-store";
-import { BreezeInput } from "../../components/ui/input.ts";
-import { BreezeSelect } from "../../components/ui/select.ts";
+import { PlumeInput } from "../../components/ui/input.ts";
+import { PlumeSelect } from "../../components/ui/select.ts";
 import "../../components/ui/button.ts";
 import "../../components/ui/dialog.ts";
-import "../../components/ui/breeze-icon.ts";
+import "../../components/ui/plume-icon.ts";
 import "../../components/ui/field.ts";
 import { localized, msg } from "@lit/localize";
 
 @localized()
-@customElement("breeze-template-manager")
-export class BreezeTemplateManager extends LitElement {
+@customElement("plume-template-manager")
+export class PlumeTemplateManager extends LitElement {
   @property()
   projectId = "";
   @property()
@@ -36,17 +36,17 @@ export class BreezeTemplateManager extends LitElement {
   private _editTemplate: DtoTaskTemplateResponse | null = null;
 
   @query("#tmpl-name")
-  private _tmplNameInput!: BreezeInput | null;
+  private _tmplNameInput!: PlumeInput | null;
   @query("#tmpl-desc")
-  private _tmplDescInput!: BreezeInput | null;
+  private _tmplDescInput!: PlumeInput | null;
   @query("#tmpl-status")
-  private _tmplStatusSelect!: BreezeSelect | null;
+  private _tmplStatusSelect!: PlumeSelect | null;
   @query("#tmpl-priority")
-  private _tmplPrioritySelect!: BreezeSelect | null;
+  private _tmplPrioritySelect!: PlumeSelect | null;
   @query("#tmpl-recurrence")
-  private _tmplRecurrenceSelect!: BreezeSelect | null;
+  private _tmplRecurrenceSelect!: PlumeSelect | null;
   @query("#tmpl-days")
-  private _tmplDaysInput!: BreezeInput | null;
+  private _tmplDaysInput!: PlumeInput | null;
 
   createRenderRoot() {
     return this;
@@ -78,14 +78,14 @@ export class BreezeTemplateManager extends LitElement {
       <div class="tm-wrap">
         <div class="tm-header">
           <h3 class="tm-title">Task Templates</h3>
-          <breeze-button
+          <plume-button
             variant="outline"
             size="sm"
             @click="${() => this.#openCreate()}"
           >
-            <breeze-icon name="plus" size="14"></breeze-icon>
+            <plume-icon name="plus" size="14"></plume-icon>
             New template
-          </breeze-button>
+          </plume-button>
         </div>
         ${this._loading
           ? html`<p class="tm-empty">Loading…</p>`
@@ -119,21 +119,21 @@ export class BreezeTemplateManager extends LitElement {
           </span>
         </div>
         <div class="tm-item-actions">
-          <breeze-button
+          <plume-button
             variant="ghost"
             size="sm"
             @click="${() => this.#instantiate(t.id!)}"
-          >Use</breeze-button>
-          <breeze-button
+          >Use</plume-button>
+          <plume-button
             variant="ghost"
             size="sm"
             @click="${() => this.#openEdit(t)}"
-          >Edit</breeze-button>
-          <breeze-button
+          >Edit</plume-button>
+          <plume-button
             variant="ghost"
             size="sm"
             @click="${() => this.#delete(t.id!)}"
-          >Delete</breeze-button>
+          >Delete</plume-button>
         </div>
       </div>
     `;
@@ -148,7 +148,7 @@ export class BreezeTemplateManager extends LitElement {
     const recurrence = t?.recurrence_pattern ?? "none";
     const recurrenceDays = t?.recurrence_days ?? "";
     return html`
-      <breeze-dialog
+      <plume-dialog
         .open="${true}"
         heading="${t ? "Edit template" : "New template"}"
         @close="${() => (this._dialogOpen = false)}"
@@ -161,33 +161,33 @@ export class BreezeTemplateManager extends LitElement {
           }}"
         >
           <div class="tm-form">
-            <breeze-field label="Name">
-              <breeze-input
+            <plume-field label="Name">
+              <plume-input
                 id="tmpl-name"
                 .value="${name}"
                 placeholder=${msg("e.g. Weekly sprint review")}
-              ></breeze-input>
-            </breeze-field>
-            <breeze-field label="Description">
-              <breeze-input
+              ></plume-input>
+            </plume-field>
+            <plume-field label="Description">
+              <plume-input
                 id="tmpl-desc"
                 .value="${description}"
                 placeholder=${msg("Template description")}
-              ></breeze-input>
-            </breeze-field>
+              ></plume-input>
+            </plume-field>
             <div class="tm-form-row">
-              <breeze-field label="Status">
-                <breeze-select
+              <plume-field label="Status">
+                <plume-select
                   id="tmpl-status"
                   .options="${this.statuses.map((s) => ({
                     label: s.name!,
                     value: s.id!,
                   }))}"
                   .value="${statusId}"
-                ></breeze-select>
-              </breeze-field>
-              <breeze-field label="Priority">
-                <breeze-select
+                ></plume-select>
+              </plume-field>
+              <plume-field label="Priority">
+                <plume-select
                   id="tmpl-priority"
                   .options="${[
                     { label: msg("None"), value: "none" },
@@ -197,12 +197,12 @@ export class BreezeTemplateManager extends LitElement {
                     { label: msg("Urgent"), value: "urgent" },
                   ]}"
                   .value="${priority}"
-                ></breeze-select>
-              </breeze-field>
+                ></plume-select>
+              </plume-field>
             </div>
             <div class="tm-form-row">
-              <breeze-field label="Recurrence">
-                <breeze-select
+              <plume-field label="Recurrence">
+                <plume-select
                   id="tmpl-recurrence"
                   .options="${[
                     { label: msg("None (manual)"), value: "none" },
@@ -211,29 +211,29 @@ export class BreezeTemplateManager extends LitElement {
                     { label: msg("Monthly"), value: "monthly" },
                   ]}"
                   .value="${recurrence}"
-                ></breeze-select>
-              </breeze-field>
-              <breeze-field
+                ></plume-select>
+              </plume-field>
+              <plume-field
                 label="Recurrence days (weekly: 0-6 comma-sep, monthly: day num)">
-                <breeze-input
+                <plume-input
                   id="tmpl-days"
                   .value="${recurrenceDays}"
                   placeholder=${msg("e.g. 1,3,5")}
-                ></breeze-input>
-              </breeze-field>
+                ></plume-input>
+              </plume-field>
             </div>
           </div>
         </form>
         <div slot="footer" class="tm-dialog-footer">
-          <breeze-button variant="ghost" @click="${() => (this._dialogOpen =
+          <plume-button variant="ghost" @click="${() => (this._dialogOpen =
             false)}">
             Cancel
-          </breeze-button>
-          <breeze-button variant="default" type="submit" form="tmpl-form">
+          </plume-button>
+          <plume-button variant="default" type="submit" form="tmpl-form">
             ${t ? "Save" : "Create"}
-          </breeze-button>
+          </plume-button>
         </div>
-      </breeze-dialog>
+      </plume-dialog>
     `;
   }
 
@@ -323,6 +323,6 @@ export class BreezeTemplateManager extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-template-manager": BreezeTemplateManager;
+    "plume-template-manager": PlumeTemplateManager;
   }
 }

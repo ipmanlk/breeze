@@ -25,7 +25,7 @@ the documented default.
 | Variable          | Default            | Description                                                                                   |
 | ----------------- | ------------------ | --------------------------------------------------------------------------------------------- |
 | `PORT`            | `8080`             | HTTP listen port number (no colon). The server listens on `:<PORT>`, which binds all interfaces. Do not set `:3000`. |
-| `DB_PATH`         | `./data/breeze.db` | Path to the SQLite database file. Created automatically. Use an absolute path for production. |
+| `DB_PATH`         | `./data/plume.db` | Path to the SQLite database file. Created automatically. Use an absolute path for production. |
 | `UPLOAD_DIR`      | `./data/uploads`   | Directory for uploaded file attachments. Created automatically.                               |
 | `MAX_UPLOAD_SIZE` | `52428800` (50MB)  | Maximum file upload size in bytes.                                                            |
 | `CORS_ORIGINS`    | `http://localhost:5173,http://localhost:4173` (dev) | CORS allowed origins (comma-separated). Empty/absent = dev defaults. In production set to your SPA origin(s). Cookies use `SameSite=Lax` so same-origin deployments do not need CORS. |
@@ -75,7 +75,7 @@ no-op (air-gapped friendly): password-reset links are logged server-side,
 invite tokens are returned in the API response for manual sharing, and the
 email-notifications user preference has no effect.
 
-When `SMTP_HOST` is set, Breeze sends transactional email (password reset,
+When `SMTP_HOST` is set, Plume sends transactional email (password reset,
 invites, and per-notification email copies when the recipient has email
 notifications enabled) via stdlib `net/smtp`, with no external Go
 dependencies.
@@ -87,8 +87,8 @@ dependencies.
 | `SMTP_USER`      | (empty)   | SMTP username. Empty = no auth (e.g. local relay).                         |
 | `SMTP_PASS`      | (empty)   | SMTP password.                                                             |
 | `SMTP_FROM`      | `SMTP_USER` | Sender address. Falls back to `SMTP_USER` when unset.                    |
-| `SMTP_FROM_NAME` | `Breeze`  | Sender display name.                                                       |
-| `APP_URL`        | (empty)   | Public base URL for links in emails (e.g. `https://breeze.example.com`). Falls back to the request `Host` for password-reset logging when empty. |
+| `SMTP_FROM_NAME` | `Plume`  | Sender display name.                                                       |
+| `APP_URL`        | (empty)   | Public base URL for links in emails (e.g. `https://plume.example.com`). Falls back to the request `Host` for password-reset logging when empty. |
 
 ## Browser push notifications (Web Push)
 
@@ -96,7 +96,7 @@ Browser push is **optional**. When `VAPID_PUBLIC_KEY`/`VAPID_PRIVATE_KEY` are
 unset, Web Push is disabled: the UI hides the opt-in and the existing
 in-page `Notification` API (wired in §4) still covers the tab-open case.
 
-When configured, Breeze registers a service worker, subscribes via the
+When configured, Plume registers a service worker, subscribes via the
 Push API, and sends RFC 8291-encrypted payloads on `notification_new` when
 the recipient has `desktop_notifications` enabled. Pushes are delivered by
 the browser even when the tab is closed.
@@ -111,7 +111,7 @@ go run ./cmd/vapidkeys
 | ------------------ | -------------------------- | --------------------------------------------------------------------------- |
 | `VAPID_PUBLIC_KEY`  | (empty)                    | P-256 public key (base64url). Empty = push disabled.                        |
 | `VAPID_PRIVATE_KEY` | (empty)                    | P-256 private key (base64url). Must pair with the public key.               |
-| `VAPID_SUBJECT`     | `mailto:noreply@breeze.local` | Contact URL/mailto included in the VAPID JWT (RFC 8292).                  |
+| `VAPID_SUBJECT`     | `mailto:noreply@plume.local` | Contact URL/mailto included in the VAPID JWT (RFC 8292).                  |
 
 ## Example (development)
 
@@ -119,7 +119,7 @@ go run ./cmd/vapidkeys
 export JWT_SECRET="dev-secret-not-for-production-use"
 export APP_ENV="development"
 
-./breeze
+./plume
 ```
 
 ## Example (production)
@@ -128,14 +128,14 @@ export APP_ENV="development"
 export JWT_SECRET="your-secret-key-here-at-least-32-chars"
 export APP_ENV="production"
 export PORT="3000"
-export DB_PATH="/var/lib/breeze/breeze.db"
-export UPLOAD_DIR="/var/lib/breeze/uploads"
+export DB_PATH="/var/lib/plume/plume.db"
+export UPLOAD_DIR="/var/lib/plume/uploads"
 
-./breeze
+./plume
 ```
 
 Set `CORS_ORIGINS` to your domain if the SPA and API are served from different
-origins. When `CORS_ORIGINS` is set, Breeze applies the configured allowlist in
+origins. When `CORS_ORIGINS` is set, Plume applies the configured allowlist in
 both development and production. If `CORS_ORIGINS` is empty in production, the
 server defaults to same-origin behavior (no CORS headers), which is safe for the
 common case where the SPA and API share an origin.
@@ -164,7 +164,7 @@ The `Upgrade`/`Connection` headers are required for the WebSocket endpoint
 
 ## Auth
 
-Breeze uses JWT (HS256) for session tokens, stored in a `__Host-token` HttpOnly
+Plume uses JWT (HS256) for session tokens, stored in a `__Host-token` HttpOnly
 cookie with `SameSite=Lax`. The cookie is only sent over HTTPS (`Secure` flag).
 Login is rate-limited to 10 attempts per 10 minutes per IP.
 

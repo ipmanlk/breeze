@@ -5,8 +5,8 @@ import (
 
 	"github.com/go-chi/chi/v5"
 
-	"ipmanlk/breeze/internal/port"
-	"ipmanlk/breeze/internal/transport"
+	"ipmanlk/plume/internal/port"
+	"ipmanlk/plume/internal/transport"
 )
 
 // RejectArchivedProject blocks mutating requests (non-GET/HEAD/OPTIONS) to

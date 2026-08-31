@@ -6,8 +6,8 @@ import (
 	"testing"
 	"time"
 
-	"ipmanlk/breeze/internal/apperr"
-	"ipmanlk/breeze/internal/domain"
+	"ipmanlk/plume/internal/apperr"
+	"ipmanlk/plume/internal/domain"
 )
 
 func TestAuthService_RequestPasswordReset_UnknownEmail(t *testing.T) {

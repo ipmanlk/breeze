@@ -5,7 +5,7 @@ import (
 	"errors"
 	"testing"
 
-	"ipmanlk/breeze/internal/domain"
+	"ipmanlk/plume/internal/domain"
 )
 
 func TestConversationService_CreateChannel(t *testing.T) {

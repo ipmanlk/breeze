@@ -17,8 +17,8 @@ import { localized, msg } from "@lit/localize";
  * area (a sibling in the parent chat-area) stays fixed at the bottom.
  */
 @localized()
-@customElement("breeze-message-list")
-export class BreezeMessageList extends LitElement {
+@customElement("plume-message-list")
+export class PlumeMessageList extends LitElement {
   static styles = css`
     *,
     *::before,
@@ -425,12 +425,12 @@ export class BreezeMessageList extends LitElement {
             const isNew = newCount > 0 && i >= messages.length - newCount;
             return html`
               <div data-msg-id="${m.id}" class="${isNew ? "msg-enter" : ""}">
-                <breeze-message-item
+                <plume-message-item
                   .message="${m}"
                   .showDaySeparator="${showDaySep}"
                   .grouped="${grouped}"
                   .currentUserId="${this.currentUserId}"
-                ></breeze-message-item>
+                ></plume-message-item>
               </div>
             `;
           })}
@@ -441,6 +441,6 @@ export class BreezeMessageList extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-message-list": BreezeMessageList;
+    "plume-message-list": PlumeMessageList;
   }
 }

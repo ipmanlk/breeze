@@ -6,10 +6,10 @@
 # Placeholders use Go text/template syntax: {{.Name}}.
 
 [PasswordResetSubject]
-other = "Reset your Breeze password"
+other = "Reset your Plume password"
 
 [InviteSubject]
 other = "{{.Inviter}} invited you to join {{.Org}}"
 
 [NotificationSubject]
-other = "Breeze notification"
+other = "Plume notification"

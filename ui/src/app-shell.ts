@@ -46,7 +46,7 @@ import "./features/members/invite-accept-page.ts";
  */
 
 const APP_STYLES = `
-breeze-app {
+plume-app {
   display: block;
   min-height: 100svh;
 }
@@ -110,9 +110,9 @@ const lazyPages = {
   resetPassword: () => import("./features/auth/reset-password-page.ts"),
 } as const;
 
-@customElement("breeze-app")
+@customElement("plume-app")
 @localized()
-export class BreezeApp extends LitElement {
+export class PlumeApp extends LitElement {
   /** Light DOM: required for @atlaskit/pragmatic-drag-and-drop. */
   createRenderRoot() {
     return this;
@@ -250,39 +250,39 @@ export class BreezeApp extends LitElement {
     lazyPages.dashboard();
 
     if (path === "/projects") {
-      this._ensure("breeze-projects-page", lazyPages.projects);
+      this._ensure("plume-projects-page", lazyPages.projects);
     } else if (matchRoute("/projects/:slug", path)) {
-      this._ensure("breeze-project-detail-page", lazyPages.projectDetail);
+      this._ensure("plume-project-detail-page", lazyPages.projectDetail);
     } else if (path === "/views") {
-      this._ensure("breeze-views-page", lazyPages.views);
+      this._ensure("plume-views-page", lazyPages.views);
     } else if (matchRoute("/views/:id", path)) {
-      this._ensure("breeze-view-detail-page", lazyPages.viewDetail);
+      this._ensure("plume-view-detail-page", lazyPages.viewDetail);
     } else if (path === "/inbox") {
-      this._ensure("breeze-inbox-page", lazyPages.inbox);
+      this._ensure("plume-inbox-page", lazyPages.inbox);
     } else if (matchRoute("/chat/:conversationId", path) || path === "/chat") {
-      this._ensure("breeze-chat-page", lazyPages.chatPage);
+      this._ensure("plume-chat-page", lazyPages.chatPage);
     } else if (
       matchRoute("/messages/:conversationId", path) || path === "/messages"
     ) {
-      this._ensure("breeze-inbox-chat-page", lazyPages.inboxChat);
+      this._ensure("plume-inbox-chat-page", lazyPages.inboxChat);
     } else if (path === "/members" || matchRoute("/members/:tab", path)) {
-      this._ensure("breeze-members-page", lazyPages.members);
+      this._ensure("plume-members-page", lazyPages.members);
     } else if (path === "/my-tasks") {
-      this._ensure("breeze-my-tasks-page", lazyPages.myTasks);
+      this._ensure("plume-my-tasks-page", lazyPages.myTasks);
     } else if (path === "/preferences") {
-      this._ensure("breeze-user-settings-page", lazyPages.settings);
+      this._ensure("plume-user-settings-page", lazyPages.settings);
     } else if (
       path === "/settings/workspace" ||
       matchRoute("/settings/workspace/:tab", path)
     ) {
       this._ensure(
-        "breeze-workspace-settings-page",
+        "plume-workspace-settings-page",
         lazyPages.workspaceSettings,
       );
     } else if (path === "/") {
-      this._ensure("breeze-dashboard-page", lazyPages.dashboard);
+      this._ensure("plume-dashboard-page", lazyPages.dashboard);
     } else {
-      this._ensure("breeze-not-found-page", lazyPages.notFound);
+      this._ensure("plume-not-found-page", lazyPages.notFound);
     }
   }
 
@@ -290,7 +290,7 @@ export class BreezeApp extends LitElement {
    * renderPage wraps page content with the shared APP_STYLES <style> and the
    * standard loader fallback used while a lazy page chunk is loading.
    * `tag` is the custom element name that must be defined before we render the
-   * real page; `content` is the page markup (incl. <breeze-command-palette>
+   * real page; `content` is the page markup (incl. <plume-command-palette>
    * when appropriate). Collapses the duplicated <style>${APP_STYLES}</style>
    * + loader scaffold that was repeated per-route.
    *
@@ -307,7 +307,7 @@ export class BreezeApp extends LitElement {
   ): ReturnType<typeof html> {
     const body = (!lazy || this._ready.has(tag)) ? content : html`
       <div class="app-loader">
-        <breeze-spinner></breeze-spinner>
+        <plume-spinner></plume-spinner>
       </div>
     `;
     return html`
@@ -320,7 +320,7 @@ export class BreezeApp extends LitElement {
   private pageWithPalette(tag: string, page: ReturnType<typeof html>) {
     return this.renderPage(
       tag,
-      html`${page}<breeze-command-palette></breeze-command-palette><breeze-shortcuts-dialog></breeze-shortcuts-dialog>`,
+      html`${page}<plume-command-palette></plume-command-palette><plume-shortcuts-dialog></plume-shortcuts-dialog>`,
     );
   }
 
@@ -372,7 +372,7 @@ export class BreezeApp extends LitElement {
     if (!document.hidden) return;
     const fire = (): void => {
       try {
-        const notif = new Notification(n.title ?? "Breeze", {
+        const notif = new Notification(n.title ?? "Plume", {
           body: n.body ?? "",
           tag: n.id ?? undefined,
         });
@@ -410,7 +410,7 @@ export class BreezeApp extends LitElement {
         "__loader__",
         html`
           <div class="app-loader">
-            <breeze-spinner></breeze-spinner>
+            <plume-spinner></plume-spinner>
           </div>
         `,
         false,
@@ -420,7 +420,7 @@ export class BreezeApp extends LitElement {
     if (setup && (path === "/" || path === "/login")) {
       return this.renderPage(
         "__setup__",
-        html`<breeze-setup-page></breeze-setup-page>`,
+        html`<plume-setup-page></plume-setup-page>`,
         false,
       );
     }
@@ -429,34 +429,34 @@ export class BreezeApp extends LitElement {
       if (path === "/setup") {
         return this.renderPage(
           "__setup__",
-          html`<breeze-setup-page></breeze-setup-page>`,
+          html`<plume-setup-page></plume-setup-page>`,
           false,
         );
       }
       if (path === "/join") {
         return this.renderPage(
           "__join__",
-          html`<breeze-invite-accept-page></breeze-invite-accept-page>`,
+          html`<plume-invite-accept-page></plume-invite-accept-page>`,
           false,
         );
       }
       if (path === "/forgot-password") {
         return this.renderPage(
-          "breeze-forgot-password-page",
-          html`<breeze-forgot-password-page></breeze-forgot-password-page>`,
+          "plume-forgot-password-page",
+          html`<plume-forgot-password-page></plume-forgot-password-page>`,
           false,
         );
       }
       if (path.startsWith("/reset-password")) {
         return this.renderPage(
-          "breeze-reset-password-page",
-          html`<breeze-reset-password-page></breeze-reset-password-page>`,
+          "plume-reset-password-page",
+          html`<plume-reset-password-page></plume-reset-password-page>`,
           false,
         );
       }
       return this.renderPage(
         "__login__",
-        html`<breeze-login-page></breeze-login-page>`,
+        html`<plume-login-page></plume-login-page>`,
         false,
       );
     }
@@ -464,43 +464,43 @@ export class BreezeApp extends LitElement {
     if (path === "/setup") {
       return this.renderPage(
         "__setup__",
-        html`<breeze-setup-page></breeze-setup-page>`,
+        html`<plume-setup-page></plume-setup-page>`,
         false,
       );
     }
 
     if (path === "/projects") {
       return this.pageWithPalette(
-        "breeze-projects-page",
-        html`<breeze-projects-page></breeze-projects-page>`,
+        "plume-projects-page",
+        html`<plume-projects-page></plume-projects-page>`,
       );
     }
 
     if (matchRoute("/projects/:slug", path)) {
       return this.pageWithPalette(
-        "breeze-project-detail-page",
-        html`<breeze-project-detail-page></breeze-project-detail-page>`,
+        "plume-project-detail-page",
+        html`<plume-project-detail-page></plume-project-detail-page>`,
       );
     }
 
     if (path === "/views") {
       return this.pageWithPalette(
-        "breeze-views-page",
-        html`<breeze-views-page></breeze-views-page>`,
+        "plume-views-page",
+        html`<plume-views-page></plume-views-page>`,
       );
     }
 
     if (matchRoute("/views/:id", path)) {
       return this.pageWithPalette(
-        "breeze-view-detail-page",
-        html`<breeze-view-detail-page></breeze-view-detail-page>`,
+        "plume-view-detail-page",
+        html`<plume-view-detail-page></plume-view-detail-page>`,
       );
     }
 
     if (path === "/inbox") {
       return this.pageWithPalette(
-        "breeze-inbox-page",
-        html`<breeze-inbox-page></breeze-inbox-page>`,
+        "plume-inbox-page",
+        html`<plume-inbox-page></plume-inbox-page>`,
       );
     }
 
@@ -508,8 +508,8 @@ export class BreezeApp extends LitElement {
     if (chatMatch || path === "/chat") {
       const convId = chatMatch?.conversationId ?? "";
       return this.pageWithPalette(
-        "breeze-chat-page",
-        html`<breeze-chat-page conversationId="${convId}"></breeze-chat-page>`,
+        "plume-chat-page",
+        html`<plume-chat-page conversationId="${convId}"></plume-chat-page>`,
       );
     }
 
@@ -517,29 +517,29 @@ export class BreezeApp extends LitElement {
     if (messagesMatch || path === "/messages") {
       const convId = messagesMatch?.conversationId ?? "";
       return this.pageWithPalette(
-        "breeze-inbox-chat-page",
-        html`<breeze-inbox-chat-page conversationId="${convId}"></breeze-inbox-chat-page>`,
+        "plume-inbox-chat-page",
+        html`<plume-inbox-chat-page conversationId="${convId}"></plume-inbox-chat-page>`,
       );
     }
 
     if (path === "/members" || matchRoute("/members/:tab", path)) {
       return this.pageWithPalette(
-        "breeze-members-page",
-        html`<breeze-members-page></breeze-members-page>`,
+        "plume-members-page",
+        html`<plume-members-page></plume-members-page>`,
       );
     }
 
     if (path === "/my-tasks") {
       return this.pageWithPalette(
-        "breeze-my-tasks-page",
-        html`<breeze-my-tasks-page></breeze-my-tasks-page>`,
+        "plume-my-tasks-page",
+        html`<plume-my-tasks-page></plume-my-tasks-page>`,
       );
     }
 
     if (path === "/preferences") {
       return this.renderPage(
-        "breeze-user-settings-page",
-        html`<breeze-user-settings-page></breeze-user-settings-page>`,
+        "plume-user-settings-page",
+        html`<plume-user-settings-page></plume-user-settings-page>`,
       );
     }
 
@@ -548,27 +548,27 @@ export class BreezeApp extends LitElement {
       matchRoute("/settings/workspace/:tab", path)
     ) {
       return this.pageWithPalette(
-        "breeze-workspace-settings-page",
-        html`<breeze-workspace-settings-page></breeze-workspace-settings-page>`,
+        "plume-workspace-settings-page",
+        html`<plume-workspace-settings-page></plume-workspace-settings-page>`,
       );
     }
 
     if (path === "/") {
       return this.pageWithPalette(
-        "breeze-dashboard-page",
-        html`<breeze-dashboard-page></breeze-dashboard-page>`,
+        "plume-dashboard-page",
+        html`<plume-dashboard-page></plume-dashboard-page>`,
       );
     }
 
     return this.pageWithPalette(
-      "breeze-not-found-page",
-      html`<breeze-not-found-page></breeze-not-found-page>`,
+      "plume-not-found-page",
+      html`<plume-not-found-page></plume-not-found-page>`,
     );
   }
 }
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-app": BreezeApp;
+    "plume-app": PlumeApp;
   }
 }

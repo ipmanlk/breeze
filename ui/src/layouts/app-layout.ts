@@ -20,8 +20,8 @@ import "../components/nav/workspace-switcher.ts";
 import "../components/top-bar.ts";
 
 @localized()
-@customElement("breeze-app-layout")
-export class BreezeAppLayout extends LitElement {
+@customElement("plume-app-layout")
+export class PlumeAppLayout extends LitElement {
   static styles = css`
     *,
     *::before,
@@ -240,15 +240,15 @@ export class BreezeAppLayout extends LitElement {
       <nav class="sidebar" aria-label="${msg("Main navigation")}">
         <div class="sidebar-inner">
           <div class="sidebar-head">
-            <breeze-workspace-switcher></breeze-workspace-switcher>
+            <plume-workspace-switcher></plume-workspace-switcher>
           </div>
           <div class="nav-scroll">
-            <breeze-nav-list .items="${getPrimaryNav()}"></breeze-nav-list>
-            <breeze-nav-views></breeze-nav-views>
-            <breeze-nav-projects></breeze-nav-projects>
+            <plume-nav-list .items="${getPrimaryNav()}"></plume-nav-list>
+            <plume-nav-views></plume-nav-views>
+            <plume-nav-projects></plume-nav-projects>
           </div>
           <div class="sidebar-foot">
-            <breeze-nav-user></breeze-nav-user>
+            <plume-nav-user></plume-nav-user>
           </div>
         </div>
         <div
@@ -261,7 +261,7 @@ export class BreezeAppLayout extends LitElement {
       <div class="mobile-overlay" @click="${toggleSidebar}"></div>
       <div class="main">
         <div class="topbar-wrap" role="banner">
-          <breeze-top-bar></breeze-top-bar>
+          <plume-top-bar></plume-top-bar>
         </div>
         <div class="content"><slot></slot></div>
       </div>
@@ -271,6 +271,6 @@ export class BreezeAppLayout extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-app-layout": BreezeAppLayout;
+    "plume-app-layout": PlumeAppLayout;
   }
 }

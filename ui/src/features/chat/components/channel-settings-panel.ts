@@ -12,7 +12,7 @@ import { navigate } from "@/routes/router";
 import "@/components/ui/combobox.ts";
 import "@/components/ui/button.ts";
 import "@/components/ui/input.ts";
-import "@/components/ui/breeze-icon.ts";
+import "@/components/ui/plume-icon.ts";
 import "@/components/ui/select.ts";
 import "@/components/ui/avatar.ts";
 import "@/components/ui/dialog.ts";
@@ -32,8 +32,8 @@ import { localized, msg } from "@lit/localize";
  *  - Danger zone (delete)         : requires can_manage
  */
 @localized()
-@customElement("breeze-channel-settings-panel")
-export class BreezeChannelSettingsPanel extends LitElement {
+@customElement("plume-channel-settings-panel")
+export class PlumeChannelSettingsPanel extends LitElement {
   static styles = css`
     *,
     *::before,
@@ -840,7 +840,7 @@ export class BreezeChannelSettingsPanel extends LitElement {
       <div class="header">
         <span>${heading}</span>
         <button @click="${this.#close}" title="Close">
-          <breeze-icon name="x" size="16"></breeze-icon>
+          <plume-icon name="x" size="16"></plume-icon>
         </button>
       </div>
 
@@ -883,7 +883,7 @@ export class BreezeChannelSettingsPanel extends LitElement {
                 const initial = (m.name ?? "?").charAt(0).toUpperCase();
                 return html`
                   <div class="member-row">
-                    <breeze-avatar size="sm">${initial}</breeze-avatar>
+                    <plume-avatar size="sm">${initial}</plume-avatar>
                     <span class="member-name">${m.name ?? m.email}</span>
                     <span class="member-role">${m.role ?? "member"}</span>
                     ${!isDM
@@ -893,7 +893,7 @@ export class BreezeChannelSettingsPanel extends LitElement {
                           title=${msg("Remove member")}
                           @click="${() => this.#removeMember(m.id)}"
                         >
-                          <breeze-icon name="x" size="12"></breeze-icon>
+                          <plume-icon name="x" size="12"></plume-icon>
                         </button>
                       `
                       : nothing}
@@ -907,14 +907,14 @@ export class BreezeChannelSettingsPanel extends LitElement {
           `
           : nothing} ${!isDM
           ? html`
-            <breeze-button
+            <plume-button
               size="sm"
               variant="outline"
               @click="${this.#openAddMembers}"
             >
-              <breeze-icon name="user-plus" size="14"></breeze-icon>
+              <plume-icon name="user-plus" size="14"></plume-icon>
               Add members
-            </breeze-button>
+            </plume-button>
           `
           : nothing}
       </div>
@@ -925,7 +925,7 @@ export class BreezeChannelSettingsPanel extends LitElement {
     return html`
       <div class="section">
         <div class="section-title">Add Members</div>
-        <breeze-input
+        <plume-input
           class="add-member-search"
           type="search"
           placeholder=${msg("Search users…")}
@@ -933,7 +933,7 @@ export class BreezeChannelSettingsPanel extends LitElement {
           @input="${(e: Event) => {
             this._addMemberSearch = (e.target as HTMLInputElement).value;
           }}"
-        ></breeze-input>
+        ></plume-input>
         ${this.#filteredAddMemberEntries.length === 0
           ? html`
             <div class="section-desc">
@@ -953,7 +953,7 @@ export class BreezeChannelSettingsPanel extends LitElement {
                     <span class="add-member-check">
                       ${entry.selected
                         ? html`
-                          <breeze-icon name="check" size="10"></breeze-icon>
+                          <plume-icon name="check" size="10"></plume-icon>
                         `
                         : nothing}
                     </span>
@@ -971,7 +971,7 @@ export class BreezeChannelSettingsPanel extends LitElement {
           `
           : nothing}
         <div class="add-member-actions">
-          <breeze-button
+          <plume-button
             size="sm"
             variant="ghost"
             @click="${() => {
@@ -979,8 +979,8 @@ export class BreezeChannelSettingsPanel extends LitElement {
             }}"
           >
             Cancel
-          </breeze-button>
-          <breeze-button
+          </plume-button>
+          <plume-button
             size="sm"
             ?disabled="${this._addMemberSaving ||
               this.#selectedAddMemberIds.length === 0}"
@@ -989,7 +989,7 @@ export class BreezeChannelSettingsPanel extends LitElement {
             ${this._addMemberSaving
               ? "Adding…"
               : `Add (${this.#selectedAddMemberIds.length})`}
-          </breeze-button>
+          </plume-button>
         </div>
       </div>
     `;
@@ -1001,25 +1001,25 @@ export class BreezeChannelSettingsPanel extends LitElement {
         <div class="section-title">General</div>
         <div class="field">
           <label>Name</label>
-          <breeze-input
+          <plume-input
             placeholder=${msg("Name")}
             .value="${this._name}"
             @input="${(e: Event) => {
               this._name = (e.target as HTMLInputElement).value;
               this._generalSaved = false;
             }}"
-          ></breeze-input>
+          ></plume-input>
         </div>
         <div class="field">
           <label>Description</label>
-          <breeze-input
+          <plume-input
             placeholder=${msg("Description (optional)")}
             .value="${this._topic}"
             @input="${(e: Event) => {
               this._topic = (e.target as HTMLInputElement).value;
               this._generalSaved = false;
             }}"
-          ></breeze-input>
+          ></plume-input>
         </div>
         ${this._generalError
           ? html`
@@ -1031,13 +1031,13 @@ export class BreezeChannelSettingsPanel extends LitElement {
           `
           : nothing}
         <div class="row-btns">
-          <breeze-button
+          <plume-button
             size="sm"
             ?disabled="${this._savingGeneral || !this.#generalDirty}"
             @click="${this.#saveGeneral}"
           >
             ${this._savingGeneral ? "Saving…" : "Save changes"}
-          </breeze-button>
+          </plume-button>
         </div>
       </div>
     `;
@@ -1056,13 +1056,13 @@ export class BreezeChannelSettingsPanel extends LitElement {
             ? "Child channels inherit these project links. Members of these projects get implicit access."
             : "Only members of these projects get implicit access to this channel."}
         </div>
-        <breeze-combobox
+        <plume-combobox
           .options="${options}"
           .value="${this._projectIds}"
           placeholder=${msg("Select projects…")}
           @change="${(e: Event) =>
             this.#setProjectIds((e as CustomEvent).detail as string[])}"
-        ></breeze-combobox>
+        ></plume-combobox>
       </div>
     `;
   }
@@ -1158,7 +1158,7 @@ export class BreezeChannelSettingsPanel extends LitElement {
             const initial = (u?.name ?? "?").charAt(0).toUpperCase();
             return html`
               <div class="override-row">
-                <breeze-avatar size="sm">${initial}</breeze-avatar>
+                <plume-avatar size="sm">${initial}</plume-avatar>
                 <div class="override-info">
                   <div class="override-name">${u?.name ?? o.user_id}</div>
                   <div class="override-perm">${o.permission.split(":")[1]}</div>
@@ -1172,9 +1172,9 @@ export class BreezeChannelSettingsPanel extends LitElement {
                     @click="${() =>
                       this.#toggleOverride(o.user_id, o.permission)}"
                   >
-                    <breeze-icon name="${o.allow
+                    <plume-icon name="${o.allow
                       ? "check"
-                      : "x"}" size="14"></breeze-icon>
+                      : "x"}" size="14"></plume-icon>
                   </button>
                   <button
                     class="icon-btn"
@@ -1182,7 +1182,7 @@ export class BreezeChannelSettingsPanel extends LitElement {
                     @click="${() =>
                       this.#removeOverride(o.user_id, o.permission)}"
                   >
-                    <breeze-icon name="trash-2" size="14"></breeze-icon>
+                    <plume-icon name="trash-2" size="14"></plume-icon>
                   </button>
                 </div>
               </div>
@@ -1193,24 +1193,24 @@ export class BreezeChannelSettingsPanel extends LitElement {
           <div class="add-override-row">
             <div class="field" style="flex:1">
               <label>User</label>
-              <breeze-select
+              <plume-select
                 .options="${userOpts}"
                 .value="${this._newOverrideUser}"
                 placeholder=${msg("Select user…")}
                 @change="${(e: CustomEvent) => {
                   this._newOverrideUser = e.detail as string;
                 }}"
-              ></breeze-select>
+              ></plume-select>
             </div>
             <div class="field" style="width:7rem">
               <label>Permission</label>
-              <breeze-select
+              <plume-select
                 .options="${permOpts}"
                 .value="${this._newOverridePerm}"
                 @change="${(e: CustomEvent) => {
                   this._newOverridePerm = e.detail as string;
                 }}"
-              ></breeze-select>
+              ></plume-select>
             </div>
           </div>
           <div class="add-override-row">
@@ -1224,7 +1224,7 @@ export class BreezeChannelSettingsPanel extends LitElement {
                     this._newOverrideAllow = true;
                   }}"
                 >
-                  <breeze-icon name="check" size="14"></breeze-icon> Allow
+                  <plume-icon name="check" size="14"></plume-icon> Allow
                 </button>
                 <button
                   class="icon-btn ${!this._newOverrideAllow ? "deny" : ""}"
@@ -1233,13 +1233,13 @@ export class BreezeChannelSettingsPanel extends LitElement {
                     this._newOverrideAllow = false;
                   }}"
                 >
-                  <breeze-icon name="x" size="14"></breeze-icon> Deny
+                  <plume-icon name="x" size="14"></plume-icon> Deny
                 </button>
               </div>
             </div>
-            <breeze-button size="sm" @click="${this.#addOverride}">
-              <breeze-icon name="plus" size="14"></breeze-icon> Add
-            </breeze-button>
+            <plume-button size="sm" @click="${this.#addOverride}">
+              <plume-icon name="plus" size="14"></plume-icon> Add
+            </plume-button>
           </div>
           ${this._overrideError
             ? html`
@@ -1256,16 +1256,16 @@ export class BreezeChannelSettingsPanel extends LitElement {
     return html`
       <div class="section">
         <div class="section-title">Danger Zone</div>
-        <breeze-button
+        <plume-button
           variant="destructive"
           class="danger-btn"
           @click="${() => {
             this._deleteOpen = true;
           }}"
         >
-          <breeze-icon name="trash-2" size="14"></breeze-icon>
+          <plume-icon name="trash-2" size="14"></plume-icon>
           Delete ${isCategory ? "category" : "channel"}
-        </breeze-button>
+        </plume-button>
       </div>
     `;
   }
@@ -1273,7 +1273,7 @@ export class BreezeChannelSettingsPanel extends LitElement {
   #renderDeleteDialog() {
     const isCategory = this._conv?.type === "category";
     return html`
-      <breeze-dialog
+      <plume-dialog
         style="--dialog-w:24rem"
         .open="${true}"
         heading="Delete ${isCategory ? "category" : "channel"}"
@@ -1291,26 +1291,26 @@ export class BreezeChannelSettingsPanel extends LitElement {
           slot="footer"
           style="display:flex;justify-content:flex-end;gap:var(--space-2);width:100%"
         >
-          <breeze-button variant="ghost" type="button" @click="${() => {
+          <plume-button variant="ghost" type="button" @click="${() => {
             this._deleteOpen = false;
           }}">
             ${msg("Cancel")}
-          </breeze-button>
-          <breeze-button
+          </plume-button>
+          <plume-button
             variant="destructive"
             ?disabled="${this._deleting}"
             @click="${this.#confirmDelete}"
           >
             ${this._deleting ? "Deleting…" : "Delete"}
-          </breeze-button>
+          </plume-button>
         </div>
-      </breeze-dialog>
+      </plume-dialog>
     `;
   }
 }
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-channel-settings-panel": BreezeChannelSettingsPanel;
+    "plume-channel-settings-panel": PlumeChannelSettingsPanel;
   }
 }

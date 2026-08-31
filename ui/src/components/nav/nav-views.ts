@@ -5,7 +5,7 @@ import { currentPath, navigate } from "@/routes/router";
 import { unpinView, views } from "@/features/views/store";
 import { sidebarIsMobile, sidebarOpen } from "@/store/sidebar";
 import { SignalController } from "@/lib/signal-controller";
-import "../ui/breeze-icon.ts";
+import "../ui/plume-icon.ts";
 import "../ui/tooltip.ts";
 
 /**
@@ -17,8 +17,8 @@ import "../ui/tooltip.ts";
  * once at the app level (`app-shell.ts`).
  */
 @localized()
-@customElement("breeze-nav-views")
-export class BreezeNavViews extends LitElement {
+@customElement("plume-nav-views")
+export class PlumeNavViews extends LitElement {
   static styles = css`
     *,
     *::before,
@@ -181,7 +181,7 @@ export class BreezeNavViews extends LitElement {
                     navigate(href);
                   }}"
                 >
-                  <breeze-icon name="${icon}" size="16"></breeze-icon>
+                  <plume-icon name="${icon}" size="16"></plume-icon>
                   <span class="name">${v.name}</span>
                 </a>
                 <button
@@ -194,14 +194,14 @@ export class BreezeNavViews extends LitElement {
                     unpinView(v.id);
                   }}"
                 >
-                  <breeze-icon name="x" size="12"></breeze-icon>
+                  <plume-icon name="x" size="12"></plume-icon>
                 </button>
               </div>
             `;
             return collapsed
               ? html`
-                <breeze-tooltip text="${v
-                  .name}" side="right">${row}</breeze-tooltip>
+                <plume-tooltip text="${v
+                  .name}" side="right">${row}</plume-tooltip>
               `
               : row;
           })}
@@ -213,6 +213,6 @@ export class BreezeNavViews extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "breeze-nav-views": BreezeNavViews;
+    "plume-nav-views": PlumeNavViews;
   }
 }

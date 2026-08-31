@@ -5,7 +5,7 @@ import (
 	"strings"
 	"testing"
 
-	"ipmanlk/breeze/internal/store/migration"
+	"ipmanlk/plume/internal/store/migration"
 
 	_ "modernc.org/sqlite"
 )

@@ -6,7 +6,7 @@ import (
 	"testing"
 	"time"
 
-	"ipmanlk/breeze/internal/domain"
+	"ipmanlk/plume/internal/domain"
 )
 
 // TestClient_ShouldBroadcastTyping_Debounce verifies the per-conversation

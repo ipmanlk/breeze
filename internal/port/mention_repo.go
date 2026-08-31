@@ -3,7 +3,7 @@ package port
 import (
 	"context"
 
-	"ipmanlk/breeze/internal/domain"
+	"ipmanlk/plume/internal/domain"
 )
 
 // MentionSearchRepository provides mention autocomplete search across users,
